@@ -41,5 +41,17 @@ AnyFolder ExcludedMuscles =
   AnyObjectPtr Objects = arrcat(pArrMuscles, pArrSPLines);
 };
 
+
+RectusFemoris1.DrwMus.Visible = Off;
+RectusFemoris2.DrwMus.Visible = Off;
+IliacusMid1.DrwMus.Visible = Off;
+IliacusMid2.DrwMus.Visible = Off;
+IliacusMedialis1.DrwMus.Visible = Off;
+IliacusMedialis2.DrwMus.Visible = Off;
+Pectineus1.DrwMus.Visible = Off;
+Pectineus2.DrwMus.Visible = Off;
+Pectineus3.DrwMus.Visible = Off;
+Pectineus4.DrwMus.Visible = Off;
+
 #undef RETURN_OBJ_MUSCLE
 #undef RETURN_OBJ_SPLINE
