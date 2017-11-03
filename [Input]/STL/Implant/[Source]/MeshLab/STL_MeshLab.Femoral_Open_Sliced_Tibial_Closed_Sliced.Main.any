@@ -1,0 +1,271 @@
+Main = 
+{
+  AnyFolder Model = 
+  {
+    AnyFixedRefFrame GlobalRef = 
+    {
+      AnyDrawRefFrame Drw = 
+      {
+        RGB = {0, 1, 0};
+        
+        ScaleXYZ = 0.015*{1, 1, 1};
+      };
+      
+      AnyRefNode Node_Joint_Femur = 
+      {
+        sRel = {0.015, 0.044 - 0.002, 0};
+      };
+    };//GlobalRef
+    
+    AnyFolder Segs = 
+    {
+      AnySeg Tibial = 
+      {
+        Mass = 0;
+        Jii = {0, 0, 0};
+        AnySurfSTL ContactSurf_Medial = 
+        {
+          FileName = "Tibial Insert_Medial.stl";
+          AnyDrawSurf DrwSurf = 
+          {
+            FileName = .FileName;
+            ScaleXYZ = .ScaleXYZ;
+            RGB = 0.5*{1, 1, 1};
+            Opacity = 0.5;
+          };          
+        };
+        AnySurfSTL ContactSurf_Lateral = 
+        {
+          FileName = "Tibial Insert_Lateral.stl";
+          AnyDrawSurf DrwSurf = 
+          {
+            FileName = .FileName;
+            ScaleXYZ = .ScaleXYZ;
+            RGB = 0.5*{1, 1, 1};
+            Opacity = 0.5;
+          };          
+        };            
+      };
+      AnySeg Femoral = 
+      {
+        Mass = 0;
+        Jii = {0, 0, 0};   
+        r0 = ..GlobalRef.Node_Joint_Femur.sRel;
+        AnySurfSTL ContactSurf_Lateral = 
+        {
+          FileName = "Femoral Component_Lateral_Cut_MeshLab.stl";
+          AnyDrawSurf DrwSurf = 
+          {
+            FileName = .FileName;
+            ScaleXYZ = .ScaleXYZ;
+            RGB = 0.5*{1, 1, 1};
+            Opacity = 0.5;
+          };              
+        };
+        AnySurfSTL ContactSurf_Medial = 
+        {
+          FileName = "Femoral Component_Medial_Cut_MeshLab.stl";
+          AnyDrawSurf DrwSurf = 
+          {
+            FileName = .FileName;
+            ScaleXYZ = .ScaleXYZ;
+            RGB = 0.5*{1, 1, 1};
+            Opacity = 0.5;
+          };              
+        };        
+      };
+    };//Segs
+    
+    AnyFolder Joints = 
+    {
+      AnyStdJoint Fix_Tibial = 
+      {
+        AnyRefFrame& ref0 = ..GlobalRef ;
+        AnyRefFrame& ref1 = ..Segs.Tibial ;
+      };
+      
+      AnyRevoluteJoint Rev_Femoral = 
+      {
+        AnyRefFrame& ref0 = ..GlobalRef.Node_Joint_Femur ;
+        AnyRefFrame& ref1 = ..Segs.Femoral;
+        Axis = z ;
+      };
+    };//Joints
+    
+    AnyFolder Drivers = 
+    {
+      AnyKinEqSimpleDriver Rev_Femoral_Rotation =
+      {
+        AnyKinMeasure& ref0 = ..Joints.Rev_Femoral ;
+        DriverPos = pi/180*{-10};
+        DriverVel = pi/180*{-90};
+      };
+    };//Drivers
+    
+    AnyFolder Contacts = 
+    {
+      AnyForceSurfaceContact Femur_Tibia_Lateral = 
+      {
+        AnySurface& Master = ..Segs.Femoral.ContactSurf_Lateral;
+        AnySurface& Slave = ..Segs.Tibial.ContactSurf_Lateral ;
+        
+        PressureModule = 4.68e+009;
+        ForceViewOnOff = On;
+        MeshRefinementMaster = 0;
+        MeshRefinementSlave = 0;
+        SingleSidedOnOff= 0;
+        AnyDrawForceSurface DrwSurfaceContact = 
+        {
+          DrawSurf1RGB = {1, 0, 0};
+          DrawSurf2RGB = {0, 0, 1};
+        };
+        AnyDrawLine DrwForceOnMaster = 
+        {
+          p0 = .COP;
+          p1 = p0 + .Fmaster / 100000;
+          Line = 
+          {
+            Style = Line3DStyleFull;
+            Thickness = 0.001;
+            RGB = {1, 0, 0};
+            Start = 
+            {
+              Style = Line3DCapStyleNone;
+              RGB = {1, 0, 0};
+              Thickness = 0;
+              Length = 0;
+            };
+            End = 
+            {
+              Style = Line3DCapStyleArrow;
+              RGB = {1, 0, 0};
+              Thickness = 0.002;
+              Length = 0.002;
+            };
+          };
+          Text = "F_On_Master_Lateral";
+          TextFont.ModelScaleHeight = 2.0;
+          TextFont.ModelScaleWidth = 2.0;          
+          AnyRefFrame &G = Main.Model.GlobalRef;
+        };         
+        
+        AnyDrawLine DrwForceOnSlave = 
+        {
+          p0 = .COP;
+          p1 = p0 + .Fslave / 100000;
+          Line = 
+          {
+            Style = Line3DStyleFull;
+            Thickness = 0.001;
+            RGB = {0, 0, 1};
+            Start = 
+            {
+              Style = Line3DCapStyleNone;
+              RGB = {0, 0, 1};
+              Thickness = 0;
+              Length = 0;
+            };
+            End = 
+            {
+              Style = Line3DCapStyleArrow;
+              RGB = {0, 0, 1};
+              Thickness = 0.002;
+              Length = 0.002;
+            };
+          };
+          Text = "F_On_Slave_Lateral";
+          TextFont.ModelScaleHeight = 2.0;
+          TextFont.ModelScaleWidth = 2.0;
+          AnyRefFrame &G = Main.Model.GlobalRef;
+        };        
+      };
+      
+      AnyForceSurfaceContact Femur_Tibia_Medial = 
+      {
+        AnySurface& Master = ..Segs.Femoral.ContactSurf_Medial;
+        AnySurface& Slave = ..Segs.Tibial.ContactSurf_Medial ;
+        
+        PressureModule = 4.68e+009;
+        ForceViewOnOff = On;
+        MeshRefinementMaster = 0;
+        MeshRefinementSlave = 0;
+        SingleSidedOnOff= 0;
+        AnyDrawForceSurface DrwSurfaceContact = 
+        {
+          DrawSurf1RGB = {1, 0, 0};
+          DrawSurf2RGB = {0, 0, 1};
+        };
+        AnyDrawLine DrwForceOnMaster = 
+        {
+          p0 = .COP;
+          p1 = p0 + .Fmaster / 100000;
+          Line = 
+          {
+            Style = Line3DStyleFull;
+            Thickness = 0.001;
+            RGB = {1, 0, 0};
+            Start = 
+            {
+              Style = Line3DCapStyleNone;
+              RGB = {1, 0, 0};
+              Thickness = 0;
+              Length = 0;
+            };
+            End = 
+            {
+              Style = Line3DCapStyleArrow;
+              RGB = {1, 0, 0};
+              Thickness = 0.002;
+              Length = 0.002;
+            };
+          };
+          Text = "F_On_Master_Medial";
+          TextFont.ModelScaleHeight = 2.0;
+          TextFont.ModelScaleWidth = 2.0;          
+          AnyRefFrame &G = Main.Model.GlobalRef;
+        };         
+        
+        AnyDrawLine DrwForceOnSlave = 
+        {
+          p0 = .COP;
+          p1 = p0 + .Fslave / 100000;
+          Line = 
+          {
+            Style = Line3DStyleFull;
+            Thickness = 0.001;
+            RGB = {0, 0, 1};
+            Start = 
+            {
+              Style = Line3DCapStyleNone;
+              RGB = {0, 0, 1};
+              Thickness = 0;
+              Length = 0;
+            };
+            End = 
+            {
+              Style = Line3DCapStyleArrow;
+              RGB = {0, 0, 1};
+              Thickness = 0.002;
+              Length = 0.002;
+            };
+          };
+          Text = "F_On_Slave_Medial";
+          TextFont.ModelScaleHeight = 2.0;
+          TextFont.ModelScaleWidth = 2.0;
+          AnyRefFrame &G = Main.Model.GlobalRef;
+        };            
+      };      
+    };//Contacts
+  };//Model
+  
+  AnyBodyStudy Study = 
+  {
+    AnyFolder& Model = .Model;
+    
+    Gravity = {0, -9.81, 9};
+    tStart = 0;
+    tEnd = 1;
+    nStep = 100;
+    
+  };
+};

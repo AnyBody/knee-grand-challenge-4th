@@ -1,0 +1,122 @@
+AnyFolder Joints = 
+{
+  
+};
+
+AnyFolder Drivers = 
+{
+  AnyFolder &JntPos= Main.HumanModel.Mannequin.Posture;  
+  AnyFolder &JntVel= Main.HumanModel.Mannequin.PostureVel;  
+  
+  AnyFolder &LegR = Main.HumanModel.BodyModel.Right.Leg;
+  AnyFolder &LegL = Main.HumanModel.BodyModel.Left.Leg;
+  
+  AnyFolder &RefHM = Main.Model.HumanModel;
+  
+  AnyFolder CoM_Control_Def = 
+  {
+    AnyKinCoM CoM_Measure = 
+    {
+      AnyFolder &Body = Main.Model.HumanModel; 
+    };    
+    
+    AnyKinMeasureLinComb CoM_Offset_Measure =
+    {
+      AnyKinCoM& CoM = .CoM_Measure;    
+      AnyKinMeasureLinComb FootContactAvg = 
+      {
+        AnyKinLinear lin_left = 
+        {
+          AnyRefFrame& ref = Main.HumanModel.BodyModel.Right.Leg.Jnt.Ankle.ShankNode;
+        };
+        AnyKinLinear lin_right =
+        {
+          AnyRefFrame& ref = Main.HumanModel.BodyModel.Left.Leg.Jnt.Ankle.ShankNode;
+        };
+        Coef = 
+        {
+          {0.6, 0, 0, 0.4, 0, 0},  
+          {0, 1, 0, 0, 1, 0}/2,
+          {0, 0, 1, 0, 0, 1}/2
+        };
+        OutDim = 3;       
+      }; 
+      Coef = 
+      {
+        {1, 0, 0, -1, 0, 0},
+        {0, 1, 0, 0, -1, 0},
+        {0, 0, 1, 0, 0, -1}
+      };
+      OutDim = 3;
+      Const = {0.0, 0.0, 0.0 };
+    };
+    
+    AnyKinEqSimpleDriver CoM_Driver = 
+    {
+      AnyKinMeasure& ref = .CoM_Offset_Measure;
+      MeasureOrganizer = {0,2};  // Only the x and z directions
+      DriverPos = {0.0, 0};
+      DriverVel = {0, 0};
+      Reaction.Type = {Off,Off};
+      //CType = {Soft, Hard};
+      CType = {Hard, Hard};
+      AnyFunConst ConstFun = { Value = {50.0, 100.0}; };
+      WeightFun = {&ConstFun};
+    };
+ 
+    AnySeg CoM_DummySeg =
+    {
+      Mass=0;
+      Jii={0,0,0};
+      r0 = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.r0;
+      AnyDrawNode drw=
+      { 
+        ScaleXYZ={1,1,1}*0.05; 
+        RGB={0,1,1};
+      };
+    };
+    
+    AnyKinLinear CoM_DummySeg_Lin =
+    {
+      AnySeg &ref =.CoM_DummySeg ;
+    };
+    
+    AnyKinEq CoM_DummySeg_Driver =
+    {
+      AnyKinMeasureLinComb lincomb=
+      {
+        AnyKinMeasure &ref1 = ..CoM_DummySeg_Lin ;
+        AnyKinMeasure &ref2 = ..CoM_Measure ;
+        Coef={{1,0,0,-1,0,0},{0,1,0,0,-1,0},{0,0,1,0,0,-1}};
+        OutDim = 3;
+      };
+      AnyKinRotational rot =
+      {
+        AnySeg &ref = ..CoM_DummySeg;
+        Type=RotAxesAngles;
+      };
+    };    
+  };
+  
+  //#if BM_TRUNK == ON
+  #include "TrunkDrivers.any"
+  //#endif
+  
+  #if BM_ARM_RIGHT == ON
+  #include "RightArmDrivers.any"
+  #endif
+  
+  #if BM_ARM_LEFT == ON
+  #include "LeftArmDrivers.any"
+  #endif
+  
+  #if BM_LEG_RIGHT == CONST_LEG_MODEL_TLEM
+  #include "RightLegTLEMDrivers.any"
+  #endif
+  
+  #if BM_LEG_LEFT == CONST_LEG_MODEL_TLEM
+  #include "LeftLegTLEMDrivers.any"
+  #endif
+};
+
+

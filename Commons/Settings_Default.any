@@ -1,0 +1,178 @@
+#path PATH_DRAWSETTINGS_AMMR "<ANYBODY_PATH_BODY>\DrawSettings\"
+
+#path PATH_SOURCE_FEMUR_LANDMARKS  "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Femur_picked_points.pp"
+#path PATH_SOURCE_FEMUR_STL        "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Femur.stl"
+
+#path PATH_TARGET_FEMUR_LANDMARKS  "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged femur_picked_points.pp"
+#path PATH_TARGET_FEMUR_PREOP_STL  "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged femur.stl"
+#path PATH_TARGET_FEMUR_POSTOP_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Femur.stl"
+#path PATH_TARGET_FEMUR_POSTOP_WRAPPING_LANDMARKS "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Femur_Wrapping_Lateral_picked_points.pp"
+
+#path PATH_SOURCE_TIBIA_LANDMARKS  "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Tibia_picked_points.pp"
+#path PATH_SOURCE_TIBIA_STL        "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Tibia.stl"
+
+#path PATH_TARGET_TIBIA_LANDMARKS  "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged tibia_picked_points.pp"
+#path PATH_TARGET_TIBIA_PREOP_STL  "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged tibia.stl"  
+#path PATH_TARGET_TIBIA_POSTOP_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Tibia.stl"
+
+#path PATH_TARGET_FIBULA_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Fibula.stl"
+
+#path PATH_SOURCE_PATELLA_LANDMARKS "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Patella_picked_points.pp"
+#path PATH_SOURCE_PATELLA_STL "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Patella.stl"
+#path PATH_TARGET_PATELLA_LANDMARKS "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged patella_remeshed_picked_points.pp"
+#path PATH_TARGET_PATELLA_PREOP_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged patella_remeshed.stl"
+#path PATH_TARGET_PATELLA_POSTOP_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Patella.stl"
+
+#path PATH_TARGET_TALUS_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Talus.stl"
+#path PATH_TARGET_TALUS_LANDMARKS "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Talus_picked_points.pp"
+
+#path PATH_IMPLANT_HIP_FEMORAL_HEAD_RIGHT_STL "<USER_PATH_INPUTDATA>\STL\Implant\Hip Implant Femoral Component.stl"
+#path PATH_IMPLANT_FEMUR_RIGHT_STL          "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_remeshed.stl"
+#path PATH_IMPLANT_TIBIA_BASE_STL           "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Tray_remeshed.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Insert_remeshed_lateral.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL  "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Insert_remeshed_medial.stl"
+#path PATH_IMPLANT_PATELLA_DOME_STL         "<USER_PATH_INPUTDATA>\STL\Implant\Patellar Button_remeshed.stl"
+
+#path PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT          "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Femoral Component_Cut_Ver2_Meshmixer.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL_CONTACT "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Tibial Insert_Lateral_Cut_Ver2_Meshmixer.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL_CONTACT  "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Tibial Insert_Medial_Cut_Ver2_Meshmixer.stl"
+#path PATH_IMPLANT_PATELLA_DOME_STL_CONTACT         "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Patellar Button_Cut_Ver2_Meshmixer.stl"
+
+#path PATH_TARGET_LIGAMENT_FEMUR_PICKED_POINTS "<USER_PATH_INPUTDATA>\Ligament\GCK4_Femur_Ligament_picked_points2.pp"
+#path PATH_TARGET_LIGAMENT_TIBIA_PICKED_POINTS "<USER_PATH_INPUTDATA>\Ligament\GCK4_Tibia_Ligament_picked_points.pp"
+#path PATH_TARGET_LIGAMENT_FIBULA_PICKED_POINTS "<USER_PATH_INPUTDATA>\Ligament\GCK4_Fibula_Ligament_picked_points.pp"
+#path PATH_TARGET_LIGAMENT_PATELLA_PICKED_POINTS "<USER_PATH_INPUTDATA>\Ligament\GCK4_Patella_Ligament_picked_points.pp"
+
+#path PATH_TARGET_IMPLANT_HIP_PICKED_POINTS "<USER_PATH_INPUTDATA>\STL\Implant\Hip Implant Femoral Component_picked_points.pp"
+#path PATH_TARGET_IMPLANT_HIP_PICKED_POINTS_AXIAL "<USER_PATH_INPUTDATA>\STL\Implant\Hip Implant Femoral Component_picked_points_axial.pp"
+#path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_ANTERIOR "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_anterior.pp"
+#path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_POSTERIOR "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_posterior.pp"
+#path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_ANTERIOR "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_lateral_anterior.pp"
+#path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_MEDIAL_ANTERIOR "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_medial_anterior.pp"
+#path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_POSTERIOR "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_lateral_posterior.pp"
+
+#ifndef REF_HUMAN_BODYMODEL
+  #define REF_HUMAN_BODYMODEL Main.HumanModel.BodyModel
+#endif
+
+#ifndef CUSTOM_SCALING_Right_Thigh
+  #define CUSTOM_SCALING_Right_Thigh
+#endif
+
+#ifndef CUSTOM_SCALING_Left_Thigh
+  #define CUSTOM_SCALING_Left_Thigh
+#endif
+
+#ifndef CUSTOM_SCALING_Right_Shank
+  #define CUSTOM_SCALING_Right_Shank
+#endif
+
+#ifndef CUSTOM_SCALING_Left_Shank
+  #define CUSTOM_SCALING_Left_Shank
+#endif
+
+#ifndef CUSTOM_SCALING_Right_Patella
+  #define CUSTOM_SCALING_Right_Patella
+#endif
+
+#ifndef CUSTOM_SCALING_Left_Patella
+  #define CUSTOM_SCALING_Left_Patella
+#endif
+
+#ifndef BM_JOINT_TYPE_HIP_RIGHT
+  #define BM_JOINT_TYPE_HIP_RIGHT _JOINT_TYPE_USERDEFINED_
+#endif
+#ifndef BM_JOINT_TYPE_HIP_LEFT
+  #define BM_JOINT_TYPE_HIP_LEFT _JOINT_TYPE_USERDEFINED_
+#endif
+#ifndef BM_JOINT_TYPE_KNEE_RIGHT
+  #define BM_JOINT_TYPE_KNEE_RIGHT _JOINT_TYPE_USERDEFINED_
+#endif
+#ifndef BM_JOINT_TYPE_KNEE_LEFT
+  #define BM_JOINT_TYPE_KNEE_LEFT _JOINT_TYPE_USERDEFINED_
+#endif
+#ifndef BM_JOINT_TYPE_PATELLOFEMORAL_RIGHT
+  #define BM_JOINT_TYPE_PATELLOFEMORAL_RIGHT _JOINT_TYPE_USERDEFINED_
+#endif
+#ifndef BM_JOINT_TYPE_PATELLOFEMORAL_LEFT
+  #define BM_JOINT_TYPE_PATELLOFEMORAL_LEFT _JOINT_TYPE_USERDEFINED_
+#endif
+#ifndef BM_JOINT_TYPE_ANKLE_RIGHT
+  #define BM_JOINT_TYPE_ANKLE_RIGHT _JOINT_TYPE_USERDEFINED_
+#endif
+#ifndef BM_JOINT_TYPE_ANKLE_LEFT
+  #define BM_JOINT_TYPE_ANKLE_LEFT _JOINT_TYPE_USERDEFINED_
+#endif
+
+#ifndef BM_JOINT_TYPE_PATELLATENDON_RIGHT
+  #define BM_JOINT_TYPE_PATELLATENDON_RIGHT _JOINT_TYPE_USERDEFINED_
+#endif
+#ifndef BM_JOINT_TYPE_PATELLATENDON_LEFT
+  #define BM_JOINT_TYPE_PATELLATENDON_LEFT _JOINT_TYPE_USERDEFINED_
+#endif
+
+//#define DRAW_NEW_KNEE_JOINT 
+//#define BONY_LANDMARK_DEFINED_JOINTAXIS
+
+#ifndef USE_FDK
+  #define USE_FDK 0
+#endif
+#ifndef USE_FDK_PATELLOFEMORAL_EXTRA_CONSTRAINTS
+  #define USE_FDK_PATELLOFEMORAL_EXTRA_CONSTRAINTS 0
+#endif
+
+#ifndef FDK_SolverType
+  #define FDK_SolverType FDK_Solver_Newton
+#endif
+#ifndef FDK_UseAdaptiveForceTolOnOff
+  #define FDK_UseAdaptiveForceTolOnOff Off
+#endif
+#ifndef FDK_ForceTol
+  #define FDK_ForceTol 1e-3
+#endif
+#ifndef FDK_Perturbation
+  #define FDK_Perturbation 1e-5
+#endif
+#ifndef FDK_MaxIteration 
+  #define FDK_MaxIteration 100
+#endif
+#ifndef FDK_MaxNewtonStep 
+  #define FDK_MaxNewtonStep 1e-3*1000
+#endif
+#ifndef FDK_LocalSearchOnOff
+  #define FDK_LocalSearchOnOff On
+#endif
+
+#ifndef DEF_CONTACT_PRESSURE_TIBIOFEMORAL
+  #define DEF_CONTACT_PRESSURE_TIBIOFEMORAL 4.68e9
+#endif
+#ifndef DEF_CONTACT_PRESSURE_PATELLOFEMORAL
+  #define DEF_CONTACT_PRESSURE_PATELLOFEMORAL 4.68e9
+#endif
+#ifndef DEF_CONTACT_PRESSURE_MENISCUS
+  #define DEF_CONTACT_PRESSURE_MENISCUS 1e8
+#endif
+#ifndef DEF_CONTACT_MESH_REFINEMENT_TIBIOFEMORAL_FEMUR
+  #define DEF_CONTACT_MESH_REFINEMENT_TIBIOFEMORAL_FEMUR 0
+#endif
+#ifndef DEF_CONTACT_MESH_REFINEMENT_TIBIOFEMORAL_TIBIA
+  #define DEF_CONTACT_MESH_REFINEMENT_TIBIOFEMORAL_TIBIA 0
+#endif
+#ifndef DEF_CONTACT_MESH_REFINEMENT_PATELLOFEMORAL_FEMUR
+  #define DEF_CONTACT_MESH_REFINEMENT_PATELLOFEMORAL_FEMUR 0
+#endif
+#ifndef DEF_CONTACT_MESH_REFINEMENT_PATELLOFEMORAL_PATELLA
+  #define DEF_CONTACT_MESH_REFINEMENT_PATELLOFEMORAL_PATELLA 0
+#endif
+#ifndef DEF_CONTACT_DRAW_FORCE_VECTOR
+  #define DEF_CONTACT_DRAW_FORCE_VECTOR 1
+#endif
+#ifndef DEF_CONTACT_DRAW_PRESSURE_MAP
+  #define DEF_CONTACT_DRAW_PRESSURE_MAP 1
+#endif
+  
+
+
+
+
+ 

@@ -1,0 +1,110 @@
+  Main.HumanModel.BodyModel.Trunk.SegmentsThorax.ThoraxSeg = 
+  {
+    ij = 
+    {
+      AnyRefNode TrunkNode = 
+      {
+        ARel = RotMat(pi/2, y);
+//        AnyDrawRefFrame drw = 
+//        {
+//          RGB = {1, 0, 0};
+//          ScaleXYZ = 0.1*{1, 1, 1};
+//        };
+      };
+    };
+  };
+
+  AnyKinEqSimpleDriver NeckJntDriver = 
+  {
+    AnyKinMeasureOrg& ref0 = ...HumanModel.Interface.Trunk.SkullThoraxFlexion;
+    AnyKinMeasureOrg& ref1 = ...HumanModel.Interface.Trunk.SkullThoraxLateralBending;
+    AnyKinMeasureOrg& ref2 = ...HumanModel.Interface.Trunk.SkullThoraxRotation;
+    DriverPos = pi/180*{0, 0, 0};
+    DriverVel = pi/180*{0, 0, 0};
+    Reaction.Type = {Off, Off, Off};
+  };
+   
+  AnyKinEqSimpleDriver PelvisThorax2DOFDriver =
+  {
+    //AnyKinMeasureOrg &Ref1 = ...HumanModel.Interface.Trunk.PelvisThoraxExtension;
+    AnyKinMeasureOrg &Ref2 = ...HumanModel.Interface.Trunk.PelvisThoraxLateralBending;        
+    AnyKinMeasureOrg &Ref3 = ...HumanModel.Interface.Trunk.PelvisThoraxRotation;   
+    
+    DriverPos = pi/180*
+    {
+      //.JntPos.PelvisThoraxExtension,
+      .JntPos.PelvisThoraxLateralBending,
+      .JntPos.PelvisThoraxRotation
+    };
+    DriverVel = pi/180*
+    {
+      //.JntVel.PelvisThoraxExtension
+      .JntVel.PelvisThoraxLateralBending,
+      .JntVel.PelvisThoraxRotation
+    };
+    Reaction.Type = {Off,Off};
+    CType = {Hard, Hard};
+  };  
+
+  AnyKinEqSimpleDriver PelvisThoraxExtensionDriver=
+  {
+    AnyKinMeasureOrg &Ref1 = ...HumanModel.Interface.Trunk.PelvisThoraxExtension;
+    DriverPos = pi/180*{ .JntPos.PelvisThoraxExtension };
+    DriverVel = pi/180*{ .JntVel.PelvisThoraxExtension }; 
+    Reaction.Type = {Off};
+//    CType = {Soft};
+//    AnyFunConst ConstFun = { Value = {1.0}; };
+//    WeightFun = {&ConstFun};   
+  };
+  
+
+
+  AnyKinEqSimpleDriver ThoraxPosture2DOFDriver = 
+  {
+    AnyKinRotational rot = 
+    {
+      AnyRefFrame& ref = Main.HumanModel.BodyModel.Trunk.SegmentsThorax.ThoraxSeg.ij.TrunkNode;
+      Type = RotAxesAngles;
+      Axis1 = x;
+      Axis2 = y;
+      Axis3 = z;
+    };
+    MeasureOrganizer = {0, 1};
+    DriverPos = pi/180*{0, 0};
+    DriverVel = pi/180*{0, 0};
+    Reaction.Type = {Off, Off};
+    CType = {Hard, Hard};
+  };
+
+//  AnyKinEqSimpleDriver ThoraxPostureExtensionDriver = 
+//  {
+//    AnyKinRotational& rot = .ThoraxPosture2DOFDriver.rot;
+//    MeasureOrganizer = {2};
+//    DriverPos = pi/180*{0};
+//    DriverVel = pi/180*{0};
+//    Reaction.Type = {Off};
+////    CType = {Soft};
+////    AnyFunConst ConstFun = { Value = {5.0}; };
+////    WeightFun = {&ConstFun};    
+//  };
+//  
+  
+  AnyKinLinear CoMThoraxLin ={
+    //Ref=0;
+    AnyRefFrame &ref1= Main.HumanModel.BodyModel.Trunk.SegmentsThorax.ThoraxSeg.ij.TrunkNode;
+    AnyRefFrame   &ref2= Main.Model.ModelEnvironmentConnection.Drivers.CoM_Control_Def.CoM_DummySeg;
+  
+  };
+
+  AnyKinEqSimpleDriver ThoraxXOffSet ={
+  AnyKinLinear &ref=.CoMThoraxLin;
+   
+  MeasureOrganizer={0};
+  
+  DriverPos={-0.10};
+  DriverVel ={0};
+  Reaction.Type ={Off};  
+  };
+  
+  
+  

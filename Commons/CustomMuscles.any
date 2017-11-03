@@ -1,0 +1,70 @@
+#if BM_LEG_MUSCLES_RIGHT != OFF
+HumanModel.BodyModel.Right.Leg = 
+{
+  Mus = 
+  {
+    #include "Custom_Mus_Leg.any"
+    #include "Excluder_Mus_Leg.any"
+  };
+};
+#endif
+
+#if BM_LEG_MUSCLES_LEFT != OFF
+HumanModel.BodyModel.Left.Leg = 
+{
+  Mus = 
+  {
+    #include "Custom_Mus_Leg.any"
+    #include "Excluder_Mus_Leg.any"
+  };
+};
+#endif
+
+//INPUT_REF_HUMAN_MODEL.BodyModel.Right.Leg.Seg.Thigh =
+//{
+//  IliacusWrapSurf = 
+//  {
+//   cyl = 
+//   {
+//     AnyDrawParamSurf Drw = 
+//     {
+//       RGB = {1, 1, 1};
+//       Opacity = 0.5;
+//     };    
+//   };    
+//  };
+//
+//  AnyDrawPointCloud Drw_Points_IliacusWrapSurf = 
+//  {
+//    Points = .IliacusWrapSurf.p;
+//    RGB = {0, 0, 0};
+//    Opacity = 1;
+//    PointStyle.Size = 0.01;
+//    Points3D = On;
+//    ShowNames = Off;    
+//  };
+//};
+//INPUT_REF_HUMAN_MODEL.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.Right.Muscles.GlueteusMaximusWrapSurfaces.Superior1.cyl = 
+//{
+//  AnyDrawParamSurf Drw = 
+//  {
+//    RGB = {1, 1, 1};
+//    Opacity = 0.5;
+//  };
+//};
+//INPUT_REF_HUMAN_MODEL.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.Right.Muscles.GlueteusMaximusWrapSurfaces.Superior2.cyl = 
+//{
+//  AnyDrawParamSurf Drw = 
+//  {
+//    RGB = {1, 1, 1};
+//    Opacity = 0.5;
+//  };
+//};
+//INPUT_REF_HUMAN_MODEL.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.Right.Muscles.GlueteusMaximusWrapSurfaces.Superior3.cyl =
+//{
+//  AnyDrawParamSurf Drw = 
+//  {
+//    RGB = {1, 1, 1};
+//    Opacity = 0.5;
+//  };
+//};

@@ -1,0 +1,30 @@
+// ************************************
+// Drivers for the Right leg
+// ************************************
+
+FootConnection_3Points FootOnGround_Right(
+RefFootPrintFolder = Main.Model.ModelEnvironmentConnection.FootPrintGeneration.FootPrintRight,
+HeelLiftOffEnable = 0 )=
+{
+};
+
+AnyKinEqInterPolDriver KneeDriverRight=
+{
+  AnyKinMeasureOrg &ref = ...HumanModel.Interface.Right.KneeFlexion;
+  Data=pi/180*(Main.Parameters.FlexFunction*(ADL_SQUAT_ANGLE_KNEE_FLEXION_MAX-ADL_SQUAT_ANGLE_KNEE_FLEXION_MIN)+ADL_SQUAT_ANGLE_KNEE_FLEXION_MIN);
+  T=Main.Parameters.T;
+  Reaction.Type={Off};
+  Type=Bspline;
+//  CType = {Soft};
+//  AnyFunConst ConstFun = { Value = {100.0}; };
+//  WeightFun = {&ConstFun};  
+};
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+#if (BM_JOINT_TYPE_ANKLE_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_ANKLE_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
+AnyRefNode AnkleJoint =
+{
+  #ifdef BONY_LANDMARK_DEFINED_ANKLEJOINT
+  AnyVec3 sRelUnscaled =  0.5*(.StdPar.LateralAnkleAxisMarker+.StdPar.MedialAnkleAxisMarker);
+  AnyMat33 ARelUnscaled = RotMat({0.0,0,0},
+  ...Sign*(.StdPar.LateralAnkleAxisMarker - .StdPar.MedialAnkleAxisMarker ),
+  .AnatomicalFrame.ARelUnscaled'[1])*RotMat(pi/2,y);
+  /// Ankle joint is defined from the two malleolus bony landmarks
+  sRel = 0.5*(.Scale(.StdPar.LateralAnkleAxisMarker)+.Scale(.StdPar.MedialAnkleAxisMarker));
+  /// Ankle joint axis is defined from the two malleolus bony landmarks
+  ARel = RotMat({0.0,0,0}, ...Sign*(.Scale(.StdPar.LateralAnkleAxisMarker) - .Scale(.StdPar.MedialAnkleAxisMarker) ), .AnatomicalFrame.ARel'[1]  )*RotMat(pi/2,y);
+  #else
+  AnyVec3 sRelUnscaled = .StdPar.AnkleJoint;
+  AnyMat33 ARelUnscaled = RotMat({0.0,0,0}, .StdPar.AnkleJointAxis, .AnatomicalFrame.ARelUnscaled'[1])*RotMat(pi/2,y);
+  /// Control point for the Ankle joint. Found by projecting the malleolus bony landmarks onto the
+  /// ankle axis from the cadaver data set. Thus, scaling that moves the control points will also scale the ankle joint axis
+  AnyVec3 LateralControlPoint = .Scale(.StdPar.AnkleJoint + (.StdPar.LateralMalleolus - .StdPar.AnkleJoint)*.StdPar.AnkleJointAxis'*.StdPar.AnkleJointAxis);
+  /// Control point for the Ankle joint. Found by projecting the malleolus bony landmarks onto the
+  /// ankle axis from the cadaver data set. Thus, scaling that moves the control points will also scale the ankle joint axis
+  AnyVec3 MedialControlPoint = .Scale(.StdPar.AnkleJoint + (.StdPar.MedialMalleolus - .StdPar.AnkleJoint)*.StdPar.AnkleJointAxis'*.StdPar.AnkleJointAxis );
+  /// Ankle Joint defined directly from the cadaver dataset.
+  sRel = .Scale(.StdPar.AnkleJoint);
+  /// Ankle Joint orientation is calculated based on the direction between the two control points.
+  ARel = RotMat(0.0*{0,0,0}, .Sign*(LateralControlPoint-MedialControlPoint ),  .AnatomicalFrame.ARel'[1] )*RotMat(pi/2,y);
+  #endif
+  
+  #include "<PATH_DRAWSETTINGS_AMMR>\JointAxesDistal.any"
+};
+#endif

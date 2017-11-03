@@ -1,0 +1,262 @@
+REF_HUMAN_BODYMODEL.Right.Leg =
+{
+  AnyFolder Measures = 
+  {
+    AnyFolder Kinematics = 
+    {
+      AnyFolder Knee = 
+      {
+        AnyFolder Floating = 
+        {
+          AnyFolder Segs =
+          {
+            AnySeg Femur_Dummy = 
+            {
+              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.r0 
+              +
+              ( 
+              REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.sRel 
+              + REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.AnatomicalFrame.sRel
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.ARel'
+              )
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.Axes0';
+              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.Axes0 
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.ARel 
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.AnatomicalFrame.ARel ;
+              Mass = 0;
+              Jii = {0, 0, 0};
+//              AnyDrawRefFrame Drw = 
+//              {
+//                RGB = {1, 1, 0};
+//                ScaleXYZ = 0.05*{1, 1, 1};
+//              };            
+            }; 
+            
+            AnySeg Tibia_Dummy = 
+            {
+              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.r0 
+              +
+              ( 
+              REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.sRel 
+              + REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.AnatomicalFrame.sRel
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.ARel'
+              )
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.Axes0';
+              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.Axes0 
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.ARel 
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.AnatomicalFrame.ARel ;
+              Mass = 0;
+              Jii = {0, 0, 0};
+//              AnyDrawRefFrame Drw = 
+//              {
+//                RGB = {0, 1, 1};
+//                ScaleXYZ = 0.05*{1, 1, 1};
+//              };            
+            };           
+          };//Segs
+          AnyFolder Joints = 
+          {
+            AnyCylindricalJoint Femmur_Connect =
+            {
+              Axis = x;
+              AnyRefFrame& ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.AnatomicalFrame;
+              AnyRefFrame& ref1 = ..Segs.Femur_Dummy;
+            };
+            AnyCylindricalJoint Inter_Connect = 
+            {
+              Axis = y;
+              AnyRefFrame& ref0 = ..Segs.Femur_Dummy;
+              AnyRefFrame& ref1 = ..Segs.Tibia_Dummy;
+            };          
+            AnyCylindricalJoint Tibia_Connect =
+            {
+              Axis = z;
+              AnyRefFrame& ref0 = ..Segs.Tibia_Dummy;
+              AnyRefFrame& ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.AnatomicalFrame;
+            };  
+          };
+          AnyFolder Measures = 
+          {
+            AnyVar Lin_Tibia_LateralMedial = .Joints.Femmur_Connect.Pos[0] ;
+            AnyVar Lin_Tibia_AnteriorPosterior = .Joints.Inter_Connect.Pos[0];
+            AnyVar Lin_Tibia_SuperiorInferior = .Joints.Tibia_Connect.Pos[0] ;
+            
+            AnyVar Rot_Tibia_FlexionExtension = (-1)*.Joints.Femmur_Connect.Pos[1];
+            AnyVar Rot_Tibia_AdductionAbduction = .Joints.Inter_Connect.Pos[1];
+            AnyVar Rot_Tibia_InternalExternal = .Joints.Tibia_Connect.Pos[1];
+            
+            AnyVar Lin_Tibia_LateralMedial_in_mm = Lin_Tibia_LateralMedial * 1000;
+            AnyVar Lin_Tibia_AnteriorPosterior_in_mm = Lin_Tibia_AnteriorPosterior * 1000;
+            AnyVar Lin_Tibia_SuperiorInferior_in_mm = Lin_Tibia_SuperiorInferior * 1000;
+            
+            AnyVar Rot_Tibia_FlexionExtension_in_deg = Rot_Tibia_FlexionExtension*(180/pi);
+            AnyVar Rot_Tibia_AdductionAbduction_in_deg = Rot_Tibia_AdductionAbduction*(180/pi);
+            AnyVar Rot_Tibia_InternalExternal_in_deg = Rot_Tibia_InternalExternal*(180/pi);
+          };
+        };//Floating
+      };//Knee
+      
+      AnyFolder Patella = 
+      {
+        AnyFolder Floating = 
+        {
+          AnyFolder Segs =
+          {
+            AnySeg Femur_Dummy = 
+            {
+              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.r0 
+              +
+              ( 
+              REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.sRel 
+              + REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.AnatomicalFrame.sRel
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.ARel'
+              )
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.Axes0';
+              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.Axes0 
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.ARel 
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.AnatomicalFrame.ARel ;
+              Mass = 0;
+              Jii = {0, 0, 0};
+//              AnyDrawRefFrame Drw = 
+//              {
+//                RGB = {1, 1, 0};
+//                ScaleXYZ = 0.05*{1, 1, 1};
+//              };            
+            }; 
+            
+            AnySeg Patella_Dummy = 
+            {
+              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.r0 
+              +
+              ( 
+              REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode.sRel 
+              + REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode.AnatomicalFrame.sRel
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode.ARel'
+              )
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.Axes0';
+              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.Axes0 
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode.ARel 
+              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode.AnatomicalFrame.ARel ;
+              Mass = 0;
+              Jii = {0, 0, 0};
+//              AnyDrawRefFrame Drw = 
+//              {
+//                RGB = {0, 1, 1};
+//                ScaleXYZ = 0.05*{1, 1, 1};
+//              };            
+            };           
+          };//Segs
+          AnyFolder Joints = 
+          {
+            AnyCylindricalJoint Femmur_Connect =
+            {
+              Axis = x;
+              AnyRefFrame& ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode.AnatomicalFrame;
+              AnyRefFrame& ref1 = ..Segs.Femur_Dummy;
+            };
+            AnyCylindricalJoint Inter_Connect = 
+            {
+              Axis = y;
+              AnyRefFrame& ref0 = ..Segs.Femur_Dummy;
+              AnyRefFrame& ref1 = ..Segs.Patella_Dummy;
+            };          
+            AnyCylindricalJoint Patella_Connect =
+            {
+              Axis = z;
+              AnyRefFrame& ref0 = ..Segs.Patella_Dummy;
+              AnyRefFrame& ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode.AnatomicalFrame;
+            };  
+          };
+          AnyFolder Measures = 
+          {
+            AnyVar Lin_Patella_MedialShift = -.Joints.Femmur_Connect.Pos[0] ;
+            AnyVar Lin_Patella_AnteriorPosterior = .Joints.Inter_Connect.Pos[0];
+            AnyVar Lin_Patella_SuperiorInferior = .Joints.Patella_Connect.Pos[0] ;
+            
+            AnyVar Rot_Patella_FlexionExtension = (-1)*.Joints.Femmur_Connect.Pos[1];
+            AnyVar Rot_Patella_MedialSpin = .Joints.Inter_Connect.Pos[1];
+            AnyVar Rot_Patella_MedialTilt = .Joints.Patella_Connect.Pos[1];
+            
+            AnyVar Lin_Patella_MedialShift_in_mm = Lin_Patella_MedialShift * 1000;
+            AnyVar Lin_Patella_AnteriorPosterior_in_mm = Lin_Patella_AnteriorPosterior * 1000;
+            AnyVar Lin_Patella_SuperiorInferior_in_mm = Lin_Patella_SuperiorInferior * 1000;
+            
+            AnyVar Rot_Patella_FlexionExtension_in_deg = Rot_Patella_FlexionExtension*(180/pi);
+            AnyVar Rot_Patella_MedialSpin_in_deg = Rot_Patella_MedialSpin*(180/pi);
+            AnyVar Rot_Patella_MedialTilt_in_deg = Rot_Patella_MedialTilt*(180/pi);
+          };
+        };//Floating    
+      };//Patella
+      
+    };//Kinematics
+    
+    AnyFolder Forces = 
+    {
+      AnyVar BodyWeight = REF_HUMAN_BODYMODEL.TotalBodyMass * 9.81 ;
+      
+      #ifdef USE_FDK
+        #ifdef USE_FDK_TIBIOFEMORAL
+          AnyFolder TibioFemoral = 
+          {
+            AnyForceMomentMeasure2 Measure_Contact_Lateral = 
+            {
+              AnyForceBase& Force = ....Contacts.Femur_Tibia_Lateral;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.AnatomicalFrame;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            AnyForceMomentMeasure2 Measure_Contact_Medial = 
+            {
+              AnyForceBase& Force = ....Contacts.Femur_Tibia_Medial;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.AnatomicalFrame;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };        
+            
+            AnyVar ContactForce_LateralCondyle_Compression = -Measure_Contact_Lateral.Flocal[2];
+            AnyVar ContactForce_LateralCondyle_Anterior    =  Measure_Contact_Lateral.Flocal[1];
+            AnyVar ContactForce_LateralCondyle_Lateral     =  Measure_Contact_Lateral.Flocal[0];
+            AnyVar ContactForce_LateralCondyle_Total       =  vnorm(Measure_Contact_Lateral.Flocal);
+            
+            AnyVar ContactForce_MedialCondyle_Compression = -Measure_Contact_Medial.Flocal[2];
+            AnyVar ContactForce_MedialCondyle_Anterior    =  Measure_Contact_Medial.Flocal[1];
+            AnyVar ContactForce_MedialCondyle_Lateral     =  Measure_Contact_Medial.Flocal[0];
+            AnyVar ContactForce_MedialCondyle_Total       =  vnorm(Measure_Contact_Medial.Flocal);
+            
+            AnyVar ContactForce_LateralCondyle_Compression_Ratio_BW = abs(ContactForce_LateralCondyle_Compression) / .BodyWeight ;
+            AnyVar ContactForce_LateralCondyle_Anterior_Ratio_BW    = abs(ContactForce_LateralCondyle_Anterior) / .BodyWeight ;
+            AnyVar ContactForce_LateralCondyle_Lateral_Ratio_BW     = abs(ContactForce_LateralCondyle_Lateral) / .BodyWeight ;
+            AnyVar ContactForce_LateralCondyle_Total_Ratio_BW       = abs(ContactForce_LateralCondyle_Total) / .BodyWeight ;
+            
+            AnyVar ContactForce_MedialCondyle_Compression_Ratio_BW = abs(ContactForce_MedialCondyle_Compression) / .BodyWeight ;
+            AnyVar ContactForce_MedialCondyle_Anterior_Ratio_BW    = abs(ContactForce_MedialCondyle_Anterior) / .BodyWeight ;
+            AnyVar ContactForce_MedialCondyle_Lateral_Ratio_BW     = abs(ContactForce_MedialCondyle_Lateral) / .BodyWeight ;
+            AnyVar ContactForce_MedialCondyle_Total_Ratio_BW       = abs(ContactForce_MedialCondyle_Total) / .BodyWeight ;
+          };
+        #endif
+        
+        #ifdef USE_FDK_PATELLOFEMORAL
+          AnyFolder PatelloFemoral = 
+          {
+            AnyVar ContactForce = abs(vnorm(...Contacts.Femur_Patella.Fmaster));
+            AnyVar ContactForce_Stress = 
+            NONE_ZERO_DIVISION(ContactForce, ...Contacts.Femur_Patella.ContactArea, 1e-5);
+            
+            AnyVar ContactForce_Ratio_BW = ContactForce / .BodyWeight;
+          };
+        #endif
+          
+        AnyFolder PatelloTibial = 
+        {
+          AnyVar TendonForce = abs(REF_HUMAN_BODYMODEL.Right.Leg.Jnt.PatellaMovement.Reaction.Fout[0]);
+          AnyVar TendonForce_Ratio_BW = TendonForce / .BodyWeight; 
+        };
+     
+      #endif
+    };
+  };  
+};
+
+

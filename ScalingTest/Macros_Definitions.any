@@ -1,0 +1,12 @@
+#define CreateNode(Source, Index, R, G, B) AnyRefNode Node##Index = \
+                                  { sRel = Source[Index]; \
+                                    AnyDrawNode Drw = \
+                                    { \
+                                      RGB = {R, G, B}; \
+                                      ScaleXYZ = 0.005*{1, 1, 1};\
+                                      Opacity = 0.5*2; \
+                                    }; \
+                                  };
+#define CreateNodeRed(Source, Index) CreateNode(Source, Index, 1, 0, 0)
+#define CreateNodeGreen(Source, Index) CreateNode(Source, Index, 0, 1, 0)
+#define CreateNodeBlue(Source, Index) CreateNode(Source, Index, 0, 0, 1)

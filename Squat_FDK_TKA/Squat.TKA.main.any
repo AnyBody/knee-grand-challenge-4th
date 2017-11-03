@@ -1,0 +1,61 @@
+#include "..\libdef.any"
+
+#include "<USER_PATH_COMMONS>\Class\CreateFootPrintClass.any"
+#include "<USER_PATH_COMMONS>\Class\CreateFootConnectionClasses.any"
+#include "<USER_PATH_COMMONS>\Class\Class_CreateLigament.any"
+
+#define AutoSaveOption 1
+
+#define BM_LEG_MODEL _LEG_MODEL_TLEM2_
+
+Main = 
+{    
+  #include "Input\Settings_Custom.any"
+  #include "<USER_PATH_COMMONS>\Settings_Default.any"
+  
+  #include "Input\Parameters.any" 
+  Parameters = 
+  {
+    #include "<USER_PATH_INPUTDATA>\Ligament\Attachment_Points.any"
+    #include "<USER_PATH_COMMONS>\Parameters_Ligaments.any"
+  };
+    
+  // Include default human model
+  #include "<ANYBODY_PATH_BODY>\HumanModel.any"
+  
+  #include "<USER_PATH_COMMONS>\CustomScaling.any"
+  #include "<USER_PATH_COMMONS>\CustomSegments.any"
+  #include "<USER_PATH_COMMONS>\CustomMuscles.any"  
+  
+  #if USE_FDK == 1
+   #define INPUT_REF_HUMAN_MODEL Main.HumanModel
+   #define INPUT_REF_PARAM_FOLDER Main.Parameters.Ligaments   
+   #define INPUT_REF_INIT_STUDY Main.InitStudy
+   #define INPUT_REF_EVAL_STUDY Main.EvalStudy
+     #include "<USER_PATH_COMMONS>\Ligaments.any"
+   #undef INPUT_REF_HUMAN_MODEL
+   #undef INPUT_REF_PARAM_FOLDER
+   #undef INPUT_REF_INIT_STUDY
+   #undef INPUT_REF_EVAL_STUDY
+   
+   #include "<USER_PATH_COMMONS>\Contacts.any"
+  #endif
+
+  AnyFolder Model = 
+  {  
+    AnyFolder &HumanModel=.HumanModel.BodyModel;
+    
+    #include "Model\Environment.any"   
+    
+    AnyFolder ModelEnvironmentConnection = 
+    {
+      #include "Model\JointsAndDrivers.any"
+      #include "Model\Supports.any"
+      #include "Model\FootPrintGeneration.any"
+    };
+  };
+  
+  #include "Model\Operations.any"
+}; //Main
+
+

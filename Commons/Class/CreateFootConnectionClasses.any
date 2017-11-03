@@ -1,0 +1,49 @@
+#class_template FootConnection_3Points(AnyFolder& RefFootPrintFolder, HeelLiftOffEnable)
+{
+  #var AnySwitch ReactionOnOff = Off;
+  #var AnyVar HeelLiftOffSoftConstraintWeight = 50.0;
+  
+  AnyKinEq Connection_Point1 =
+  {
+    AnyKinLinear lin = 
+    {
+      AnyRefFrame &ref0 = ..RefFootPrintFolder.InternalInfo.Target.ToeMedialContactNode;
+      AnyRefFrame &ref1 = ..RefFootPrintFolder.InternalInfo.Source.ToeMedialContactNode;
+      Ref = 0;
+    };
+    MeasureOrganizer = {0, 1, 2};  // Only the y, z coordinates
+    Reaction.Type = {.ReactionOnOff, .ReactionOnOff, .ReactionOnOff};
+  };
+  
+  AnyKinEq Connection_Point2 =
+  {
+    AnyKinLinear lin = 
+    {
+      AnyRefFrame &ref0 = ..RefFootPrintFolder.InternalInfo.Target.ToeLateralContactNode ;
+      AnyRefFrame &ref1 = ..RefFootPrintFolder.InternalInfo.Source.ToeLateralContactNode;
+      Ref = 0;
+    };
+    MeasureOrganizer = {1, 2};  //y, z coordinates
+    Reaction.Type = {.ReactionOnOff, .ReactionOnOff};
+  };
+  
+  #if HeelLiftOffEnable == 0
+  
+  AnyKinEq Connection_Point3 =
+  {
+    AnyKinLinear lin = 
+    {
+      AnyRefFrame &ref0 = ..RefFootPrintFolder.InternalInfo.Target.HeelContactNodeLow;
+      AnyRefFrame &ref1 = ..RefFootPrintFolder.InternalInfo.Source.HeelContactNodeLow;
+      Ref = 0;
+    };
+    MeasureOrganizer = {1}; //y coordinate
+    Reaction.Type = {.ReactionOnOff}; 
+  };  
+  
+  #endif
+  
+  
+  
+  
+};

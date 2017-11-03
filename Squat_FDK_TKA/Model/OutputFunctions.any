@@ -1,0 +1,31 @@
+AnyFolder OutputFunctions = 
+{
+  AnyOutputFun aLCL_Length = 
+  {
+    Val = Main.HumanModel.BodyModel.Right.Leg.Jnt.TibiaFemoralContactForces.LateralLigPLine1.Pos[0];
+  };
+  AnyOutputFun mLCL_Length = 
+  {
+    Val = Main.HumanModel.BodyModel.Right.Leg.Jnt.TibiaFemoralContactForces.LateralLigPLine2.Pos[0];
+  };
+  AnyOutputFun pLCL_Length = 
+  {
+    Val = Main.HumanModel.BodyModel.Right.Leg.Jnt.TibiaFemoralContactForces.LateralLigPLine3.Pos[0];
+  };  
+  AnyOutputFun aMCL_Length = 
+  {
+    Val = Main.HumanModel.BodyModel.Right.Leg.Jnt.TibiaFemoralContactForces.MedialLigPLine1.Pos[0];
+  };
+  AnyOutputFun mMCL_Length = 
+  {
+    Val = Main.HumanModel.BodyModel.Right.Leg.Jnt.TibiaFemoralContactForces.MedialLigPLine2.Pos[0];
+  };
+  AnyOutputFun pMCL_Length = 
+  {
+    Val = Main.HumanModel.BodyModel.Right.Leg.Jnt.TibiaFemoralContactForces.MedialLigPLine3.Pos[0];
+  };  
+  AnyOutputFun ObliquePopliteal_Length = 
+  {
+    Val = Main.HumanModel.BodyModel.Right.Leg.Jnt.TibiaFemoralContactForces.ObliquePoplitealPLine.Pos[0];
+  };
+};

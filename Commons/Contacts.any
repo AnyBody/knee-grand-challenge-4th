@@ -1,0 +1,134 @@
+REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode =
+{
+  AnySurfSTL ContactSurf = 
+  {
+    FileName = PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT;
+    ScaleXYZ = {1, 1, 1};
+    //    AnyDrawSurf DrwSurf = 
+    //    {
+    //      FileName = .FileName;
+    //      ScaleXYZ = .ScaleXYZ;
+    //      RGB = 0.5*{1, 1, 1};
+    //      Opacity = 0.5;
+    //    };      
+  };  
+};
+
+REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode =
+{
+  AnySurfSTL ContactSurf_Lateral = 
+  {
+    FileName = PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL_CONTACT ;
+    ScaleXYZ = {1, 1, 1};
+    //    AnyDrawSurf DrwSurf = 
+    //    {
+    //      FileName = .FileName;
+    //      ScaleXYZ = .ScaleXYZ;
+    //      RGB = 0.5*{1, 1, 1};
+    //      Opacity = 0.5;
+    //    };      
+  };
+  
+  AnySurfSTL ContactSurf_Medial = 
+  {
+    FileName = PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL_CONTACT ;
+    ScaleXYZ = {1, 1, 1};
+    //    AnyDrawSurf DrwSurf = 
+    //    {
+    //      FileName = .FileName;
+    //      ScaleXYZ = .ScaleXYZ;
+    //      RGB = 0.5*{1, 1, 1};
+    //      Opacity = 0.5;
+    //    };      
+  };     
+};
+
+REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode =
+{
+  AnySurfSTL ContactSurf = 
+  {
+    FileName = PATH_IMPLANT_PATELLA_DOME_STL_CONTACT ;
+    ScaleXYZ = {1, 1, 1};
+    //    AnyDrawSurf DrwSurf = 
+    //    {
+    //      FileName = .FileName;
+    //      ScaleXYZ = .ScaleXYZ;
+    //      RGB = 0.5*{1, 1, 1};
+    //      Opacity = 0.5;
+    //    };      
+  };
+};
+
+REF_HUMAN_BODYMODEL.Right.Leg =
+{
+  AnyFolder Contacts = 
+  {
+    #ifdef USE_FDK_TIBIOFEMORAL
+    AnyForceSurfaceContact Femur_Tibia_Lateral = 
+    {
+      AnySurface &sMaster = ..Seg.Thigh.PatientRefNode .ContactSurf ;
+      AnySurface &sSlave  = ..Seg.Shank.PatientRefNode .ContactSurf_Lateral;
+      
+      PressureModule = DEF_CONTACT_PRESSURE_TIBIOFEMORAL ;
+      
+      ForceViewOnOff = On;
+      MeshRefinementMaster = DEF_CONTACT_MESH_REFINEMENT_TIBIOFEMORAL_FEMUR ;
+      MeshRefinementSlave = DEF_CONTACT_MESH_REFINEMENT_TIBIOFEMORAL_TIBIA ;
+      SingleSidedOnOff= 0;  
+      
+      #if DEF_CONTACT_DRAW_PRESSURE_MAP == 1
+      AnyDrawForceSurface DrwSurfaceContact = 
+      {
+        DrawSurf1RGB = {1, 0, 0};
+        DrawSurf2RGB = {0, 0, 1};
+      };
+      #endif
+    };
+    
+    AnyForceSurfaceContact Femur_Tibia_Medial = 
+    {
+      AnySurface &sMaster = ..Seg.Thigh.PatientRefNode.ContactSurf ;
+      AnySurface &sSlave  = ..Seg.Shank.PatientRefNode.ContactSurf_Medial;
+      
+      PressureModule = DEF_CONTACT_PRESSURE_TIBIOFEMORAL ;
+      
+      ForceViewOnOff = On;
+      MeshRefinementMaster = DEF_CONTACT_MESH_REFINEMENT_TIBIOFEMORAL_FEMUR ;
+      MeshRefinementSlave = DEF_CONTACT_MESH_REFINEMENT_TIBIOFEMORAL_TIBIA ;
+      SingleSidedOnOff= 0;    
+      
+      #if DEF_CONTACT_DRAW_PRESSURE_MAP == 1
+      AnyDrawForceSurface DrwSurfaceContact = 
+      {
+        DrawSurf1RGB = {1, 0, 0};
+        DrawSurf2RGB = {0, 0, 1};
+      };
+      #endif  
+    };  
+    #endif
+    
+    #ifdef USE_FDK_PATELLOFEMORAL 
+    AnyForceSurfaceContact Femur_Patella = 
+    {
+      AnySurface &sMaster = ..Seg.Thigh.PatientRefNode.ContactSurf ;
+      AnySurface &sSlave  = ..Seg.Patella.PatientRefNode.ContactSurf;
+      
+      PressureModule = DEF_CONTACT_PRESSURE_PATELLOFEMORAL ;
+      
+      ForceViewOnOff = On;
+      MeshRefinementMaster = DEF_CONTACT_MESH_REFINEMENT_PATELLOFEMORAL_FEMUR ;
+      MeshRefinementSlave = DEF_CONTACT_MESH_REFINEMENT_PATELLOFEMORAL_PATELLA ;
+      SingleSidedOnOff= 0;    
+      
+      #if DEF_CONTACT_DRAW_PRESSURE_MAP == 1
+      AnyDrawForceSurface DrwSurfaceContact = 
+      {
+        DrawSurf1RGB = {1, 0, 0};
+        DrawSurf2RGB = {0, 0, 1};
+      };
+      #endif
+    };     
+    #endif
+  };
+};
+

@@ -1,0 +1,64 @@
+//////////////////////////////////////////////////////////
+// ************Ligament reference lengths*****************
+//////////////////////////////////////////////////////////
+Main.HumanModel = {
+  AnyFolder KneeLigamentLength = {
+//    AnyVar LateralLigament1lr=DesignVar(0.06711117);
+//    AnyVar LateralLigament2lr=DesignVar(0.06687234);
+//    AnyVar LateralLigament3lr=DesignVar(0.06737885);
+//    
+//    AnyVar MedialLigament1lr=DesignVar(0.09510858);
+//    AnyVar MedialLigament2lr=DesignVar(0.09517107);
+//    AnyVar MedialLigament3lr=DesignVar(0.09509206);
+
+    AnyVar PCLlr = 0.03188429;
+    AnyVar ACLlr = 0.04272554;
+    
+    AnyVar lr_aMCL = DesignVar(0.09198358);
+    AnyVar lr_mMCL = DesignVar(0.09058389);
+    AnyVar lr_pMCL = DesignVar(0.08907413);
+    
+    AnyVar lr_aLCL = DesignVar(0.0494515);
+    AnyVar lr_mLCL = DesignVar(0.05307243);
+    AnyVar lr_pLCL = DesignVar(0.05702541);
+    
+    AnyVar lr_sMPFL = DesignVar(0.04013283);
+    AnyVar lr_mMPFL = DesignVar(0.0422797);
+    AnyVar lr_iMPFL = DesignVar(0.04745984);
+    
+    AnyVar lr_sLPFL = DesignVar(0.03715921);
+    AnyVar lr_mLPFL = DesignVar(0.03960717);
+    AnyVar lr_iLPFL = DesignVar(0.04481114);
+    
+    AnyVar ObliquePopliteallr = DesignVar(0.08082673);
+  };
+};
+
+// This file implements medial and lateral collateral ligaments,
+// PCL and contact forces between the medial and lateral part of 
+// tibial implant and femoral component, respectively.
+
+#include "TibiaFemoralContactForces.any"
+
+// This file implements patella ligaments and 
+// contact forces between femoral component of the implant 
+// and patella
+#include "PatellaImplantContactForces.any"
+
+
+// Measures for the contact forces in the knee
+AnyFolder KneeContactForces = 
+{
+  AnyForceMomentMeasure2 ContactForceMedial = 
+  {
+    AnyForceBase &FFemurTibia = Main.HumanModel.BodyModel.Right.Leg.Jnt.TibiaFemoralContactForces.SurfaceForce.FContactFemTibMedial ;
+    AnySeg &s1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Shank;
+  };
+  
+  AnyForceMomentMeasure2 ContactForceLateral = 
+  {
+    AnyForceBase &FFemurTibia = Main.HumanModel.BodyModel.Right.Leg.Jnt.TibiaFemoralContactForces.SurfaceForce.FContactFemTibLateral;
+    AnySeg &s1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Shank;
+  };
+};
+

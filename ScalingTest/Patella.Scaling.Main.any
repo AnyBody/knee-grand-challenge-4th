@@ -1,0 +1,192 @@
+#include "Macros_Definitions.any"
+
+#define DRAW_SOURCE 1
+#define DRAW_TARGET 1
+#define DRAW_MORPHING 1
+
+Main = 
+{
+  AnyFolder Landmarks = 
+  {
+    #if DRAW_SOURCE == 1
+    AnyFolder Source = 
+    {
+      AnyInputXML XMLObject = 
+      {
+        FileName = "..\[Input]\STL\Bone\Source\TLEM2_Patella_picked_points.pp";
+      };
+      AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+      AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+      AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+      AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+      AnyFloat Points = {xptr0',yptr0',zptr0'}';        
+    };
+    #endif
+    
+    #if DRAW_TARGET == 1
+    AnyFolder Target = 
+    {
+      AnyInputXML XMLObject = 
+      {
+        FileName = "..\[Input]\STL\Bone\Target\GCK4_merged patella_remeshed_picked_points.pp";
+      };
+      AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+      AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+      AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+      AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+      AnyFloat Points = {xptr0',yptr0',zptr0'}';       
+    };
+    #endif
+  };
+  
+  AnyFolder Surfaces = 
+  {
+    #if DRAW_SOURCE == 1
+    AnyFile Source = "..\[Input]\STL\Bone\Source\TLEM2_Patella.stl";
+    #endif
+    
+    #if DRAW_TARGET == 1
+    AnyFile Target = "..\[Input]\STL\Bone\Target\GCK4_merged patella_remeshed.stl";
+    #endif
+  };
+  
+  AnyFunTransform3DIdentity TSeg2ScaleFrame = {};
+  
+  AnyFixedRefFrame GlobalRef = 
+  {
+    AnyDrawRefFrame DrwFrame = 
+    {
+      RGB = {0, 0, 0};
+      ScaleXYZ = 0.1*{1, 1, 1};
+    };
+    
+    #if DRAW_MORPHING == 1
+    AnyFunTransform3DLin2 AffineTransform = 
+    {
+      Points0 = 
+      ..TSeg2ScaleFrame(..Landmarks.Source.Points); 
+      Points1 = ..Landmarks.Target.Points;
+      
+      Mode = VTK_LANDMARK_AFFINE;
+    };    
+    
+    AnyFunTransform3DLin2 ReverseTransform = {
+      Points0 = .AffineTransform.Points1;
+      Points1 = .AffineTransform.Points0;
+      Mode = VTK_LANDMARK_RIGIDBODY;
+    };    
+    
+    AnyFunTransform3DRBF RBFTransform = 
+    {
+      PreTransforms = {&.AffineTransform};
+      RBFDef = 
+      {
+        Type = RBF_ThinPlate;
+        Param = 1;
+      };
+      Points0 = .AffineTransform.Points0;
+      Points1 = .AffineTransform.Points1;
+
+      BoundingBox = 
+      {
+        Type = BB_Cartesian;
+        ScaleXYZ = {2, 2, 2};
+        DivisionFactorXYZ = 5*{1, 1, 1};
+      };
+      BoundingBoxOnOff = On;
+    };    
+    
+    AnyFunTransform3DSTL STLTransform = 
+    {
+      PreTransforms = {&.RBFTransform};
+      RBFDef = 
+      {
+        Type = RBF_ThinPlate;
+        //Type = RBF_MultiQuadratic ;
+      };
+      AnyFixedRefFrame Input = 
+      {
+        AnySurfSTL SourceSurf = 
+        {
+          FileName = ....Surfaces.Source;
+          ScaleXYZ = {1, 1, 1};
+        };
+        AnySurfSTL TargetSurf = 
+        {
+          FileName = ....Surfaces.Target;
+          ScaleXYZ = {1, 1, 1};
+        };
+      };
+      
+      SurfaceObjects0 = {&Input.SourceSurf};
+      SurfaceObjects1 = {&Input.TargetSurf};
+  
+      NumPoints = 100;
+      BoundingBox.ScaleXYZ = 2.0*{1, 1, 1};
+      BoundingBox.DivisionFactorXYZ = {1, 1, 1};
+      BoundingBoxOnOff = On;
+    };    
+    #endif
+    
+    #if DRAW_SOURCE == 1
+    AnyRefNode Source = 
+    {
+      AnyDrawSurf DrwSTL = 
+      {
+        FileName = ...Surfaces.Source;
+        RGB = {0, 1, 0};
+        Opacity = 1;
+      };      
+      CreateNodeBlue(Main.Landmarks.Source.Points, 0)
+      CreateNodeBlue(Main.Landmarks.Source.Points, 1)
+      CreateNodeBlue(Main.Landmarks.Source.Points, 2)
+      CreateNodeBlue(Main.Landmarks.Source.Points, 3)
+      CreateNodeBlue(Main.Landmarks.Source.Points, 4)
+      CreateNodeBlue(Main.Landmarks.Source.Points, 5)
+
+    };
+    #endif
+    
+    #if DRAW_TARGET == 1
+    AnyRefNode Target = 
+    {
+      sRel = {0, -0.38, 0.2};
+      ARel = RotMat(-pi/2, x) * RotMat(pi/2, z);
+      AnyDrawSTL DrwSTL = 
+      {
+        FileName = ...Surfaces.Target;
+        RGB = {0, 1, 1};
+        Opacity = 0.5;
+      };
+      CreateNodeRed(Main.Landmarks.Target.Points, 0)
+      CreateNodeRed(Main.Landmarks.Target.Points, 1)
+      CreateNodeRed(Main.Landmarks.Target.Points, 2)
+      CreateNodeRed(Main.Landmarks.Target.Points, 3)
+      CreateNodeRed(Main.Landmarks.Target.Points, 4)
+      CreateNodeRed(Main.Landmarks.Target.Points, 5)
+
+    };
+    #endif
+    
+    #if DRAW_MORPHING == 1
+    AnyRefNode Morphing = 
+    {
+      sRel = .Target.sRel;
+      ARel = .Target.ARel;
+      
+      AnyDrawSurf DrwSTL = 
+      {
+        FileName = ...Surfaces.Source;
+        RGB = {1, 0, 1};
+        Opacity = 0.5;
+        //AnyFunTransform3D& ref = ..AffineTransform ;
+        //AnyFunTransform3D& ref = ..RBFTransform ;
+        AnyFunTransform3D& ref = ..STLTransform ;
+      };     
+    };    
+    #endif    
+  };
+  
+
+};
+

@@ -1,0 +1,111 @@
+// ************************************
+// Drivers for the Left leg
+// ************************************
+
+FootConnection_3Points FootOnGround_Left(
+RefFootPrintFolder = Main.Model.ModelEnvironmentConnection.FootPrintGeneration.FootPrintLeft,
+HeelLiftOffEnable = 0 )=
+{
+};
+
+
+//AnyKinRotational FootGroundRot ={
+//  AnyRefFrame &ref1=Main.Model.Environment.GlobalRef;
+//  AnySeg &ref2=  Main.HumanModel.BodyModel.Left.Leg.Seg.Foot;
+//  Type=RotAxesAngles;
+//};
+//
+//AnyKinMeasureOrg FootRotZ ={
+//  AnyKinRotational &ref=.FootGroundRot;
+//  MeasureOrganizer={0}; 
+//};
+
+//AnyKinRotational TibiaGroundRot ={
+//  AnyRefFrame &ref1=Main.Model.Environment.GlobalRef;
+//  AnySeg &ref2=  Main.HumanModel.BodyModel.Left.Leg.Seg.Shank;
+//  Type=RotAxesAngles;
+//};
+//
+//AnyKinMeasureOrg TibiaGroundRotZ ={
+//  AnyKinRotational &ref=.TibiaGroundRot ;
+//  MeasureOrganizer={0}; 
+//};
+//
+//
+//AnyKinMeasureLinComb TibiaFootRotation  ={
+//  AnyKinMeasureOrg  &ref1=.FootRotZ;    //0.45....0.0
+//  AnyKinMeasureOrg &ref2=.TibiaGroundRotZ ; //-0.4.....-1.1
+//  Coef ={{1,-1}};
+//  OutDim =1;
+//};
+
+//AnyKinEqSimpleDriver Rottest ={
+//  AnyKinMeasureOrg &ref=.FootRotZ;
+//  DriverPos={0.45};
+//  DriverVel ={-0.2};
+//};
+
+//AnyKinEqSimpleDriver AnkleFootDriver ={
+//  AnyKinMeasureLinComb &ref=.TibiaFootRotation  ;
+//  DriverPos={0.8};
+//  DriverVel ={0};
+//  Reaction.Type={Off};
+//};
+
+
+//AnyKinMeasureLinComb AnkleFlexionFootRotation  ={
+//  AnyKinMeasureOrg  &ref1=.FootRotZ;    //0.45....0.0
+//  AnyKinMeasureOrg &ref2=Main.HumanModel.BodyModel.Interface.Left.AnklePlantarFlexion; //0.6.....1.0
+//  Coef ={{1,1}};
+//  OutDim =1;
+//};
+//
+//AnyKinEqSimpleDriver Rottest ={
+//AnyKinMeasureOrg &ref=.FootRotZ;
+//DriverPos={0.45};
+//DriverVel ={-0.2};
+//};
+
+//AnyKinEqSimpleDriver AnkleFootDriver ={
+//AnyKinMeasureLinComb &ref=.AnkleFlexionFootRotation  ;
+//DriverPos={1.0};
+//DriverVel ={0};
+//Reaction.Type={Off};
+//};
+    
+
+//AnyKinEqInterPolDriver HeelLiftLeft=
+//{
+//  AnyKinLinear HeelLin ={
+//    AnyRefFrame &ref1=Main.Model.Environment.GlobalRef;
+//    AnyRefFrame &ref2=  Main.HumanModel.BodyModel.Left.Leg.Seg.Foot.HeelContactNodeLow;
+//  };
+//  MeasureOrganizer ={1};
+//  Data=(Main.Parameters.FlexFunction*(ADL_SQUAT_HEEL_LIFT_MAX-ADL_SQUAT_HEEL_LIFT_MIN)+ADL_SQUAT_HEEL_LIFT_MIN);
+//  T=Main.Parameters.T;
+//  Reaction.Type={Off};
+//  Type=Bspline;
+////  CType = {Soft};
+////  AnyFunConst ConstFun = { Value = {100.0}; };
+////  WeightFun = {&ConstFun};  
+//};
+
+
+    
+//AnyKinEqInterPolDriver KneeDriverLeft={
+//  AnyKinMeasureOrg &ref = ...HumanModel.Interface.Left.KneeFlexion;
+//  Data=pi/180*(Main.Parameters.FlexFunction*(ADL_SQUAT_ANGLE_KNEE_FLEXION_MAX-ADL_SQUAT_ANGLE_KNEE_FLEXION_MIN)+ADL_SQUAT_ANGLE_KNEE_FLEXION_MIN);
+//  T=Main.Parameters.T;    
+//  Reaction.Type={Off};
+//  Type=Bspline;
+////  CType = {Soft};
+////  AnyFunConst ConstFun = { Value = {100.0}; };
+////  WeightFun = {&ConstFun};  
+//};
+
+
+
+
+
+
+
