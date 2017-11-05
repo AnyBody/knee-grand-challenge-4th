@@ -6,9 +6,10 @@
   ///Estimation from Frankenfield et al. (2001) valid for men
   AnyVar FatPercent = (-0.09 + 0.0149*BMI - 0.00009*BMI^2)*100;
   
-  AnyVar BodyMass = 75 - 20 ;
-  AnyVar BodyHeight = (180 - 30) /100;
- 
+//  AnyVar BodyMass = 75 - 20 ;
+//  AnyVar BodyHeight = (180 - 30) /100;
+  AnyVar BodyMass = 66.7 ;
+  AnyVar BodyHeight = 168 /100; 
   
   
   AnyFolder SegmentMasses = {

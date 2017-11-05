@@ -193,7 +193,8 @@ AnyRefNode& AnkleJoint = AnkleJointNew;
 #if (BM_JOINT_TYPE_PATELLATENDON_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_PATELLATENDON_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
 AnyRefNode Insertion_patella_tendon =
 {
-  sRel = .Scale( .StdPar.Insertion_patella_tendon );
+  //sRel = .Scale( .StdPar.Insertion_patella_tendon );
+  sRel = .Mapping_Transform({-0.0343431, -0.0346712, -0.0110248});
 };
 #endif
 

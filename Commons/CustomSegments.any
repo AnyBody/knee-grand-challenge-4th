@@ -239,7 +239,7 @@ HumanModel.BodyModel =
         AnyVar lengthScale = vnorm(..Seg.Shank.KneeJoint.sRel - ..Seg.Shank.Insertion_patella_tendon.sRel)
         / vnorm(..Seg.Shank.StdPar.Insertion_patella_tendon-..Seg.Shank.StdPar.KneeJoint);
         AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.PatellarLigamentLength; 
-        AnyVar TendonLength_Custom = 0.06;
+        AnyVar TendonLength_Custom = 0.06 ;
         
         DriverPos = {TendonLength_Custom};
         DriverVel = {0.0};
