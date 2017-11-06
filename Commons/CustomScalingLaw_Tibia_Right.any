@@ -8,7 +8,8 @@ AnyFolder MyScalingLaw =
   {
     ScaleMat = {{1,0,0},{0,1,0},{0,0,1}};
     Offset = {0,0,0};
-    PreTransforms = {&.STLTransform, &.ReverseTransform};
+    //PreTransforms = {&.STLTransform, &.ReverseTransform};
+    PreTransforms = {&.RBFTransform, &.ReverseTransform};
   };
   
   AnyFolder Landmarks = 
