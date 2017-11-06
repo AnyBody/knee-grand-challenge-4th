@@ -8,8 +8,12 @@ AnyFolder MyScalingLaw =
   {
     ScaleMat = {{1,0,0},{0,1,0},{0,0,1}};
     Offset = {0,0,0};
-    //PreTransforms = {&.STLTransform, &.ReverseTransform};
+    #if DEF_CUSTOM_SCALING_LEVEL_RIGHT_THIGH == "RBF"
     PreTransforms = {&.RBFTransform, &.ReverseTransform};
+    #endif
+    #if DEF_CUSTOM_SCALING_LEVEL_RIGHT_THIGH == "STL"
+    PreTransforms = {&.STLTransform, &.ReverseTransform};
+    #endif
   };
   
   AnyFolder Landmarks = 
@@ -84,6 +88,7 @@ AnyFolder MyScalingLaw =
     BoundingBoxOnOff = On;
   };  
   
+  #if DEF_CUSTOM_SCALING_LEVEL_RIGHT_THIGH == "STL"
   AnyFunTransform3DSTL STLTransform = 
   {
     PreTransforms = {&.RBFTransform};
@@ -111,6 +116,6 @@ AnyFolder MyScalingLaw =
     BoundingBox.DivisionFactorXYZ = {1, 1, 1};
     BoundingBoxOnOff = On;
   };
-
+  #endif
   
 };  // MyScalingLaw

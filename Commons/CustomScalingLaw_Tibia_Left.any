@@ -13,8 +13,12 @@ AnyFolder MyScalingLaw =
   {
     ScaleMat = {{1,0,0},{0,1,0},{0,0,1}};
     Offset = {0,0,0};
-    //PreTransforms = {&.STLTransform, &.ReverseTransform};
+    #if DEF_CUSTOM_SCALING_LEVEL_LEFT_SHANK == "RBF"
     PreTransforms = {&.RBFTransform, &.ReverseTransform};
+    #endif
+    #if DEF_CUSTOM_SCALING_LEVEL_LEFT_SHANK == "STL"
+    PreTransforms = {&.STLTransform, &.ReverseTransform};
+    #endif
   };
   
   AnyFolder Landmarks = 
@@ -101,24 +105,11 @@ AnyFolder MyScalingLaw =
     BoundingBoxOnOff = On;
   };  
   
+  #if DEF_CUSTOM_SCALING_LEVEL_LEFT_SHANK == "STL"
   AnyFunTransform3DSTL STLTransform = 
   {
     PreTransforms = {&.RBFTransform};
     RBFDef.Type = RBF_ThinPlate;
-//    AnyFixedRefFrame Input = 
-//    {
-//      AnySurfSTL SourceSurf = 
-//      {
-//        FileName = ...Surfaces.Source;
-//        ScaleXYZ = {1, 1, -1} ;
-//        AnyFunTransform3D& Transform = ....TSeg2ScaleFrame;
-//      };
-//      AnySurfSTL TargetSurf = 
-//      {
-//        FileName = ...Surfaces.Target;
-//        ScaleXYZ = {1, 1, -1};
-//      };
-//    };
     AnyFixedRefFrame Input = 
     {
       AnySurfSTL SourceSurf = 
@@ -156,6 +147,6 @@ AnyFolder MyScalingLaw =
     BoundingBox.DivisionFactorXYZ = {1, 1, 1};
     BoundingBoxOnOff = On;
   };
-
+  #endif
   
 };  // MyScalingLaw
