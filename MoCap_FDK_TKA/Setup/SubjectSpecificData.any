@@ -3,8 +3,8 @@ Main.ModelSetup.SubjectSpecificData =
 
   Main.HumanModel.Anthropometrics = 
   {
-     BodyMass = 66;
-     BodyHeight = 1.75;
+     BodyMass = 66.7;
+     BodyHeight = 1.68;
      
      // These antrhopometric data will be used as initial guess for 
      // the optimization alogorithm the optimization algoritm will

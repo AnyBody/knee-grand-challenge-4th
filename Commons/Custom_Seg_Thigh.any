@@ -506,13 +506,13 @@ AnyRefNode KneeJointNew =
   AnyVec3 sRelUnscaled = sRel;
   AnyFloat ARelUnscaled = ARel;
   
-  #ifdef DRAW_NEW_KNEE_JOINT
-  AnyDrawRefFrame Drw = 
-  {
-    RGB = {1, 1, 0};
-    ScaleXYZ = 0.2*{1, 1, 1};
-  };
-  #endif
+  AnyVar VarusValgusRotation = DesignVar(0);
+  
+//  AnyDrawRefFrame Drw = 
+//  {
+//    RGB = {1, 1, 0};
+//    ScaleXYZ = 0.2*{1, 1, 1};
+//  };
 };
 
 AnyRefNode PatellaFemurJointNew = 

@@ -1,13 +1,37 @@
-#include "../libdef.any"
+#include "..\libdef.any"
+
+#include "<USER_PATH_COMMONS>\Class\CreateFootPrintClass.any"
+#include "<USER_PATH_COMMONS>\Class\CreateFootConnectionClasses.any"
+#include "<USER_PATH_COMMONS>\Class\Class_CreateLigament.any"
+
+//#define BM_LEG_MODEL _LEG_MODEL_TLEM2_
+
+#include "<USER_PATH_COMMONS>\Settings_Default.any"
+
+Main = 
+{
+  AnyFolder Parameters = 
+  {
+    #include "<USER_PATH_INPUTDATA>\Ligament\Attachment_Points.any"
+    #include "<USER_PATH_COMMONS>\Parameters_Ligaments.any"  
+  };  
+};
 
 // Enter and edit Trial Specific Data in this file:
-#path MOCAP_TRIAL_SPECIFIC_DATA "Setup/TrialSpecificData_FullBody.any"
+#path MOCAP_TRIAL_SPECIFIC_DATA "Setup\TrialSpecificData_FullBody.any"
 
 // Enter and edit Subject-Spcific Data in this file:
-#path MOCAP_SUBJECT_SPECIFIC_DATA "Setup/SubjectSpecificData.any"
+#path MOCAP_SUBJECT_SPECIFIC_DATA "Setup\SubjectSpecificData.any"
 
 // Enter and edit Lab-Specific Data in this file:
-#path MOCAP_LAB_SPECIFIC_DATA "Setup/LabSpecificData.any"
+#path MOCAP_LAB_SPECIFIC_DATA "Setup\LabSpecificData.any"
 
 // Include the AnyMoCap Framwork
 #include "<ANYMOCAP_MODEL>"
+
+Main = 
+{
+  #include "<USER_PATH_COMMONS>\CustomScaling.any"
+  #include "<USER_PATH_COMMONS>\CustomSegments.any"
+  #include "<USER_PATH_COMMONS>\CustomMuscles.any"  
+};

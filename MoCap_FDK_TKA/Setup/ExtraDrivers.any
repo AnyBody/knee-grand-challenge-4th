@@ -16,8 +16,8 @@ AnyFolder ExtraDrivers = {
   
   // Weak extra drivers for the subtalar joint is often necessary 
   // when there is only two markers on the foot segment.
-  #define BM_MANNEQUIN_DRIVER_ANKLE_SUBTALAR_EVERSION_RIGHT ON
-  #define BM_MANNEQUIN_DRIVER_ANKLE_SUBTALAR_EVERSION_LEFT ON
+  #define BM_MANNEQUIN_DRIVER_ANKLE_SUBTALAR_EVERSION_RIGHT OFF
+  #define BM_MANNEQUIN_DRIVER_ANKLE_SUBTALAR_EVERSION_LEFT OFF
   
   
 #if INCLUDE_UPPERBODY == ON
@@ -29,8 +29,8 @@ AnyFolder ExtraDrivers = {
   
   // Weak extra drivers for the glenohumeral external rotation is 
   // often necessary when there is only one marker at the elbow joint.
-  #define BM_MANNEQUIN_DRIVER_GLENOHUMERAL_EXTERNAL_ROTATION_RIGHT ON
-  #define BM_MANNEQUIN_DRIVER_GLENOHUMERAL_EXTERNAL_ROTATION_LEFT ON
+  #define BM_MANNEQUIN_DRIVER_GLENOHUMERAL_EXTERNAL_ROTATION_RIGHT OFF
+  #define BM_MANNEQUIN_DRIVER_GLENOHUMERAL_EXTERNAL_ROTATION_LEFT OFF
   
   // Extra drivers for the wrist is necssary if there are no markers
   // on the hands.
