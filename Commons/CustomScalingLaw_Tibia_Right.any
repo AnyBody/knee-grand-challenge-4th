@@ -8,6 +8,9 @@ AnyFolder MyScalingLaw =
   {
     ScaleMat = {{1,0,0},{0,1,0},{0,0,1}};
     Offset = {0,0,0};
+    #if DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH == "AFFINE"
+    PreTransforms = {&.AffineTransform, &.ReverseTransform};
+    #endif    
     #if DEF_CUSTOM_SCALING_LEVEL_RIGHT_SHANK == "RBF"
     PreTransforms = {&.RBFTransform, &.ReverseTransform};
     #endif
@@ -67,7 +70,8 @@ AnyFolder MyScalingLaw =
     Points1 = .AffineTransform.Points0;
     Mode = VTK_LANDMARK_RIGIDBODY;
   };
-    
+  
+  #if DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH == "RBF" | DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH == "STL"
   AnyFunTransform3DRBF RBFTransform = 
   {
     PreTransforms = {&.AffineTransform};
@@ -87,6 +91,7 @@ AnyFolder MyScalingLaw =
     };
     BoundingBoxOnOff = On;
   };  
+  #endif
   
   #if DEF_CUSTOM_SCALING_LEVEL_RIGHT_SHANK == "STL"
   AnyFunTransform3DSTL STLTransform = 

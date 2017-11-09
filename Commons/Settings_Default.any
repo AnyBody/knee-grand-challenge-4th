@@ -52,7 +52,7 @@
 #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_POSTERIOR "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_lateral_posterior.pp"
 
 #ifndef REF_HUMAN_BODYMODEL
-  #define REF_HUMAN_BODYMODEL Main.HumanModel.BodyModel
+#define REF_HUMAN_BODYMODEL Main.HumanModel.BodyModel
 #endif
 
 #ifndef CUSTOM_SCALING_Right_Thigh
@@ -147,7 +147,7 @@
   #define FDK_UseAdaptiveForceTolOnOff Off
 #endif
 #ifndef FDK_ForceTol
-  #define FDK_ForceTol 1e-3
+  #define FDK_ForceTol 1e-2
 #endif
 #ifndef FDK_Perturbation
   #define FDK_Perturbation 1e-5
@@ -156,7 +156,7 @@
   #define FDK_MaxIteration 100
 #endif
 #ifndef FDK_MaxNewtonStep 
-  #define FDK_MaxNewtonStep 1e-3*1000
+  #define FDK_MaxNewtonStep 1e-3*10
 #endif
 #ifndef FDK_LocalSearchOnOff
   #define FDK_LocalSearchOnOff On
