@@ -1,6 +1,3 @@
-//RectusFemoris1.DrwMus.Visible = Off;
-//RectusFemoris2.DrwMus.Visible = Off;
-
 #define RETURN_OBJ_MUSCLE(strMusFolder,strMusName) ObjSearchRecursive(strMusFolder, strMusName, "AnyMuscle")
 #define RETURN_OBJ_SPLINE(strMusFolder,strMusName) ObjSearchRecursive(strMusFolder+"."+strMusName, "*", "AnyMechObject")
 //#define RETURN_OBJ_MUSCLEMODEL(strMusFolder,strMusName)

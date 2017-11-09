@@ -51,6 +51,8 @@
 #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_MEDIAL_ANTERIOR "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_medial_anterior.pp"
 #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_POSTERIOR "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_lateral_posterior.pp"
 
+#path PATH_TARGET_IMPLANT_TIBIA_INSERT_PICKED_POINTS_CENTRAL_POSTERIOR "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Insert_picked_points_central_posterior.pp"
+
 #ifndef REF_HUMAN_BODYMODEL
 #define REF_HUMAN_BODYMODEL Main.HumanModel.BodyModel
 #endif

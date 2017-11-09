@@ -303,6 +303,9 @@ AnyFolder Ligaments =
 //    AnyVar Stiffness = 2600;
 //    AnyVar RefStrain = -0.390; 
     //AnyVar RefStrain = -0.24;
+    
+    AnyFloat InitWrapPosVectors = 0.02*{ {1, 0, 0}, {1, 0, 0} };
+    AnyParamSurf& RefSurf0 = RefSeg1.PatientRefNode.Surf_Wrapping_Plane_Central_Posterior ;       
   }; 
   
   // pPCL: posterior bundle of PCL
@@ -330,6 +333,9 @@ AnyFolder Ligaments =
     AnyVar RefStrain = DesignVar(-0.03);    
 //    AnyVar Stiffness = 1900;
 //    AnyVar RefStrain = -0.120;
+
+    AnyFloat InitWrapPosVectors = 0.02*{ {1, 0, 0}, {1, 0, 0} };
+    AnyParamSurf& RefSurf0 = RefSeg1.PatientRefNode.Surf_Wrapping_Plane_Central_Posterior ;  
   };     
   
   // Lcap: lateral posterior capsule

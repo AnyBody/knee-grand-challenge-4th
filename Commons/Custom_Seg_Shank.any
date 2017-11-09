@@ -142,8 +142,48 @@ AnyRefNode PatientRefNode =
 //      };        
     };
   };
-  AnyParamSurf& Surf_Wrapping_Cylinder_Medial = Wrapping_Medial_Node.Surf ;  
+  
+  AnyFolder Implant_Tibial_Insert_Central_Posterior_Points_Picked = 
+  {
+    AnyInputXML XMLObject = 
+    {
+      FileName = PATH_TARGET_IMPLANT_TIBIA_INSERT_PICKED_POINTS_CENTRAL_POSTERIOR ;
+    };
+    
+    AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+    AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+    AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+    AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+    AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
+    AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
+  };
+  
+  AnyRefNode Implant_Tibial_Insert_Central_Posterior_Fitting_Surf_Node = 
+  {
+    sRel = Surf.sRel ;
+    ARel = Surf.ARel ;
+//    AnyDrawRefFrame Drw = 
+//    {
+//      RGB = {1, 1, 0};
+//      ScaleXYZ = 0.15*{1, 1, 1};
+//    };
+    
+    AnySurfCylinderFit Surf = 
+    {
+      Points = ..Implant_Tibial_Insert_Central_Posterior_Points_Picked.Points_Transformed ;
+      Length = 0.1;
+      FixedDirection = On;
+      Direction = {0, 0, 1};
+      AnyDrawParamSurf Drw = 
+      {
+        RGB = {1, 0, 1};
+        Opacity = 0.5;
+      };    
+    };
+  };
 
+  AnyParamSurf& Surf_Wrapping_Cylinder_Medial = Wrapping_Medial_Node.Surf ;  
+  AnyParamSurf& Surf_Wrapping_Plane_Central_Posterior = Implant_Tibial_Insert_Central_Posterior_Fitting_Surf_Node.Surf ;
   #endif
 };
 
