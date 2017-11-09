@@ -162,7 +162,7 @@ CreateMarkerDriver RThighLateral (
 MarkerName=  RThighLateral,
 MarkerPlacement =Right.Leg.Seg.Thigh, 
 OptX=ON,OptY=ON,OptZ=ON,
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 )= {
   sRelOpt = {0.08, -0.25, 0.05};
 };
@@ -171,7 +171,7 @@ CreateMarkerDriver RThighSuperior (
 MarkerName=  RThighSuperior,
 MarkerPlacement =Right.Leg.Seg.Thigh, 
 OptX=ON,OptY=ON,OptZ=ON,
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 )= {
   sRelOpt = {0.0, -0.1, 0.1};
 };
@@ -180,7 +180,7 @@ CreateMarkerDriver RThighInferior (
 MarkerName=  RThighInferior,
 MarkerPlacement =Right.Leg.Seg.Thigh, 
 OptX=ON,OptY=ON,OptZ=ON,
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 )= {
   sRelOpt = {0.05, -0.3, 0.1};
   //sRelOpt = {-0.06486408, -0.2624565, 0.1101061};
@@ -201,7 +201,7 @@ CreateMarkerDriver RShankLateral (
 MarkerName= RShankLateral, 
 MarkerPlacement=Right.Leg.Seg.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt = {0.0, -0.21, 0.05};
 };
@@ -210,7 +210,7 @@ CreateMarkerDriver RShankSuperior (
 MarkerName= RShankSuperior, 
 MarkerPlacement=Right.Leg.Seg.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 ) = {
    sRelOpt = {0.0, -0.05, 0.05};
 };
@@ -219,7 +219,7 @@ CreateMarkerDriver RShankInferior (
 MarkerName= RShankInferior, 
 MarkerPlacement=Right.Leg.Seg.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt = {0.0, -0.28, 0.05};
 };
@@ -229,8 +229,8 @@ CreateMarkerDriver RAnkleLateral (
 MarkerName= RAnkleLateral ,
 MarkerPlacement=Right.Leg.Seg.Shank,
 PlaceMarkerAt = LateralMalleolus,
-OptX=OFF,OptY=OFF,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt = {-0.00, -0.0, 0.015};
 };
@@ -290,7 +290,7 @@ CreateMarkerDriver LThighLateral (
 MarkerName= LThighLateral ,
 MarkerPlacement=Left.Leg.Seg.Thigh,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 ) = {
     sRelOpt = {0.08, -0.25, -0.05};
    //sRelOpt= {-0.03870067, -0.2822034, -0.10036};
@@ -300,7 +300,7 @@ CreateMarkerDriver LThighSuperior (
 MarkerName= LThighSuperior,
 MarkerPlacement=Left.Leg.Seg.Thigh,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 ) = {
    sRelOpt = {0.0, -0.10, -0.1}; 
    //sRelOpt= {-0.03870067, -0.2822034, -0.10036};
@@ -310,7 +310,7 @@ CreateMarkerDriver LThighInferior (
 MarkerName= LThighInferior,
 MarkerPlacement=Left.Leg.Seg.Thigh,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 ) = {
    sRelOpt = {0.05, -0.30, -0.1}; 
    //sRelOpt= {-0.03870067, -0.2822034, -0.10036};
@@ -331,7 +331,7 @@ CreateMarkerDriver LShankLateral (
 MarkerName= LShankLateral,
 MarkerPlacement=Left.Leg.Seg.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt = {0.0, -0.16, -0.05};
 };
@@ -340,7 +340,7 @@ CreateMarkerDriver LShankSuperior (
 MarkerName= LShankSuperior,
 MarkerPlacement=Left.Leg.Seg.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt = {0.0, -0.05, -0.05};
   //sRelOpt = {0.007298208, -0.2526878, -0.06747357};
@@ -350,7 +350,7 @@ CreateMarkerDriver LShankInferior (
 MarkerName= LShankInferior,
 MarkerPlacement=Left.Leg.Seg.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt = {0.0, -0.28, -0.05};
   //sRelOpt = {0.007298208, -0.2526878, -0.06747357};
@@ -361,8 +361,8 @@ CreateMarkerDriver LAnkleLateral (
 MarkerName= LAnkleLateral,
 MarkerPlacement=Left.Leg.Seg.Shank,
 PlaceMarkerAt = LateralMalleolus,
-OptX=OFF,OptY=OFF,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 ) = {
     sRelOpt = {-0.00, -0.0, -0.015};
 };

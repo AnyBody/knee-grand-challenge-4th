@@ -1,0 +1,155 @@
+Main = 
+{
+  Studies = 
+  {
+    #if USE_FDK == 1
+    
+    AnyBodyStudy InitStudy = 
+    {
+      AnyFolder& Parameters = ..ModelSetup.SubjectSpecificData.Ligaments ;
+      
+      AnyFolder& Thigh   = ..HumanModel.BodyModel.Right.Leg.Seg.Thigh;
+      AnyFolder& Shank   = ..HumanModel.BodyModel.Right.Leg.Seg.Shank;
+      AnyFolder& Patella = ..HumanModel.BodyModel.Right.Leg.Seg.Patella;
+      AnyFolder& PatellaFemur = ..HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur;
+      AnyFolder& KinematicMeasures = ..HumanModel.BodyModel.Right.Leg.Jnt.KinematicMeasures;
+      AnyFolder& PatellaMovement = ..HumanModel.BodyModel.Right.Leg.Jnt.PatellaMovement;
+      AnyFolder& Ligaments = ..HumanModel.BodyModel.Right.Leg.Ligaments;
+      
+      AnyFolder Drivers_Init = 
+      {
+        AnyKinEqSimpleDriver Thigh_Right_Lin =
+        {
+          AnyKinLinear lin = 
+          {
+            AnyRefFrame& ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh;
+          
+          };//lin
+          DriverPos = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.r0 ;
+          DriverVel = {0, 0, 0};
+          Reaction.Type = {Off, Off, Off};
+        };//Thigh_Right_Lin
+        AnyKinEqSimpleDriver Thigh_Right_Rot =
+        {
+          AnyKinRotational rot = 
+          {
+            AnyRefFrame& ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.KneeJoint;            
+            Type = RotAxesAngles;
+            Axis1 = z;
+            Axis2 = y;
+            Axis3 = x;             
+          };//rot
+          DriverPos = pi/180*
+                      {
+                        Main.HumanModel.Mannequin.Posture.PelvisRotZ, 
+                        Main.HumanModel.Mannequin.Posture.PelvisRotY, 
+                        Main.HumanModel.Mannequin.Posture.PelvisRotX
+                      };
+          DriverVel = pi/180*{0, 0, 0};
+          Reaction.Type = {Off, Off, Off};
+        };//Thigh_Right_Lin        
+        
+        AnyKinEqSimpleDriver KneeJoint_Right = 
+        {
+          AnyKinLinear lin = 
+          {
+            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.KneeJoint;
+            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.KneeJoint;
+            Ref = 0;
+          };
+          AnyKinRotational rot = 
+          {
+            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.KneeJoint;
+            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.KneeJoint;
+            Type = PlanarAngles;
+          };
+          DriverPos = {0, -DEF_CUSTOM_KNEE_JOINT_CONTACT_INIT_OFFSET, 0, 0, 0, 0};
+          DriverVel = {0, 0, 0, 0, 0, 0};
+          Reaction.Type = {Off, Off, Off, Off, Off, Off};
+        }; //KneeJoint_Right 
+      };      
+      
+      Gravity = Main.ModelSetup.LabSpecificData.Gravity;
+      tStart = 0.0 ;
+      tEnd = 1.0 ;
+      nStep = 1 ;
+      AnyFolder OutputFunctions_Length = {};    
+    };//InitStudy    
+    
+    AnyDesEvalStudy EvalStudy = 
+    {
+      Analysis =
+      {
+        AnyOperation& RunInit = ..InitStudy.Kinematics;
+      }; 
+    };//EvalStudy    
+    
+    InverseDynamicStudy = 
+    {
+      #if (BM_LEG_MUSCLES_RIGHT != OFF) & (BM_LEG_MUSCLES_LEFT != OFF)
+       AnyObjectPtr pArrExcludedMuscles = arrcat
+       (
+       Main.HumanModel.BodyModel.Right.Leg.Mus.ExcludedMuscles.Objects,
+       Main.HumanModel.BodyModel.Left.Leg.Mus.ExcludedMuscles.Objects
+       );  
+       AnyMechObjectExcluder ExcluderSelectiveMuscles = 
+       {
+         Objects = .pArrExcludedMuscles;
+       };
+      #endif 
+      
+      #ifdef USE_FDK_TIBIOFEMORAL
+       REF_HUMAN_BODYMODEL.Right.Leg.Jnt.Knee = 
+       {
+         Constraints.CType  = {ForceDep, ForceDep, ForceDep, ForceDep, ForceDep};
+         Constraints.Reaction.Type = {Off, Off, Off, Off, Off};
+       };
+      #endif  
+      
+      #ifdef USE_FDK_PATELLOFEMORAL
+       REF_HUMAN_BODYMODEL.Right.Leg.Jnt.PatellaFemur =
+       {
+         Constraints.CType  = {ForceDep, ForceDep, ForceDep, ForceDep, ForceDep};
+         Constraints.Reaction.Type = {Off, Off, Off, Off, Off};    
+       };
+      #endif
+      
+      InverseDynamics.ForceDepKinOnOff=On;
+      InverseDynamics.ForceDepKin.SolverType = FDK_SolverType ;
+      InverseDynamics.ForceDepKin.ForceTol = FDK_ForceTol ;
+      InverseDynamics.ForceDepKin.Perturbation = FDK_Perturbation;
+      InverseDynamics.ForceDepKin.MaxIteration = FDK_MaxIteration;
+      InverseDynamics.ForceDepKin.MaxNewtonStep = FDK_MaxNewtonStep;       
+      InverseDynamics.ForceDepKin.LocalSearchOnOff = FDK_LocalSearchOnOff;      
+      InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff = FDK_UseAdaptiveForceTolOnOff ;
+    };
+    
+    #endif
+  };
+  
+  #if USE_FDK == 1
+  
+  AnyOperationSequence LigamentCalibrationSequence = 
+  {
+    AnyOperation &LoadParameters = Main.ModelSetup.Macros.Load_parameters;
+    AnyOperation& EvaluateLigamentLengths = .Studies.EvalStudy.UpdateDesign;
+    AnyOperationMacro UpdateValues = 
+    {
+      MacroStr = 
+      {
+        "classoperation Main" + strquote("Update Values")
+      };
+    };  
+  };//LigamentCalibrationSequence
+  
+  AnyOperationSequence RunFDKAnalysis = 
+  {
+    AnyOperation& LigamentCalibrationSequence = .LigamentCalibrationSequence;
+    AnyOperation& MarkerTracing = .Studies.MarkerTracking.Kinematics;
+    #if BM_LEG_MUSCLES_BOTH == CONST_MUSCLES_3E_HILL
+    AnyOperationSequence &MuscleCalibration = Main.HumanModel.Calibration.CalibrationSequence;
+    #endif      
+    AnyOperation &RunInverseDynamics = .Studies.InverseDynamicStudy.InverseDynamics;    
+  };
+  #endif
+};

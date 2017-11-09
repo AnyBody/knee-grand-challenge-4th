@@ -13,8 +13,9 @@ Main = {
   #endif
 
   #if INCLUDE_UPPERBODY == ON
-    #define BM_TRUNK_NECK_MUSCLES ON
-    #define BM_TRUNK_MUSCLES ON
+    #define BM_TRUNK_NECK_MUSCLES OFF
+    #define BM_TRUNK_MUSCLES OFF
+    #define BM_ARM_MUSCLES_BOTH OFF
     #define BM_ARM_RIGHT ON
     #define BM_ARM_LEFT ON
   #else
