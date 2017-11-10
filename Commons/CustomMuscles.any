@@ -8,6 +8,7 @@ HumanModel.BodyModel.Right.Leg =
   Mus = 
   {
     #include "Custom_Mus_Leg.any"
+    #include "Custom_Mus_Leg_Addition.any"
     #include "Excluder_Mus_Leg.any"
   };
 };
@@ -23,6 +24,7 @@ HumanModel.BodyModel.Left.Leg =
   Mus = 
   {
     #include "Custom_Mus_Leg.any"
+    #include "Custom_Mus_Leg_Addition.any"
     #include "Excluder_Mus_Leg.any"
   };
 };
