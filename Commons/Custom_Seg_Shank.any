@@ -174,11 +174,11 @@ AnyRefNode PatientRefNode =
       Length = 0.1;
       FixedDirection = On;
       Direction = {0, 0, 1};
-      AnyDrawParamSurf Drw = 
-      {
-        RGB = {1, 0, 1};
-        Opacity = 0.5;
-      };    
+//      AnyDrawParamSurf Drw = 
+//      {
+//        RGB = {1, 0, 1};
+//        Opacity = 0.5;
+//      };    
     };
   };
 

@@ -1,0 +1,29 @@
+Thigh = 
+{
+  
+};
+
+Shank = 
+{
+  AnyRefNode BicepsFemorisCaputLongum1NodeNew = 
+  {
+    sRel = .Mapping_Transform({0.0268238, -0.0314364, -0.0478617});
+    
+//    AnyDrawNode Drw = 
+//    {
+//      RGB = {1, 0, 0};
+//      ScaleXYZ = 0.0015*{1, 1, 1};
+//      Opacity = 0.5;
+//    };
+  };
+  AnyRefNode& BicepsFemorisCaputBreve1NodeNew = BicepsFemorisCaputLongum1NodeNew;
+  AnyRefNode& BicepsFemorisCaputBreve2NodeNew = BicepsFemorisCaputLongum1NodeNew;
+  AnyRefNode& BicepsFemorisCaputBreve3NodeNew = BicepsFemorisCaputLongum1NodeNew;
+  
+  AnyRefNode TensorFasciaeLatae1NodeNew =
+  {
+    sRel = .Mapping_Transform({-0.0165032, -0.0120101, -0.0334085});
+  };
+  AnyRefNode& TensorFasciaeLatae2NodeNew = TensorFasciaeLatae1NodeNew;
+  
+};

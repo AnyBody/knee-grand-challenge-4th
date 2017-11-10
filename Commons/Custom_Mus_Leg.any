@@ -1,3 +1,78 @@
+AnyViaPointMuscle TensorFasciaeLatae1New = 
+{
+  AnyMuscleModel& MusMdl = .TensorFasciaeLatae1.MusMdl;
+  AnyRefFrame& Org = .TensorFasciaeLatae1.Org;
+  AnyRefFrame& Ins = ..Seg.Shank.TensorFasciaeLatae1NodeNew;
+  
+  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+};
+
+AnyViaPointMuscle TensorFasciaeLatae2New = 
+{
+  AnyMuscleModel& MusMdl = .TensorFasciaeLatae2.MusMdl;
+  AnyRefFrame& Org = .TensorFasciaeLatae2.Org;
+  AnyRefFrame& Ins = ..Seg.Shank.TensorFasciaeLatae2NodeNew;
+  
+  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+};
+
+AnyViaPointMuscle BicepsFemorisCaputLongum1New = 
+{
+  AnyMuscleModel& MusMdl = .BicepsFemorisCaputLongum1.MusMdl;
+  AnyRefFrame& Org = .BicepsFemorisCaputLongum1.Org;
+  AnyRefFrame& Ins = ..Seg.Shank.BicepsFemorisCaputLongum1NodeNew;
+  
+  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+};
+
+AnyShortestPathMuscle BicepsFemorisCaputBreve1New = 
+{
+  AnyMuscleModel& MusMdl = .BicepsFemorisCaputBreve1.MusMdl ;
+  AnyRefFrame& Org = .BicepsFemorisCaputBreve1.Org;
+  AnyParamSurf& srf = .BicepsFemorisCaputBreve1.srf;
+  AnyRefFrame& Ins = ..Seg.Shank.BicepsFemorisCaputBreve1NodeNew;
+  
+  SPLine = 
+  {
+    StringMesh = ..BicepsFemorisCaputBreve1.SPLine.StringMesh;
+    InitWrapPosVecArr = ..BicepsFemorisCaputBreve1.SPLine.InitWrapPosVecArr;
+  };
+  
+  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+};
+
+AnyShortestPathMuscle BicepsFemorisCaputBreve2New = 
+{
+  AnyMuscleModel& MusMdl = .BicepsFemorisCaputBreve2.MusMdl ;
+  AnyRefFrame& Org = .BicepsFemorisCaputBreve2.Org;
+  AnyParamSurf& srf = .BicepsFemorisCaputBreve2.srf;
+  AnyRefFrame& Ins = ..Seg.Shank.BicepsFemorisCaputBreve2NodeNew;
+  
+  SPLine = 
+  {
+    StringMesh = ..BicepsFemorisCaputBreve2.SPLine.StringMesh;
+    InitWrapPosVecArr = ..BicepsFemorisCaputBreve2.SPLine.InitWrapPosVecArr;
+  };  
+  
+  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+};
+
+AnyShortestPathMuscle BicepsFemorisCaputBreve3New = 
+{
+  AnyMuscleModel& MusMdl = .BicepsFemorisCaputBreve3.MusMdl ;
+  AnyRefFrame& Org = .BicepsFemorisCaputBreve3.Org;
+  AnyParamSurf& srf = .BicepsFemorisCaputBreve3.srf;
+  AnyRefFrame& Ins = ..Seg.Shank.BicepsFemorisCaputBreve3NodeNew;
+  
+  SPLine = 
+  {
+    StringMesh = ..BicepsFemorisCaputBreve3.SPLine.StringMesh;
+    InitWrapPosVecArr = ..BicepsFemorisCaputBreve3.SPLine.InitWrapPosVecArr;
+  };    
+  
+  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+};
+
 AnyShortestPathMuscle RectusFemoris1New = 
 {
   AnyMuscleModel& MusMdl = .RectusFemoris1.MusMdl;

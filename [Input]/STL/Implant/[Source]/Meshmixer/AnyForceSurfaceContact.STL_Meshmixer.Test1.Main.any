@@ -136,8 +136,8 @@ Main =
         MeshRefinementSlave = 0;
         SingleSidedOnOff= 0;
         
-        ConnectorNormalDotTresholdMaster = 0.8;
-        ConnectorNormalDotTresholdSlave= 0.8;
+        ProjectionThresholdMaster = 0.9;
+        ProjectionThresholdSlave = 0.9;
         
         AnyDrawForceSurface DrwSurfaceContact = 
         {
@@ -157,8 +157,8 @@ Main =
         MeshRefinementSlave = 0;
         SingleSidedOnOff= 0;
         
-        ConnectorNormalDotTresholdMaster = 0.8;
-        ConnectorNormalDotTresholdSlave= 0.8;
+        ProjectionThresholdMaster = 0.9;
+        ProjectionThresholdSlave = 0.9;
         
         AnyDrawForceSurface DrwSurfaceContact = 
         {
@@ -177,6 +177,10 @@ Main =
         MeshRefinementMaster = 0;
         MeshRefinementSlave = 0;
         SingleSidedOnOff= 0;
+        
+        ProjectionThresholdMaster = 0.8;
+        ProjectionThresholdSlave = 0.8;
+        
         AnyDrawForceSurface DrwSurfaceContact = 
         {
           DrawSurf1RGB = {1, 0, 0};
