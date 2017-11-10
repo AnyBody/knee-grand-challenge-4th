@@ -63,43 +63,45 @@ AnyBodyStudy Study =
   
   Kinematics.MaxIteration = 50000;
   InitialConditions.MaxIteration = Kinematics.MaxIteration; 
+  InverseDynamics.Criterion.Power = DEF_MUSCLE_RECRUITMENT_CRITERION_POWER;
+  InverseDynamics.Criterion.PrimaryTerm.Weight_SearchName = "WeightFactor";
   
   #if (BM_LEG_MUSCLES_RIGHT != OFF) & (BM_LEG_MUSCLES_LEFT != OFF)
-  AnyObjectPtr pArrExcludedMuscles = arrcat
-  (
-    Main.HumanModel.BodyModel.Right.Leg.Mus.ExcludedMuscles.Objects,
-    Main.HumanModel.BodyModel.Left.Leg.Mus.ExcludedMuscles.Objects
-  );  
-  MechObjectExclude = pArrExcludedMuscles;
+   AnyObjectPtr pArrExcludedMuscles = arrcat
+   (
+     Main.HumanModel.BodyModel.Right.Leg.Mus.ExcludedMuscles.Objects,
+     Main.HumanModel.BodyModel.Left.Leg.Mus.ExcludedMuscles.Objects
+   );  
+   MechObjectExclude = pArrExcludedMuscles;
   #endif
   
   #if USE_FDK == 1  
-  // Define settings for the FDK solver
-  InverseDynamics.ForceDepKinOnOff=On;
-  //InverseDynamics.ForceDepKin.ForceTol=1e-3;// 5e-1;
-  InverseDynamics.ForceDepKin.ForceTol=1e-2;
-  InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff = Off;
-  //InverseDynamics.ForceDepKin.MaxIteration = 200;
-  InverseDynamics.ForceDepKin.Perturbation=1e-5;
-  InverseDynamics.ForceDepKin.LocalSearchOnOff = On;
-  InverseDynamics.ForceDepKin.MaxNewtonStep = 1e-2; //100; 
-  
-  
-  #ifdef USE_FDK_TIBIOFEMORAL
-  Main.HumanModel.BodyModel.Right.Leg.Jnt.Knee = 
-  {
-    Constraints.CType  = {ForceDep, ForceDep, ForceDep, ForceDep, ForceDep};
-    Constraints.Reaction.Type = {Off, Off, Off, Off, Off};
-  };    
-  #endif
-  
-  #ifdef USE_FDK_PATELLOFEMORAL 
-  Main.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur = 
-  {
-    Constraints.CType  = {ForceDep, ForceDep, ForceDep, ForceDep, ForceDep};
-    Constraints.Reaction.Type = {Off, Off, Off, Off, Off};    
-  };
-  #endif
+   // Define settings for the FDK solver
+   InverseDynamics.ForceDepKinOnOff=On;
+   //InverseDynamics.ForceDepKin.ForceTol=1e-3;// 5e-1;
+   InverseDynamics.ForceDepKin.ForceTol=1e-2;
+   InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff = Off;
+   //InverseDynamics.ForceDepKin.MaxIteration = 200;
+   InverseDynamics.ForceDepKin.Perturbation=1e-5;
+   InverseDynamics.ForceDepKin.LocalSearchOnOff = On;
+   InverseDynamics.ForceDepKin.MaxNewtonStep = 1e-2; //100; 
+   
+   
+   #ifdef USE_FDK_TIBIOFEMORAL
+    Main.HumanModel.BodyModel.Right.Leg.Jnt.Knee = 
+    {
+      Constraints.CType  = {ForceDep, ForceDep, ForceDep, ForceDep, ForceDep};
+      Constraints.Reaction.Type = {Off, Off, Off, Off, Off};
+    };    
+   #endif
+   
+   #ifdef USE_FDK_PATELLOFEMORAL 
+    Main.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur = 
+    {
+      Constraints.CType  = {ForceDep, ForceDep, ForceDep, ForceDep, ForceDep};
+      Constraints.Reaction.Type = {Off, Off, Off, Off, Off};    
+    };
+   #endif
   
   #endif
   
