@@ -13,6 +13,7 @@ AnyFolder DrawSettings ={
     
     AnyVec3 Nodes = AnyBodyPaleYellow; 
     AnyVec3 Segments =  AnyBodyPaleYellow; 
+    //AnyVec3 Segments = {227, 218, 201}/255.0;
     
     AnyVec3 Ligaments = {0, 1, 1};
     AnyVec3 Tendons = {1, 0, 1};      
@@ -20,6 +21,7 @@ AnyFolder DrawSettings ={
   
   AnyFolder Muscle ={ 
     AnyVec3 RGB = .Colors.AnyBodyRed;
+    //AnyVec3 RGB = {192,104,88}/255.0;
     AnySwitch Visible =On;
     //AnySwitch Visible =Off;
     AnySwitch DrawScaleOnOff =Off;
