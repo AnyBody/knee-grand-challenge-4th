@@ -39,6 +39,7 @@ Main =
    #undef INPUT_REF_EVAL_STUDY
    
    #include "<USER_PATH_COMMONS>\Contacts.any"
+   #include "<USER_PATH_COMMONS>\Measures.any"
   #endif
 
   AnyFolder Model = 
