@@ -106,6 +106,10 @@ Main =
     
     InverseDynamicStudy =
     {
+      InverseDynamics.Criterion.UpperBoundOnOff=Off;
+      InverseDynamics.Criterion.Power = DEF_MUSCLE_RECRUITMENT_CRITERION_POWER;
+      InverseDynamics.Criterion.PrimaryTerm.Weight_SearchName = "WeightFactor";      
+      
       #if (BM_LEG_MUSCLES_RIGHT != OFF) & (BM_LEG_MUSCLES_LEFT != OFF)
       AnyObjectPtr pArrExcludedMuscles = arrcat
       (

@@ -61,7 +61,8 @@
 #include "<ANYBODY_PATH_BODY>/HumanModel.any"
 
 // Main Study to run Inverse Dynamics and compute muscle and joint forces**// Usually no need to make changes
-AnyBodyStudy InverseDynamicStudy = {
+AnyBodyStudy InverseDynamicStudy = 
+{
   AnyFolder &C3DData=..ModelSetup.C3DFileData ;
   AnyFolder &BodyModel=.HumanModel.BodyModel;
   AnyFolder& Mannequin = .HumanModel.Mannequin;
@@ -79,15 +80,12 @@ AnyBodyStudy InverseDynamicStudy = {
   InitialConditions.MaxIteration = 20000;
   Kinematics.MaxIteration = 20000;
   Kinematics.KinematicTol=1e-5;
-  
-  InverseDynamics.Criterion.UpperBoundOnOff=Off;
-  InverseDynamics.Criterion.Power = DEF_MUSCLE_RECRUITMENT_CRITERION_POWER;
-  InverseDynamics.Criterion.PrimaryTerm.Weight_SearchName = "WeightFactor";  
 };
 
 
 //This study is only used for loading the optimized parameters **// Usually no need to make changes   
-AnyOptKinStudy LoadParametersOptimizationResults =     {
+AnyOptKinStudy LoadParametersOptimizationResults =     
+{
   AnyFolder &Study = .InverseDynamicStudy;
   AnyFolder &HumanModel = .HumanModel;
   ParameterOptimization.ConvergenceTol=1e-3;
