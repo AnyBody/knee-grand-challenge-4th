@@ -52,11 +52,11 @@ AnyFolder Ligaments =
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-    AnyVar Stiffness = DesignVar(2000/2);
-    AnyVar RefStrain = DesignVar(0.056);    
-//    AnyVar Stiffness = 1000;
-//    AnyVar RefStrain = -0.275;
-
+//    AnyVar Stiffness = DesignVar(1000);
+//    AnyVar RefStrain = DesignVar(0.056);    
+    AnyVar Stiffness = DesignVar(2000);
+    AnyVar RefStrain = DesignVar(0.03);  
+    
     AnyFloat InitWrapPosVectors = 0.015*{ {0, 0, -1}, {0, 0, -1} };   
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Lateral ;
     AnyParamSurf& RefSurf1 = RefSeg0.PatientRefNode.Surf_Wrapping_Sphere_Lateral_Posterior ;
@@ -83,11 +83,11 @@ AnyFolder Ligaments =
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
 
-    AnyVar Stiffness = DesignVar(2000/2);
-    AnyVar RefStrain = DesignVar(0.056);    
-//    AnyVar Stiffness = 1000;
-//    AnyVar RefStrain = -0.275;
-
+//    AnyVar Stiffness = DesignVar(1000);
+//    AnyVar RefStrain = DesignVar(0.056);
+    AnyVar Stiffness = DesignVar(2000);
+    AnyVar RefStrain = DesignVar(0.03);
+    
     AnyFloat InitWrapPosVectors = 0.015*{ {0, 0, -1}, {0, 0, -1} };   
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Lateral ;
     AnyParamSurf& RefSurf1 = RefSeg0.PatientRefNode.Surf_Wrapping_Sphere_Lateral_Posterior ;
@@ -114,8 +114,10 @@ AnyFolder Ligaments =
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-    AnyVar Stiffness = DesignVar(4000/2);
-    AnyVar RefStrain = DesignVar(0.056 + 0.004); 
+//    AnyVar Stiffness = DesignVar(2000);
+//    AnyVar RefStrain = DesignVar(0.06);
+    AnyVar Stiffness = DesignVar(3000);
+    AnyVar RefStrain = DesignVar(0.03); 
   };  
   
   // LCL: lateral collateral ligament
@@ -139,8 +141,10 @@ AnyFolder Ligaments =
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-    AnyVar Stiffness = DesignVar(4000/2);
-    AnyVar RefStrain = DesignVar(0.056 + 0.004); 
+//    AnyVar Stiffness = DesignVar(2000);
+//    AnyVar RefStrain = DesignVar(0.06);
+    AnyVar Stiffness = DesignVar(3000);
+    AnyVar RefStrain = DesignVar(0.17);
   };     
      
   // aMCL: anterior bundle of medial collateral ligament
@@ -192,9 +196,11 @@ AnyFolder Ligaments =
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-    AnyVar Stiffness = DesignVar(3000);
-    AnyVar RefStrain = DesignVar(0.044);     
-
+//    AnyVar Stiffness = DesignVar(3000);
+//    AnyVar RefStrain = DesignVar(0.044);     
+    AnyVar Stiffness = DesignVar(2500);
+    AnyVar RefStrain = DesignVar(-0.01);  
+    
     AnyFloat InitWrapPosVectors = 0.02*{ {0, 0, 1}, {0, 0, 1} };
     AnyParamSurf& RefSurf0 = RefSeg1.PatientRefNode.Surf_Wrapping_Cylinder_Medial ;     
   };
@@ -359,9 +365,11 @@ AnyFolder Ligaments =
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
         
-    AnyVar Stiffness = DesignVar(2500/2);
-    AnyVar RefStrain = DesignVar(0.064);
-
+//    AnyVar Stiffness = DesignVar(2500/2);
+//    AnyVar RefStrain = DesignVar(0.064);
+    AnyVar Stiffness = DesignVar(1000);
+    AnyVar RefStrain = DesignVar(0.07);
+    
     AnyFloat InitWrapPosVectors = { 0.02*{0, 1, 0}, 0.01*{0, 1, 0} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Posterior ;
   };
@@ -387,8 +395,10 @@ AnyFolder Ligaments =
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
         
-    AnyVar Stiffness = DesignVar(2500/2);
-    AnyVar RefStrain = DesignVar(0.064);
+//    AnyVar Stiffness = DesignVar(2500/2);
+//    AnyVar RefStrain = DesignVar(0.064);
+    AnyVar Stiffness = DesignVar(1000);
+    AnyVar RefStrain = DesignVar(0.07);
 
     AnyFloat InitWrapPosVectors = { 0.02*{0, 1, 0}, 0.01*{0, 1, 0} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Posterior ;
@@ -415,9 +425,11 @@ AnyFolder Ligaments =
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-    AnyVar Stiffness = DesignVar(2500/2);
-    AnyVar RefStrain = DesignVar(0.077);
-
+//    AnyVar Stiffness = DesignVar(2500/2);
+//    AnyVar RefStrain = DesignVar(0.077);
+    AnyVar Stiffness = DesignVar(1000);
+    AnyVar RefStrain = DesignVar(0.07);
+    
     AnyFloat InitWrapPosVectors = { 0.02*{0, 1, 0}, 0.015*{0, 1, 0} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Posterior ;
   };
@@ -443,9 +455,11 @@ AnyFolder Ligaments =
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-    AnyVar Stiffness = DesignVar(2500/2);
-    AnyVar RefStrain = DesignVar(0.077);
-
+//    AnyVar Stiffness = DesignVar(2500/2);
+//    AnyVar RefStrain = DesignVar(0.077);
+    AnyVar Stiffness = DesignVar(1000);
+    AnyVar RefStrain = DesignVar(0.07);
+    
     AnyFloat InitWrapPosVectors = { 0.02*{0, 1, 0}, 0.015*{0, 1, 0} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Posterior ;
   };  
