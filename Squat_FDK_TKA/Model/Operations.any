@@ -1,4 +1,4 @@
-AnyBodyStudy InitStudy =
+ AnyBodyStudy InitStudy =
 {
   AnyObjectPtrArray pArr_KneeJnt = 
   ObjSearchRecursive("Main.HumanModel.BodyModel.Right.Leg.Jnt", "Knee", "AnyMechObject");  
@@ -125,5 +125,26 @@ AnyOperationSequence LigamentCalibrationSequence =
     };
   };  
 };
+
+/**Execute this operation to run the model in the intended operation sequence.  
+It is also possible to run operations seperately, by manual selections in the operation tree*/
+AnyOperationSequence RunApplication = {
+  
+  AnyOperation& LigamentCalibrationSequence = .LigamentCalibrationSequence;
+  
+  /*This operation calibrates the muscles in the model if these are of the type AnyMuscleModel3E.
+  This will just be an empty operation if the model is using a muscle type that does not require calibration.*/  
+  AnyOperation &CalibrationAnal = Main.HumanModel.Calibration.CalibrationSequence;    
+  
+  ///This operation is the inverse dynamic analysis
+  AnyOperation &InvAnal=Main.Study.InverseDynamics;
+  
+  #if AutoSaveOption 
+  /// This operation saves the output of the study to an h5 file in the Output folder
+  AnyOperationMacro save = {
+        MacroStr={ "classoperation Main.Study.Output " + strquote("Save data") + " --type=Deep" + " --file="+ strquote(ANYBODY_PATH_OUTPUT + ANYBODY_NAME_MAINFILE + ".anydata.h5")};
+  };
+  #endif
+}; 
 
 #include "RunAppSequence.any"

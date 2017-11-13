@@ -188,6 +188,10 @@
 #ifndef DEF_CONTACT_DRAW_PRESSURE_MAP
   #define DEF_CONTACT_DRAW_PRESSURE_MAP 1
 #endif
+
+#ifndef AutoSaveOption 
+  #define AutoSaveOption 0
+#endif
   
 
 
