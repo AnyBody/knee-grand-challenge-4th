@@ -143,8 +143,10 @@ AnyFolder Ligaments =
     
 //    AnyVar Stiffness = DesignVar(2000);
 //    AnyVar RefStrain = DesignVar(0.06);
-    AnyVar Stiffness = DesignVar(3000);
-    AnyVar RefStrain = DesignVar(0.17);
+//    AnyVar Stiffness = DesignVar(3000);
+//    AnyVar RefStrain = DesignVar(0.17);
+    AnyVar Stiffness = DesignVar(2000);
+    AnyVar RefStrain = DesignVar(0.10);
   };     
      
   // aMCL: anterior bundle of medial collateral ligament
