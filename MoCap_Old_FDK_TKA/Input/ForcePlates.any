@@ -106,3 +106,31 @@ Plate1 =
   };
 };     
 
+Plate3 = 
+{
+  ForcePlate = 
+  {
+    AnyRefNode StairNode = 
+    {
+      sRel = {0, 0, -0.006-0.816};
+      AnyRefNode OffsetNode = 
+      {
+        sRel = {0, 0, . abs(.sRel[2])*0.5};
+        AnyDrawSurf DrwSTL = 
+        {
+          FileName = "UnitBox";
+          ScaleXYZ = {...PlateGraphics.Size[0], ...PlateGraphics.Size[1], .sRel[2]*2};
+          RGB = {1, 1, 0};
+          Opacity = 0.5;
+        };
+      };
+      
+      //          AnyDrawRefFrame Drw = 
+      //          {
+      //            RGB = {1, 1, 1};
+      //            ScaleXYZ = 0.5*{1, 1, 1};
+      //          };
+    };
+  };
+};  
+

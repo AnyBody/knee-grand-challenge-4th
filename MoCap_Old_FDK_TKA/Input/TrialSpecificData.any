@@ -11,9 +11,9 @@ AnyFolder TrialSpecificData={
 
   // ********** Time ***********
   // FrontFrameOffset is the offset value from the first frame of C3D file
-  AnyIntVar FrontFrameOffset = 310;
+  AnyIntVar FrontFrameOffset = 316;
   // LastFrameOffset is the offset value from the last frame of C3D file
-  AnyIntVar LastFrameOffset  =150;
+  AnyIntVar LastFrameOffset  = 50;
   // Number of steps for the analysis but can be changed is needed
   AnyIntVar nStep = Main.ModelSetup.nStep;
   
@@ -28,15 +28,15 @@ AnyFolder TrialSpecificData={
     AnyVar BodyMass=66.7;  //the mass is automatically distributed to the segments
     AnyVar BodyHeight=1.68;  //height
     
-    AnyVar ThighLength= 0.4234534;  //rigth and left side is mirrored 
-    AnyVar ShankLength= 0.4120814;
-    AnyVar FootLength=2.575058020140610e-001;
-    AnyVar PelvisWidth=1.613590661074816e-001; //distance between hip joints
-    AnyVar PelvisDepth=0.1509133;
+    AnyVar ThighLength = 0.4234534;  //rigth and left side is mirrored 
+    AnyVar ShankLength = 0.4120814;
+    AnyVar FootLength = 0.258 ;
+    AnyVar PelvisWidth = 0.160 ; //distance between hip joints
+    AnyVar PelvisDepth = 0.1509133;
     AnyVar HeadHeight = 0.14;//height in neutral position from  C1HatNode to top of head
-    AnyVar TrunkHeight = 5.936191369009531e-001;//height in neutral position from  C1HatNode to L5SacrumJnt
-    AnyVar UpperArmLength = 2.892057008201610e-001;
-    AnyVar LowerArmLength =2.350109725747694e-001;
+    AnyVar TrunkHeight = 0.594 ;//height in neutral position from  C1HatNode to L5SacrumJnt
+    AnyVar UpperArmLength = 0.286 ;
+    AnyVar LowerArmLength = 0.235 ;
     AnyVar HandLength = 0.182;
     AnyVar HandBreadth = 0.085;
   };

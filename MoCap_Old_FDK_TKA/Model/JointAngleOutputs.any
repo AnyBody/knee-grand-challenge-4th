@@ -47,6 +47,18 @@ AnyFolder JointAngleOutputs = {
     AnyVector AnklePlantarFlexion = ..BodyModel.Interface.Right.AnklePlantarFlexion.Pos;
     AnyVector SubTalarEversion = ..BodyModel.Interface.Right.SubTalarEversion.Pos;
   };
+//  AnyOutputFile OutputFile3 = {
+//    FileName = "../Input/"+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightlegtd.txt";
+//    SepSign = " ";
+//    
+//    AnyVector KneeFlexion = ..BodyModel.Interface.Right.KneeFlexion.Pos;
+//    AnyVector FootPosX = ..BodyModel.Interface.Right.GlobalFootPosX.Pos;
+//    AnyVector FootPosY = ..BodyModel.Interface.Right.GlobalFootPosY.Pos;
+//    AnyVector FootPosZ = ..BodyModel.Interface.Right.GlobalFootPosZ.Pos;
+//    //AnyVector FootRotX = ..BodyModel.Interface.Right.GlobalFootRotX.Pos;
+//    AnyVector FootRotY = ..BodyModel.Interface.Right.GlobalFootRotY.Pos;
+//    AnyVector FootRotZ = ..BodyModel.Interface.Right.GlobalFootRotZ.Pos;
+//  };
   #endif
   
   

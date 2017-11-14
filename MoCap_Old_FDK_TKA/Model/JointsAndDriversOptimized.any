@@ -59,6 +59,20 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasure &SubTalarEversion = ...BodyModel.Interface.Right.SubTalarEversion;
     Reaction.Type={Off,Off,Off,Off,Off,Off};
   };
+//  AnyKinEqInterPolDriver JntDriverRightLegTD =  {
+//    FileErrorContinueOnOff = On;
+//    Type = Bspline;
+//    BsplineOrder = 4;
+//    FileName = "../Input/"+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightlegtd.txt";
+//    AnyKinMeasure &KneeFlexion = ...BodyModel.Interface.Right.KneeFlexion;
+//    AnyKinMeasure & FootPosX = ...BodyModel.Interface.Right.GlobalFootPosX;
+//    AnyKinMeasure & FootPosY = ...BodyModel.Interface.Right.GlobalFootPosY;
+//    AnyKinMeasure & FootPosZ = ...BodyModel.Interface.Right.GlobalFootPosZ;
+//    //AnyKinMeasure & FootRotX = ...BodyModel.Interface.Right.GlobalFootRotX;
+//    AnyKinMeasure & FootRotY = ...BodyModel.Interface.Right.GlobalFootRotY;
+//    AnyKinMeasure & FootRotZ = ...BodyModel.Interface.Right.GlobalFootRotZ;
+//    Reaction.Type={Off,Off,Off,Off,Off,Off};
+//  };
   #endif
 
   #if BM_LEG_LEFT & (BM_LEG_MODEL == _LEG_MODEL_Leg_)

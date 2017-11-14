@@ -119,9 +119,9 @@ Main = {
     
     #include "<USER_PATH_COMMONS>\CustomScaling.any"
     #include "<USER_PATH_COMMONS>\CustomSegments.any"
+    #include "<USER_PATH_COMMONS>\Measures.any"
     #if InverseDynamicModel == 1
     #include "<USER_PATH_COMMONS>\CustomMuscles.any"
-    #include "<USER_PATH_COMMONS>\Measures.any"
     #endif    
   };
 }; //Main
