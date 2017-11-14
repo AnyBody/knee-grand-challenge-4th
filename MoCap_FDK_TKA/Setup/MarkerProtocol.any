@@ -249,7 +249,7 @@ CreateMarkerDriver RToeLateral (
 MarkerName= RToeLateral,  
 MarkerPlacement=Right.Leg.Seg.Foot,
 OptX=ON, OptY=OFF, OptZ=ON,
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=5.0,WeightY=5.0,WeightZ=5.0
 ) = {
   sRelOpt =  {0.18, -0.06, 0.05};
 
@@ -259,7 +259,7 @@ CreateMarkerDriver RToeMedial (
 MarkerName= RToeMedial ,  
 MarkerPlacement=Right.Leg.Seg.Foot,
 OptX=ON, OptY=OFF, OptZ=ON,
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=5.0,WeightY=5.0,WeightZ=5.0
 ) = {
   sRelOpt =  {0.17, -0.06, -0.03};
 
@@ -382,7 +382,7 @@ CreateMarkerDriver LToeLateral (
 MarkerName= LToeLateral, 
 MarkerPlacement=Left.Leg.Seg.Foot,
 OptX=ON,OptY=OFF,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=5.0,WeightY=5.0,WeightZ=5.0
 ) = {
   sRelOpt =  {0.16, -0.06, -0.05};
 };
@@ -391,7 +391,7 @@ CreateMarkerDriver LToeMedial (
 MarkerName= LToeMedial , 
 MarkerPlacement=Left.Leg.Seg.Foot,
 OptX=ON,OptY=OFF,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
+WeightX=5.0,WeightY=5.0,WeightZ=5.0
 ) = {
   sRelOpt =  {0.17, -0.06, 0.03};
 };
