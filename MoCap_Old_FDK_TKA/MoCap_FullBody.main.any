@@ -89,6 +89,7 @@ Main = {
     #define BM_TRUNK_NECK_MUSCLES _MUSCLES_NONE_
     #define BM_ARM_MUSCLES_LEFT _MUSCLES_NONE_
     #define BM_ARM_MUSCLES_RIGHT _MUSCLES_NONE_
+    #define BM_LEG_MUSCLES_LEFT _MUSCLES_NONE_
     
    #if USE_FDK == 1
     #define INPUT_REF_HUMAN_MODEL Main.Studies.HumanModel

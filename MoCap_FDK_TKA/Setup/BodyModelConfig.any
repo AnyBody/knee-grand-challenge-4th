@@ -18,11 +18,20 @@ Main = {
     #define BM_ARM_MUSCLES_BOTH OFF
     #define BM_ARM_RIGHT ON
     #define BM_ARM_LEFT ON
+    #define BM_LEG_MUSCLES_LEFT ON
+    #define BM_LEG_MUSCLES_RIGHT ON
+    #define BM_LEG_LEFT ON
+    #define BM_LEG_RIGHT ON
   #else
     #define BM_TRUNK_NECK_MUSCLES OFF
     #define BM_TRUNK_MUSCLES OFF
+    #define BM_ARM_MUSCLES_BOTH OFF
     #define BM_ARM_RIGHT OFF
     #define BM_ARM_LEFT OFF
+    #define BM_LEG_MUSCLES_LEFT OFF
+    #define BM_LEG_MUSCLES_RIGHT ON
+    #define BM_LEG_LEFT ON
+    #define BM_LEG_RIGHT ON    
   #endif
 
 

@@ -2,6 +2,38 @@ Main =
 {
   Studies = 
   {
+    ParameterIdentification = 
+    {
+      KinematicStudyForParameterIdentification =
+      {
+        AnyMechObjectExcluder JntExcluder = 
+        {
+          Objects = 
+          {
+            &Main.HumanModel.BodyModel.Right.Leg.Jnt.Knee.Constraints,
+            &Main.HumanModel.BodyModel.Right.Leg.Jnt.Knee.Constraints.Reaction,
+            &Main.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur.Constraints,
+            &Main.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur.Constraints.Reaction
+          };
+        };
+        AnyFolder ExtraDrivers =
+        {
+          AnyRevoluteJoint Knee = 
+          {
+            Axis = z;
+            AnyRefNode &ThighNode = ..BodyModel.Right.Leg.Seg.Thigh.KneeJoint;
+            AnyRefNode &ShankNode = ..BodyModel.Right.Leg.Seg.Shank.KneeJoint;
+            //AnyDrawStdJoint Knee = {  };
+          };//Knee
+          AnyRevoluteJoint PatellaFemur = 
+          {
+            Axis = z;
+            AnyRefNode &ThighNode = ..BodyModel.Right.Leg.Seg.Thigh.PatellaFemurJoint;
+            AnyRefNode &PatellaNode = ..BodyModel.Right.Leg.Seg.Patella.PatellaFemurJoint;
+          };//Patellafemur          
+        };
+      };
+    };
     #if USE_FDK == 1
     
     AnyBodyStudy InitStudy = 
@@ -113,7 +145,7 @@ Main =
          Constraints.Reaction.Type = {Off, Off, Off, Off, Off};    
        };
       #endif
-      
+            
       InverseDynamics.ForceDepKinOnOff=On;
       InverseDynamics.ForceDepKin.SolverType = FDK_SolverType ;
       InverseDynamics.ForceDepKin.ForceTol = FDK_ForceTol ;

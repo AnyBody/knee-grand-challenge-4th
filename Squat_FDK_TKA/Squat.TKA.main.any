@@ -26,6 +26,7 @@ Main =
   #include "<USER_PATH_COMMONS>\CustomScaling.any"
   #include "<USER_PATH_COMMONS>\CustomSegments.any"
   #include "<USER_PATH_COMMONS>\CustomMuscles.any"  
+  #include "<USER_PATH_COMMONS>\Measures.any"
   
   #if USE_FDK == 1
    #define INPUT_REF_HUMAN_MODEL Main.HumanModel
@@ -39,7 +40,6 @@ Main =
    #undef INPUT_REF_EVAL_STUDY
    
    #include "<USER_PATH_COMMONS>\Contacts.any"
-   #include "<USER_PATH_COMMONS>\Measures.any"
   #endif
 
   AnyFolder Model = 

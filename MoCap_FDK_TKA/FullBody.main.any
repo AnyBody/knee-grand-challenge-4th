@@ -45,6 +45,8 @@
 // Include the AnyMoCap Framwork
 #include "<ANYMOCAP_MODEL>"
 
+#include "Setup\Operations.any"
+
 Main = 
 {
   ModelSetup.SubjectSpecificData = 
@@ -73,4 +75,3 @@ Main =
   #endif
 };
 
-#include "Setup\Operations.any"
