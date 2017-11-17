@@ -150,7 +150,7 @@
   #define FDK_UseAdaptiveForceTolOnOff Off
 #endif
 #ifndef FDK_ForceTol
-  #define FDK_ForceTol 1e-2
+  #define FDK_ForceTol 1e-0
 #endif
 #ifndef FDK_Perturbation
   #define FDK_Perturbation 1e-5
@@ -196,6 +196,36 @@
 #ifndef AutoSaveOption 
   #define AutoSaveOption 0
 #endif
+
+////-->Extra
+//#ifdef BM_LEG_RIGHT
+//  #if BM_LEG_RIGHT == OFF
+//    #ifdef CUSTOM_SCALING_Right_Thigh
+//      #undef CUSTOM_SCALING_Right_Thigh
+//    #endif
+//    #ifdef CUSTOM_SCALING_Right_Shank
+//      #undef CUSTOM_SCALING_Right_Shank
+//    #endif
+//    #ifdef CUSTOM_SCALING_Right_Patella
+//      #undef CUSTOM_SCALING_Right_Patella
+//    #endif
+//  #endif
+//#endif
+//
+//#ifdef BM_LEG_LEFT
+//  #if BM_LEG_LEFT == OFF
+//    #ifdef CUSTOM_SCALING_Left_Thigh
+//      #undef CUSTOM_SCALING_Left_Thigh
+//    #endif
+//    #ifdef CUSTOM_SCALING_Left_Shank
+//      #undef CUSTOM_SCALING_Left_Shank
+//    #endif
+//    #ifdef CUSTOM_SCALING_Left_Patella
+//      #undef CUSTOM_SCALING_Left_Patella
+//    #endif 
+//  #endif
+//#endif
+////<--
   
 
 

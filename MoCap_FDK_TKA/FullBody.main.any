@@ -15,23 +15,12 @@
 //#define DEF_CUSTOM_SCALING_LEVEL_RIGHT_PATELLA "STL"
 //#define DEF_CUSTOM_SCALING_LEVEL_LEFT_PATELLA "STL"
 
-//#define DEF_CUSTOM_SCALING_LEVEL_RIGHT_THIGH "AFFINE"
-//#define DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH "AFFINE"
-//#define DEF_CUSTOM_SCALING_LEVEL_RIGHT_SHANK "AFFINE"
-//#define DEF_CUSTOM_SCALING_LEVEL_LEFT_SHANK "AFFINE"
-//#define DEF_CUSTOM_SCALING_LEVEL_RIGHT_PATELLA "AFFINE"
-//#define DEF_CUSTOM_SCALING_LEVEL_LEFT_PATELLA "AFFINE"
-
 #define USE_FDK 1
 #define USE_FDK_TIBIOFEMORAL 
 #define USE_FDK_PATELLOFEMORAL
 
 #define DEF_CUSTOM_KNEE_JOINT_CONTACT_INIT_OFFSET 0.0000 
 //<--Custom Settings
-
-//-->Default Settings
-#include "<USER_PATH_COMMONS>\Settings_Default.any"
-//<--Default Settings
 
 // Enter and edit Trial Specific Data in this file:
 #path MOCAP_TRIAL_SPECIFIC_DATA "Setup\TrialSpecificData_FullBody.any"
@@ -42,10 +31,21 @@
 // Enter and edit Lab-Specific Data in this file:
 #path MOCAP_LAB_SPECIFIC_DATA "Setup\LabSpecificData.any"
 
+//-->Default Settings
+#include "<USER_PATH_COMMONS>\Settings_Default.any"
+//<--Default Settings
+
+//#undef CUSTOM_SCALING_Left_Thigh
+//#undef CUSTOM_SCALING_Left_Shank
+//#undef CUSTOM_SCALING_Left_Patella
+//#undef BM_JOINT_TYPE_HIP_LEFT
+//#undef BM_JOINT_TYPE_KNEE_LEFT
+//#undef BM_JOINT_TYPE_PATELLOFEMORAL_LEFT
+//#undef BM_JOINT_TYPE_ANKLE_LEFT
+//#undef BM_JOINT_TYPE_PATELLATENDON_LEFT
+
 // Include the AnyMoCap Framwork
 #include "<ANYMOCAP_MODEL>"
-
-#include "Setup\Operations.any"
 
 Main = 
 {
@@ -75,3 +75,4 @@ Main =
   #endif
 };
 
+#include "Setup\Operations.any"

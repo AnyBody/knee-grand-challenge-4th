@@ -46,35 +46,30 @@ AnyFolder DrawSettings ={
     AnyVar GlobalCoef = 1.0;
     
     #ifdef CUSTOM_SCALING_Right_Thigh
-    //AnyVar RightThighCoef = 0.5*(1-DRAW_POST_OP);
     AnyVar RightThighCoef = 0.5;
     #else
-    AnyVar RightThighCoef = 1.0*(1-DRAW_POST_OP);
+    AnyVar RightThighCoef = 1.0;
     #endif
     
     #ifdef CUSTOM_SCALING_Left_Thigh
-    //AnyVar LeftThighCoef = 0.5*(1-DRAW_POST_OP);
     AnyVar LeftThighCoef = 0.5;
     #else
-    AnyVar LeftThighCoef = 1.0*(1-DRAW_POST_OP);
+    AnyVar LeftThighCoef = 1.0;
     #endif    
     
     #ifdef CUSTOM_SCALING_Right_Shank
-    // AnyVar RightShankCoef = 0.5*(1-DRAW_POST_OP);
     AnyVar RightShankCoef = 0.5;
     #else
-    AnyVar RightShankCoef = 1.0*(1-DRAW_POST_OP);
+    AnyVar RightShankCoef = 1.0;
     #endif
     
     #ifdef CUSTOM_SCALING_Left_Shank
-    //AnyVar LeftShankCoef = 0.5*(1-DRAW_POST_OP);
     AnyVar LeftShankCoef = 0.5;
     #else
-    AnyVar LeftShankCoef = 1.0*(1-DRAW_POST_OP);
+    AnyVar LeftShankCoef = 1.0;
     #endif  
     
     #ifdef CUSTOM_SCALING_Right_Patella
-    //AnyVar RightPatellaCoef = 0.5*(1-DRAW_POST_OP);
     AnyVar RightPatellaCoef = 0.5;
     #else
     AnyVar RightPatellaCoef = 1.0;

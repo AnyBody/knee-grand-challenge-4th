@@ -13,7 +13,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
   };
   Left =
   {
-    #if (BM_JOINT_TYPE_HIP_RIGHT == _JOINT_TYPE_USERDEFINED_)
+    #if (BM_JOINT_TYPE_HIP_LEFT == _JOINT_TYPE_USERDEFINED_)
     AnyRefNode HipJoint = {
       AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJointBoneFitted;
       sRel = ..Scale_Leg_Pelvis(sRelUnscaled );
@@ -24,124 +24,132 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
   };
 };
 
-#ifdef CUSTOM_SCALING_Right_Thigh
-HumanModel.BodyModel.Right.Leg = 
-{
-  Seg.Thigh = 
+#if BM_LEG_RIGHT == ON
+ #ifdef CUSTOM_SCALING_Right_Thigh
+  HumanModel.BodyModel.Right.Leg = 
   {
-    #define SEG_SIGN 1
-    #include "Custom_Seg_Thigh.any"
-    #undef SEG_SIGN
+    Seg.Thigh = 
+    {
+      #define SEG_SIGN 1
+      #include "Custom_Seg_Thigh.any"
+      #undef SEG_SIGN
+      
+      Drw3.Visible = Off;    
+    };  
+  };
+ #endif //Right Thigh
+ 
+ #ifdef CUSTOM_SCALING_Right_Shank
+  HumanModel.BodyModel.Right.Leg = 
+  {
+    Seg.Shank = 
+    {
+      #define SEG_SIGN 1
+      #include "Custom_Seg_Shank.any"
+      #undef SEG_SIGN  
+      
+      DrwSurfTibia.Visible = Off;
+      DrwSurfFibula.Visible = Off;    
+    };
+  };
+ #endif //Right Shank
+ 
+ #ifdef CUSTOM_SCALING_Right_Patella
+  HumanModel.BodyModel.Right.Leg =
+  {  
+    Seg.Patella = 
+    {
+      #define SEG_SIGN 1
+      #include "Custom_Seg_Patella.any"
+      #undef SEG_SIGN
+      
+      DrwSurf.Visible = Off;    
+    };
+  };
+ #endif // Right Patella
+ 
+ HumanModel.BodyModel.Right.Leg =
+ {  
+   Seg.Talus = 
+   {
+     #define SEG_SIGN 1
+     #include "Custom_Seg_Talus.any"
+     #undef SEG_SIGN
+   };
+ };
+#endif
+
+#if BM_LEG_LEFT == ON
+ #ifdef CUSTOM_SCALING_Left_Thigh
+  HumanModel.BodyModel.Left.Leg = 
+  {
+    Seg.Thigh = 
+    {
+      #define SEG_SIGN -1
+      #include "Custom_Seg_Thigh.any"
+      #undef SEG_SIGN
+      
+      Drw3.Visible = Off;    
+    };
+  };
+ #endif // Left Thigh
+ 
+ #ifdef CUSTOM_SCALING_Left_Shank
+  HumanModel.BodyModel.Left.Leg = 
+  {
+    Seg.Shank = 
+    {
+      #define SEG_SIGN -1
+      #include "Custom_Seg_Shank.any"
+      #undef SEG_SIGN 
+      
+      DrwSurfTibia.Visible = Off;
+      DrwSurfFibula.Visible = Off;    
+    };  
+  };
+ #endif // Left Shank
+ 
+ #ifdef CUSTOM_SCALING_Left_Patella
+  HumanModel.BodyModel.Left.Leg =
+  { 
+    Seg.Patella = 
+    {
+      #define SEG_SIGN -1
+      #include "Custom_Seg_Patella.any"
+      #undef SEG_SIGN
     
-    Drw3.Visible = Off;    
-  };  
-};
-#endif //Right Thigh
-
-#ifdef CUSTOM_SCALING_Left_Thigh
-HumanModel.BodyModel.Left.Leg = 
-{
-  Seg.Thigh = 
-  {
-    #define SEG_SIGN -1
-    #include "Custom_Seg_Thigh.any"
-    #undef SEG_SIGN
-    
-    Drw3.Visible = Off;    
+      DrwSurf.Visible = Off;    
+    };
   };
-};
-#endif // Left Thigh
-
-#ifdef CUSTOM_SCALING_Right_Shank
-HumanModel.BodyModel.Right.Leg = 
-{
-  Seg.Shank = 
-  {
-    #define SEG_SIGN 1
-    #include "Custom_Seg_Shank.any"
-    #undef SEG_SIGN  
-    
-    DrwSurfTibia.Visible = Off;
-    DrwSurfFibula.Visible = Off;    
-  };
-};
-#endif //Right Shank
-
-#ifdef CUSTOM_SCALING_Left_Shank
-HumanModel.BodyModel.Left.Leg = 
-{
-  Seg.Shank = 
-  {
-    #define SEG_SIGN -1
-    #include "Custom_Seg_Shank.any"
-    #undef SEG_SIGN 
-    
-    DrwSurfTibia.Visible = Off;
-    DrwSurfFibula.Visible = Off;    
-  };  
-};
-#endif // Left Shank
-
-#ifdef CUSTOM_SCALING_Right_Patella
-HumanModel.BodyModel.Right.Leg =
-{  
-  Seg.Patella = 
-  {
-    #define SEG_SIGN 1
-    #include "Custom_Seg_Patella.any"
-    #undef SEG_SIGN
-    
-    DrwSurf.Visible = Off;    
-  };
-};
-#endif // Right Patella
-
-#ifdef CUSTOM_SCALING_Left_Patella
-HumanModel.BodyModel.Left.Leg =
-{ 
-  Seg.Patella = 
-  {
-    #define SEG_SIGN -1
-    #include "Custom_Seg_Patella.any"
-    #undef SEG_SIGN
-  
-    DrwSurf.Visible = Off;    
-  };
-};
-#endif //Left Patella
-
-HumanModel.BodyModel.Right.Leg =
-{  
-  Seg.Talus = 
-  {
-    #define SEG_SIGN 1
-    #include "Custom_Seg_Talus.any"
-    #undef SEG_SIGN
-  };
-};
-
-HumanModel.BodyModel.Left.Leg =
-{  
-  Seg.Talus = 
-  {
-    #define SEG_SIGN -1
-    #include "Custom_Seg_Talus.any"
-    #undef SEG_SIGN
-  };
-};
-
+ #endif //Left Patella
+ 
+ HumanModel.BodyModel.Left.Leg =
+ {  
+   Seg.Talus = 
+   {
+     #define SEG_SIGN -1
+     #include "Custom_Seg_Talus.any"
+     #undef SEG_SIGN
+   };
+ };
+#endif
 
 HumanModel.BodyModel =
 {
+  #if BM_LEG_RIGHT == ON
   Right.Leg =
   {
     Jnt = 
     {
+      #if (BM_JOINT_TYPE_HIP_RIGHT == _JOINT_TYPE_USERDEFINED_)
       AnySphericalJoint Hip = 
       {
         AnyRefNode &ThighNode = ..Seg.Thigh.HipJoint;
         AnyRefNode &PelvisNode = ..Seg.Pelvis.HipJoint;
       };//Hip
+      #endif
+      
+      #if (BM_JOINT_TYPE_KNEE_RIGHT == _JOINT_TYPE_USERDEFINED_)
       AnyRevoluteJoint Knee = 
       {
         Axis = z;
@@ -149,18 +157,27 @@ HumanModel.BodyModel =
         AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
         //AnyDrawStdJoint Knee = {  };
       };//Knee
+      #endif
+      
+      #if (BM_JOINT_TYPE_PATELLOFEMORAL_RIGHT == _JOINT_TYPE_USERDEFINED_)
       AnyRevoluteJoint PatellaFemur = 
       {
         Axis = z;
         AnyRefNode &ThighNode = ..Seg.Thigh.PatellaFemurJoint;
         AnyRefNode &PatellaNode = ..Seg.Patella.PatellaFemurJoint;
       };//Patellafemur
+      #endif
+      
+      #if (BM_JOINT_TYPE_ANKLE_RIGHT == _JOINT_TYPE_USERDEFINED_)
       AnyRevoluteJoint Ankle = 
       {
         Axis = z; //flexion extension
         AnyRefNode &ShankNode = ..Seg.Shank.AnkleJoint;
         AnyRefNode &FootNode  = ..Seg.Talus.AnkleJoint;
-      };//Ankle      
+      };//Ankle
+      #endif
+      
+      #if (BM_JOINT_TYPE_PATELLATENDON_RIGHT == _JOINT_TYPE_USERDEFINED_)
       AnyFolder KinematicMeasures = 
       {
         AnyKinPLine Patella = 
@@ -188,17 +205,25 @@ HumanModel.BodyModel =
         DriverVel = {0.0};
         Reaction.Type = {On};  // The muscles must do the work
       };
+      #endif
     };//Jnt
   };
+  #endif
+  
+  #if BM_LEG_LEFT == ON
   Left.Leg = 
   {
     Jnt = 
     {
+      #if (BM_JOINT_TYPE_HIP_LEFT == _JOINT_TYPE_USERDEFINED_)
       AnySphericalJoint Hip = 
       {
         AnyRefNode &ThighNode = ..Seg.Thigh.HipJoint;
         AnyRefNode &PelvisNode = ..Seg.Pelvis.HipJoint;
       };//Hip
+      #endif
+      
+      #if (BM_JOINT_TYPE_KNEE_LEFT == _JOINT_TYPE_USERDEFINED_)
       AnyRevoluteJoint Knee = 
       {
         Axis = z;
@@ -206,18 +231,27 @@ HumanModel.BodyModel =
         AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
         //AnyDrawStdJoint Knee = {  };
       };//Knee
+      #endif
+      
+      #if (BM_JOINT_TYPE_PATELLOFEMORAL_LEFT == _JOINT_TYPE_USERDEFINED_)
       AnyRevoluteJoint PatellaFemur = 
       {
         Axis = z;
         AnyRefNode &ThighNode = ..Seg.Thigh.PatellaFemurJoint;
         AnyRefNode &PatellaNode = ..Seg.Patella.PatellaFemurJoint;
       };//Patellafemur 
+      #endif
+      
+      #if (BM_JOINT_TYPE_ANKLE_LEFT == _JOINT_TYPE_USERDEFINED_)
       AnyRevoluteJoint Ankle = 
       {
         Axis = z; //flexion extension
         AnyRefNode &ShankNode = ..Seg.Shank.AnkleJoint;
         AnyRefNode &FootNode  = ..Seg.Talus.AnkleJoint;
-      };//Ankle 
+      };//Ankle
+      #endif
+      
+      #if (BM_JOINT_TYPE_PATELLATENDON_LEFT == _JOINT_TYPE_USERDEFINED_)
       AnyFolder KinematicMeasures = 
       {
         AnyKinPLine Patella = 
@@ -245,6 +279,8 @@ HumanModel.BodyModel =
         DriverVel = {0.0};
         Reaction.Type = {On};  // The muscles must do the work
       }; 
+      #endif
     };//Jnt
   };
+  #endif
 };

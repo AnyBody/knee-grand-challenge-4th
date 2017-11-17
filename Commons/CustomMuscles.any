@@ -1,61 +1,64 @@
-#if BM_LEG_MUSCLES_RIGHT != OFF
-HumanModel.BodyModel.Right.Leg = 
-{
-  Seg = 
+#if BM_LEG_RIGHT == ON
+ #if BM_LEG_MUSCLES_RIGHT != OFF
+  HumanModel.BodyModel.Right.Leg = 
   {
-    #include "Custom_Mus_Leg_Nodes.any"
+    Seg = 
+    {
+      #include "Custom_Mus_Leg_Nodes.any"
+    };
+    MusPar = 
+    {
+      #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+        #define MuscleModelType "AnyMuscleModel3E"
+        #define MMType AnyMuscleModel3E
+      #else
+        #define MuscleModelType "AnyMuscleModel"
+        #define MMType AnyMuscleModel 
+      #endif
+      #include "Custom_Mus_Leg_MusPar.any"
+      #undef MuscleModelType
+      #undef MMType
+    };
+    Mus = 
+    {
+      #include "Custom_Mus_Leg.any"
+      #include "Custom_Mus_Leg_Addition.any"
+      #include "Excluder_Mus_Leg.any"
+    };
   };
-  MusPar = 
-  {
-    #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
-      #define MuscleModelType "AnyMuscleModel3E"
-      #define MMType AnyMuscleModel3E
-    #else
-      #define MuscleModelType "AnyMuscleModel"
-      #define MMType AnyMuscleModel 
-    #endif
-    #include "Custom_Mus_Leg_MusPar.any"
-    #undef MuscleModelType
-    #undef MMType
-  };
-  Mus = 
-  {
-    #include "Custom_Mus_Leg.any"
-    #include "Custom_Mus_Leg_Addition.any"
-    #include "Excluder_Mus_Leg.any"
-  };
-};
+ #endif
 #endif
 
-#if BM_LEG_MUSCLES_LEFT != OFF
-HumanModel.BodyModel.Left.Leg = 
-{
-  Seg = 
+#if BM_LEG_LEFT == ON
+ #if BM_LEG_MUSCLES_LEFT != OFF
+  HumanModel.BodyModel.Left.Leg = 
   {
-    #include "Custom_Mus_Leg_Nodes.any"
+    Seg = 
+    {
+      #include "Custom_Mus_Leg_Nodes.any"
+    };
+    MusPar = 
+    {
+      #if BM_LEG_MUSCLES_LEFT == _MUSCLES_3E_HILL_
+        #define MuscleModelType "AnyMuscleModel3E"
+        #define MMType AnyMuscleModel3E
+      #else
+        #define MuscleModelType "AnyMuscleModel"
+        #define MMType AnyMuscleModel 
+      #endif
+      #include "Custom_Mus_Leg_MusPar.any"
+      #undef MuscleModelType
+      #undef MMType
+    };  
+    Mus = 
+    {
+      #include "Custom_Mus_Leg.any"
+      #include "Custom_Mus_Leg_Addition.any"
+      #include "Excluder_Mus_Leg.any"
+    };
   };
-  MusPar = 
-  {
-    #if BM_LEG_MUSCLES_LEFT == _MUSCLES_3E_HILL_
-      #define MuscleModelType "AnyMuscleModel3E"
-      #define MMType AnyMuscleModel3E
-    #else
-      #define MuscleModelType "AnyMuscleModel"
-      #define MMType AnyMuscleModel 
-    #endif
-    #include "Custom_Mus_Leg_MusPar.any"
-    #undef MuscleModelType
-    #undef MMType
-  };  
-  Mus = 
-  {
-    #include "Custom_Mus_Leg.any"
-    #include "Custom_Mus_Leg_Addition.any"
-    #include "Excluder_Mus_Leg.any"
-  };
-};
+ #endif
 #endif
-
 
 //REF_HUMAN_BODYMODEL.Right.Leg.Mus.GastrocnemiusLateralis1.srf = 
 //{
