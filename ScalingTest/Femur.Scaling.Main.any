@@ -81,7 +81,8 @@ Main =
       PreTransforms = {&.AffineTransform};
       RBFDef = 
       {
-        Type = RBF_ThinPlate;
+        //Type = RBF_ThinPlate;
+        Type = RBF_Triharmonic;
         Param = 1;
       };
       Points0 = .AffineTransform.Points0;
@@ -101,7 +102,8 @@ Main =
       PreTransforms = {&.RBFTransform};
       RBFDef = 
       {
-        Type = RBF_ThinPlate;
+        //Type = RBF_ThinPlate;
+        Type = RBF_Triharmonic;
         //Type = RBF_MultiQuadratic ;
       };
       AnyFixedRefFrame Input = 

@@ -77,7 +77,8 @@ AnyFolder MyScalingLaw =
     PreTransforms = {&.AffineTransform};
     RBFDef = 
     {
-      Type = RBF_ThinPlate;
+      //Type = RBF_ThinPlate;
+      Type = RBF_Triharmonic;
       Param = 1;
     };
     Points0 = .AffineTransform.Points0;
@@ -97,7 +98,8 @@ AnyFolder MyScalingLaw =
   AnyFunTransform3DSTL STLTransform = 
   {
     PreTransforms = {&.RBFTransform};
-    RBFDef.Type = RBF_ThinPlate;
+    //RBFDef.Type = RBF_ThinPlate;
+    RBFDef.Type = RBF_Triharmonic;
     AnyFixedRefFrame Input = 
     {
       AnySurfSTL SourceSurf = 

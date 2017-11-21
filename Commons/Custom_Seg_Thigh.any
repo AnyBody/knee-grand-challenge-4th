@@ -50,7 +50,7 @@ AnyRefNode PatientRefNode =
     FileName = PATH_IMPLANT_HIP_FEMORAL_HEAD_RIGHT_STL ;
     ScaleXYZ = {1, 1, 1};
     RGB = 0.5*{1, 1, 1};
-    Opacity = 0.5;
+    //Opacity = 0.5;
   };         
   #endif
   

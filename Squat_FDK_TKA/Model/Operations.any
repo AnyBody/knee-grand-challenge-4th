@@ -1,17 +1,31 @@
- AnyBodyStudy InitStudy =
+#if USE_FDK == 1
+AnyBodyStudy InitStudy =
 {
-  AnyObjectPtrArray pArr_KneeJnt = 
+  AnyObjectPtrArray pArr_TFJnt = 
   ObjSearchRecursive("Main.HumanModel.BodyModel.Right.Leg.Jnt", "Knee", "AnyMechObject");  
-  AnyObjectPtrArray pArr_KneeJnt_Re = 
+  AnyObjectPtrArray pArr_TFJnt_Re = 
   ObjSearchRecursive("Main.HumanModel.BodyModel.Right.Leg.Jnt.Knee", "*", "AnyMechObject");   
-  AnyObjectPtrArray pArr_KneeDrv = 
+  AnyObjectPtrArray pArr_TFJntDrv = 
   ObjSearchRecursive("Main.Model.ModelEnvironmentConnection.Drivers", "KneeDriver*", "AnyMechObject");
-  AnyObjectPtrArray pArr_KneeDrv_Re = 
+  AnyObjectPtrArray pArr_TFJntDrv_Re = 
   ObjSearchRecursive("Main.Model.ModelEnvironmentConnection.Drivers.KneeDriverRight", "*", "AnyMechObject");
+  
+  AnyObjectPtrArray pArr_PFJnt = 
+  ObjSearchRecursive("Main.HumanModel.BodyModel.Right.Leg.Jnt", "PatellaFemur", "AnyMechObject");
+  AnyObjectPtrArray pArr_PFJnt_Re = 
+  ObjSearchRecursive("Main.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur", "*", "AnyMechObject"); 
+  AnyObjectPtrArray pArr_PatellaTendon = 
+  ObjSearchRecursive("Main.HumanModel.BodyModel.Right.Leg.Jnt", "PatellaMovement", "AnyMechObject");
+  AnyObjectPtrArray pArr_PatellaTendon_Re = 
+  ObjSearchRecursive("Main.HumanModel.BodyModel.Right.Leg.Jnt.PatellaMovement", "*", "AnyMechObject");
+  
   AnyObjectPtrArray pArr_Mus = 
   ObjSearchRecursive("Main.HumanModel.BodyModel.Right.Leg.Mus", "*", "AnyMechObject");
   
-  AnyObjectPtrArray pArr_Knee = arrcat(arrcat(pArr_KneeJnt, pArr_KneeJnt_Re),arrcat(pArr_KneeDrv, pArr_KneeDrv_Re));
+  AnyObjectPtrArray pArr_Knee = arrcat(
+  arrcat(pArr_TFJnt, pArr_TFJnt_Re, pArr_TFJntDrv, pArr_TFJntDrv_Re),
+  arrcat(pArr_PFJnt, pArr_PFJnt_Re, pArr_PatellaTendon, pArr_PatellaTendon_Re)
+  );
   
   MechObjectExclude = arrcat(pArr_Knee, pArr_Mus) ;    
   
@@ -19,24 +33,55 @@
   AnyFolder& Model = .Model;
   AnyFolder Drivers_Init = 
   {
-    AnyKinEqSimpleDriver KneeJoint_Init_Right = 
+    AnyKinEqSimpleDriver TibioFemoral_Lin = 
     {
       AnyKinLinear lin = 
       {
-        AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.KneeJoint;
-        AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.KneeJoint;
+        AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
+        AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode;
         Ref = 0;
       };
+      DriverPos = DEF_CUSTOM_JOINT_INIT_OFFSET_TIBIOFEMORAL_LIN;
+      DriverVel = {0, 0, 0};
+      Reaction.Type = {Off, Off, Off};
+    };
+    AnyKinEqSimpleDriver TibioFemoral_Rot = 
+    {
       AnyKinRotational rot = 
       {
-        AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.KneeJoint;
-        AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.KneeJoint;
+        AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
+        AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode;
         Type = PlanarAngles;
       };
-      DriverPos = {0, -DEF_CUSTOM_KNEE_JOINT_CONTACT_INIT_OFFSET, 0, 0, 0, 0};
-      DriverVel = {0, 0, 0, 0, 0, 0};
-      Reaction.Type = {Off, Off, Off, Off, Off, Off};
-    };  
+      DriverPos = DEF_CUSTOM_JOINT_INIT_OFFSET_TIBIOFEMORAL_ROT;
+      DriverVel = {0, 0, 0};
+      Reaction.Type = {Off, Off, Off};      
+    };
+    
+    AnyKinEqSimpleDriver PatelloFemoral_Lin = 
+    {
+      AnyKinLinear lin = 
+      {
+        AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
+        AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode;
+        Ref = 0;
+      };
+      DriverPos = DEF_CUSTOM_JOINT_INIT_OFFSET_PATELLOFEMORAL_LIN;
+      DriverVel = {0, 0, 0};
+      Reaction.Type = {Off, Off, Off};
+    };
+    AnyKinEqSimpleDriver PatelloFemoral_Rot = 
+    {
+      AnyKinRotational rot = 
+      {
+        AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
+        AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode;
+        Type = PlanarAngles;
+      };
+      DriverPos = DEF_CUSTOM_JOINT_INIT_OFFSET_PATELLOFEMORAL_ROT;
+      DriverVel = {0, 0, 0};
+      Reaction.Type = {Off, Off, Off};      
+    };    
   };
   
   Gravity = {0, -9.81, 0};
@@ -53,6 +98,19 @@ AnyDesEvalStudy EvalStudy =
     AnyOperation& RunInit = ..InitStudy.Kinematics;
   }; 
 };
+
+AnyOperationSequence LigamentCalibrationSequence = 
+{
+  AnyOperation& EvaluateLigamentLengths = Main.EvalStudy.UpdateDesign;
+  AnyOperationMacro UpdateValues = 
+  {
+    MacroStr = 
+    {
+      "classoperation Main" + strquote("Update Values")
+    };
+  };  
+};
+#endif
 
 AnyBodyStudy Study = 
 {
@@ -85,6 +143,7 @@ AnyBodyStudy Study =
    InverseDynamics.ForceDepKin.LocalSearchOnOff = FDK_LocalSearchOnOff;      
    InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff = FDK_UseAdaptiveForceTolOnOff ;
    
+   AnyFolder ExtraDrivers = {};
    
    #ifdef USE_FDK_TIBIOFEMORAL
     Main.HumanModel.BodyModel.Right.Leg.Jnt.Knee = 
@@ -95,6 +154,39 @@ AnyBodyStudy Study =
    #endif
    
    #ifdef USE_FDK_PATELLOFEMORAL 
+//     AnyMechObjectExcluder Excluder_Jnt_PatellaFemoral = 
+//     {
+//       Objects = 
+//       {
+//         &Main.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur.Constraints,
+//         &Main.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur.Constraints.Reaction
+//       };      
+//     };
+//     ExtraDrivers = 
+//     {
+//       AnyKinEqSimpleDriver PatelloFemoral_Lin = 
+//       {
+//         AnyKinLinear lin = 
+//         {
+//           AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
+//           AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode;
+//           Ref = 0;
+//         };
+//         DriverPos = DEF_CUSTOM_JOINT_INIT_OFFSET_PATELLOFEMORAL_LIN;
+//         DriverVel = {0, 0, 0};
+//         Reaction.Type = {Off, Off, Off};
+//         CType  = {ForceDep, ForceDep, ForceDep};
+//       };       
+//       AnyKinEqSimpleDriver PatelloFemoral_Rot = 
+//       {
+//         AnyKinMeasure &Orientation = REF_HUMAN_BODYMODEL.Right.Leg.Jnt.PatellaFemur.Orientation;
+//         MeasureOrganizer = {1, 2};
+//         DriverPos = {0, 0};
+//         DriverVel = {0, 0};
+//         CType  = {ForceDep, ForceDep};
+//         Reaction.Type = {Off, Off};
+//       };//Patellafemur          
+//     };
     Main.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur = 
     {
       Constraints.CType  = {ForceDep, ForceDep, ForceDep, ForceDep, ForceDep};
@@ -103,33 +195,15 @@ AnyBodyStudy Study =
    #endif
   
   #endif
-  
-  //Kinematics.SolverType = KinSolOverDeterminate;
-  //InitialConditions.SolverType = Kinematics.SolverType;    
-  //Kinematics.KinematicTol = 1e-6;
-  //InitialConditions.KinematicTol = Kinematics.KinematicTol;
-  //Kinematics.Relax = 1/4;
-  //InitialConditions.Relax = Kinematics.Relax;    
-  //Kinematics.SmallStepAssumptionOnOff = Off;  
-};
-
-AnyOperationSequence LigamentCalibrationSequence = 
-{
-  AnyOperation& EvaluateLigamentLengths = Main.EvalStudy.UpdateDesign;
-  AnyOperationMacro UpdateValues = 
-  {
-    MacroStr = 
-    {
-      "classoperation Main" + strquote("Update Values")
-    };
-  };  
 };
 
 /**Execute this operation to run the model in the intended operation sequence.  
 It is also possible to run operations seperately, by manual selections in the operation tree*/
-AnyOperationSequence RunApplication = {
-  
+AnyOperationSequence RunApplication = 
+{  
+  #if USE_FDK == 1
   AnyOperation& LigamentCalibrationSequence = .LigamentCalibrationSequence;
+  #endif
   
   /*This operation calibrates the muscles in the model if these are of the type AnyMuscleModel3E.
   This will just be an empty operation if the model is using a muscle type that does not require calibration.*/  

@@ -1,448 +1,543 @@
-MMType  TensorFasciaeLatae1NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.TensorFasciaeLatae;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E TensorFasciaeLatae1NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.TensorFasciaeLatae;
    AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel TensorFasciaeLatae1NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.TensorFasciaeLatae;
+  AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  TensorFasciaeLatae2NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.TensorFasciaeLatae;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E TensorFasciaeLatae2NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.TensorFasciaeLatae;
    AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel TensorFasciaeLatae2NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.TensorFasciaeLatae;
+  AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  BicepsFemorisCaputLongum1NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.BicepsFemorisCaputLongum;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E BicepsFemorisCaputLongum1NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.BicepsFemorisCaputLongum;
    AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 1; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel BicepsFemorisCaputLongum1NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.BicepsFemorisCaputLongum;
+  AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 1; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  BicepsFemorisCaputBreve1NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.BicepsFemorisCaputBreve;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E BicepsFemorisCaputBreve1NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
    AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 3; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel BicepsFemorisCaputBreve1NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
+  AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 3; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  BicepsFemorisCaputBreve2NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.BicepsFemorisCaputBreve;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E BicepsFemorisCaputBreve2NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
    AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 3; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel BicepsFemorisCaputBreve2NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
+  AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 3; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  BicepsFemorisCaputBreve3NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.BicepsFemorisCaputBreve;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E BicepsFemorisCaputBreve3NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
    AnyIntVar MuscleElemNo = 3; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 3; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel BicepsFemorisCaputBreve3NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
+  AnyIntVar MuscleElemNo = 3; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 3; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  RectusFemoris1NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.RectusFemoris;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E RectusFemoris1NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.RectusFemoris;
    AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel RectusFemoris1NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.RectusFemoris;
+  AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  RectusFemoris2NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.RectusFemoris;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E RectusFemoris2NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.RectusFemoris;
    AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel RectusFemoris2NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.RectusFemoris;
+  AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  IliacusMid1NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.IliacusMid;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E IliacusMid1NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.IliacusMid;
    AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
-#if BM_LEG_MORPHOLOGY == 1
    AnyIntVar MuscleElemAmount = 3; ///< The total amount of elements for this muscle
-#endif //BM_LEG_MORPHOLOGY == 1
-#if BM_LEG_MORPHOLOGY == 2
-   AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
-#endif //BM_LEG_MORPHOLOGY == 2
-   F0 = .StrengthScalePelvis*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScalePelvis*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel IliacusMid1NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.IliacusMid;
+  AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  IliacusMid2NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.IliacusMid;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E IliacusMid2NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.IliacusMid;
    AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
-#if BM_LEG_MORPHOLOGY == 1
    AnyIntVar MuscleElemAmount = 3; ///< The total amount of elements for this muscle
-#endif //BM_LEG_MORPHOLOGY == 1
-#if BM_LEG_MORPHOLOGY == 2
-   AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
-#endif //BM_LEG_MORPHOLOGY == 2
-   F0 = .StrengthScalePelvis*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScalePelvis*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel IliacusMid2NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.IliacusMid;
+  AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  IliacusMedialis1NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.IliacusMedialis;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E IliacusMedialis1NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.IliacusMedialis;
    AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
-#if BM_LEG_MORPHOLOGY == 1
    AnyIntVar MuscleElemAmount = 3; ///< The total amount of elements for this muscle
-#endif //BM_LEG_MORPHOLOGY == 1
-#if BM_LEG_MORPHOLOGY == 2
-   AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
-#endif //BM_LEG_MORPHOLOGY == 2
-   F0 = .StrengthScalePelvis*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScalePelvis*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel IliacusMedialis1NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.IliacusMedialis;
+  AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  IliacusMedialis2NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.IliacusMedialis;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E IliacusMedialis2NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.IliacusMedialis;
    AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
-#if BM_LEG_MORPHOLOGY == 1
    AnyIntVar MuscleElemAmount = 3; ///< The total amount of elements for this muscle
-#endif //BM_LEG_MORPHOLOGY == 1
-#if BM_LEG_MORPHOLOGY == 2
-   AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
-#endif //BM_LEG_MORPHOLOGY == 2
-   F0 = .StrengthScalePelvis*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScalePelvis*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel IliacusMedialis2NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.IliacusMedialis;
+  AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 2; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
 
-MMType  Pectineus1NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.Pectineus;
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E Pectineus1NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.Pectineus;
    AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 4; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel Pectineus1NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 4; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
-MMType  Pectineus2NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.Pectineus;
+
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E Pectineus2NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.Pectineus;
    AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 4; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel Pectineus2NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 4; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
-MMType  Pectineus3NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.Pectineus;
+
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E Pectineus3NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.Pectineus;
    AnyIntVar MuscleElemNo = 3; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 4; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel Pectineus3NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyIntVar MuscleElemNo = 3; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 4; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};
-MMType  Pectineus4NewPar = {
-   AnyFolder &MuscleParameters = .CadaverMusPar.Pectineus;
+
+#if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+ AnyMuscleModel3E Pectineus4NewPar =
+ {
+   AnyFolder& MuscleParameters = .SubjectMusPar.Pectineus;
    AnyIntVar MuscleElemNo = 4; ///< The number of this element of the muscle
    AnyIntVar MuscleElemAmount = 4; ///< The total amount of elements for this muscle
-   F0 = .StrengthScaleThigh*.PCSAfactor*PCSA; // Maximum force output at optimum fiber length
-#if MuscleModelType == "AnyMuscleModel"
-#if PENNATIONANGLE_CORRECTION  == 0
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length, i.e., without pennation angle correction
+   F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
+   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
+   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
+   Lt0 = max({MuscleParameters.TotalTendonLength, 0.001}); ///< Tendon slack length (Cannot be zero)
+   Gamma0 = MuscleParameters.Pennationangle*(pi/180); ///< Pennation angle in radian
+   Epsilon0 = MuscleParameters.Epsilon0; ///< Tendon strain at F0
+   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
+   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
+   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
+   Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
+   Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
+   PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+ };
 #else
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength)*cos(pi/180*MuscleParameters.Pennationangle);///< PCSA is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
-#endif // End of pennation angle correction
-#endif // End of simple muscle model parameters
-#if MuscleModelType == "AnyMuscleModel3E"
-   AnyVar PCSA = MuscleParameters.VolumeMuscleBelly/(MuscleElemAmount*MuscleParameters.OptimalFiberlength);///< PCSA is calculated as muscle volume divided between muscle branches and divided by fiber length
-   Lfbar = .FiberLengthScaleThigh*(MuscleParameters.OptimalFiberlength/100); // Optimum fiber length
-   Lt0 = iffun(eqfun(MuscleParameters.TotalTendonLength/100,0), 0.001, MuscleParameters.TotalTendonLength/100); // Tendon slack length (Cannot be zero)
-   Gammabar = MuscleParameters.Pennationangle*(pi/180); // Pennation angle in radian
-   Epsilonbar = MuscleParameters.EpsilonBar; // Tendon strain at F0
-   K1 = MuscleParameters.K1; // Factor for determining shortening speed at optimum length
-   K2 = MuscleParameters.K2; // Factor for determining shortening speed at optimum length
-   Fcfast = MuscleParameters.Fcfast; // Factor for determining shortening speed at optimum length
-   Jt = .Jt; // Shape parameter for the tendon stiffness
-   Jpe = .Jpe; // Shape parameter for the parallel stiffness
-   PEFactor = .PEFactor; // Parameter for influence of parallel stiffness
+ AnyMuscleModel Pectineus4NewPar =
+ {
+  AnyFolder &MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyIntVar MuscleElemNo = 4; ///< The number of this element of the muscle
+  AnyIntVar MuscleElemAmount = 4; ///< The total amount of elements for this muscle
+  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  Lf0 = MuscleParameters.OptimalFiberlength
+        * cos(pi/180*MuscleParameters.Pennationangle);
+  Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
+  AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm^2) is calculated as muscle volume divided between muscle branches, divided by fiber length and corrected for the pennation angle not used in the simple muscle model
+ };
 #endif
-};

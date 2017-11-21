@@ -43,10 +43,12 @@ Main =
   {
     #if DRAW_SOURCE == 1
     AnyFile Source = "..\[Input]\STL\Bone\Source\TLEM2_Tibia.stl";
+    AnyFile Source2 = "..\[Input]\STL\Bone\Source\TLEM2_Fibula.stl";
     #endif
     
     #if DRAW_TARGET == 1
     AnyFile Target = "..\[Input]\STL\Bone\Target\GCK4_merged tibia.stl";
+    AnyFile Target2 = "..\[Input]\STL\Bone\Target\GCK4_Fibula.stl";
     #endif
   };
   
@@ -81,7 +83,8 @@ Main =
       PreTransforms = {&.AffineTransform};
       RBFDef = 
       {
-        Type = RBF_ThinPlate;
+        //Type = RBF_ThinPlate;
+        Type = RBF_Triharmonic;
         Param = 1;
       };
       Points0 = .AffineTransform.Points0;
@@ -101,7 +104,8 @@ Main =
       PreTransforms = {&.RBFTransform};
       RBFDef = 
       {
-        Type = RBF_ThinPlate;
+        //Type = RBF_ThinPlate;
+        Type = RBF_Triharmonic;
         //Type = RBF_MultiQuadratic ;
       };
       AnyFixedRefFrame Input = 
@@ -111,16 +115,27 @@ Main =
           FileName = ....Surfaces.Source;
           ScaleXYZ = {1, 1, 1};
         };
+        AnySurfSTL SourceSurf2 = 
+        {
+          FileName = "..\[Input]\STL\Bone\Source\TLEM2_Fibula.stl";
+          ScaleXYZ = {1, 1, 1};
+        };        
         AnySurfSTL TargetSurf = 
         {
           FileName = ....Surfaces.Target;
           ScaleXYZ = {1, 1, 1};
         };
+        AnySurfSTL TargetSurf2 = 
+        {
+          FileName = "..\[Input]\STL\Bone\Target\GCK4_Fibula.stl";
+          ScaleXYZ = {1, 1, 1};
+        };        
       };
       
-      SurfaceObjects0 = {&Input.SourceSurf};
-      SurfaceObjects1 = {&Input.TargetSurf};
-  
+      SurfaceObjects0 = {&Input.SourceSurf, &Input.SourceSurf2};
+      SurfaceObjects1 = {&Input.TargetSurf, &Input.TargetSurf2};
+      
+      //NumPoints = 3500 ;
       NumPoints = 3500 ;
       BoundingBox.ScaleXYZ = 1*{1, 1, 1};
       BoundingBox.DivisionFactorXYZ = {1, 1, 1};
@@ -134,6 +149,12 @@ Main =
       AnyDrawSurf DrwSTL = 
       {
         FileName = ...Surfaces.Source;
+        RGB = {0, 1, 0};
+        Opacity = 1;
+      };
+      AnyDrawSurf DrwSTL2 = 
+      {
+        FileName = ...Surfaces.Source2;
         RGB = {0, 1, 0};
         Opacity = 1;
       };      
@@ -174,6 +195,12 @@ Main =
         RGB = {0, 1, 1};
         Opacity = 0.5;
       };
+      AnyDrawSTL DrwSTL2 = 
+      {
+        FileName = ...Surfaces.Target2;
+        RGB = {0, 1, 1};
+        Opacity = 0.5;
+      };      
       CreateNodeRed(Main.Landmarks.Target.Points, 0)
       CreateNodeRed(Main.Landmarks.Target.Points, 1)
       CreateNodeRed(Main.Landmarks.Target.Points, 2)
@@ -214,7 +241,17 @@ Main =
         //AnyFunTransform3D& ref = ..AffineTransform ;
         //AnyFunTransform3D& ref = ..RBFTransform ;
         AnyFunTransform3D& ref = ..STLTransform ;
-      };     
+      };
+      
+      AnyDrawSurf DrwSTL2 = 
+      {
+        FileName = ...Surfaces.Source2;
+        RGB = {1, 0, 1};
+        Opacity = 0.5;
+        //AnyFunTransform3D& ref = ..AffineTransform ;
+        //AnyFunTransform3D& ref = ..RBFTransform ;
+        AnyFunTransform3D& ref = ..STLTransform ;
+      };      
     };    
     #endif    
   };

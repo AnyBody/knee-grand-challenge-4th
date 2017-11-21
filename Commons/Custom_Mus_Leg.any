@@ -124,7 +124,7 @@ AnyShortestPathMuscle IliacusMid2New =
 {
   AnyMuscleModel& MusMdl = ..MusPar.IliacusMid2NewPar;
   AnyRefFrame& Org = .IliacusMid2.Org;
-  AnyRefFrame& Via1 = .IliacusMid1.Via1;
+  AnyRefFrame& Via1 = .IliacusMid2.Via1;
   AnyRefFrame& Ins = .IliacusMid2.Ins;
   AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
   SPLine = 

@@ -8,16 +8,7 @@
     };
     MusPar = 
     {
-      #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
-        #define MuscleModelType "AnyMuscleModel3E"
-        #define MMType AnyMuscleModel3E
-      #else
-        #define MuscleModelType "AnyMuscleModel"
-        #define MMType AnyMuscleModel 
-      #endif
       #include "Custom_Mus_Leg_MusPar.any"
-      #undef MuscleModelType
-      #undef MMType
     };
     Mus = 
     {
@@ -39,16 +30,7 @@
     };
     MusPar = 
     {
-      #if BM_LEG_MUSCLES_LEFT == _MUSCLES_3E_HILL_
-        #define MuscleModelType "AnyMuscleModel3E"
-        #define MMType AnyMuscleModel3E
-      #else
-        #define MuscleModelType "AnyMuscleModel"
-        #define MMType AnyMuscleModel 
-      #endif
       #include "Custom_Mus_Leg_MusPar.any"
-      #undef MuscleModelType
-      #undef MMType
     };  
     Mus = 
     {

@@ -1,5 +1,5 @@
 #ifndef ADL_SQUAT_TIME_PERIOD
-#define ADL_SQUAT_TIME_PERIOD 5.0
+#define ADL_SQUAT_TIME_PERIOD 3.0
 #endif
 
 #ifndef ADL_SQUAT_FRAMES_PER_SECOND
@@ -8,7 +8,7 @@
 
 #ifndef ADL_SQUAT_ANGLE_KNEE_FLEXION_MIN
 //#define ADL_SQUAT_ANGLE_KNEE_FLEXION_MIN 15
-#define ADL_SQUAT_ANGLE_KNEE_FLEXION_MIN 0
+#define ADL_SQUAT_ANGLE_KNEE_FLEXION_MIN 50
 #endif
 
 #ifndef ADL_SQUAT_ANGLE_KNEE_FLEXION_MAX
@@ -38,9 +38,9 @@
 
 AnyFolder Parameters = 
 {
-  AnyVector T_base = iarr(-100*2, 1, 100*2)/(100*2) ;
-  AnyVector T = T_base * Main.Study.tEnd * 2;
-  AnyVector Angle_Vector = T_base * (2*pi) * 2 ;
+  AnyVector T_base = iarr(-100, 1, 100)/(100) ;
+  AnyVector T = T_base * Main.Study.tEnd;
+  AnyVector Angle_Vector = T_base * (2*pi) ;
   AnyMatrix FlexFunction = ({-cos(Angle_Vector)}+1.0)*0.5;     
   
   AnyVar GroundSupportBaseLimitLow = -0.1;

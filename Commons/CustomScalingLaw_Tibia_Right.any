@@ -52,8 +52,15 @@ AnyFolder MyScalingLaw =
   {
     AnyString Source_Path = PATH_SOURCE_TIBIA_STL ;
     AnyString Target_Path = PATH_TARGET_TIBIA_PREOP_STL;
+    
+    AnyString Source2_Path = PATH_SOURCE_FIBULA_STL ;
+    AnyString Target2_Path = PATH_TARGET_FIBULA_STL;
+    
     AnyFile Source = Source_Path;
     AnyFile Target = Target_Path;    
+    
+    AnyFile Source2 = Source2_Path;
+    AnyFile Target2 = Target2_Path;
   };  
   
   AnyFunTransform3DLin2 AffineTransform = 
@@ -77,7 +84,8 @@ AnyFolder MyScalingLaw =
     PreTransforms = {&.AffineTransform};
     RBFDef = 
     {
-      Type = RBF_ThinPlate;
+      //Type = RBF_ThinPlate;
+      Type = RBF_Triharmonic;
       Param = 1;
     };
     Points0 = .AffineTransform.Points0;
@@ -97,7 +105,8 @@ AnyFolder MyScalingLaw =
   AnyFunTransform3DSTL STLTransform = 
   {
     PreTransforms = {&.RBFTransform};
-    RBFDef.Type = RBF_ThinPlate;
+    //RBFDef.Type = RBF_ThinPlate;
+    RBFDef.Type = RBF_Triharmonic;
     AnyFixedRefFrame Input = 
     {
       AnySurfSTL SourceSurf = 
@@ -106,15 +115,26 @@ AnyFolder MyScalingLaw =
         ScaleXYZ = {1, 1, 1};
         AnyFunTransform3D& Transform = ....TSeg2ScaleFrame;
       };
+      AnySurfSTL Source2Surf = 
+      {
+        FileName = ...Surfaces.Source2;
+        ScaleXYZ = {1, 1, 1};
+        AnyFunTransform3D& Transform = ....TSeg2ScaleFrame;
+      };      
       AnySurfSTL TargetSurf = 
       {
         FileName = ...Surfaces.Target;
         ScaleXYZ = {1, 1, 1};
       };
+      AnySurfSTL Target2Surf = 
+      {
+        FileName = ...Surfaces.Target2;
+        ScaleXYZ = {1, 1, 1};
+      };      
     };
     
-    SurfaceObjects0 = {&Input.SourceSurf};
-    SurfaceObjects1 = {&Input.TargetSurf};
+    SurfaceObjects0 = {&Input.SourceSurf, &Input.Source2Surf};
+    SurfaceObjects1 = {&Input.TargetSurf, &Input.Target2Surf};
 
     NumPoints = 3500;
     BoundingBox.ScaleXYZ = 2*{1, 1, 1};
