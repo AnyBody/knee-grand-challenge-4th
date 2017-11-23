@@ -84,6 +84,9 @@ AnyBodyStudy InitStudy =
     };    
   };
   
+  InitialConditions.SmallStepAssumptionOnOff = Off;
+  Kinematics.SmallStepAssumptionOnOff = Off;
+  
   Gravity = {0, -9.81, 0};
   tStart = 0.0 ;
   tEnd = 1.0 ;

@@ -1,0 +1,29 @@
+Results =
+{
+  AnyFolder Contact = 
+  {
+    AnyVar F_lateral_calculated = ..BodyModel.Right.Leg.Measures.Forces.TibioFemoral.Contact_Lateral_Inferior;
+    AnyVar F_medial_calculated = ..BodyModel.Right.Leg.Measures.Forces.TibioFemoral.Contact_Medial_Inferior;
+    AnyVar F_sum_calculated = F_lateral_calculated + F_medial_calculated ;
+    
+    AnyVar F_lateral_measured = ..eKneeData.Fun_F_lateral(..t)[0] ;
+    AnyVar F_medial_measured = ..eKneeData.Fun_F_medial(..t)[0] ;
+    AnyVar F_sum_measured = F_lateral_measured + F_medial_measured ;
+    
+    AnyOutputFile OutputFile = 
+    {
+      FileName = Main.TrialSpecificData.StrOutputFolderPath + "Results_Contact.csv";
+      Values = ObjSearch(".F_*");
+      Header = 
+      {
+        TitleSectionOnOff = Off;
+        ConstSectionOnOff = Off;
+        ConstSectionSaveOptionsOnOff = Off;
+        VarSectionOnOff = Off;
+        ColumnNamesOnOff = On;
+        ShortenNamesOnOff = On;
+      };
+    };
+    
+  };//Contact
+};

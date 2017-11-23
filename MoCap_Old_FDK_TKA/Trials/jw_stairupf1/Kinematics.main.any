@@ -1,0 +1,15 @@
+#path PATH_TRIALFOLDER ".\"
+#path PATH_TRIALSPEICIFICDATA "TrialSpecificData.any"
+#path PATH_MARKERS_TLEMv2 "Markers_TLEMv2.any"
+#path PATH_MARKERS_TLEMv1 "Markers.any"
+#path PATH_FORCEPLATES "ForcePlates.any"
+
+#ifndef MotionAndParameterOptimizationModel
+#define MotionAndParameterOptimizationModel 1
+#endif
+
+#ifndef InverseDynamicModel
+#define InverseDynamicModel 0
+#endif
+
+#include "..\..\MoCap_FullBody.main.any"

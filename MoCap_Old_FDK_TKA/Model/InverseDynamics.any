@@ -1,25 +1,3 @@
-//** Creates the RunApplication **//
-//Main = { 
-//  AnyOperationMacro InverseDynamicAnalysisSequence =
-//  {
-//    MacroStr =
-//    ({
-//      "classoperation Main.Studies.LoadParametersOptimizationResults" + " " + strquote("Load design") + " --file=" + strformat("\x22") + "../Input/" + OutputFileNamePrefix + Main.ModelSetup.C3DFileData.NameOfFile +"-"+"OptimizedParameters.txt" + strformat("\x22"), 
-//      "classoperation Main" + strformat("\x22")+ "Update Values" + strformat("\x22"),
-//      "operation Main.Studies.InverseDynamicStudy.InitialConditions",
-//      "run",
-//      "operation Main.Studies.HumanModel.Calibration.CalibrationSequence",
-//      "run",
-//      "operation Main.Studies.InverseDynamicStudy.InverseDynamics",
-//      "run"
-//      #if AutoSaveOption
-//      ,
-//      "classoperation Main.Studies.InverseDynamicStudy.Output" + strquote("Save data") + " --file="+ "../Output/" + OutputFileNamePrefix + Main.ModelSetup.C3DFileData.NameOfFile + ".anydata.h5 " + "--type=Deep"
-//      #endif      
-//    });
-//  };
-//};
-
 #ifndef BM_SCALING
   #define BM_SCALING _SCALING_LENGTHMASSFAT_
 #endif
@@ -65,11 +43,11 @@ AnyBodyStudy InverseDynamicStudy =
 {
   AnyFolder &C3DData=..ModelSetup.C3DFileData ;
   AnyFolder &BodyModel=.HumanModel.BodyModel;
-  AnyFolder& Mannequin = .HumanModel.Mannequin;
-  
+  AnyFolder &Mannequin = .HumanModel.Mannequin;
   AnyFolder &EnvironmentModel = Main.EnvironmentModel;
-  AnyFolder ModelEnvironmentConnection = {
-  #include "JointsAndDriversOptimized.any"    //**// Usually no need to make changes      
+  AnyFolder ModelEnvironmentConnection = 
+  {
+    #include "JointsAndDriversOptimized.any"    //**// Usually no need to make changes      
   };
   
   Gravity = Main.TrialSpecificData.Gravity;

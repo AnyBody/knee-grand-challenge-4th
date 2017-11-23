@@ -1,7 +1,7 @@
 AnyFolder JointAngleOutputs = {
  
   AnyOutputFile OutputFile1 = {
-    FileName = "../Input/"+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-trunk.txt";
+    FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-trunk.txt";
     SepSign = " ";
     
     AnyVector PelvisPosX = ..BodyModel.Interface.Trunk.PelvisPosX.Pos;
@@ -21,7 +21,7 @@ AnyFolder JointAngleOutputs = {
  
   #if BM_LEG_LEFT & (BM_LEG_MODEL == _LEG_MODEL_TLEM_ | BM_LEG_MODEL == _LEG_MODEL_TLEM2_)
   AnyOutputFile OutputFile2 = {
-    FileName = "../Input/"+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-leftlegtd.txt";
+    FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-leftlegtd.txt";
     SepSign = " ";
     
     AnyVector HipFlexion = ..BodyModel.Interface.Left.HipFlexion.Pos;
@@ -37,7 +37,7 @@ AnyFolder JointAngleOutputs = {
   
   #if BM_LEG_RIGHT & (BM_LEG_MODEL == _LEG_MODEL_TLEM_ | BM_LEG_MODEL == _LEG_MODEL_TLEM2_)
   AnyOutputFile OutputFile3 = {
-    FileName = "../Input/"+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightlegtd.txt";
+    FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightlegtd.txt";
     SepSign = " ";
     
     AnyVector HipFlexion = ..BodyModel.Interface.Right.HipFlexion.Pos;
@@ -67,7 +67,7 @@ AnyFolder JointAngleOutputs = {
   
   #if BM_LEG_LEFT & (BM_LEG_MODEL == _LEG_MODEL_Leg_)
   AnyOutputFile OutputFile4 = {
-    FileName = "../Input/"+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-leftleg.txt";
+    FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-leftleg.txt";
     SepSign = " ";
     
     AnyVector HipFlexion = ..BodyModel.Interface.Left.HipFlexion.Pos;
@@ -84,7 +84,7 @@ AnyFolder JointAngleOutputs = {
   
   #if BM_LEG_RIGHT & (BM_LEG_MODEL == _LEG_MODEL_Leg_)
   AnyOutputFile OutputFile5 = {
-    FileName = "../Input/"+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightleg.txt";
+    FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightleg.txt";
     SepSign = " ";
     
     AnyVector HipFlexion = ..BodyModel.Interface.Right.HipFlexion.Pos;
@@ -101,7 +101,7 @@ AnyFolder JointAngleOutputs = {
   
   #if BM_ARM_LEFT == ON
   AnyOutputFile OutputFile6 = {
-    FileName = "../Input/"+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-leftarm.txt";
+    FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-leftarm.txt";
     SepSign = " ";
    
     AnyVector SternoClavicularProtraction=..BodyModel.Interface.Left.SternoClavicularProtraction.Pos;
@@ -121,7 +121,7 @@ AnyFolder JointAngleOutputs = {
     
   #if BM_ARM_RIGHT == ON
   AnyOutputFile OutputFile7 = {
-    FileName = "../Input/"+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightarm.txt";
+    FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightarm.txt";
     SepSign = " ";
     
     AnyVector SternoClavicularProtraction=..BodyModel.Interface.Right.SternoClavicularProtraction.Pos;

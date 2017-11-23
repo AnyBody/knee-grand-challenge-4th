@@ -7,14 +7,14 @@ Main =
     AnyBodyStudy InitStudy = 
     {
       AnyFolder& Parameters = ..SubjectSpecificData.Ligaments ;
+      AnyFolder& Ligaments = .HumanModel.BodyModel.Right.Leg.Ligaments;
       
       AnyFolder& Thigh   = .HumanModel.BodyModel.Right.Leg.Seg.Thigh;
       AnyFolder& Shank   = .HumanModel.BodyModel.Right.Leg.Seg.Shank;
       AnyFolder& Patella = .HumanModel.BodyModel.Right.Leg.Seg.Patella;
-      AnyFolder& PatellaFemur = .HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur;
-      AnyFolder& KinematicMeasures = .HumanModel.BodyModel.Right.Leg.Jnt.KinematicMeasures;
-      AnyFolder& PatellaMovement = .HumanModel.BodyModel.Right.Leg.Jnt.PatellaMovement;
-      AnyFolder& Ligaments = .HumanModel.BodyModel.Right.Leg.Ligaments;
+      //AnyFolder& PatellaFemur = .HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur;
+      //AnyFolder& KinematicMeasures = .HumanModel.BodyModel.Right.Leg.Jnt.KinematicMeasures;
+      //AnyFolder& PatellaMovement = .HumanModel.BodyModel.Right.Leg.Jnt.PatellaMovement;
       
       AnyFolder Drivers_Init = 
       {
@@ -48,25 +48,75 @@ Main =
           DriverVel = pi/180*{0, 0, 0};
           Reaction.Type = {Off, Off, Off};
         };//Thigh_Right_Lin        
-        
-        AnyKinEqSimpleDriver KneeJoint_Right = 
+
+        AnyKinEqSimpleDriver TibioFemoral_Lin = 
         {
           AnyKinLinear lin = 
           {
-            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.KneeJoint;
-            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.KneeJoint;
+            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
+            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode;
             Ref = 0;
           };
+          DriverPos = DEF_CUSTOM_JOINT_INIT_OFFSET_TIBIOFEMORAL_LIN;
+          DriverVel = {0, 0, 0};
+          Reaction.Type = {Off, Off, Off};
+        };
+        AnyKinEqSimpleDriver TibioFemoral_Rot = 
+        {
           AnyKinRotational rot = 
           {
-            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.KneeJoint;
-            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.KneeJoint;
+            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
+            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode;
             Type = PlanarAngles;
           };
-          DriverPos = {0, -DEF_CUSTOM_KNEE_JOINT_CONTACT_INIT_OFFSET, 0, 0, 0, 0};
-          DriverVel = {0, 0, 0, 0, 0, 0};
-          Reaction.Type = {Off, Off, Off, Off, Off, Off};
-        }; //KneeJoint_Right 
+          DriverPos = DEF_CUSTOM_JOINT_INIT_OFFSET_TIBIOFEMORAL_ROT;
+          DriverVel = {0, 0, 0};
+          Reaction.Type = {Off, Off, Off};      
+        };
+        
+        AnyKinEqSimpleDriver PatelloFemoral_Lin = 
+        {
+          AnyKinLinear lin = 
+          {
+            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
+            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode;
+            Ref = 0;
+          };
+          DriverPos = DEF_CUSTOM_JOINT_INIT_OFFSET_PATELLOFEMORAL_LIN;
+          DriverVel = {0, 0, 0};
+          Reaction.Type = {Off, Off, Off};
+        };
+        AnyKinEqSimpleDriver PatelloFemoral_Rot = 
+        {
+          AnyKinRotational rot = 
+          {
+            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
+            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode;
+            Type = PlanarAngles;
+          };
+          DriverPos = DEF_CUSTOM_JOINT_INIT_OFFSET_PATELLOFEMORAL_ROT;
+          DriverVel = {0, 0, 0};
+          Reaction.Type = {Off, Off, Off};      
+        };          
+        
+//        AnyKinEqSimpleDriver KneeJoint_Right = 
+//        {
+//          AnyKinLinear lin = 
+//          {
+//            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.KneeJoint;
+//            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.KneeJoint;
+//            Ref = 0;
+//          };
+//          AnyKinRotational rot = 
+//          {
+//            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.KneeJoint;
+//            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.KneeJoint;
+//            Type = PlanarAngles;
+//          };
+//          DriverPos = {0, -DEF_CUSTOM_KNEE_JOINT_CONTACT_INIT_OFFSET, 0, 0, 0, 0};
+//          DriverVel = {0, 0, 0, 0, 0, 0};
+//          Reaction.Type = {Off, Off, Off, Off, Off, Off};
+//        }; //KneeJoint_Right 
       };      
       
       Gravity = Main.TrialSpecificData.Gravity;
@@ -90,7 +140,7 @@ Main =
       {
         MacroStr = 
         ({
-          "classoperation Main.Studies.LoadParametersOptimizationResults" + " " + strquote("Load design") + " --file=" + strformat("\x22") + "../Input/" + OutputFileNamePrefix + Main.ModelSetup.C3DFileData.NameOfFile +"-"+"OptimizedParameters.txt" + strformat("\x22"), 
+          "classoperation Main.Studies.LoadParametersOptimizationResults" + " " + strquote("Load design") + " --file=" + strformat("\x22") + Main.TrialSpecificData.StrTrialFolderPath + OutputFileNamePrefix + Main.ModelSetup.C3DFileData.NameOfFile +"-"+"OptimizedParameters.txt" + strformat("\x22"), 
           "classoperation Main" + strformat("\x22")+ "Update Values" + strformat("\x22")        
         });
       };
@@ -109,6 +159,15 @@ Main =
       InverseDynamics.Criterion.UpperBoundOnOff=Off;
       InverseDynamics.Criterion.Power = DEF_MUSCLE_RECRUITMENT_CRITERION_POWER;
       InverseDynamics.Criterion.PrimaryTerm.Weight_SearchName = "WeightFactor";      
+      
+      InverseDynamics.ForceDepKinOnOff=On;
+      InverseDynamics.ForceDepKin.SolverType = FDK_SolverType ;
+      InverseDynamics.ForceDepKin.ForceTol = FDK_ForceTol ;
+      InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff = FDK_UseAdaptiveForceTolOnOff ;
+      InverseDynamics.ForceDepKin.Perturbation = FDK_Perturbation;
+      InverseDynamics.ForceDepKin.MaxIteration = FDK_MaxIteration;
+      InverseDynamics.ForceDepKin.MaxNewtonStep = FDK_MaxNewtonStep;       
+      InverseDynamics.ForceDepKin.LocalSearchOnOff = FDK_LocalSearchOnOff;
       
       #if (BM_LEG_MUSCLES_RIGHT != OFF) & (BM_LEG_MUSCLES_LEFT != OFF)
       AnyObjectPtr pArrExcludedMuscles = arrcat
@@ -138,14 +197,11 @@ Main =
       };
       #endif      
       
-      InverseDynamics.ForceDepKinOnOff=On;
-      InverseDynamics.ForceDepKin.SolverType = FDK_SolverType ;
-      InverseDynamics.ForceDepKin.ForceTol = FDK_ForceTol ;
-      InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff = FDK_UseAdaptiveForceTolOnOff ;
-      InverseDynamics.ForceDepKin.Perturbation = FDK_Perturbation;
-      InverseDynamics.ForceDepKin.MaxIteration = FDK_MaxIteration;
-      InverseDynamics.ForceDepKin.MaxNewtonStep = FDK_MaxNewtonStep;       
-      InverseDynamics.ForceDepKin.LocalSearchOnOff = FDK_LocalSearchOnOff;     
+      AnyFolder Results = {};
+      #ifdef PATH_eKneeData
+        AnyFolder& eKneeData = Main.TrialSpecificData.eKneeData;
+        #include "Results_Contact.any"
+      #endif      
     };
     #endif
     
@@ -162,7 +218,7 @@ Main =
     {
       MacroStr=
       { 
-        "classoperation Main.Studies.InverseDynamicStudy.Output" + strquote("Save data") + " --file="+ "../Output/" + OutputFileNamePrefix + Main.ModelSetup.C3DFileData.NameOfFile + ".anydata.h5 " + "--type=Deep"
+        "classoperation Main.Studies.InverseDynamicStudy.Output" + strquote("Save data") + " --file="+ Main.TrialSpecificData.StrOutputFolderPath + OutputFileNamePrefix + Main.ModelSetup.C3DFileData.NameOfFile + ".anydata.h5 " + "--type=Deep"
       };
     };
     #endif      
@@ -172,7 +228,7 @@ Main =
   {
     MacroStr =
     ({
-      "classoperation Main.Studies.LoadParametersOptimizationResults" + " " + strquote("Load design") + " --file=" + strformat("\x22") + "../Input/" + OutputFileNamePrefix + Main.ModelSetup.C3DFileData.NameOfFile +"-"+"OptimizedParameters.txt" + strformat("\x22"), 
+      "classoperation Main.Studies.LoadParametersOptimizationResults" + " " + strquote("Load design") + " --file=" + strformat("\x22") + Main.TrialSpecificData.StrTrialFolderPath + OutputFileNamePrefix + Main.ModelSetup.C3DFileData.NameOfFile +"-"+"OptimizedParameters.txt" + strformat("\x22"), 
       "classoperation Main" + strformat("\x22")+ "Update Values" + strformat("\x22"),
       "operation Main.Studies.InverseDynamicStudy.InitialConditions",
       "run",
@@ -182,7 +238,7 @@ Main =
       "run"
       #if AutoSaveOption
       ,
-      "classoperation Main.Studies.InverseDynamicStudy.Output" + strquote("Save data") + " --file="+ "../Output/" + OutputFileNamePrefix + Main.ModelSetup.C3DFileData.NameOfFile + ".anydata.h5 " + "--type=Deep"
+      "classoperation Main.Studies.InverseDynamicStudy.Output" + strquote("Save data") + " --file="+ Main.TrialSpecificData.StrOutputFolderPath + OutputFileNamePrefix + Main.ModelSetup.C3DFileData.NameOfFile + ".anydata.h5 " + "--type=Deep"
       #endif      
     });
   };

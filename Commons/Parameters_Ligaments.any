@@ -1,3 +1,5 @@
+#include "Parameters_Ligaments_Default.any"
+
 AnyFolder& RefSegFolder = REF_HUMAN_BODYMODEL.Right.Leg.Seg;
 
 AnyFolder Ligaments = 
@@ -11,20 +13,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "PFL") ;
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Fibula_Picked_Points, "PFL") ;
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "PFL")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "PFL")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);    
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-    AnyVar Stiffness = DesignVar(2000);
-    AnyVar RefStrain = DesignVar(0.06);
+    AnyVar Stiffness = DesignVar(k_PFL);
+    AnyVar RefStrain = DesignVar(er_PFL);
     
     AnyFloat InitWrapPosVectors = 0.015*{ {0, 0, -1}, {0, 0, -1} };   
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Lateral ;    
@@ -40,22 +39,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
         
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "aALS");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "aALS");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "aALS")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "aALS")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(1000);
-//    AnyVar RefStrain = DesignVar(0.056);    
-    AnyVar Stiffness = DesignVar(1000);
-    AnyVar RefStrain = DesignVar(0.01);  
+    AnyVar Stiffness = DesignVar(k_aALS);
+    AnyVar RefStrain = DesignVar(er_aALS);  
     
     AnyFloat InitWrapPosVectors = 0.015*{ {0, 0, -1}, {0, 0, -1} };   
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Lateral ;
@@ -71,22 +65,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "pALS");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "pALS");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "pALS")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "pALS")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
 
-//    AnyVar Stiffness = DesignVar(1000);
-//    AnyVar RefStrain = DesignVar(0.056);
-    AnyVar Stiffness = DesignVar(1000);
-    AnyVar RefStrain = DesignVar(0.01);
+    AnyVar Stiffness = DesignVar(k_pALS);
+    AnyVar RefStrain = DesignVar(er_pALS);
     
     AnyFloat InitWrapPosVectors = 0.015*{ {0, 0, -1}, {0, 0, -1} };   
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Lateral ;
@@ -102,22 +91,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "aLCL");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Fibula_Picked_Points, "aLCL");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "aLCL")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "aLCL")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(2000);
-//    AnyVar RefStrain = DesignVar(0.06);
-    AnyVar Stiffness = DesignVar(2000);
-    AnyVar RefStrain = DesignVar(0.03); 
+    AnyVar Stiffness = DesignVar(k_aLCL);
+    AnyVar RefStrain = DesignVar(er_aLCL); 
   };  
   
   // LCL: lateral collateral ligament
@@ -129,22 +113,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "pLCL");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Fibula_Picked_Points, "pLCL");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "pLCL")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "pLCL")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(2000);
-//    AnyVar RefStrain = DesignVar(0.06);
-    AnyVar Stiffness = DesignVar(2000);
-    AnyVar RefStrain = DesignVar(0.03);
+    AnyVar Stiffness = DesignVar(k_pLCL);
+    AnyVar RefStrain = DesignVar(er_pLCL);
   };     
      
   // aMCL: anterior bundle of medial collateral ligament
@@ -156,22 +135,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "aMCL");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "aMCL");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "aMCL")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "aMCL")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(2500);
-//    AnyVar RefStrain = DesignVar(-0.017);  
-    AnyVar Stiffness = DesignVar(2750);
-    AnyVar RefStrain = DesignVar(0.04);  
+    AnyVar Stiffness = DesignVar(k_aMCL);
+    AnyVar RefStrain = DesignVar(er_aMCL);  
     
     AnyFloat InitWrapPosVectors = 0.05*{ {0, 0, 1}, {0, 0, 1} };
     AnyParamSurf& RefSurf0 = RefSeg1.PatientRefNode.Surf_Wrapping_Cylinder_Medial ;     
@@ -186,24 +160,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "cMCL");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "cMCL");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "cMCL")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "cMCL")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(3000);
-//    AnyVar RefStrain = DesignVar(0.044);
-    AnyVar Stiffness = DesignVar(2750);
-    AnyVar RefStrain = DesignVar(0.04);   
-//    AnyVar Stiffness = DesignVar(2500);
-//    AnyVar RefStrain = DesignVar(-0.01);  
+    AnyVar Stiffness = DesignVar(k_cMCL);
+    AnyVar RefStrain = DesignVar(er_cMCL);   
     
     AnyFloat InitWrapPosVectors = 0.05*{ {0, 0, 1}, {0, 0, 1} };
     AnyParamSurf& RefSurf0 = RefSeg1.PatientRefNode.Surf_Wrapping_Cylinder_Medial ;     
@@ -218,8 +185,6 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "pMCL");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "pMCL");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "pMCL")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "pMCL")];    
     
@@ -230,10 +195,8 @@ AnyFolder Ligaments =
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(2500);
-//    AnyVar RefStrain = DesignVar(0.049);    
-    AnyVar Stiffness = DesignVar(2750);
-    AnyVar RefStrain = DesignVar(0.05); 
+    AnyVar Stiffness = DesignVar(k_pMCL);
+    AnyVar RefStrain = DesignVar(er_pMCL); 
     
     AnyFloat InitWrapPosVectors = 0.05*{ {0, 0, 1}, {0, 0, 1} };
     AnyParamSurf& RefSurf0 = RefSeg1.PatientRefNode.Surf_Wrapping_Cylinder_Medial ;     
@@ -248,22 +211,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "aCM");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "aCM");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "aCM")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "aCM")];        
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(2000);
-//    AnyVar RefStrain = DesignVar(-0.274);
-    AnyVar Stiffness = DesignVar(2000);
-    AnyVar RefStrain = DesignVar(0.01);  
+    AnyVar Stiffness = DesignVar(k_aCM);
+    AnyVar RefStrain = DesignVar(er_aCM);  
   };
   
   // pCM: posterior deep medial collateral ligament
@@ -275,22 +233,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "pCM");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "pCM");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "pCM")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "pCM")];   
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(4500);
-//    AnyVar RefStrain = DesignVar(-0.061);
-    AnyVar Stiffness = DesignVar(2000);
-    AnyVar RefStrain = DesignVar(0.03);   
+    AnyVar Stiffness = DesignVar(k_pCM);
+    AnyVar RefStrain = DesignVar(er_pCM);   
   }; 
   
   // aPCL: anterior bundle of PCL
@@ -302,23 +255,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "aPCL");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "aPCL");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "aPCL")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "aPCL")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
 
-    AnyVar Stiffness = DesignVar(9000);
-    AnyVar RefStrain = DesignVar(-0.1);    
-//    AnyVar Stiffness = 2600;
-//    AnyVar RefStrain = -0.390; 
-    //AnyVar RefStrain = -0.24;
+    AnyVar Stiffness = DesignVar(k_aPCL);
+    AnyVar RefStrain = DesignVar(er_aPCL);    
     
     AnyFloat InitWrapPosVectors = 0.05*{ {0, 1, 0}, {1, 0, 0} };
     AnyParamSurf& RefSurf0 = RefSeg1.PatientRefNode.Surf_Wrapping_Plane_Central_Posterior ;       
@@ -333,23 +280,18 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "pPCL");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "pPCL");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "pPCL")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "pPCL")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
 
-    AnyVar Stiffness = DesignVar(9000);
-    AnyVar RefStrain = DesignVar(-0.03);    
-//    AnyVar Stiffness = 1900;
-//    AnyVar RefStrain = -0.120;
-
+    AnyVar Stiffness = DesignVar(k_pPCL);
+    AnyVar RefStrain = DesignVar(er_pPCL);
+    
     AnyFloat InitWrapPosVectors = 0.05*{ {0, 1, 0}, {1, 0, 0} };
     AnyParamSurf& RefSurf0 = RefSeg1.PatientRefNode.Surf_Wrapping_Plane_Central_Posterior ;  
   };     
@@ -363,22 +305,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "lLcap");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "lLcap");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "lLcap")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "lLcap")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
         
-//    AnyVar Stiffness = DesignVar(2500/2);
-//    AnyVar RefStrain = DesignVar(0.064);
-    AnyVar Stiffness = DesignVar(1000);
-    AnyVar RefStrain = DesignVar(0.07);
+    AnyVar Stiffness = DesignVar(k_lLcap);
+    AnyVar RefStrain = DesignVar(er_lLcap);
     
     AnyFloat InitWrapPosVectors = { 0.02*{0, 1, 0}, 0.01*{0, 1, 0} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Posterior ;
@@ -393,22 +330,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "mLcap");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "mLcap");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "mLcap")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "mLcap")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
         
-//    AnyVar Stiffness = DesignVar(2500/2);
-//    AnyVar RefStrain = DesignVar(0.064);
-    AnyVar Stiffness = DesignVar(1000);
-    AnyVar RefStrain = DesignVar(0.07);
+    AnyVar Stiffness = DesignVar(k_mLcap);
+    AnyVar RefStrain = DesignVar(er_mLcap);
 
     AnyFloat InitWrapPosVectors = { 0.02*{0, 1, 0}, 0.01*{0, 1, 0} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Posterior ;
@@ -423,22 +355,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "lMcap");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "lMcap");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "lMcap")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "lMcap")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(2500/2);
-//    AnyVar RefStrain = DesignVar(0.077);
-    AnyVar Stiffness = DesignVar(1000);
-    AnyVar RefStrain = DesignVar(0.07);
+    AnyVar Stiffness = DesignVar(k_lMcap);
+    AnyVar RefStrain = DesignVar(er_lMcap);
     
     AnyFloat InitWrapPosVectors = { 0.02*{0, 1, 0}, 0.015*{0, 1, 0} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Posterior ;
@@ -453,22 +380,17 @@ AnyFolder Ligaments =
     AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
     AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
     
-//    AnyVec3 PosInFrame0 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Femur_Picked_Points, "mMcap");
-//    AnyVec3 PosInFrame1 = .GetXMLPointCoordsByName(.Str_Target_Ligament_Tibia_Picked_Points, "mMcap");
     AnyVec3 PosInFrame0 = .Attachment_Points.Femur.Points_Original[argfind(.Attachment_Points.Femur.PointNames, "mMcap")];
     AnyVec3 PosInFrame1 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "mMcap")];
     
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(2500/2);
-//    AnyVar RefStrain = DesignVar(0.077);
-    AnyVar Stiffness = DesignVar(1000);
-    AnyVar RefStrain = DesignVar(0.07);
+    AnyVar Stiffness = DesignVar(k_mMcap);
+    AnyVar RefStrain = DesignVar(er_mMcap);
     
     AnyFloat InitWrapPosVectors = { 0.02*{0, 1, 0}, 0.015*{0, 1, 0} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Cylinder_Posterior ;
@@ -489,14 +411,11 @@ AnyFolder Ligaments =
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(500);
-//    AnyVar RefStrain = DesignVar(0.08+0.02);    
-    AnyVar Stiffness = DesignVar(1500);
-    AnyVar RefStrain = DesignVar(0.15);  
+    AnyVar Stiffness = DesignVar(k_sMPFL);
+    AnyVar RefStrain = DesignVar(er_sMPFL);  
     
     AnyFloat InitWrapPosVectors = 0.015*{ {0, 0, 1}, {0, 0, 1} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Ellipsoid_Medial_Anterior ;   
@@ -517,14 +436,11 @@ AnyFolder Ligaments =
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(500);
-//    AnyVar RefStrain = DesignVar(0.08+0.02); 
-    AnyVar Stiffness = DesignVar(1500);
-    AnyVar RefStrain = DesignVar(0.15);  
+    AnyVar Stiffness = DesignVar(k_mMPFL);
+    AnyVar RefStrain = DesignVar(er_mMPFL);  
     
     AnyFloat InitWrapPosVectors = 0.015*{ {0, 0, 1}, {0, 0, 1} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Ellipsoid_Medial_Anterior ;  
@@ -545,14 +461,11 @@ AnyFolder Ligaments =
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
- //   
-//    AnyVar Stiffness = DesignVar(500);
-//    AnyVar RefStrain = DesignVar(0.08+0.02);
-    AnyVar Stiffness = DesignVar(1500);
-    AnyVar RefStrain = DesignVar(0.15);  
+    
+    AnyVar Stiffness = DesignVar(k_iMPFL);
+    AnyVar RefStrain = DesignVar(er_iMPFL);  
     
     AnyFloat InitWrapPosVectors = 0.015*{ {0, 0, 1}, {0, 0, 1} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Ellipsoid_Medial_Anterior ;     
@@ -573,14 +486,11 @@ AnyFolder Ligaments =
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(1000);
-//    AnyVar RefStrain = DesignVar(0.06+0.09);
-    AnyVar Stiffness = DesignVar(1000);
-    AnyVar RefStrain = DesignVar(0.06-0.03);  
+    AnyVar Stiffness = DesignVar(k_sLPFL);
+    AnyVar RefStrain = DesignVar(er_sLPFL);  
     
     AnyFloat InitWrapPosVectors = 0.015*{ {0, 0, -1}, {0, 0, -1} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Ellipsoid_Lateral_Anterior ;
@@ -601,14 +511,11 @@ AnyFolder Ligaments =
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(1000);
-//    AnyVar RefStrain = DesignVar(0.06+0.09);
-    AnyVar Stiffness = DesignVar(1000);
-    AnyVar RefStrain = DesignVar(0.06-0.03); 
+    AnyVar Stiffness = DesignVar(k_mLPFL);
+    AnyVar RefStrain = DesignVar(er_mLPFL); 
     
     AnyFloat InitWrapPosVectors = 0.015*{ {0, 0, -1}, {0, 0, -1} };   
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Ellipsoid_Lateral_Anterior ;
@@ -629,14 +536,11 @@ AnyFolder Ligaments =
     AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
     AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
     
-    //AnyVar InitLength = vnorm(PosInGlobal0 - PosInGlobal1);  
     AnyVar InitLength = 0.05;
     AnyVar RefLength = DesignVar(InitLength);
     
-//    AnyVar Stiffness = DesignVar(1000);
-//    AnyVar RefStrain = DesignVar(0.06+0.09);     
-    AnyVar Stiffness = DesignVar(1000);
-    AnyVar RefStrain = DesignVar(0.06-0.03); 
+    AnyVar Stiffness = DesignVar(k_iLPFL);
+    AnyVar RefStrain = DesignVar(er_iLPFL); 
     
     AnyFloat InitWrapPosVectors = 0.015*{ {0, 0, -1}, {0, 0, -1} };    
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Ellipsoid_Lateral_Anterior ;   

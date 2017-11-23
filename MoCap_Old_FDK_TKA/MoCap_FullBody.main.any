@@ -44,7 +44,7 @@
 #define USE_FDK_TIBIOFEMORAL 
 #define USE_FDK_PATELLOFEMORAL
 
-#define DEF_CUSTOM_KNEE_JOINT_CONTACT_INIT_OFFSET 0.0000 
+//#define DEF_CUSTOM_KNEE_JOINT_CONTACT_INIT_OFFSET 0.0000 
 #define REF_HUMAN_BODYMODEL Main.Studies.HumanModel.BodyModel
 
 #if InverseDynamicModel == 1
@@ -74,8 +74,14 @@ Main = {
   // 3. Subject Anthropometric data
   // 4. Initial guess on position
   //  If you want to run the model on your own data this is the place to start:
-  #include "Input\TrialSpecificData.any"
-  
+  //#include "Input\TrialSpecificData.any"
+  #include "<PATH_TRIALSPEICIFICDATA>"
+  #ifdef PATH_eKneeData
+    TrialSpecificData =
+    {
+      #include "Model\eKnee.any"
+    };
+  #endif
   // This file controls most of the Settings of your Model, the following items are defined here:
   //  1. Marker Names
   //  2. Marker locations
@@ -89,7 +95,7 @@ Main = {
     #define BM_TRUNK_NECK_MUSCLES _MUSCLES_NONE_
     #define BM_ARM_MUSCLES_LEFT _MUSCLES_NONE_
     #define BM_ARM_MUSCLES_RIGHT _MUSCLES_NONE_
-    #define BM_LEG_MUSCLES_LEFT _MUSCLES_NONE_
+    //#define BM_LEG_MUSCLES_LEFT _MUSCLES_NONE_
     
    #if USE_FDK == 1
     #define INPUT_REF_HUMAN_MODEL Main.Studies.HumanModel

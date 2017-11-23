@@ -5,6 +5,8 @@ AnyFolder TrialSpecificData={
     SearchAndReplace = {{"JW:", ""}};
   };
   
+  AnyString StrTrialFolderPath = PATH_TRIALFOLDER ;
+  AnyString StrOutputFolderPath = ANYBODY_PATH_OUTPUT;
   // ********** Input File ***********
   //Name of the C3D file to be analysed. Following C3D files are available:
   AnyString NameOfFile ="jw_stairupf1"; //Write the name of the file here

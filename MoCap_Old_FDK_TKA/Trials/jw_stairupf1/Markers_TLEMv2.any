@@ -177,7 +177,7 @@ CreateMarkerDriver RThighLateral (
 MarkerName=  RThighLateral,
 MarkerPlacement =Right.Leg.Seg.Thigh, 
 OptX="On",OptY="On",OptZ="On",
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+WeightX=5.0,WeightY=5.0,WeightZ=5.0,
 Model1=MotionAndParameterOptimizationModel, Model2= InverseDynamicModel,
 sRelOptScalingOnOff="Off"
 )= {
@@ -189,7 +189,7 @@ CreateMarkerDriver RThighSuperior (
 MarkerName=  RThighSuperior,
 MarkerPlacement =Right.Leg.Seg.Thigh, 
 OptX="On",OptY="On",OptZ="On",
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+WeightX=5.0,WeightY=5.0,WeightZ=5.0,
 Model1=MotionAndParameterOptimizationModel, Model2= InverseDynamicModel,
 sRelOptScalingOnOff="Off"
 )= {
@@ -201,7 +201,7 @@ CreateMarkerDriver RThighInferior (
 MarkerName=  RThighInferior,
 MarkerPlacement =Right.Leg.Seg.Thigh, 
 OptX="On",OptY="On",OptZ="On",
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+WeightX=5.0,WeightY=5.0,WeightZ=5.0,
 Model1=MotionAndParameterOptimizationModel, Model2= InverseDynamicModel,
 sRelOptScalingOnOff="Off"
 )= {
@@ -224,7 +224,7 @@ CreateMarkerDriver RShankLateral (
 MarkerName= RShankLateral, 
 MarkerPlacement=Right.Leg.Seg.Shank,
 OptX="On",OptY="On",OptZ="On",  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+WeightX=5.0,WeightY=5.0,WeightZ=5.0,
 Model1=MotionAndParameterOptimizationModel, Model2= InverseDynamicModel,
 sRelOptScalingOnOff="Off"
 ) = {
@@ -236,7 +236,7 @@ CreateMarkerDriver RShankSuperior (
 MarkerName= RShankSuperior, 
 MarkerPlacement=Right.Leg.Seg.Shank,
 OptX="On",OptY="On",OptZ="On",  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+WeightX=5.0,WeightY=5.0,WeightZ=5.0,
 Model1=MotionAndParameterOptimizationModel, Model2= InverseDynamicModel,
 sRelOptScalingOnOff="Off"
 ) = {
@@ -248,7 +248,7 @@ CreateMarkerDriver RShankInferior (
 MarkerName= RShankInferior, 
 MarkerPlacement=Right.Leg.Seg.Shank,
 OptX="On",OptY="On",OptZ="On",  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+WeightX=5.0,WeightY=5.0,WeightZ=5.0,
 Model1=MotionAndParameterOptimizationModel, Model2= InverseDynamicModel,
 sRelOptScalingOnOff="Off"
 ) = {
@@ -261,7 +261,7 @@ CreateMarkerDriver RAnkleLateral (
 MarkerName= RAnkleLateral ,
 MarkerPlacement=Right.Leg.Seg.Shank,
 OptX="On",OptY="On",OptZ="On",  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+WeightX=5.0,WeightY=5.0,WeightZ=5.0,
 Model1=MotionAndParameterOptimizationModel, Model2= InverseDynamicModel,
 sRelOptScalingOnOff="Off"
 ) = {

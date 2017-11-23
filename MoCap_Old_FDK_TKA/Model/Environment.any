@@ -18,7 +18,7 @@ AnyFolder EnvironmentModel ={
   // orientation etc. in the Wiki at: www.anyscript.org
   // ***************************
   #define HumanModelPresent 1
-  #include "../Input/ForcePlates.any"
+  #include "<PATH_FORCEPLATES>"
   #undef HumanModelPresent
 
   
