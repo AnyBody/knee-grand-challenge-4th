@@ -12,7 +12,7 @@ Results =
     
     AnyOutputFile OutputFile = 
     {
-      FileName = Main.TrialSpecificData.StrOutputFolderPath + "Results_Contact.csv";
+      FileName = Main.TrialSpecificData.StrOutputFolderPath + Main.TrialSpecificData.NameOfFile + "_Results_Contact.csv";
       Values = ObjSearch(".F_*");
       Header = 
       {
