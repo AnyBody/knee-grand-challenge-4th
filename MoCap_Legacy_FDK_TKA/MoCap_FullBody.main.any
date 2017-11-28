@@ -16,7 +16,7 @@
 #endif
 // Switch to save all results in output folder
 #ifndef AutoSaveOption
-#define AutoSaveOption 0
+#define AutoSaveOption 1
 #endif
 
 // Detailed description can be found at:

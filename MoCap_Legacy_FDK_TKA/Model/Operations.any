@@ -210,10 +210,11 @@ Main =
   #if USE_FDK == 1
   AnyOperationSequence InverseDynamicAnalysisSequence =
   {
-    AnyOperation& LigamentCalibrationSequence = .Studies.LigamentCalibrationSequence;  
+    AnyOperation& LigamentCalibrationSequence = .Studies.LigamentCalibrationSequence; 
+    AnyOperation& MuscleCalibrationSequence = .Studies.HumanModel.Calibration.CalibrationSequence;
     AnyOperation& InverseDynamicStudy = .Studies.InverseDynamicStudy.InverseDynamics;
     
-    #ifdef AutoSaveOption 
+    #if AutoSaveOption 
     AnyOperationMacro SaveResult = 
     {
       MacroStr=

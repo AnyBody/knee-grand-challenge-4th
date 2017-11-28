@@ -115,21 +115,21 @@
   #define k_sMPFL 1500
 #endif
 #ifndef er_sMPFL
-  #define er_sMPFL 0.13
+  #define er_sMPFL 0.10
 #endif
 
 #ifndef k_mMPFL
   #define k_mMPFL 1500
 #endif
 #ifndef er_mMPFL
-  #define er_mMPFL 0.13
+  #define er_mMPFL 0.10
 #endif
 
 #ifndef k_iMPFL
   #define k_iMPFL 1500
 #endif
 #ifndef er_iMPFL
-  #define er_iMPFL 0.13
+  #define er_iMPFL 0.10
 #endif
 
 #ifndef k_sLPFL
