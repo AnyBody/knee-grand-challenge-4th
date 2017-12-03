@@ -1,0 +1,38 @@
+#ifndef USE_FULL_INPUT_FILE_PATH
+#define USE_FULL_INPUT_FILE_PATH 1
+#endif
+
+#ifndef DEF_DEFAULT_C3D_FILE_NAME
+#define DEF_DEFAULT_C3D_FILE_NAME "jw_stairupf1.c3d"
+#endif
+
+Main = 
+{
+  AnyString MainFileFolderPath = ANYBODY_PATH_MAINFILEDIR ;
+  #if USE_FULL_INPUT_FILE_PATH == 1
+  AnyString C3DFileName = MainFileFolderPath + "\" + DEF_DEFAULT_C3D_FILE_NAME ;
+  #else
+  AnyString C3DFileName = DEF_DEFAULT_C3D_FILE_NAME ; 
+  #endif
+  
+  AnyInputC3D C3DObject = 
+  {
+    FileName = .C3DFileName;
+    MarkerUseAllPointsOnOff = On; 
+    MarkerUseCamMaskOnOff = Off;
+    PointsScaleFactor = 1/1000;
+    ConstructChartOnOff = Off;
+
+    MarkerScaleXYZ = 0.015*{1,1,1};
+    MarkerRGB={0,0,1};
+    MarkerDrawOnOff =Off;
+    MarkerFilterIndex = -1;
+    ProcessedDataFilterIndex = -1;
+    
+    AnalogFilterIndex = -1;
+
+    //SearchAndReplace = {{".", "_"}};
+    SearchAndReplace = {{"JW:", ""}};
+
+  };
+};
