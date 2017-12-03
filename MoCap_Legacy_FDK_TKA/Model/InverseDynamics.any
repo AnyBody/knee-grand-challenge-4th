@@ -51,10 +51,13 @@ AnyBodyStudy InverseDynamicStudy =
   };
   
   Gravity = Main.TrialSpecificData.Gravity;
-  tStart = Main.ModelSetup.tStart+2*Kinematics.ApproxVelAccPerturb; 
-  tEnd = Main.ModelSetup.tEnd-2*Kinematics.ApproxVelAccPerturb;
-  nStep = Main.TrialSpecificData.nStep;
-  
+//  tStart = Main.ModelSetup.tStart+2*Kinematics.ApproxVelAccPerturb; 
+//  tEnd = Main.ModelSetup.tEnd-2*Kinematics.ApproxVelAccPerturb;
+//  nStep = Main.TrialSpecificData.nStep;
+  tStart = Main.ModelSetup.tStartID ;
+  tEnd = Main.ModelSetup.tEnd ;
+  nStep = Main.ModelSetup.nStepID ;
+
   InitialConditions.MaxIteration = 20000;
   Kinematics.MaxIteration = 20000;
   Kinematics.KinematicTol=1e-5;

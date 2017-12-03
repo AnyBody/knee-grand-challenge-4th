@@ -4,10 +4,6 @@
 #include "<USER_PATH_COMMONS>\Class\CreateFootConnectionClasses.any"
 #include "<USER_PATH_COMMONS>\Class\Class_CreateLigament.any"
 
-#define AutoSaveOption 1
-
-#define BM_LEG_MODEL _LEG_MODEL_TLEM2_
-
 Main = 
 {    
   #include "Input\Settings_Custom.any"

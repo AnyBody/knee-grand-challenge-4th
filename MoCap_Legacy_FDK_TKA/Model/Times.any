@@ -1,6 +1,25 @@
-  AnyIntVar FirstFrame = C3DFileData.Header.FirstFrameNo + Main.TrialSpecificData.FrontFrameOffset; 
-  AnyIntVar LastFrame = C3DFileData.Header.LastFrameNo - Main.TrialSpecificData.LastFrameOffset;
-  AnyIntVar nStep =(LastFrame-FirstFrame+1);
-  AnyFloatVar tStart = FirstFrame/C3DFileData.Header.VideoFrameRate;
-  AnyFloatVar tEnd = LastFrame/C3DFileData.Header.VideoFrameRate;
-  AnyFolder Macros={};
+AnyIntVar FirstFrameIK = Main.TrialSpecificData.FirstFrameIK ;
+AnyIntVar LastFrameIK = Main.TrialSpecificData.LastFrameIK ;
+AnyIntVar nStepIK = LastFrameIK - FirstFrameIK + 1;
+AnyFloatVar tStartIK = FirstFrameIK/C3DFileData.Header.VideoFrameRate;
+AnyFloatVar tEndIK = LastFrameIK/C3DFileData.Header.VideoFrameRate; 
+
+AnyIntVar FirstFrameID = Main.TrialSpecificData.FirstFrameID ; 
+AnyIntVar LastFrameID = Main.TrialSpecificData.LastFrameID ;
+AnyIntVar nStepID = LastFrameID - FirstFrameID + 1 ; 
+AnyFloatVar tStartID = FirstFrameID/C3DFileData.Header.VideoFrameRate ;
+AnyFloatVar tEndID = LastFrameID/C3DFileData.Header.VideoFrameRate ;
+
+#if MotionAndParameterOptimizationModel == 1
+AnyIntVar nStep = nStepIK;
+AnyFloatVar tStart = tStartIK;
+AnyFloatVar tEnd = tEndIK;
+#endif
+
+#if InverseDynamicModel == 1
+AnyIntVar nStep = nStepID;
+AnyFloatVar tStart = tStartID;
+AnyFloatVar tEnd = tEndID;
+#endif
+
+AnyFolder Macros={};

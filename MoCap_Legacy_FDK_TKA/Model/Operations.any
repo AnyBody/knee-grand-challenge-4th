@@ -156,7 +156,7 @@ Main =
     
     InverseDynamicStudy =
     {
-      InverseDynamics.Criterion.UpperBoundOnOff=Off;
+      InverseDynamics.Criterion.UpperBoundOnOff=On;
       InverseDynamics.Criterion.Power = DEF_MUSCLE_RECRUITMENT_CRITERION_POWER;
       InverseDynamics.Criterion.PrimaryTerm.Weight_SearchName = "WeightFactor";      
       
@@ -169,17 +169,32 @@ Main =
       InverseDynamics.ForceDepKin.MaxNewtonStep = FDK_MaxNewtonStep;       
       InverseDynamics.ForceDepKin.LocalSearchOnOff = FDK_LocalSearchOnOff;
       
-      #if (BM_LEG_MUSCLES_RIGHT != OFF) & (BM_LEG_MUSCLES_LEFT != OFF)
-      AnyObjectPtr pArrExcludedMuscles = arrcat
-      (
-        Main.Studies.HumanModel.BodyModel.Right.Leg.Mus.ExcludedMuscles.Objects,
-        Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.ExcludedMuscles.Objects
-      );  
-      AnyMechObjectExcluder ExcluderSelectiveMuscles = 
-      {
-        Objects = .pArrExcludedMuscles;
-      };
-      #endif 
+//      #if (BM_LEG_MUSCLES_RIGHT != OFF) & (BM_LEG_MUSCLES_LEFT != OFF)
+//      AnyObjectPtr pArrExcludedMuscles = arrcat
+//      (
+//        Main.Studies.HumanModel.BodyModel.Right.Leg.Mus.ExcludedMuscles.Objects,
+//        Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.ExcludedMuscles.Objects
+//      );  
+//      AnyMechObjectExcluder ExcluderSelectiveMuscles = 
+//      {
+//        Objects = .pArrExcludedMuscles;
+//      };
+//      #endif 
+      
+      #if ((BM_LEG_RIGHT) == ON & (BM_LEG_MUSCLES_RIGHT != OFF)) & ((BM_LEG_LEFT) == ON & (BM_LEG_MUSCLES_LEFT != OFF))
+       AnyObjectPtr pArrExcludedMuscles = arrcat
+       (
+         Main.Studies.HumanModel.BodyModel.Right.Leg.Mus.ExcludedMuscles.Objects,
+         Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.ExcludedMuscles.Objects
+       );  
+      #else
+       #if (BM_LEG_RIGHT) == ON & (BM_LEG_MUSCLES_RIGHT != OFF)
+         AnyObjectPtr pArrExcludedMuscles = Main.Studies.HumanModel.BodyModel.Right.Leg.Mus.ExcludedMuscles.Objects;
+       #endif
+       #if (BM_LEG_LEFT) == ON & (BM_LEG_MUSCLES_LEFT != OFF)
+         AnyObjectPtr pArrExcludedMuscles = Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.ExcludedMuscles.Objects;
+       #endif      
+      #endif
       
       #ifdef USE_FDK_TIBIOFEMORAL
       REF_HUMAN_BODYMODEL.Right.Leg.Jnt.Knee = 

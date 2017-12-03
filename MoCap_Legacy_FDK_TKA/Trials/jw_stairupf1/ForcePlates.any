@@ -1,3 +1,4 @@
+#if BM_LEG_RIGHT == ON
 ForcePlateType2 Plate1 (
 PlateName = Plate1,
 Folder =Main.ModelSetup.C3DFileData,
@@ -15,6 +16,36 @@ Mz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mz1
   Switch_DrawForceVectorFromCOP = On;
 };
 
+Plate1 = 
+{
+  ForcePlate = 
+  {
+    AnyRefNode StairNode = 
+    {
+      sRel = {0, 0, -0.006-0.666};
+      AnyRefNode OffsetNode = 
+      {
+        sRel = {0, 0, . abs(.sRel[2])*0.5};
+        AnyDrawSurf DrwSTL = 
+        {
+          FileName = "UnitBox";
+          ScaleXYZ = {...PlateGraphics.Size[0], ...PlateGraphics.Size[1], .sRel[2]*2};
+          RGB = {1, 1, 0};
+          Opacity = 0.5;
+        };
+      };
+      
+      //          AnyDrawRefFrame Drw = 
+      //          {
+      //            RGB = {1, 1, 1};
+      //            ScaleXYZ = 0.5*{1, 1, 1};
+      //          };
+    };
+  };
+};
+#endif
+
+#if BM_LEG_LEFT == ON
 ForcePlateType2 Plate2 (
 PlateName = Plate2,
 Folder =Main.ModelSetup.C3DFileData,
@@ -78,33 +109,7 @@ Plate2 =
   };
 };
 
-Plate1 = 
-{
-  ForcePlate = 
-  {
-    AnyRefNode StairNode = 
-    {
-      sRel = {0, 0, -0.006-0.666};
-      AnyRefNode OffsetNode = 
-      {
-        sRel = {0, 0, . abs(.sRel[2])*0.5};
-        AnyDrawSurf DrwSTL = 
-        {
-          FileName = "UnitBox";
-          ScaleXYZ = {...PlateGraphics.Size[0], ...PlateGraphics.Size[1], .sRel[2]*2};
-          RGB = {1, 1, 0};
-          Opacity = 0.5;
-        };
-      };
-      
-      //          AnyDrawRefFrame Drw = 
-      //          {
-      //            RGB = {1, 1, 1};
-      //            ScaleXYZ = 0.5*{1, 1, 1};
-      //          };
-    };
-  };
-};     
+     
 
 Plate3 = 
 {
@@ -133,4 +138,4 @@ Plate3 =
     };
   };
 };  
-
+#endif

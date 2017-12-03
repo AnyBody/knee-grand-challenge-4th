@@ -1,7 +1,8 @@
 
-AnyFolder TrialSpecificData={
-  
-   Main.ModelSetup.C3DFileData ={
+AnyFolder TrialSpecificData=
+{
+  Main.ModelSetup.C3DFileData =
+  {
     SearchAndReplace = {{"JW:", ""}};
   };
   
@@ -10,14 +11,19 @@ AnyFolder TrialSpecificData={
   // ********** Input File ***********
   //Name of the C3D file to be analysed. Following C3D files are available:
   AnyString NameOfFile ="jw_stairupf1"; //Write the name of the file here
-
+  
   // ********** Time ***********
-  // FrontFrameOffset is the offset value from the first frame of C3D file
-  AnyIntVar FrontFrameOffset = 316;
-  // LastFrameOffset is the offset value from the last frame of C3D file
-  AnyIntVar LastFrameOffset  = 50;
-  // Number of steps for the analysis but can be changed is needed
-  AnyIntVar nStep = Main.ModelSetup.nStep;
+//  AnyIntVar FrontFrameOffset = 316;
+//  AnyIntVar LastFrameOffset  = 50;
+//  AnyIntVar nStep = Main.ModelSetup.nStep;
+  
+  AnyIntVar FirstFrameIK = Main.ModelSetup.C3DFileData.Header.FirstFrameNo + 305 ;
+  AnyIntVar LastFrameIK = Main.ModelSetup.C3DFileData.Header.LastFrameNo - 5 ;
+  AnyIntVar nStepIK = Main.ModelSetup.nStepIK ;  
+  
+  AnyIntVar FirstFrameID = Main.ModelSetup.C3DFileData.Header.FirstFrameNo + 316 ;
+  AnyIntVar LastFrameID = Main.ModelSetup.C3DFileData.Header.LastFrameNo - 50;
+  AnyIntVar nStepID = Main.ModelSetup.nStepID ;
   
   // ********** Gravity ***********
   // Gravity vector that is consistent with the laboratory setting
@@ -26,12 +32,13 @@ AnyFolder TrialSpecificData={
   // ********** Antrhopometrics ***********
   //This antrhopometric data will be used as initial guess for the optimization alogorithm.
   //The optimization algoritm will allow changes to the segment lengths.
-  AnyFolder Anthropometrics={
+  AnyFolder Anthropometrics=
+  {
     AnyVar BodyMass=66.7;  //the mass is automatically distributed to the segments
     AnyVar BodyHeight=1.68;  //height
     
-    AnyVar ThighLength = 0.4234534;  //rigth and left side is mirrored 
-    AnyVar ShankLength = 0.4120814;
+    AnyVar ThighLength = 0.3933524 ;  //rigth and left side is mirrored 
+    AnyVar ShankLength = 0.4438479 ;
     AnyVar FootLength = 0.258 ;
     AnyVar PelvisWidth = 0.160 ; //distance between hip joints
     AnyVar PelvisDepth = 0.1509133;
@@ -42,7 +49,7 @@ AnyFolder TrialSpecificData={
     AnyVar HandLength = 0.182;
     AnyVar HandBreadth = 0.085;
   };
-
+  
   // Define what anthropometrics will be optimised, but be aware that inconsiderate changes
   // might lead to model failure! Pelvis and Trunk can only be "On" if there are markers available.
   // Upper and Lower arms can only be "On" if Upper Body is used and sufficient markers are available.
@@ -77,71 +84,63 @@ AnyFolder TrialSpecificData={
     ) ={};
     #endif    
   };
-
+  
   // ********** Initial Position ***********
   //This is the initial position of the body it should only be touched it the kinematics does not work it first timestep
   //then these variable can be used to create a better guess, otherwise leave them unchanged
   AnyFolder InitialPositionOfBody ={
     
- AnyVar PelvisPosX = 0.2057608;
- AnyVar PelvisPosY = 0.1842222;
- AnyVar PelvisPosZ = 1.464945;
- AnyVar PelvisRotX = -96.91409;
- AnyVar PelvisRotY = 197.1129;
- AnyVar PelvisRotZ = -1.664969;
-  
-   AnyVar PelvisThoraxExtension = -10;
-   AnyVar PelvisThoraxLateralBending = 0;
-   AnyVar PelvisThoraxRotation = 0;
-
-   AnyVar NeckExtension = 0;
-  AnyVar  NeckLateralBending = 0;
-  AnyVar  NeckRotation = 0;
-  
-   AnyFolder Right = {
-
-   AnyVar   HipFlexion = 20;
-   AnyVar   HipAbduction = -10;
-  AnyVar    HipExternalRotation = -19;
-   AnyVar   KneeFlexion = 58;
-   AnyVar   AnklePlantarFlexion = -10;
-   AnyVar   SubTalarEversion = 0;
- 
-   AnyVar   GlenohumeralFlexion = -18;
-  AnyVar    GlenohumeralAbduction = 0;
-  AnyVar    GlenohumeralExternalRotation = 0;
-  AnyVar    ElbowFlexion = 20;
-   AnyVar   ElbowPronation = 0;
-   AnyVar   WristFlexion = 0;
-   AnyVar   WristAbduction = 0;
+    AnyVar PelvisPosX = 0.2326914;
+    AnyVar PelvisPosY = 0.1777169;
+    AnyVar PelvisPosZ = 1.467309;
+    AnyVar PelvisRotX = -1.669849*(180/pi);
+    AnyVar PelvisRotY = -2.950073*(180/pi);
+    AnyVar PelvisRotZ = -0.07033129*(180/pi);
     
+    AnyVar PelvisThoraxExtension = -0.5985997*(180/pi);
+    AnyVar PelvisThoraxLateralBending = 0;
+    AnyVar PelvisThoraxRotation = 0;
+    
+    AnyVar NeckExtension = 0;
+    AnyVar NeckLateralBending = 0;
+    AnyVar NeckRotation = 0;
+    
+    AnyFolder Right = 
+    {
+      AnyVar   HipFlexion = 0.7933347*(180/pi);
+      AnyVar   HipAbduction = -0.0554504*(180/pi);
+      AnyVar   HipExternalRotation = 0.3473757*(180/pi);
+      AnyVar   KneeFlexion = 1.204169*(180/pi);
+      AnyVar   AnklePlantarFlexion = -0.319034*(180/pi);
+      AnyVar   SubTalarEversion = 0;
+      
+      AnyVar   GlenohumeralFlexion = -18;
+      AnyVar   GlenohumeralAbduction = 0;
+      AnyVar   GlenohumeralExternalRotation = 0;
+      AnyVar   ElbowFlexion = 20;
+      AnyVar   ElbowPronation = 0;
+      AnyVar   WristFlexion = 0;
+      AnyVar   WristAbduction = 0;
+    };
+    AnyFolder  Left = 
+    {
+      AnyVar   HipFlexion = -23;
+      AnyVar   HipAbduction = 0;
+      AnyVar   HipExternalRotation = 0;
+      AnyVar   KneeFlexion = 14;
+      AnyVar   AnklePlantarFlexion = -15;
+      AnyVar   SubTalarEversion = 0;
+      
+      AnyVar   GlenohumeralFlexion = 28;
+      AnyVar   GlenohumeralAbduction = 28;
+      AnyVar   GlenohumeralExternalRotation = 0;
+      AnyVar   ElbowFlexion = 34;
+      AnyVar   ElbowPronation = 0;
+      AnyVar   WristFlexion = 0;
+      AnyVar   WristAbduction = 0;
+    };
   };
-  AnyFolder  Left = {
-    
-  AnyVar    HipFlexion = -23;
-  AnyVar    HipAbduction = 0;
-  AnyVar    HipExternalRotation = 0;
-  AnyVar    KneeFlexion = 14;
-   AnyVar   AnklePlantarFlexion = -15;
- AnyVar     SubTalarEversion = 0;
-    
-  AnyVar    GlenohumeralFlexion = 28;
-  AnyVar    GlenohumeralAbduction = 28;
-  AnyVar    GlenohumeralExternalRotation = 0;
-  AnyVar    ElbowFlexion = 34;
-  AnyVar    ElbowPronation = 0;
-  AnyVar    WristFlexion = 0;
-  AnyVar    WristAbduction = 0;
-    
-  };
-
   
-  
-  
-  
-  
-  };
- 
   
   // ********** Extra Drivers ***********
   // Some Gait Labs protocols do not record sufficient markers to create a full body model.
@@ -150,23 +149,23 @@ AnyFolder TrialSpecificData={
   // above the pelvis and fix subtalar eversio. You can switch them on for your own C3D files:
   
   // Do you have markers on the head? If not turn OFF following switch:
-#ifndef HeadMarkersOnOff
-  #define HeadMarkersOnOff OFF
-#endif
+  #ifndef HeadMarkersOnOff
+    #define HeadMarkersOnOff OFF
+  #endif
   // Do you have markers on the Trunk? If not turn OFF following switch:
-#ifndef TrunkMarkersOnOff
-  #define TrunkMarkersOnOff ON
-#endif
+  #ifndef TrunkMarkersOnOff
+    #define TrunkMarkersOnOff ON
+  #endif
   // Do you have three markers on the Foot? If not turn OFF following switch:
-#ifndef ThreeFootMarkersOnOff
-  #define ThreeFootMarkersOnOff ON
-#endif
+  #ifndef ThreeFootMarkersOnOff
+    #define ThreeFootMarkersOnOff ON
+  #endif
   // Do you have markers on the Scapula/Clavicle? If not turn OFF following switch:
-#ifndef SCMarkersOnOff
-  #define SCMarkersOnOff ON
-#endif
-
-#ifndef UseDetailNeckModel 
-  #define UseDetailNeckModel OFF
-#endif
+  #ifndef SCMarkersOnOff
+    #define SCMarkersOnOff ON
+  #endif
+  
+  #ifndef UseDetailNeckModel 
+    #define UseDetailNeckModel OFF
+  #endif
 };

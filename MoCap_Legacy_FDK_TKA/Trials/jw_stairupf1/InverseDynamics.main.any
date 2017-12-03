@@ -1,3 +1,9 @@
+#include "..\..\..\..\libdef.any"
+
+#define BM_ARM_LEFT OFF
+#define BM_ARM_RIGHT OFF
+#define BM_LEG_LEFT OFF
+
 #path PATH_TRIALFOLDER ".\"
 #path PATH_TRIALSPEICIFICDATA "TrialSpecificData.any"
 #path PATH_eKneeData "jw_stairupf1_knee_forces.csv"
@@ -5,11 +11,11 @@
 #path PATH_FORCEPLATES "ForcePlates.any"
 
 #ifndef MotionAndParameterOptimizationModel
-#define MotionAndParameterOptimizationModel 0
+  #define MotionAndParameterOptimizationModel 0
 #endif
 
 #ifndef InverseDynamicModel
-#define InverseDynamicModel 1
+  #define InverseDynamicModel 1
 #endif
 
 #include "..\..\MoCap_FullBody.main.any"

@@ -69,19 +69,6 @@ for mus_group_name in list_mus_group_names:
 
 
 fig_cnt = 0
-# =============================================================================
-# for mus_group_name in list_mus_group_names:
-#     plt.figure(num = fig_cnt)
-#     dict_df_mus_act[mus_group_name].plot()
-#     plt.title('Muscle Activation: ' + mus_group_name)
-#     plt.xlabel('Time(sec)')
-#     plt.ylabel('Activity')
-#     plt.grid(which='major', axis='both')
-#     lgd=plt.legend(bbox_to_anchor=(1, 1), loc=2)    
-#     plt.savefig('Mus_Act_'+mus_group_name, dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
-#     plt.show()
-#     fig_cnt+=1
-# =============================================================================
         
 df_contact_lateral_absolute = df_contact[['F_lateral_calculated', 'F_lateral_measured']]
 plt.figure(num=fig_cnt)
@@ -107,19 +94,33 @@ fig_cnt+=1
 
 contact_force_calculated_max = np.max(df_contact[['F_lateral_calculated', 'F_medial_calculated']].max())
 print('Maximum contact force(N):', contact_force_calculated_max)
-ratio_force_wrt_max = 0.1    
-for mus_group_name in list_mus_group_names:
-    mus_force_group_max = np.max(dict_df_mus_force[mus_group_name].max())
-    if mus_force_group_max >= ratio_force_wrt_max*contact_force_calculated_max: 
-        plt.figure(num = fig_cnt)
-        dict_df_mus_force[mus_group_name].plot()
-        plt.title('Muscle Force: ' + mus_group_name)
-        plt.xlabel('Time(sec)')
-        plt.ylabel('Force(N)')
-        plt.ylim([-5, 1000])
-        plt.grid(which='major', axis='both')
-        lgd=plt.legend(bbox_to_anchor=(1, 1), loc=2)    
-        plt.savefig(str_name_folder_trial+'_Mus_Force_'+mus_group_name, dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
-        plt.show()
-        fig_cnt+=1
+
+#for mus_group_name in list_mus_group_names:
+#    plt.figure(num = fig_cnt)
+#    dict_df_mus_act[mus_group_name].plot()
+#    plt.title('Muscle Activation: ' + mus_group_name)
+#    plt.xlabel('Time(sec)')
+#    plt.ylabel('Activity')
+#    plt.ylim([0.0, 1.0])
+#    plt.grid(which='major', axis='both')
+#    lgd=plt.legend(bbox_to_anchor=(1, 1), loc=2)    
+#    plt.savefig(str_name_folder_trial+'Mus_Act_'+mus_group_name, dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
+#    plt.show()
+#    fig_cnt+=1
+
+#ratio_force_wrt_max = 0.1    
+#for mus_group_name in list_mus_group_names:
+#    mus_force_group_max = np.max(dict_df_mus_force[mus_group_name].max())
+#    if mus_force_group_max >= ratio_force_wrt_max*contact_force_calculated_max: 
+#        plt.figure(num = fig_cnt)
+#        dict_df_mus_force[mus_group_name].plot()
+#        plt.title('Muscle Force: ' + mus_group_name)
+#        plt.xlabel('Time(sec)')
+#        plt.ylabel('Force(N)')
+#        plt.ylim([-5, 1000])
+#        plt.grid(which='major', axis='both')
+#        lgd=plt.legend(bbox_to_anchor=(1, 1), loc=2)    
+#        plt.savefig(str_name_folder_trial+'_Mus_Force_'+mus_group_name, dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
+#        plt.show()
+#        fig_cnt+=1
         

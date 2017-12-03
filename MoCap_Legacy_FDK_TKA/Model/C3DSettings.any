@@ -21,7 +21,7 @@ AnalogFilterIndex =1;
 Filter =  
 {
   N = 2;
-  Fc = {5};
+  Fc = { DEF_C3D_FILTER_CUT_OFF_FREQ_MARKERS };
   Type = LowPass;    
 };
 
@@ -31,8 +31,10 @@ AnyFunButterworthFilter LowPassFilter =
   FilterForwardBackwardOnOff = On;
   AutomaticInitialConditionOnOff = On;
   N = 2;
-  AnyVar CutOffFrequency=12;
-  AnyVar SampleFreq=.Header.VideoFrameRate* .Header.NoAnalogSamplesPer3DFrame   ;
+  AnyVar CutOffFrequency = DEF_C3D_FILTER_CUT_OFF_FREQ_FORCES ;
+  AnyVar SampleFreq=.Header.VideoFrameRate* .Header.NoAnalogSamplesPer3DFrame ;
+//  Fc = {CutOffFrequency};
+//  Fs = SampleFreq;
   W = {1/(SampleFreq*0.5)*CutOffFrequency};
   Type = LowPass;
 };

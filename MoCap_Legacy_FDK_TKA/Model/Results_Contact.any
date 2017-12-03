@@ -10,6 +10,14 @@ Results =
     AnyVar F_medial_measured = ..eKneeData.Fun_F_medial(..t)[0] ;
     AnyVar F_sum_measured = F_lateral_measured + F_medial_measured ;
     
+    AnyVar F_lateral_calculated_ratio_BW = F_lateral_calculated / (REF_HUMAN_BODYMODEL.TotalBodyMass * 9.81);
+    AnyVar F_medial_calculated_ratio_BW = F_medial_calculated / (REF_HUMAN_BODYMODEL.TotalBodyMass * 9.81) ;
+    AnyVar F_sum_calculated_ratio_BW = F_sum_calculated / (REF_HUMAN_BODYMODEL.TotalBodyMass * 9.81) ;
+    
+    AnyVar F_lateral_measured_ratio_BW = F_lateral_measured / (REF_HUMAN_BODYMODEL.TotalBodyMass * 9.81) ;
+    AnyVar F_medial_measured_ratio_BW = F_medial_measured / (REF_HUMAN_BODYMODEL.TotalBodyMass * 9.81) ;
+    AnyVar F_sum_measured_ratio_BW = F_sum_measured / (REF_HUMAN_BODYMODEL.TotalBodyMass * 9.81) ;    
+    
     AnyOutputFile OutputFile = 
     {
       FileName = Main.TrialSpecificData.StrOutputFolderPath + Main.TrialSpecificData.NameOfFile + "_Results_Contact.csv";

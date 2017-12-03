@@ -1,0 +1,88 @@
+#ifndef BM_TRUNK_NECK
+  #define BM_TRUNK_NECK OFF
+#endif
+#ifndef BM_ARM_LEFT
+  #define BM_ARM_LEFT ON
+#endif
+#ifndef BM_ARM_RIGHT
+  #define BM_ARM_RIGHT ON
+#endif
+#ifndef BM_LEG_LEFT
+  #define BM_LEG_LEFT ON
+#endif
+#ifndef BM_LEG_RIGHT
+  #define BM_LEG_RIGHT ON
+#endif
+#ifndef BM_LEG_MODEL
+  #define BM_LEG_MODEL _LEG_MODEL_TLEM2_
+#endif
+#ifndef BM_LEG_TRUNK_INTERFACE
+  #define BM_LEG_TRUNK_INTERFACE 1
+#endif
+#ifndef BM_PELVIS_DISPLAY
+  #define BM_PELVIS_DISPLAY 2  
+#endif
+#ifndef OutputFileNamePrefix 
+  #define OutputFileNamePrefix "FullBody-"
+#endif
+
+#if InverseDynamicModel == 1
+  #ifndef BM_TRUNK_MUSCLES
+   #define BM_TRUNK_MUSCLES _MUSCLES_NONE_
+  #endif
+  #ifndef BM_TRUNK_NECK_MUSCLES
+    #define BM_TRUNK_NECK_MUSCLES _MUSCLES_NONE_
+  #endif
+  #ifndef BM_ARM_MUSCLES_LEFT
+    #define BM_ARM_MUSCLES_LEFT _MUSCLES_NONE_
+  #endif
+  #ifndef BM_ARM_MUSCLES_RIGHT
+    #define BM_ARM_MUSCLES_RIGHT _MUSCLES_NONE_
+  #endif
+  #ifndef BM_LEG_MUSCLES_LEFT
+    #define BM_LEG_MUSCLES_LEFT _MUSCLES_SIMPLE_
+    //#define BM_LEG_MUSCLES_LEFT _MUSCLES_3E_HILL_
+  #endif
+  #ifndef BM_LEG_MUSCLES_RIGHT
+    #define BM_LEG_MUSCLES_RIGHT _MUSCLES_SIMPLE_
+    //#define BM_LEG_MUSCLES_RIGHT _MUSCLES_3E_HILL_
+  #endif  
+  
+ //#define BM_LEG_MUSCLES_LEFT _MUSCLES_NONE_
+
+  #ifndef DEF_CUSTOM_SCALING_LEVEL_RIGHT_THIGH 
+    #define DEF_CUSTOM_SCALING_LEVEL_RIGHT_THIGH "RBF"
+  #endif
+  #ifndef DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH
+    #define DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH "RBF"
+  #endif
+  #ifndef DEF_CUSTOM_SCALING_LEVEL_RIGHT_SHANK
+    #define DEF_CUSTOM_SCALING_LEVEL_RIGHT_SHANK "STL"
+  #endif
+  #ifndef DEF_CUSTOM_SCALING_LEVEL_LEFT_SHANK
+    #define DEF_CUSTOM_SCALING_LEVEL_LEFT_SHANK "STL"
+  #endif
+  #ifndef DEF_CUSTOM_SCALING_LEVEL_RIGHT_PATELLA
+    #define DEF_CUSTOM_SCALING_LEVEL_RIGHT_PATELLA "STL"
+  #endif
+  #ifndef DEF_CUSTOM_SCALING_LEVEL_LEFT_PATELLA
+    #define DEF_CUSTOM_SCALING_LEVEL_LEFT_PATELLA "STL"
+  #endif
+#endif
+
+#define REF_HUMAN_BODYMODEL Main.Studies.HumanModel.BodyModel
+#define USE_FDK 1
+#define USE_FDK_TIBIOFEMORAL 
+#define USE_FDK_PATELLOFEMORAL
+
+#ifndef DEF_C3D_FILTER_CUT_OFF_FREQ_MARKERS
+  #define DEF_C3D_FILTER_CUT_OFF_FREQ_MARKERS 5
+#endif
+#ifndef DEF_C3D_FILTER_CUT_OFF_FREQ_FORCES
+  #define DEF_C3D_FILTER_CUT_OFF_FREQ_FORCES 5
+#endif
+
+// Switch to save all results in output folder
+#ifndef AutoSaveOption
+  #define AutoSaveOption 1
+#endif

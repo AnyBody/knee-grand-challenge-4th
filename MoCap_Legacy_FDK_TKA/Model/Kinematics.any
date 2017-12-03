@@ -84,9 +84,12 @@ AnyBodyStudy KinematicStudyForParameterIdentification =
   //#include "UndefineBodyPartSetup.any"      //**// Usually no need to make changes
   
   Gravity = Main.TrialSpecificData.Gravity;      
-  tStart = Main.ModelSetup.tStart+2*Kinematics.ApproxVelAccPerturb; 
-  tEnd = Main.ModelSetup.tEnd-2*Kinematics.ApproxVelAccPerturb;
-  nStep = floor(Main.TrialSpecificData.nStep/6); //run this analysis with a reduced step number be carefull it can be too low!
+//  tStart = Main.ModelSetup.tStart+2*Kinematics.ApproxVelAccPerturb; 
+//  tEnd = Main.ModelSetup.tEnd-2*Kinematics.ApproxVelAccPerturb;
+//  nStep = floor(Main.TrialSpecificData.nStep/6); //run this analysis with a reduced step number be carefull it can be too low!
+  tStart = Main.ModelSetup.tStartIK;
+  tEnd = Main.ModelSetup.tEndIK;
+  nStep = floor(Main.ModelSetup.nStepIK/6);
   
   Kinematics.PosAnalysisOnlyOnOff=On; //only run the position analysis 
   InitialConditions.KinematicTol=1e-3;
@@ -116,9 +119,12 @@ AnyBodyStudy MotionOptimization =
   AnyFolder &JointAngleOutput=.KinematicStudyForParameterIdentification.JointAngleOutputs;
   Kinematics.KinematicTol=1e-5;
   Gravity = Main.TrialSpecificData.Gravity;      
-  tStart = Main.ModelSetup.tStart+2*Kinematics.ApproxVelAccPerturb; 
-  tEnd = Main.ModelSetup.tEnd-2*Kinematics.ApproxVelAccPerturb;
-  nStep = Main.TrialSpecificData.nStep;
+//  tStart = Main.ModelSetup.tStart+2*Kinematics.ApproxVelAccPerturb; 
+//  tEnd = Main.ModelSetup.tEnd-2*Kinematics.ApproxVelAccPerturb;
+//  nStep = Main.TrialSpecificData.nStep;
+  tStart = Main.ModelSetup.tStartIK;
+  tEnd = Main.ModelSetup.tEndIK;
+  nStep = Main.ModelSetup.nStepIK;
   
   Kinematics.PosAnalysisOnlyOnOff=On;
   InitialConditions.SolverType = KinSolOverDeterminate;

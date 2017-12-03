@@ -55,7 +55,20 @@
 #path PATH_TARGET_IMPLANT_TIBIA_INSERT_PICKED_POINTS_CENTRAL_POSTERIOR "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Insert_picked_points_central_posterior.pp"
 
 #ifndef REF_HUMAN_BODYMODEL
-#define REF_HUMAN_BODYMODEL Main.HumanModel.BodyModel
+  #define REF_HUMAN_BODYMODEL Main.HumanModel.BodyModel
+#endif
+
+#ifndef BM_ARM_LEFT
+  #define BM_ARM_LEFT ON
+#endif
+#ifndef BM_ARM_RIGHT
+  #define BM_ARM_RIGHT ON
+#endif
+#ifndef BM_LEG_LEFT
+  #define BM_LEG_LEFT ON
+#endif
+#ifndef BM_LEG_RIGHT
+  #define BM_LEG_RIGHT ON
 #endif
 
 #ifndef CUSTOM_SCALING_Right_Thigh
@@ -216,39 +229,46 @@
   #define DEF_CONTACT_DRAW_PRESSURE_MAP 1
 #endif
 
+#ifndef DEF_C3D_FILTER_CUT_OFF_FREQ_MARKERS
+  #define DEF_C3D_FILTER_CUT_OFF_FREQ_MARKERS 5
+#endif
+#ifndef DEF_C3D_FILTER_CUT_OFF_FREQ_FORCES
+  #define DEF_C3D_FILTER_CUT_OFF_FREQ_FORCES 12
+#endif
+
 #ifndef AutoSaveOption 
   #define AutoSaveOption 0
 #endif
 
-////-->Extra
-//#ifdef BM_LEG_RIGHT
-//  #if BM_LEG_RIGHT == OFF
-//    #ifdef CUSTOM_SCALING_Right_Thigh
-//      #undef CUSTOM_SCALING_Right_Thigh
-//    #endif
-//    #ifdef CUSTOM_SCALING_Right_Shank
-//      #undef CUSTOM_SCALING_Right_Shank
-//    #endif
-//    #ifdef CUSTOM_SCALING_Right_Patella
-//      #undef CUSTOM_SCALING_Right_Patella
-//    #endif
-//  #endif
-//#endif
-//
-//#ifdef BM_LEG_LEFT
-//  #if BM_LEG_LEFT == OFF
-//    #ifdef CUSTOM_SCALING_Left_Thigh
-//      #undef CUSTOM_SCALING_Left_Thigh
-//    #endif
-//    #ifdef CUSTOM_SCALING_Left_Shank
-//      #undef CUSTOM_SCALING_Left_Shank
-//    #endif
-//    #ifdef CUSTOM_SCALING_Left_Patella
-//      #undef CUSTOM_SCALING_Left_Patella
-//    #endif 
-//  #endif
-//#endif
-////<--
+//-->Extra
+#ifdef BM_LEG_RIGHT
+  #if BM_LEG_RIGHT == OFF
+    #ifdef CUSTOM_SCALING_Right_Thigh
+      #undef CUSTOM_SCALING_Right_Thigh
+    #endif
+    #ifdef CUSTOM_SCALING_Right_Shank
+      #undef CUSTOM_SCALING_Right_Shank
+    #endif
+    #ifdef CUSTOM_SCALING_Right_Patella
+      #undef CUSTOM_SCALING_Right_Patella
+    #endif
+  #endif
+#endif
+
+#ifdef BM_LEG_LEFT
+  #if BM_LEG_LEFT == OFF
+    #ifdef CUSTOM_SCALING_Left_Thigh
+      #undef CUSTOM_SCALING_Left_Thigh
+    #endif
+    #ifdef CUSTOM_SCALING_Left_Shank
+      #undef CUSTOM_SCALING_Left_Shank
+    #endif
+    #ifdef CUSTOM_SCALING_Left_Patella
+      #undef CUSTOM_SCALING_Left_Patella
+    #endif 
+  #endif
+#endif
+//<--
   
 
 
