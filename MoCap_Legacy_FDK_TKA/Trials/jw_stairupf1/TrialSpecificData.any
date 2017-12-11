@@ -17,12 +17,12 @@ AnyFolder TrialSpecificData=
 //  AnyIntVar LastFrameOffset  = 50;
 //  AnyIntVar nStep = Main.ModelSetup.nStep;
   
-  AnyIntVar FirstFrameIK = Main.ModelSetup.C3DFileData.Header.FirstFrameNo + 305 ;
-  AnyIntVar LastFrameIK = Main.ModelSetup.C3DFileData.Header.LastFrameNo - 5 ;
+  AnyIntVar FirstFrameIK = Main.ModelSetup.C3DFileData.Header.FirstFrameNo + 316 ;
+  AnyIntVar LastFrameIK = Main.ModelSetup.C3DFileData.Header.LastFrameNo - 18 ;
   AnyIntVar nStepIK = Main.ModelSetup.nStepIK ;  
   
-  AnyIntVar FirstFrameID = Main.ModelSetup.C3DFileData.Header.FirstFrameNo + 316 ;
-  AnyIntVar LastFrameID = Main.ModelSetup.C3DFileData.Header.LastFrameNo - 50;
+  AnyIntVar FirstFrameID = Main.ModelSetup.C3DFileData.Header.FirstFrameNo + 351 ;
+  AnyIntVar LastFrameID = Main.ModelSetup.C3DFileData.Header.LastFrameNo - 53;
   AnyIntVar nStepID = Main.ModelSetup.nStepID ;
   
   // ********** Gravity ***********

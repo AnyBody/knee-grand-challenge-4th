@@ -22,7 +22,8 @@ Shank =
   
   AnyRefNode TensorFasciaeLatae1NodeNew =
   {
-    sRel = .Mapping_Transform({-0.0165032, -0.0120101, -0.0334085});
+    //sRel = .Mapping_Transform({-0.0165032, -0.0120101, -0.0334085});
+    sRel = .Mapping_Transform({-0.0209752, -0.0123051, -0.0281771});
   };
   AnyRefNode& TensorFasciaeLatae2NodeNew = TensorFasciaeLatae1NodeNew;
   

@@ -1,8 +1,12 @@
 #include "..\..\..\..\libdef.any"
 
-#define BM_ARM_LEFT OFF
-#define BM_ARM_RIGHT OFF
-#define BM_LEG_LEFT OFF
+#define DEF_C3D_FILTER_CUT_OFF_FREQ_MARKERS 5
+#define DEF_C3D_FILTER_CUT_OFF_FREQ_FORCES 18
+//#define DEF_C3D_FILTER_CUT_OFF_FREQ_FORCES 7
+
+//#define BM_ARM_LEFT OFF
+//#define BM_ARM_RIGHT OFF
+//#define BM_LEG_LEFT OFF
 
 #path PATH_TRIALFOLDER ".\"
 #path PATH_TRIALSPEICIFICDATA "TrialSpecificData.any"

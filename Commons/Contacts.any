@@ -371,6 +371,213 @@ REF_HUMAN_BODYMODEL.Right.Leg =
               AnyVec3 Mlocal = M*RefNode.Axes;
             };        
             
+            AnyForceMomentMeasure2 Measure_Effect_aALS =
+            {
+              AnyForceBase& Force = ....Ligaments.aALS.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_pALS =
+            {
+              AnyForceBase& Force = ....Ligaments.pALS.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_aLCL =
+            {
+              AnyForceBase& Force = ....Ligaments.aLCL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_pLCL =
+            {
+              AnyForceBase& Force = ....Ligaments.pLCL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_aMCL =
+            {
+              AnyForceBase& Force = ....Ligaments.aMCL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            }; 
+            
+            AnyForceMomentMeasure2 Measure_Effect_cMCL =
+            {
+              AnyForceBase& Force = ....Ligaments.cMCL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            }; 
+            
+            AnyForceMomentMeasure2 Measure_Effect_pMCL =
+            {
+              AnyForceBase& Force = ....Ligaments.pMCL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_aCM =
+            {
+              AnyForceBase& Force = ....Ligaments.aCM.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_pCM =
+            {
+              AnyForceBase& Force = ....Ligaments.pCM.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            }; 
+            
+            AnyForceMomentMeasure2 Measure_Effect_aPCL =
+            {
+              AnyForceBase& Force = ....Ligaments.aPCL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            }; 
+            
+            AnyForceMomentMeasure2 Measure_Effect_pPCL =
+            {
+              AnyForceBase& Force = ....Ligaments.pPCL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_lLcap =
+            {
+              AnyForceBase& Force = ....Ligaments.lLcap.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_mLcap =
+            {
+              AnyForceBase& Force = ....Ligaments.mLcap.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_lMcap =
+            {
+              AnyForceBase& Force = ....Ligaments.lMcap.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_mMcap =
+            {
+              AnyForceBase& Force = ....Ligaments.mMcap.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };             
+            
+            AnyForceMomentMeasure2 Measure_Effect_sMPFL =
+            {
+              AnyForceBase& Force = ....Ligaments.sMPFL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_mMPFL =
+            {
+              AnyForceBase& Force = ....Ligaments.mMPFL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_iMPFL =
+            {
+              AnyForceBase& Force = ....Ligaments.iMPFL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            }; 
+            
+            AnyForceMomentMeasure2 Measure_Effect_sLPFL =
+            {
+              AnyForceBase& Force = ....Ligaments.sLPFL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_mLPFL =
+            {
+              AnyForceBase& Force = ....Ligaments.mLPFL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            }; 
+            
+            AnyForceMomentMeasure2 Measure_Effect_iLPFL =
+            {
+              AnyForceBase& Force = ....Ligaments.iLPFL.Force;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;
+            };            
+            
+            AnyForceMomentMeasure2 Measure_Effect_Ligament_All = 
+            {
+              IncludeForces = ObjSearch("....Ligaments.*.Force");
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;              
+            };
+            
+            AnyForceMomentMeasure2 Measure_Effect_Muscles_All = 
+            {
+              IncludeForces = ....MomentMeasure.KneeNetMomentMuscle.IncludeForces;
+              IncludeSegments = ....MomentMeasure.KneeNetMomentMuscle.IncludeSegments;
+              AnyRefFrame& RefNode  = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode.OutputNode ;
+              AnyVec3 Flocal = F*RefNode.Axes;
+              AnyVec3 Mlocal = M*RefNode.Axes;               
+            };
+            
             AnyVar Contact_Lateral_Total  =  vnorm(Measure_Contact_Lateral.Flocal);
             AnyVar Contact_Lateral_Medial  = Measure_Contact_Lateral.Flocal[2];
             AnyVar Contact_Lateral_Inferior  =  Measure_Contact_Lateral.Flocal[1];
@@ -381,15 +588,15 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyVar Contact_Medial_Inferior  =  Measure_Contact_Medial.Flocal[1];
             AnyVar Contact_Medial_Anterior  =  Measure_Contact_Medial.Flocal[0];
             
-            AnyVar Contact_Lateral_Total_Ratio_BW  = abs(Contact_Lateral_Total) / .BodyWeight ;
-            AnyVar Contact_Lateral_Medial_Ratio_BW  = abs(Contact_Lateral_Medial) / .BodyWeight ;
-            AnyVar Contact_Lateral_Inferior_Ratio_BW  = abs(Contact_Lateral_Inferior) / .BodyWeight ;
-            AnyVar Contact_Lateral_Anterior_Ratio_BW  = abs(Contact_Lateral_Anterior) / .BodyWeight ;
+            AnyVar Ratio_BW_Contact_Lateral_Total = abs(Contact_Lateral_Total) / .BodyWeight ;
+            AnyVar Ratio_BW_Contact_Lateral_Medial = abs(Contact_Lateral_Medial) / .BodyWeight ;
+            AnyVar Ratio_BW_Contact_Lateral_Inferior = abs(Contact_Lateral_Inferior) / .BodyWeight ;
+            AnyVar Ratio_BW_Contact_Lateral_Anterior = abs(Contact_Lateral_Anterior) / .BodyWeight ;
             
-            AnyVar Contact_Medial_Total_Ratio_BW  = abs(Contact_Medial_Total) / .BodyWeight ;
-            AnyVar Contact_Medial_Medial_Ratio_BW  = abs(Contact_Medial_Medial) / .BodyWeight ;
-            AnyVar Contact_Medial_Inferior_Ratio_BW  = abs(Contact_Medial_Inferior) / .BodyWeight ;
-            AnyVar Contact_Medial_Anterior_Ratio_BW  = abs(Contact_Medial_Anterior) / .BodyWeight ;
+            AnyVar Ratio_BW_Contact_Medial_Total = abs(Contact_Medial_Total) / .BodyWeight ;
+            AnyVar Ratio_BW_Contact_Medial_Medial = abs(Contact_Medial_Medial) / .BodyWeight ;
+            AnyVar Ratio_BW_Contact_Medial_Inferior = abs(Contact_Medial_Inferior) / .BodyWeight ;
+            AnyVar Ratio_BW_Contact_Medial_Anterior = abs(Contact_Medial_Anterior) / .BodyWeight ;
           };
         #endif
         
