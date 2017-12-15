@@ -7,8 +7,8 @@ AnyString NameOfFile = Main.TrialSpecificData.NameOfFile; //Write the name of th
 //FileName = "../Input/"+ NameOfFile + ".c3d"; //add the extension to the file name here
 FileName = StrTrialFolderPath + NameOfFile + ".c3d"; //add the extension to the file name here
 
-ConstructModelOnOff = Off; //If this is set to on it will display the markers but slow down the analysis a lot....
-MarkerUseAllPointsOnOff = On; 
+ConstructModelOnOff = On; //If this is set to on it will display the markers but slow down the analysis a lot....
+MarkerUseAllPointsOnOff = Off; 
 MarkerUseCamMaskOnOff = Off;
 PointsScaleFactor = 1/1000;
 ConstructChartOnOff = Off;

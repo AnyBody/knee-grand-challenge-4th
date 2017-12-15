@@ -1,15 +1,14 @@
 
 
 
-AnyFolder JointsAndDrivers = {
-  
+AnyFolder JointsAndDrivers = 
+{  
   // Aliases for convenient referencing
   AnyFolder &JntPos=..Mannequin.Posture;  
   AnyFolder &JntVel=..Mannequin.PostureVel;  
   
-
-  
-  AnyKinEqInterPolDriver JntDriverTrunk = {
+  AnyKinEqInterPolDriver JntDriverTrunk = 
+  {
     FileErrorContinueOnOff = On;
     Type = Bspline;
     BsplineOrder = 4;
@@ -30,51 +29,246 @@ AnyFolder JointsAndDrivers = {
   };
   
   #if BM_LEG_LEFT & (BM_LEG_MODEL == _LEG_MODEL_TLEM_ | BM_LEG_MODEL == _LEG_MODEL_TLEM2_)
-  AnyKinEqInterPolDriver JntDriverLeftLegTD = {
-    FileErrorContinueOnOff = On;
-    Type = Bspline;
-    BsplineOrder = 4;
-    FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-leftlegtd.txt";
-    AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
-    AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Left.HipAbduction;
-    AnyKinMeasure &HipExternalRotation = ...BodyModel.Interface.Left.HipExternalRotation;
-    AnyKinMeasure &KneeFlexion = ...BodyModel.Interface.Left.KneeFlexion;
-    AnyKinMeasure &AnklePlantarFlexion = ...BodyModel.Interface.Left.AnklePlantarFlexion;
-    AnyKinMeasure &SubTalarEversion = ...BodyModel.Interface.Left.SubTalarEversion;
-    Reaction.Type={Off,Off,Off,Off,Off,Off};
-  };
+   AnyKinEqInterPolDriver JntDriverLeftLegTD = 
+   {
+     FileErrorContinueOnOff = On;
+     Type = Bspline;
+     BsplineOrder = 4;
+     FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-leftlegtd.txt";
+     AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
+     AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Left.HipAbduction;
+     AnyKinMeasure &HipExternalRotation = ...BodyModel.Interface.Left.HipExternalRotation;
+     AnyKinMeasure &KneeFlexion = ...BodyModel.Interface.Left.KneeFlexion;
+     AnyKinMeasure &AnklePlantarFlexion = ...BodyModel.Interface.Left.AnklePlantarFlexion;
+     AnyKinMeasure &SubTalarEversion = ...BodyModel.Interface.Left.SubTalarEversion;
+     Reaction.Type={Off,Off,Off,Off,Off,Off};
+   };
   #endif
   
-  #if BM_LEG_RIGHT & (BM_LEG_MODEL == _LEG_MODEL_TLEM_ | BM_LEG_MODEL == _LEG_MODEL_TLEM2_)
-  AnyKinEqInterPolDriver JntDriverRightLegTD =  {
-    FileErrorContinueOnOff = On;
-    Type = Bspline;
-    BsplineOrder = 4;
-    FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightlegtd.txt";
-    AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
-    AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Right.HipAbduction;
-    AnyKinMeasure &HipExternalRotation = ...BodyModel.Interface.Right.HipExternalRotation;
-    AnyKinMeasure &KneeFlexion = ...BodyModel.Interface.Right.KneeFlexion;
-    AnyKinMeasure &AnklePlantarFlexion = ...BodyModel.Interface.Right.AnklePlantarFlexion;
-    AnyKinMeasure &SubTalarEversion = ...BodyModel.Interface.Right.SubTalarEversion;
-    Reaction.Type={Off,Off,Off,Off,Off,Off};
-  };
-//  AnyKinEqInterPolDriver JntDriverRightLegTD =  {
-//    FileErrorContinueOnOff = On;
-//    Type = Bspline;
-//    BsplineOrder = 4;
-//    FileName = "../Input/"+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightlegtd.txt";
-//    AnyKinMeasure &KneeFlexion = ...BodyModel.Interface.Right.KneeFlexion;
-//    AnyKinMeasure & FootPosX = ...BodyModel.Interface.Right.GlobalFootPosX;
-//    AnyKinMeasure & FootPosY = ...BodyModel.Interface.Right.GlobalFootPosY;
-//    AnyKinMeasure & FootPosZ = ...BodyModel.Interface.Right.GlobalFootPosZ;
-//    //AnyKinMeasure & FootRotX = ...BodyModel.Interface.Right.GlobalFootRotX;
-//    AnyKinMeasure & FootRotY = ...BodyModel.Interface.Right.GlobalFootRotY;
-//    AnyKinMeasure & FootRotZ = ...BodyModel.Interface.Right.GlobalFootRotZ;
-//    Reaction.Type={Off,Off,Off,Off,Off,Off};
-//  };
-  #endif
+  
+  #if BM_LEG_RIGHT & (BM_LEG_MODEL == _LEG_MODEL_TLEM_ | BM_LEG_MODEL == _LEG_MODEL_TLEM2_) 
+   AnyInputFile FileJntDriverRightLegTD = 
+   {
+     FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightlegtd.txt";
+     FileErrorContinueOnOff = On;
+   }; 
+   AnyInputFile FileJntDriverRightFoot =
+   {
+     FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightfoot.txt";
+     FileErrorContinueOnOff = On;
+   };
 
+   AnyKinEqInterPolDriver JntDriverRightLegTD = 
+   {
+     Type = Bspline;
+     BsplineOrder = 4;      
+     T = .FileJntDriverRightLegTD.T ;
+     Data = { 
+       //.FileJntDriverRightLegTD.Data[0], 
+       //.FileJntDriverRightLegTD.Data[1], 
+       //.FileJntDriverRightLegTD.Data[2],
+       //.FileJntDriverRightLegTD.Data[3],
+       .FileJntDriverRightLegTD.Data[4],
+       .FileJntDriverRightLegTD.Data[5]
+     };
+     //AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
+     //AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Right.HipAbduction;
+     //AnyKinMeasure &HipExternalRotation = ...BodyModel.Interface.Right.HipExternalRotation;      
+     //AnyKinMeasure &KneeFlexion = ...BodyModel.Interface.Right.KneeFlexion;
+     AnyKinMeasure &AnklePlantarFlexion = ...BodyModel.Interface.Right.AnklePlantarFlexion;
+     AnyKinMeasure &SubTalarEversion = ...BodyModel.Interface.Right.SubTalarEversion;
+     Reaction.Type = {Off, Off};
+     CType = {Hard, Hard};
+   };
+   
+  AnyKinEqSimpleDriver RThighInferior =
+  {
+    AnyKinLinear lin = 
+    {
+      AnyRefFrame& marker = Main.ModelSetup.C3DFileData.Model.RThighInferior.Seg;
+      AnyRefFrame& node = ....BodyModel.Right.Leg.Seg.Thigh.RThighInferior ;
+      Ref = 1; // local
+    };
+    MeasureOrganizer = {0, 2}; //local x, z
+    DriverPos = {0, 0};
+    DriverVel = {0, 0};
+    Reaction.Type = {Off, Off};
+  };
+  
+  AnyKinEqSimpleDriver RShankInferior =
+  {
+    AnyKinLinear lin = 
+    {
+      AnyRefFrame& marker = Main.ModelSetup.C3DFileData.Model.RShankInferior.Seg;
+      AnyRefFrame& node = ....BodyModel.Right.Leg.Seg.Shank.RShankInferior ;
+      Ref = 1; // local
+    };
+    MeasureOrganizer = {0}; //local x
+    DriverPos = {0};
+    DriverVel = {0};
+    Reaction.Type = {Off};
+  };  
+  
+  AnyKinEqSimpleDriver RShankLateral =
+  {
+    AnyKinLinear lin = 
+    {
+      AnyRefFrame& marker = Main.ModelSetup.C3DFileData.Model.RShankLateral.Seg;
+      AnyRefFrame& node = ....BodyModel.Right.Leg.Seg.Shank.RShankLateral ;
+      Ref = 1; // local
+    };
+    MeasureOrganizer = {2}; //local z
+    DriverPos = {0};
+    DriverVel = {0};
+    Reaction.Type = {Off};
+  };  
+//   AnyFunConst WeightFunConst = 
+//   {
+//     Value = {1.0, 1.0, 1.0};
+//   };
+//   AnyFunConst WeightFunConstY = 
+//   {
+//     Value = {0.0, 1.0, 0.0};
+//   };  
+//   AnyFunConst WeightFunConstXZ = 
+//   {
+//     Value = {1.0, 0.0, 1.0};
+//   };   
+//   AnyKinDriverMarker RThighInferior = 
+//   {
+//     AnyRefFrame& node = ...BodyModel.Right.Leg.Seg.Thigh.RThighInferior;
+//     AnyParamFun& fun = Main.ModelSetup.C3DFileData.Points.Markers.RThighInferior.PosInterpol;
+//     Linear.Ref = 0;
+//     Reaction.Type = {Off, Off, Off};
+//     CType = {Soft, Hard, Hard}; //z only
+//
+//     WeightFun = {&.WeightFunConst};
+//   };
+//   AnyKinDriverMarker RShankInferior = 
+//   {
+//     AnyRefFrame& node = ...BodyModel.Right.Leg.Seg.Shank.RShankInferior;
+//     AnyParamFun& fun = Main.ModelSetup.C3DFileData.Points.Markers.RShankInferior.PosInterpol;
+//     Linear.Ref = 0;
+//     Reaction.Type = {Off, Off, Off};
+//     CType = {Soft, Soft, Soft}; 
+//
+//     WeightFun = {&.WeightFunConstXZ};
+//   };
+//   AnyKinDriverMarker RShankLateral = 
+//   {
+//     AnyRefFrame& node = ...BodyModel.Right.Leg.Seg.Shank.RShankLateral;
+//     AnyParamFun& fun = Main.ModelSetup.C3DFileData.Points.Markers.RShankLateral.PosInterpol;
+//     Linear.Ref = 0;
+//     Reaction.Type = {Off, Off, Off};
+//     CType = {Soft, Soft, Soft}; //x
+//
+//     WeightFun = {&.WeightFunConstXZ};
+//   };
+//   AnyKinDriverMarker RToeMedial = 
+//   {
+//     AnyRefFrame& node = ...BodyModel.Right.Leg.Seg.Foot.RToeMedial;
+//     AnyParamFun& fun = Main.ModelSetup.C3DFileData.Points.Markers.RToeMedial.PosInterpol;
+//     Linear.Ref = 0;
+//     Reaction.Type = {Off, Off, Off};
+//     CType = {Soft, Soft, Soft}; //x
+//
+//     WeightFun = {&.WeightFunConstY};
+//   }; 
+//   AnyKinDriverMarker RToeLateral = 
+//   {
+//     AnyRefFrame& node = ...BodyModel.Right.Leg.Seg.Foot.RToeLateral;
+//     AnyParamFun& fun = Main.ModelSetup.C3DFileData.Points.Markers.RToeLateral.PosInterpol;
+//     Linear.Ref = 0;
+//     Reaction.Type = {Off, Off, Off};
+//     CType = {Soft, Soft, Soft}; //x
+//
+//     WeightFun = {&.WeightFunConstY};
+//   };   
+//   AnyKinDriver RThighInferior = 
+//   {
+//     AnyKinLinear lin = 
+//     {
+//       AnyRefFrame& node = ....BodyModel.Right.Leg.Seg.Thigh.RThighInferior ;
+//       Ref = -1;
+//     };
+//     AnyFunInterpol paramfun = 
+//     {
+//       Type = Bspline;
+//       BsplineOrder = 4;
+//       T = Main.ModelSetup.C3DFileData.Points.Markers.RThighInferior.PosInterpol.T ;
+//       Data = 
+//       {
+//         Main.ModelSetup.C3DFileData.Points.Markers.RThighInferior.PosInterpol.Data[2]
+//       };
+//     };
+//     MeasureOrganizer = {2}; //z
+//     CType = {Hard};
+//     Reaction.Type = {Off};     
+//   };    
+//   AnyKinDriver RShankInferior = 
+//   {
+//     AnyKinLinear lin = 
+//     {
+//       AnyRefFrame& node = ....BodyModel.Right.Leg.Seg.Shank.RShankInferior ;
+//       Ref = -1;
+//     };
+//     AnyFunInterpol paramfun = 
+//     {
+//       Type = Bspline;
+//       BsplineOrder = 4;
+//       T = Main.ModelSetup.C3DFileData.Points.Markers.RShankInferior.PosInterpol.T ;
+//       Data = 
+//       {
+//         Main.ModelSetup.C3DFileData.Points.Markers.RShankInferior.PosInterpol.Data[0],
+//         Main.ModelSetup.C3DFileData.Points.Markers.RShankInferior.PosInterpol.Data[1]
+//       };
+//     };
+//     MeasureOrganizer = {0, 1}; //x, y
+//     CType = {Hard, Hard};
+//     Reaction.Type = {Off, Off};     
+//   };
+//   AnyKinDriver RShankLateral = 
+//   {
+//     AnyKinLinear lin = 
+//     {
+//       AnyRefFrame& node = ....BodyModel.Right.Leg.Seg.Shank.RShankLateral ;
+//       Ref = -1;
+//     };
+//     AnyFunInterpol paramfun = 
+//     {
+//       Type = Bspline;
+//       BsplineOrder = 4;
+//       T = Main.ModelSetup.C3DFileData.Points.Markers.RShankLateral.PosInterpol.T ;
+//       Data = 
+//       {
+//         Main.ModelSetup.C3DFileData.Points.Markers.RShankLateral.PosInterpol.Data[1]
+//       };
+//     };
+//     MeasureOrganizer = {1}; //y
+//     CType = {Hard};
+//     Reaction.Type = {Off};     
+//   };   
+//   AnyKinEqInterPolDriver JntDriverRightFoot = 
+//   {
+//     Type = Bspline;
+//     BsplineOrder = 4;
+//     T = .FileJntDriverRightFoot.T ;
+//     Data = { 
+//       .FileJntDriverRightFoot.Data[7], 
+//       .FileJntDriverRightFoot.Data[11]
+//     };
+////      AnyKinMeasure & FootPosX = ...BodyModel.Interface.Right.GlobalFootPosX;
+////      AnyKinMeasure & FootPosY = ...BodyModel.Interface.Right.GlobalFootPosY;
+////      AnyKinMeasure & FootRotX = ...BodyModel.Interface.Right.GlobalFootRotX;
+////      AnyKinMeasure & FootRotY = ...BodyModel.Interface.Right.GlobalFootRotY;
+////      AnyKinMeasure & FootRotZ = ...BodyModel.Interface.Right.GlobalFootRotZ;
+//     AnyKinMeasure & FootGlobalToeLateralContactNodePosY = ...BodyModel.Interface.Right.GlobalToeLateralContactNodePosY;
+//     AnyKinMeasure & FootGlobalToeMedialContactNodePosZ = ...BodyModel.Interface.Right.GlobalToeMedialContactNodePosZ;
+//     Reaction.Type={Off,Off};    
+//   };    
+
+  #endif
+  
   #if BM_LEG_LEFT & (BM_LEG_MODEL == _LEG_MODEL_Leg_)
   AnyKinEqInterPolDriver JntDriverLeftLeg = 
   {

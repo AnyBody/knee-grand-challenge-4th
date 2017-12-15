@@ -21,9 +21,9 @@
 #include "Model\Classes.any"
 #include "<USER_PATH_COMMONS>\Class\Class_CreateLigament.any"
 
-//-->Custom Settings
-#include "Subjects\Settings_Custom.any"
-//<--Custom Settings
+////-->Custom Settings
+//#include "Subjects\Settings_Custom.any"
+////<--Custom Settings
 
 //-->Default Settings
 #include "<USER_PATH_COMMONS>\Settings_Default.any"

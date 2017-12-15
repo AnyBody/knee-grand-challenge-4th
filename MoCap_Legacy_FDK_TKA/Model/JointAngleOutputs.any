@@ -1,6 +1,7 @@
-AnyFolder JointAngleOutputs = {
- 
-  AnyOutputFile OutputFile1 = {
+AnyFolder JointAngleOutputs = 
+{
+  AnyOutputFile OutputFile1 = 
+  {
     FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-trunk.txt";
     SepSign = " ";
     
@@ -18,9 +19,9 @@ AnyFolder JointAngleOutputs = {
     AnyVector NeckExtension = ..BodyModel.Interface.Trunk.SkullThoraxFlexion.Pos;
   };
   
- 
   #if BM_LEG_LEFT & (BM_LEG_MODEL == _LEG_MODEL_TLEM_ | BM_LEG_MODEL == _LEG_MODEL_TLEM2_)
-  AnyOutputFile OutputFile2 = {
+  AnyOutputFile OutputFile2 = 
+  {
     FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-leftlegtd.txt";
     SepSign = " ";
     
@@ -33,10 +34,9 @@ AnyFolder JointAngleOutputs = {
   };
   #endif
   
-  
-  
   #if BM_LEG_RIGHT & (BM_LEG_MODEL == _LEG_MODEL_TLEM_ | BM_LEG_MODEL == _LEG_MODEL_TLEM2_)
-  AnyOutputFile OutputFile3 = {
+  AnyOutputFile OutputFile3 = 
+  {
     FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightlegtd.txt";
     SepSign = " ";
     
@@ -47,26 +47,32 @@ AnyFolder JointAngleOutputs = {
     AnyVector AnklePlantarFlexion = ..BodyModel.Interface.Right.AnklePlantarFlexion.Pos;
     AnyVector SubTalarEversion = ..BodyModel.Interface.Right.SubTalarEversion.Pos;
   };
-//  AnyOutputFile OutputFile3 = {
-//    FileName = "../Input/"+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightlegtd.txt";
-//    SepSign = " ";
-//    
-//    AnyVector KneeFlexion = ..BodyModel.Interface.Right.KneeFlexion.Pos;
-//    AnyVector FootPosX = ..BodyModel.Interface.Right.GlobalFootPosX.Pos;
-//    AnyVector FootPosY = ..BodyModel.Interface.Right.GlobalFootPosY.Pos;
-//    AnyVector FootPosZ = ..BodyModel.Interface.Right.GlobalFootPosZ.Pos;
-//    //AnyVector FootRotX = ..BodyModel.Interface.Right.GlobalFootRotX.Pos;
-//    AnyVector FootRotY = ..BodyModel.Interface.Right.GlobalFootRotY.Pos;
-//    AnyVector FootRotZ = ..BodyModel.Interface.Right.GlobalFootRotZ.Pos;
-//  };
+  
+  AnyOutputFile OutputFileRightFoot = 
+  {
+    FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightfoot.txt";
+    SepSign = " ";
+    
+    AnyVector FootPosX = ..BodyModel.Interface.Right.GlobalFootPosX.Pos;
+    AnyVector FootPosY = ..BodyModel.Interface.Right.GlobalFootPosY.Pos;
+    AnyVector FootPosZ = ..BodyModel.Interface.Right.GlobalFootPosZ.Pos;
+    AnyVector FootRotX = ..BodyModel.Interface.Right.GlobalFootRotX.Pos;
+    AnyVector FootRotY = ..BodyModel.Interface.Right.GlobalFootRotY.Pos;
+    AnyVector FootRotZ = ..BodyModel.Interface.Right.GlobalFootRotZ.Pos;
+    
+    AnyVector FootGlobalToeLateralContactNodePosX = ..BodyModel.Interface.Right.GlobalToeLateralContactNodePosX.Pos;
+    AnyVector FootGlobalToeLateralContactNodePosY = ..BodyModel.Interface.Right.GlobalToeLateralContactNodePosY.Pos;
+    AnyVector FootGlobalToeLateralContactNodePosZ = ..BodyModel.Interface.Right.GlobalToeLateralContactNodePosZ.Pos;
+    
+    AnyVector FootGlobalToeMedialContactNodePosX = ..BodyModel.Interface.Right.GlobalToeMedialContactNodePosX.Pos;
+    AnyVector FootGlobalToeMedialContactNodePosY = ..BodyModel.Interface.Right.GlobalToeMedialContactNodePosY.Pos;
+    AnyVector FootGlobalToeMedialContactNodePosZ = ..BodyModel.Interface.Right.GlobalToeMedialContactNodePosZ.Pos;    
+  };  
   #endif
   
-  
-  
-  
-  
   #if BM_LEG_LEFT & (BM_LEG_MODEL == _LEG_MODEL_Leg_)
-  AnyOutputFile OutputFile4 = {
+  AnyOutputFile OutputFile4 = 
+  {
     FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-leftleg.txt";
     SepSign = " ";
     
@@ -77,13 +83,11 @@ AnyFolder JointAngleOutputs = {
     AnyVector AnklePlantarFlexion = ..BodyModel.Interface.Left.AnklePlantarFlexion.Pos;
     AnyVector AnkleEversion = ..BodyModel.Interface.Left.AnkleEversion.Pos;
   };
-
   #endif
   
-  
-  
   #if BM_LEG_RIGHT & (BM_LEG_MODEL == _LEG_MODEL_Leg_)
-  AnyOutputFile OutputFile5 = {
+  AnyOutputFile OutputFile5 = 
+  {
     FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightleg.txt";
     SepSign = " ";
     
@@ -96,11 +100,9 @@ AnyFolder JointAngleOutputs = {
   };
   #endif
   
-  
-  
-  
   #if BM_ARM_LEFT == ON
-  AnyOutputFile OutputFile6 = {
+  AnyOutputFile OutputFile6 = 
+  {
     FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-leftarm.txt";
     SepSign = " ";
    
@@ -120,7 +122,8 @@ AnyFolder JointAngleOutputs = {
 
     
   #if BM_ARM_RIGHT == ON
-  AnyOutputFile OutputFile7 = {
+  AnyOutputFile OutputFile7 = 
+  {
     FileName = Main.TrialSpecificData.StrTrialFolderPath+OutputFileNamePrefix+Main.ModelSetup.C3DFileData.NameOfFile+"-euler-rightarm.txt";
     SepSign = " ";
     
@@ -137,8 +140,6 @@ AnyFolder JointAngleOutputs = {
     AnyVector WristAbduction = ..BodyModel.Interface.Right.WristAbduction.Pos;
   };
   #endif
-  
-  
 }; //JointAngleOutputs
 
 

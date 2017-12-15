@@ -27,7 +27,7 @@ AnyFolder TrialSpecificData=
   
   // ********** Gravity ***********
   // Gravity vector that is consistent with the laboratory setting
-  AnyVector Gravity = {0, 0, -9.81}; // Y direction is normal to the ground
+  AnyVector Gravity = {0, 0, -9.81}; // Z direction is normal to the ground
   
   // ********** Antrhopometrics ***********
   //This antrhopometric data will be used as initial guess for the optimization alogorithm.

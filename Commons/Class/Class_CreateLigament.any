@@ -33,6 +33,10 @@
     StringMesh = .NumStringMesh;
     InitWrapPosVectors = .RefParam.InitWrapPosVectors ;
     
+    RelTol = 1e-6;
+    //AbsTol = 1e-6;
+    //MaxRelStepSize = 0.5;
+    
     #if WRAPPING >= 1
     AnyParamSurf& surf0 = .RefParam.RefSurf0 ;
     #endif

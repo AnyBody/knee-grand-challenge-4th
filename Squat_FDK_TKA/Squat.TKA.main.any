@@ -50,6 +50,30 @@ Main =
       #include "Model\Supports.any"
       #include "Model\FootPrintGeneration.any"
     };
+    
+//    Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.Surf = 
+//    {
+//      AnyDrawParamSurf DrwParamSurf = 
+//      {
+//        RGB = {1, 1, 0};
+//        Opacity = 0.5;
+//      };
+//    };
+//    Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.AnkleJoint = 
+//    {
+//      AnyDrawRefFrame DrwFrame = 
+//      {
+//        RGB = {1, 0, 0};
+//        
+//      };
+//    };
+//    Main.HumanModel.BodyModel.Right.Leg.Seg.Talus.AnkleJoint = 
+//    {
+//      AnyDrawRefFrame DrwFrame = 
+//      {
+//        RGB = {0, 1, 0};
+//      };      
+//    };
   };
   
   #include "Model\Operations.any"
