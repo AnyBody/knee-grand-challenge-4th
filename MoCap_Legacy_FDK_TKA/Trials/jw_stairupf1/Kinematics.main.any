@@ -10,8 +10,7 @@
 #path PATH_MARKERS_TLEMv2 "Markers_TLEMv2.any"
 #path PATH_FORCEPLATES "ForcePlates.any"
 #define DEF_C3D_FILTER_CUT_OFF_FREQ_MARKERS 5
-#define DEF_C3D_FILTER_CUT_OFF_FREQ_FORCES 18
-//#define DEF_C3D_FILTER_CUT_OFF_FREQ_FORCES 7
+#define DEF_C3D_FILTER_CUT_OFF_FREQ_FORCES 7
 //<--Trial Specific Data
 
 //-->Subject Specific Setting
