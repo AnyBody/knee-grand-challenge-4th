@@ -11,7 +11,7 @@
 #path BM_SCALING_ANTHRO_FILE "AnyMan/AnyManUniform.any"
 #endif
 
-#define BM_TRUNK_MUSCLES OFF  
+//#define BM_TRUNK_MUSCLES OFF  
 #define BM_ARM_MUSCLES_LEFT OFF
 #define BM_ARM_MUSCLES_RIGHT OFF
 
