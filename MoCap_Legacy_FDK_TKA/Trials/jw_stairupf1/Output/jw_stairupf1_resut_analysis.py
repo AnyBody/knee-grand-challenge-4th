@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import glob
 import os
 import math
+from sklearn.metrics import r2_score
 
 import anypytools
 from anypytools import h5py_wrapper as h5py2
@@ -72,43 +73,87 @@ for mus_group_name in list_mus_group_names:
 contact_force_sum_calculated_max = np.max(df_contact[['F_sum_calculated']].max())
 print('Maximum contact force(N):', contact_force_sum_calculated_max)
 
+contact_force_BW_ratio_sum_calculated_max = np.max(df_contact[['BW_ratio_F_sum_calculated']].max())
+print('Maximum contact force B Wratio:', contact_force_BW_ratio_sum_calculated_max)
 fig_cnt = 0
         
 df_contact_lateral_absolute = df_contact[['F_lateral_calculated', 'F_lateral_measured']]
 plt.figure(num=fig_cnt)
 df_contact_lateral_absolute.plot(grid=True)
-plt.title('Contact Force_Lateral(N)')
+plt.title('Contact Force: Lateral', loc='center')
 plt.xlabel('Cycle(%)')
 plt.ylabel('Force(N)')
 plt.ylim(0, math.ceil(contact_force_sum_calculated_max/1000)*1000)
-lgd=plt.legend(bbox_to_anchor=(1, 1), loc=2)    
-plt.savefig(str_name_folder_trial+'_Contact Force_Lateral', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
+lgd=plt.legend(bbox_to_anchor=(1, 1), loc=0)    
+plt.savefig(str_name_folder_trial+'_Contact Force Lateral', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
 plt.show()
+plt.close(fig_cnt)
 fig_cnt+=1
 
 df_contact_medial_absolute = df_contact[['F_medial_calculated', 'F_medial_measured']]
 plt.figure(num=fig_cnt)
 df_contact_medial_absolute.plot(grid=True)
-plt.title('Contact Force_Medial(N)')
+plt.title('Contact Force: Medial', loc='center')
 plt.xlabel('Cycle(%)')
 plt.ylabel('Force(N)')
 plt.ylim(0, math.ceil(contact_force_sum_calculated_max/1000)*1000)
-lgd=plt.legend(bbox_to_anchor=(1, 1), loc=2)    
-plt.savefig(str_name_folder_trial+'_Contact Force_Medial', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
+lgd=plt.legend(bbox_to_anchor=(1, 1), loc=0)    
+plt.savefig(str_name_folder_trial+'_Contact Force Medial', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
 plt.show()
+plt.close(fig_cnt)
 fig_cnt+=1
 
 
 df_contact_sum_absolute = df_contact[['F_sum_calculated', 'F_sum_measured']]
 plt.figure(num=fig_cnt)
 df_contact_sum_absolute.plot(grid=True)
-plt.title('Contact Force_Total(N)')
+plt.title('Contact Force: Total', loc='center')
 plt.xlabel('Cycle(%)')
 plt.ylabel('Force(N)')
 plt.ylim(0, math.ceil(contact_force_sum_calculated_max/1000)*1000)
-lgd=plt.legend(bbox_to_anchor=(1, 1), loc=2)    
-plt.savefig(str_name_folder_trial+'_Contact Force_Total', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
+lgd=plt.legend(bbox_to_anchor=(1, 1), loc=0)    
+plt.savefig(str_name_folder_trial+'_Contact Force Total', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
 plt.show()
+plt.close(fig_cnt)
+fig_cnt+=1
+
+df_contact_lateral_ratio = df_contact[['BW_ratio_F_lateral_calculated', 'BW_ratio_F_lateral_measured']]
+plt.figure(num=fig_cnt)
+df_contact_lateral_ratio.plot(grid=True)
+plt.title('Contact Force BW Ratio: Lateral', loc='center')
+plt.xlabel('Cycle(%)')
+plt.ylabel('BW ratio')
+plt.ylim(0, 4)
+lgd=plt.legend(bbox_to_anchor=(1, 1), loc=0)    
+plt.savefig(str_name_folder_trial+'_Contact Force BW Ratio Lateral', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
+plt.show()
+plt.close(fig_cnt)
+fig_cnt+=1
+
+df_contact_medial_ratio = df_contact[['BW_ratio_F_medial_calculated', 'BW_ratio_F_medial_measured']]
+plt.figure(num=fig_cnt)
+df_contact_medial_ratio.plot(grid=True)
+plt.title('Contact Force BW Ratio: Medial', loc='center')
+plt.xlabel('Cycle(%)')
+plt.ylabel('BW ratio')
+plt.ylim(0, 4)
+lgd=plt.legend(bbox_to_anchor=(1, 1), loc=0)    
+plt.savefig(str_name_folder_trial+'_Contact Force BW Ratio Medial', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
+plt.show()
+plt.close(fig_cnt)
+fig_cnt+=1
+
+df_contact_sum_ratio = df_contact[['BW_ratio_F_sum_calculated', 'BW_ratio_F_sum_measured']]
+plt.figure(num=fig_cnt)
+df_contact_sum_ratio.plot(grid=True)
+plt.title('Contact Force BW Ratio: Total', loc='center')
+plt.xlabel('Cycle(%)')
+plt.ylabel('BW ratio')
+plt.ylim(0, 4)
+lgd=plt.legend(bbox_to_anchor=(1, 1), loc=0)    
+plt.savefig(str_name_folder_trial+'_Contact Force BW Ratio Total', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
+plt.show()
+plt.close(fig_cnt)
 fig_cnt+=1
 
 list_mus_group_knee_flexor_names = ['GastrocnemiusMedialis', 'GastrocnemiusLateralis', 'BicepsFemorisCaputLongum', 'BicepsFemorisCaputBreve', 'Gracilis', 
@@ -125,9 +170,10 @@ plt.title('Contact Force vs Knee Flexors Muscle Forces')
 plt.xlabel('Cycle(%)')
 plt.ylabel('Force(N)')
 #plt.ylim(0, math.ceil(contact_force_sum_calculated_max/1000)*1000)
-lgd=plt.legend(bbox_to_anchor=(1, 1), loc=2)
+lgd=plt.legend(bbox_to_anchor=(1, 1), loc=0)
 plt.savefig(str_name_folder_trial+'_Knee Flexors Muscle Forces', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
 plt.show()
+plt.close(fig_cnt)
 fig_cnt+1
 
 df_mus_force_knee_extenstor = pd.concat([df_contact[['F_lateral_calculated']], df_mus_force[list_mus_knee_extensor_names]])
@@ -137,7 +183,7 @@ plt.title('Contact Force vs Knee Extensors Muscle Forces')
 plt.xlabel('Cycle(%)')
 plt.ylabel('Force(N)')
 #plt.ylim(0, math.ceil(contact_force_sum_calculated_max/1000)*1000)
-lgd=plt.legend(bbox_to_anchor=(1, 1), loc=2)
+lgd=plt.legend(bbox_to_anchor=(1, 1), loc=0)
 plt.savefig(str_name_folder_trial+'_Knee Extensors Muscle Forces', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
 plt.show()
 plt.close(fig_cnt)
@@ -158,32 +204,24 @@ fig_cnt+1
 
 h5file.close()
     
-#df_mus_force_all = pd.concat([df_contact[['F_lateral_calculated']], df_mus_force])
-#plt.figure(num=fig_cnt)
-#df_mus_force_all.plot(grid=True, style=list_linestyles)
-#plt.title('Contact Force vs All Muscle Forces')
-#plt.xlabel('Cycle(%)')
-#plt.ylabel('Force(N)')
-##plt.ylim(0, math.ceil(contact_force_sum_calculated_max/1000)*1000)
-#lgd=plt.legend(bbox_to_anchor=(1, 1), loc=2)
-#plt.savefig(str_name_folder_trial+'_All Muscle Forces', dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
-#plt.show()
-#fig_cnt+1
+arr_BW_ratio_F_lateral_calculated = np.array(df_contact['BW_ratio_F_lateral_calculated'])
+arr_BW_ratio_F_lateral_measured = np.array(df_contact['BW_ratio_F_lateral_measured'])
+pearson_corr_F_lateral = sp.stats.pearsonr(arr_BW_ratio_F_lateral_calculated, arr_BW_ratio_F_lateral_measured )
+RMSE_F_lateral = np.sqrt(((arr_BW_ratio_F_lateral_calculated - arr_BW_ratio_F_lateral_measured)**2).mean())
+print("Pearson Correlation F lateral = ", pearson_corr_F_lateral)
+print("RMSE F lateral BW ratio = ",  RMSE_F_lateral)
 
-#df_mus_force__knee_flexor = dict_mus_force[[x for x in list_mus_names if x.startswith(y) for y in list_mus_group_knee_flexor_names]]
-#ratio_force_wrt_max = 0.1    
-#for mus_group_name in list_mus_group_names:
-#    mus_force_group_max = np.max(dict_df_mus_force[mus_group_name].max())
-#    if mus_force_group_max >= ratio_force_wrt_max*contact_force_calculated_max: 
-#        plt.figure(num = fig_cnt)
-#        dict_df_mus_force[mus_group_name].plot()
-#        plt.title('Muscle Force: ' + mus_group_name)
-#        plt.xlabel('Time(sec)')
-#        plt.ylabel('Force(N)')
-#        plt.ylim([-5, 1000])
-#        plt.grid(which='major', axis='both')
-#        lgd=plt.legend(bbox_to_anchor=(1, 1), loc=2)    
-#        plt.savefig(str_name_folder_trial+'_Mus_Force_'+mus_group_name, dpi=600, bbox_extra_artists=(lgd,), bbox_inches='tight')
-#        plt.show()
-#        fig_cnt+=1
-        
+arr_BW_ratio_F_medial_calculated = np.array(df_contact['BW_ratio_F_medial_calculated'])
+arr_BW_ratio_F_medial_measured = np.array(df_contact['BW_ratio_F_medial_measured'])
+pearson_corr_F_medial = sp.stats.pearsonr(arr_BW_ratio_F_medial_calculated, arr_BW_ratio_F_medial_measured )
+RMSE_F_medial = np.sqrt(((arr_BW_ratio_F_medial_calculated - arr_BW_ratio_F_medial_measured)**2).mean())
+print("Pearson Correlation F medial = ", pearson_corr_F_medial)
+print("RMSE F medial BW ratio = ",  RMSE_F_medial )
+
+arr_BW_ratio_F_sum_calculated = np.array(df_contact['BW_ratio_F_sum_calculated'])
+arr_BW_ratio_F_sum_measured = np.array(df_contact['BW_ratio_F_sum_measured'])
+pearson_corr_F_sum = sp.stats.pearsonr(arr_BW_ratio_F_sum_calculated, arr_BW_ratio_F_sum_measured )
+RMSE_F_sum = np.sqrt(((arr_BW_ratio_F_sum_calculated - arr_BW_ratio_F_sum_measured)**2).mean())
+print("Pearson Correlation F sum = ", pearson_corr_F_sum)    
+print("RMSE F sum BW ratio = ",  RMSE_F_sum )
+

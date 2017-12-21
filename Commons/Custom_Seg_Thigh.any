@@ -97,11 +97,11 @@ AnyRefNode PatientRefNode =
       Length = 0.1;
       FixedDirection = On;
       Direction = {0.0, 0.0, SEG_SIGN};
-//      AnyDrawParamSurf Drw = 
-//      {
-//        RGB = {1, 1, 1};
-//        Opacity = 0.5;
-//      };    
+      AnyDrawParamSurf Drw = 
+      {
+        //RGB = {1, 1, 1};
+        //Opacity = 0.5;
+      };    
     };
   }; 
   
@@ -154,11 +154,11 @@ AnyRefNode PatientRefNode =
       Length = 0.1;
       FixedDirection = On;
       Direction = {0.0, 0.0, 1};
-//      AnyDrawParamSurf Drw = 
-//      {
-//        RGB = {1, 1, 1};
-//        Opacity = 0.5;
-//      };    
+      AnyDrawParamSurf Drw = 
+      {
+        //RGB = {1, 1, 1};
+        //Opacity = 0.5;
+      };    
     };
   };   
   
@@ -202,11 +202,11 @@ AnyRefNode PatientRefNode =
     {
       Points = ..Implant_Femoral_Condyle_Lateral_Anterior_Points_Picked.Points_Transformed ;
       Spherical = On;
-//      AnyDrawParamSurf Drw = 
-//      {
-//        RGB = {1, 1, 1};
-//        Opacity = 0.5;
-//      };    
+      AnyDrawParamSurf Drw = 
+      {
+        //RGB = {1, 1, 1};
+        //Opacity = 0.5;
+      };    
     };
     
     AnyRefNode RotNode = 
@@ -222,11 +222,11 @@ AnyRefNode PatientRefNode =
       AnySurfEllipsoid Surf = 
       {
         Radius = {..Surf.Radius[0]*0.6, ..Surf.Radius[0]*0.85, ..Surf.Radius[0]*0.45 };
-//        AnyDrawParamSurf Drw = 
-//        {
-//          RGB = {1, 0, 0};
-//          Opacity = 0.5;
-//        };          
+        AnyDrawParamSurf Drw = 
+        {
+          //RGB = {1, 0, 0};
+          //Opacity = 0.5;
+        };          
       };
     };
   };
@@ -271,11 +271,11 @@ AnyRefNode PatientRefNode =
     {
       Points = ..Implant_Femoral_Condyle_Medial_Anterior_Points_Picked.Points_Transformed ;
       Spherical = On;
-//      AnyDrawParamSurf Drw = 
-//      {
-//        RGB = {1, 1, 1};
-//        Opacity = 0.5;
-//      };    
+      AnyDrawParamSurf Drw = 
+      {
+        //RGB = {1, 1, 1};
+        //Opacity = 0.5;
+      };    
     };
     
     AnyRefNode RotNode = 
@@ -291,11 +291,11 @@ AnyRefNode PatientRefNode =
       AnySurfEllipsoid Surf = 
       {
         Radius = {..Surf.Radius[0]*0.6, ..Surf.Radius[0]*0.85, ..Surf.Radius[0]*0.45 };
-//        AnyDrawParamSurf Drw = 
-//        {
-//          RGB = {1, 0, 0};
-//          Opacity = 0.5;
-//        };          
+        AnyDrawParamSurf Drw = 
+        {
+          //RGB = {1, 0, 0};
+          //Opacity = 0.5;
+        };          
       };
     };
   }; 
@@ -329,11 +329,11 @@ AnyRefNode PatientRefNode =
     {
       Points = ..Implant_Femoral_Condyle_Lateral_Posterior_Points_Picked.Points_Transformed ;
       Spherical = On;
-//      AnyDrawParamSurf Drw = 
-//      {
-//        RGB = {1, 0, 1};
-//        Opacity = 0.5;
-//      };    
+      AnyDrawParamSurf Drw = 
+      {
+        //RGB = {1, 0, 1};
+        //Opacity = 0.5;
+      };    
     };
   };   
   
@@ -412,10 +412,10 @@ AnyRefNode Implant_Femoral_Head_Fitting_Surf_Node  =
     Points = ..Implant_Femoral_Head_Points_Picked.Points_Transformed ;
     FixedAxes = On;
     Spherical = On;
-//      AnyDrawParamSurf Drw = 
-//      {
-//        RGB = {1, 1, 1};
-//      };
+    AnyDrawParamSurf Drw = 
+    {
+      //RGB = {1, 1, 1};
+    };
   };
 };
 
@@ -443,10 +443,10 @@ AnyRefNode Implant_Femoral_Head_Axial_Fitting_Surf_Node  =
   {
     Points = ..Implant_Femoral_Head_Axial_Points_Picked.Points_Transformed ;
     Length = 0.05;
-//    AnyDrawParamSurf Drw = 
-//    {
-//      RGB = {1, 1, 1};
-//    };
+    AnyDrawParamSurf Drw = 
+    {
+      //RGB = {1, 1, 1};
+    };
   };
 };
 
@@ -472,11 +472,11 @@ AnyRefNode Implant_Femoral_Head_Wrapping_Surf_Node =
     
     CapRatio = 1;
     CapRatio2 = 1;    
-//    AnyDrawParamSurf Drw = 
-//    {
-//      RGB = {1, 1, 1};
-//      Opacity = 0.5;
-//    };   
+    AnyDrawParamSurf Drw = 
+    {
+      //RGB = {1, 1, 1};
+      //Opacity = 0.5;
+    };   
   };
 };
 

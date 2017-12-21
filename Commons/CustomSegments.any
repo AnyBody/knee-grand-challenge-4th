@@ -39,7 +39,47 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
       #include "Custom_Seg_Thigh.any"
       #undef SEG_SIGN
       
-      Drw3.Visible = Off;    
+      Drw3.Visible = Off;
+      
+      Implant_Femoral_Head_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      Implant_Femoral_Head_Fitting_Surf_Node.Surf.Drw.RGB = {1, 0, 0};
+      Implant_Femoral_Head_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      Implant_Femoral_Head_Axial_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      Implant_Femoral_Head_Axial_Fitting_Surf_Node.Surf.Drw.RGB = {0, 1, 0};
+      Implant_Femoral_Head_Axial_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      Implant_Femoral_Head_Wrapping_Surf_Node.Surf.Drw.Visible = Off;
+      Implant_Femoral_Head_Wrapping_Surf_Node.Surf.Drw.RGB = {0, 0, 1};
+      Implant_Femoral_Head_Wrapping_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.Surf.Drw.RGB = {1, 1, 0};
+      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.Surf.Drw.Opacity = 0.2;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node.Surf.Drw.RGB = {0, 1, 1};
+      PatientRefNode.Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node.Surf.Drw.RGB = {1, 0, 1};
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.Surf.Drw.RGB = {1, 1, 0.5};
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.RGB = {1, 0.5, 1};
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.Surf.Drw.RGB = {0.5, 1, 1};
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.RGB = {1, 0, 0.5};
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Opacity = 0.5;
     };  
   };
  #endif //Right Thigh
@@ -55,6 +95,14 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
       
       DrwSurfTibia.Visible = Off;
       DrwSurfFibula.Visible = Off;    
+      
+      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.Surf.Drw.RGB = {1, 0, 0};
+      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Wrapping_Medial_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Wrapping_Medial_Node.Surf.Drw.RGB = {0, 1, 0};
+      PatientRefNode.Wrapping_Medial_Node.Surf.Drw.Opacity = 0.5;
     };
   };
  #endif //Right Shank
@@ -94,7 +142,13 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
       #include "Custom_Seg_Thigh.any"
       #undef SEG_SIGN
       
-      Drw3.Visible = Off;    
+      Drw3.Visible = Off;
+      
+      Implant_Femoral_Head_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      Implant_Femoral_Head_Axial_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      Implant_Femoral_Head_Wrapping_Surf_Node.Surf.Drw.Visible = Off;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
     };
   };
  #endif // Left Thigh

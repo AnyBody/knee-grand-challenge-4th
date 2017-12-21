@@ -115,11 +115,11 @@ AnyRefNode PatientRefNode =
     {
       Points = ..Talus_Trochlea_Points_Picked.Points_Transformed ;
       Length = 0.025;
-//      AnyDrawParamSurf Drw = 
-//      {
-//        RGB = {1, 1, 1};
-//        Opacity = 0.5;
-//      }; 
+      AnyDrawParamSurf Drw = 
+      {
+        //RGB = {1, 1, 1};
+        //Opacity = 0.5;
+      }; 
     };
   };
   
@@ -135,11 +135,11 @@ AnyRefNode PatientRefNode =
       Length = 0.05;
       CapRatio = 1.0;
       
-//      AnyDrawParamSurf Drw = 
-//      {
-//        RGB = {1, 1, 1};
-//        Opacity = 0.5;
-//      };        
+      AnyDrawParamSurf Drw = 
+      {
+        //RGB = {1, 1, 1};
+        //Opacity = 0.5;
+      };        
     };
   };
   
