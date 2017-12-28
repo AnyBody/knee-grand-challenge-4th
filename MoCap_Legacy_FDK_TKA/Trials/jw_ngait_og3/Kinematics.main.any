@@ -1,0 +1,21 @@
+#include "..\..\..\..\libdef.any"
+
+#define MotionAndParameterOptimizationModel 1
+#define InverseDynamicModel 0
+
+//-->Trial Specific Data
+#path PATH_TRIALFOLDER ".\"
+#path PATH_TRIALSPEICIFICDATA "TrialSpecificData.any"
+#path PATH_eKneeData "jw_ngait_og3_knee_forces.csv"
+#path PATH_MARKERS_TLEMv2 "Markers_TLEMv2.any"
+#path PATH_FORCEPLATES "ForcePlates.any"
+//#define DEF_C3D_FILTER_CUT_OFF_FREQ_MARKERS 7
+#define DEF_C3D_FILTER_CUT_OFF_FREQ_MARKERS 5
+#define DEF_C3D_FILTER_CUT_OFF_FREQ_FORCES 7
+//<--Trial Specific Data
+
+//-->Subject Specific Setting
+#include "..\..\Subjects\Settings_Custom.any"
+//<--Subject Specific Setting
+
+#include "..\..\MoCap_FullBody.main.any"

@@ -1,0 +1,45 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Studies.KinematicStudyForParameterIdentification
+Operation: Main.Studies.KinematicStudyForParameterIdentification.Kinematics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.UpdData = 2
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.FileName = "..\Trials\jw_ngait_og3\FullBody-jw_ngait_og3-euler-leftarm.txt"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.NumberFormat.Digits = 15
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.NumberFormat.Width = 23
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.NumberFormat.Style = ScientificNumber
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.NumberFormat.FormatStr = "%23.15e"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.Values = 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.Search = 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.Format = 0
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.SepSign = " "
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.SepSpaceAutoOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.LineSepSign = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.Header.TitleSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.Header.ConstSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.Header.ConstSectionSaveOptionsOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.Header.VarSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.Header.ColumnNamesOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.Header.LinePrefix = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.Header.ShortenNamesOnOff = Off
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.Header.ColumnIDString = "col"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.ConstSectionSaveOptionsOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.SuppressTimeColumnOnOff = Off
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Studies.KinematicStudyForParameterIdentification.t
+col1  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.SternoClavicularProtraction
+col2  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.SternoClavicularElevation
+col3  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.SternoClavicularAxialRotation
+col4  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.GlenohumeralFlexion
+col5  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.GlenohumeralExternalRotation
+col6  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.GlenohumeralAbduction
+col7  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.ElbowFlexion
+col8  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.ElbowPronation
+col9  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.WristFlexion
+col10  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.WristAbduction
+----------------------------------------------------------
+Main.Studies.KinematicStudyForParameterIdentification.t Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.SternoClavicularProtraction Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.SternoClavicularElevation Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.SternoClavicularAxialRotation Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.GlenohumeralFlexion Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.GlenohumeralExternalRotation Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.GlenohumeralAbduction Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.ElbowFlexion Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.ElbowPronation Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.WristFlexion Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile6.WristAbduction
+1.858333333333333e+000 -5.685494250409999e-001 -2.640652781840180e-002 -3.490657414194225e-001 3.873001116061547e-001 -4.235202977819657e-001 3.678535888671612e-001 1.484403835269333e-001 -3.078215632902096e-002 4.375005833169463e-001 5.113987707291581e-001
+1.910185185185185e+000 -5.642649865430854e-001 -3.294570765689753e-002 -3.490660285875414e-001 4.536449393358502e-001 -4.058336842279021e-001 4.022664317901064e-001 1.568304905018945e-001 1.246241687699464e-002 4.234216456472011e-001 5.015433929232909e-001
+1.962037037037037e+000 -5.642649865430854e-001 -3.294570765689753e-002 -3.490660285875414e-001 4.536449393358502e-001 -4.058336842279021e-001 4.022664317901064e-001 1.568304905018945e-001 1.246241687699464e-002 4.234216456472011e-001 5.015433929232909e-001

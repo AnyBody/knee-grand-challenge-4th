@@ -1,0 +1,177 @@
+
+AnyFolder TrialSpecificData={
+  
+   Main.ModelSetup.C3DFileData ={
+    SearchAndReplace = {{"JW:", ""}};
+  };
+  
+  AnyString StrTrialFolderPath = PATH_TRIALFOLDER ;
+  AnyString StrOutputFolderPath = ANYBODY_PATH_OUTPUT;
+  // ********** Input File ***********
+  //Name of the C3D file to be analysed. Following C3D files are available:
+  AnyString NameOfFile ="jw_ngait_og3"; //Write the name of the file here
+
+  // ********** Time ***********
+//  AnyIntVar FrontFrameOffset = 30;
+//  AnyIntVar LastFrameOffset  = 30;
+//  AnyIntVar nStep = Main.ModelSetup.nStep;
+
+  AnyIntVar FirstFrameIK = Main.ModelSetup.C3DFileData.Header.FirstFrameNo + 5 ;
+  AnyIntVar LastFrameIK = Main.ModelSetup.C3DFileData.Header.LastFrameNo - 74 ;
+  AnyIntVar nStepIK = Main.ModelSetup.nStepIK ;  
+  
+  AnyIntVar FirstFrameID = Main.ModelSetup.C3DFileData.Header.FirstFrameNo + 30 ;
+  AnyIntVar LastFrameID = Main.ModelSetup.C3DFileData.Header.LastFrameNo - 124 ;
+  AnyIntVar nStepID = Main.ModelSetup.nStepID ;  
+  
+  // ********** Gravity ***********
+  // Gravity vector that is consistent with the laboratory setting
+  AnyVector Gravity = {0, 0, -9.81}; // Z direction is normal to the ground
+  
+  // ********** Antrhopometrics ***********
+  //This antrhopometric data will be used as initial guess for the optimization alogorithm.
+  //The optimization algoritm will allow changes to the segment lengths.
+  AnyFolder Anthropometrics={
+    AnyVar BodyMass=66.7;  //the mass is automatically distributed to the segments
+    AnyVar BodyHeight=1.68;  //height
+    
+    AnyVar ThighLength = 0.4234534;  //rigth and left side is mirrored 
+    AnyVar ShankLength = 0.4120814;
+    AnyVar FootLength = 0.258 ;
+    AnyVar PelvisWidth = 0.160 ; //distance between hip joints
+    AnyVar PelvisDepth = 0.1509133;
+    AnyVar HeadHeight = 0.14;//height in neutral position from  C1HatNode to top of head
+    AnyVar TrunkHeight = 0.594 ;//height in neutral position from  C1HatNode to L5SacrumJnt
+    AnyVar UpperArmLength = 0.286 ;
+    AnyVar LowerArmLength = 0.235 ;
+    AnyVar HandLength = 0.182;
+    AnyVar HandBreadth = 0.085;
+  };
+
+  // Define what anthropometrics will be optimised, but be aware that inconsiderate changes
+  // might lead to model failure! Pelvis and Trunk can only be "On" if there are markers available.
+  // Upper and Lower arms can only be "On" if Upper Body is used and sufficient markers are available.
+  Main.ModelSetup = 
+  {
+    // For FullBody model    
+    #if BM_ARM_LEFT + BM_ARM_RIGHT >= 1
+    OptimizeAnthropometricsOnOff OptimizeOnOff (
+    PelvisWidthOnOff ="On", 
+    PelvisDepthOnOff ="Off",
+    ThighLengthOnOff="Off", 
+    ShankLengthOnOff="Off", 
+    FootLengthOnOff="On", 
+    HeadHeightOnOff="Off", 
+    TrunkHeightOnOff="On", 
+    UpperArmLengthOnOff="On",
+    LowerArmLengthOnOff="On",
+    Model1=MotionAndParameterOptimizationModel, Model2= InverseDynamicModel
+    ) ={};
+    #else
+    OptimizeAnthropometricsOnOff OptimizeOnOff (
+    PelvisWidthOnOff ="On",
+    PelvisDepthOnOff ="Off",
+    ThighLengthOnOff="Off", 
+    ShankLengthOnOff="Off", 
+    FootLengthOnOff="On", 
+    HeadHeightOnOff="Off", 
+    TrunkHeightOnOff="On", 
+    UpperArmLengthOnOff="Off",
+    LowerArmLengthOnOff="Off",
+    Model1=MotionAndParameterOptimizationModel, Model2= InverseDynamicModel
+    ) ={};
+    #endif    
+  };
+
+  // ********** Initial Position ***********
+  //This is the initial position of the body it should only be touched it the kinematics does not work it first timestep
+  //then these variable can be used to create a better guess, otherwise leave them unchanged
+  AnyFolder InitialPositionOfBody ={
+    
+ AnyVar PelvisPosX = 0.2057608;
+ AnyVar PelvisPosY = 0.1842222;
+ AnyVar PelvisPosZ = 1.464945;
+ AnyVar PelvisRotX = -96.91409;
+ AnyVar PelvisRotY = 197.1129;
+ AnyVar PelvisRotZ = -1.664969;
+  
+   AnyVar PelvisThoraxExtension = -40;
+   AnyVar PelvisThoraxLateralBending = 0;
+   AnyVar PelvisThoraxRotation = 0;
+
+   AnyVar NeckExtension = 0;
+  AnyVar  NeckLateralBending = 0;
+  AnyVar  NeckRotation = 0;
+  
+   AnyFolder Right = {
+
+   AnyVar   HipFlexion = 20;
+   AnyVar   HipAbduction = -10;
+  AnyVar    HipExternalRotation = 10;
+   AnyVar   KneeFlexion = 10;
+   AnyVar   AnklePlantarFlexion = -10;
+   AnyVar   SubTalarEversion = 0;
+ 
+   AnyVar   GlenohumeralFlexion = 20;
+  AnyVar    GlenohumeralAbduction = 0;
+  AnyVar    GlenohumeralExternalRotation = 0;
+  AnyVar    ElbowFlexion = 20;
+   AnyVar   ElbowPronation = 0;
+   AnyVar   WristFlexion = 0;
+   AnyVar   WristAbduction = 0;
+    
+  };
+  AnyFolder  Left = {
+    
+  AnyVar    HipFlexion = -23;
+  AnyVar    HipAbduction = 0;
+  AnyVar    HipExternalRotation = 10;
+  AnyVar    KneeFlexion = 14;
+   AnyVar   AnklePlantarFlexion = -15;
+ AnyVar     SubTalarEversion = 0;
+    
+  AnyVar    GlenohumeralFlexion = 28;
+  AnyVar    GlenohumeralAbduction = 28;
+  AnyVar    GlenohumeralExternalRotation = 0;
+  AnyVar    ElbowFlexion = 34;
+  AnyVar    ElbowPronation = 0;
+  AnyVar    WristFlexion = 0;
+  AnyVar    WristAbduction = 0;
+    
+  };
+
+  
+  
+  
+  
+  
+  };
+ 
+  
+  // ********** Extra Drivers ***********
+  // Some Gait Labs protocols do not record sufficient markers to create a full body model.
+  // In particular, markers on the head, trunk and a third marker on the foot are not standard.
+  // Therefore, additioanl drivers have been added to the model fix the head, drive the trunk
+  // above the pelvis and fix subtalar eversio. You can switch them on for your own C3D files:
+  
+  // Do you have markers on the head? If not turn OFF following switch:
+#ifndef HeadMarkersOnOff
+  #define HeadMarkersOnOff OFF
+#endif
+  // Do you have markers on the Trunk? If not turn OFF following switch:
+#ifndef TrunkMarkersOnOff
+  #define TrunkMarkersOnOff ON
+#endif
+  // Do you have three markers on the Foot? If not turn OFF following switch:
+#ifndef ThreeFootMarkersOnOff
+  #define ThreeFootMarkersOnOff ON
+#endif
+  // Do you have markers on the Scapula/Clavicle? If not turn OFF following switch:
+#ifndef SCMarkersOnOff
+  #define SCMarkersOnOff ON
+#endif
+
+#ifndef UseDetailNeckModel 
+  #define UseDetailNeckModel OFF
+#endif
+};
