@@ -4,7 +4,7 @@
 // #include "<ANYBODY_PATH_BODY>\Documentation\BodyModel.parameters.any"
 // ----------------------------------------------------------
 Main = {
-
+  
   #define BM_SCALING CONST_SCALING_LENGTHMASSFAT 
   #define BM_MANNEQUIN_DRIVER_DEFAULT OFF
   
@@ -13,26 +13,67 @@ Main = {
   #endif
 
   #if INCLUDE_UPPERBODY == ON
-    #define BM_TRUNK_NECK_MUSCLES OFF
-    #define BM_TRUNK_MUSCLES OFF
-    #define BM_ARM_MUSCLES_BOTH OFF
-    #define BM_ARM_RIGHT ON
-    #define BM_ARM_LEFT ON
-    #define BM_LEG_MUSCLES_LEFT ON
-    #define BM_LEG_MUSCLES_RIGHT ON
-    #define BM_LEG_LEFT ON
-    #define BM_LEG_RIGHT ON
+    #ifndef BM_TRUNK_NECK_MUSCLES
+      #define BM_TRUNK_NECK_MUSCLES OFF
+    #endif
+    #ifndef BM_TRUNK_MUSCLES
+      #define BM_TRUNK_MUSCLES OFF
+    #endif
+    #ifndef BM_ARM_MUSCLES_BOTH
+      #define BM_ARM_MUSCLES_BOTH OFF
+    #endif
+    #ifndef BM_ARM_RIGHT
+      #define BM_ARM_RIGHT ON
+    #endif
+    #ifndef BM_ARM_LEFT
+      #define BM_ARM_LEFT ON
+    #endif
+    #ifndef BM_LEG_MUSCLES_LEFT
+      #define BM_LEG_MUSCLES_LEFT ON
+    #endif
+    #ifndef BM_LEG_MUSCLES_RIGHT
+     #define BM_LEG_MUSCLES_RIGHT ON
+    #endif
+    #ifndef BM_LEG_LEFT
+      #define BM_LEG_LEFT ON
+    #endif
+    #ifndef BM_LEG_RIGHT
+      #define BM_LEG_RIGHT ON
+    #endif
   #else
-    #define BM_TRUNK_NECK_MUSCLES OFF
-    #define BM_TRUNK_MUSCLES OFF
-    #define BM_ARM_MUSCLES_BOTH OFF
-    #define BM_ARM_RIGHT OFF
-    #define BM_ARM_LEFT OFF
-    #define BM_LEG_MUSCLES_LEFT ON
-    #define BM_LEG_MUSCLES_RIGHT ON
-    #define BM_LEG_LEFT ON
-    #define BM_LEG_RIGHT ON    
+    #ifndef BM_TRUNK_NECK_MUSCLES
+      #define BM_TRUNK_NECK_MUSCLES OFF
+    #endif
+    #ifndef BM_TRUNK_MUSCLES
+      #define BM_TRUNK_MUSCLES OFF
+    #endif
+    #ifndef BM_ARM_MUSCLES_BOTH
+      #define BM_ARM_MUSCLES_BOTH OFF
+    #endif
+    #ifndef BM_ARM_RIGHT
+      #define BM_ARM_RIGHT OFF
+    #endif
+    #ifndef BM_ARM_LEFT
+      #define BM_ARM_LEFT OFF
+    #endif
+    #ifndef BM_LEG_MUSCLES_LEFT
+      #define BM_LEG_MUSCLES_LEFT ON
+    #endif
+    #ifndef BM_LEG_MUSCLES_RIGHT
+     #define BM_LEG_MUSCLES_RIGHT ON
+    #endif
+    #ifndef BM_LEG_LEFT
+      #define BM_LEG_LEFT ON
+    #endif
+    #ifndef BM_LEG_RIGHT
+      #define BM_LEG_RIGHT ON
+    #endif   
   #endif
+
+  
+  // Default Settings
+#include "<USER_PATH_COMMONS>\Settings_Default.any"   
+
 
 
 };

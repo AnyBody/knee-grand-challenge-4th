@@ -49,12 +49,16 @@ Main.ModelSetup.LabSpecificData = {
 //   ) = {};
 //
 //  };
- 
- 
- 
- 
- 
- 
- 
-
 };
+
+#path BM_DRAWSETTINGS_FILE "<ANYBODY_PATH_MAINFILEDIR>\Setup\DrawSettings.any"  
+
+#define REF_HUMAN_BODYMODEL Main.HumanModel.BodyModel
+
+#define USE_FDK 1
+#define USE_FDK_TIBIOFEMORAL 
+#define USE_FDK_PATELLOFEMORAL
+#define USE_FDK_SOFT_DRIVERS 0
+#define FDK_ForceTol 1e-1
+
+#define DEF_CUSTOM_KNEE_JOINT_CONTACT_INIT_OFFSET 0.0000 

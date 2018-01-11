@@ -163,7 +163,11 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
       #undef SEG_SIGN 
       
       DrwSurfTibia.Visible = Off;
-      DrwSurfFibula.Visible = Off;    
+      DrwSurfFibula.Visible = Off; 
+      
+      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.Surf.Drw.RGB = {1, 0, 0};
+      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;      
     };  
   };
  #endif // Left Shank

@@ -23,20 +23,24 @@
 CreateMarkerDriver LPsis ( 
 MarkerName= LPsis,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
-OptX=OFF, OptY=OFF, OptZ=OFF,
-WeightX=10.0,WeightY=10.0,WeightZ=10.0
+OptX=OFF, OptY=OFF, OptZ=ON,
+WeightX=10.0,WeightY=10.0,WeightZ=10.0,
+ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt = {-0.14,0.02, -0.04};
+  //sRelOpt = {-0.14,0.02, -0.04};
+  sRelOpt = {-0.145,0.02, -0.04};
 };
 
 // Marker on the Right Posterior Superior Iliac
 CreateMarkerDriver RPsis (
 MarkerName= RPsis, 
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
-OptX=OFF, OptY=OFF, OptZ=OFF,
-WeightX=10.0,WeightY=10.0,WeightZ=10.0
+OptX=OFF, OptY=OFF, OptZ=ON,
+WeightX=10.0,WeightY=10.0,WeightZ=10.0,
+ScaleMarkerPosOnOff = 1
 ) = {
- sRelOpt = {-0.14,0.02, 0.04};
+ //sRelOpt = {-0.14,0.02, 0.04};
+ sRelOpt = {-0.145,0.02, 0.04};
 };
 
 // Marker on the Right Anterior Superior Iliac
@@ -44,9 +48,11 @@ CreateMarkerDriver RAsis(
 MarkerName= RAsis, 
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
-WeightX=10.0,WeightY=10.0,WeightZ=10.0
+WeightX=10.0,WeightY=10.0,WeightZ=10.0,
+ScaleMarkerPosOnOff = 1
 ) = {
- sRelOpt = {0.04, 0.005, 0.125};
+ //sRelOpt = {0.04, 0.005, 0.125};
+ sRelOpt = {0.035, 0.005, 0.125};
 };
 
 // Marker on the Left Anterior Superior Iliac
@@ -54,9 +60,11 @@ CreateMarkerDriver LAsis (
 MarkerName= LAsis ,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
-WeightX=10.0,WeightY=10.0,WeightZ=10.0
+WeightX=10.0,WeightY=10.0,WeightZ=10.0,
+ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt = {0.04,0.005, -0.125};
+  //sRelOpt = {0.04,0.005, -0.125};
+  sRelOpt = {0.035,0.005, -0.125};
 };
 
 //// Head
@@ -109,27 +117,30 @@ WeightX=10.0,WeightY=10.0,WeightZ=10.0
 CreateMarkerDriver Sternum (
 MarkerName= Sternum,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
-OptX=ON,OptY=ON,OptZ=OFF,  
-WeightX=10.0,WeightY=10.0,WeightZ=10.0
+OptX=OFF, OptY=OFF, OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
 ) = {
- sRelOpt = {0.13,0.42,0.0};
+ sRelOpt = {0.12,0.42,0.0};
 };
 
 CreateMarkerDriver Xiphoid (
 MarkerName= Xiphoid,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
-OptX=OFF,OptY=OFF,OptZ=OFF,  
-WeightX=10.0,WeightY=10.0,WeightZ=10.0
+OptX=OFF, OptY=OFF, OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt = {0.15,0.24,0.0};
+  sRelOpt = {0.18,0.24,0.0};
 };
 
 // Marker on the Thoracic Vertebra 10
 CreateMarkerDriver Thoracic (
 MarkerName= Thoracic,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
-OptX=OFF,OptY=OFF,OptZ=OFF,  
-WeightX=10.0,WeightY=10.0,WeightZ=10.0
+OptX=ON, OptY=ON, OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
 ) = {
   sRelOpt = {-0.052,0.187,0};
 };
@@ -141,7 +152,8 @@ CreateMarkerDriver RThighLateral (
 MarkerName=  RThighLateral,
 MarkerPlacement =Right.Leg.Seg.Thigh, 
 OptX=ON,OptY=ON,OptZ=ON,
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 )= {
   sRelOpt = {0.08, -0.25, 0.05};
   sRelOptDelta = {3.710242575183716e-002, -2.382772641892982e-002, -2.740605025901430e-002};
@@ -151,7 +163,8 @@ CreateMarkerDriver RThighSuperior (
 MarkerName=  RThighSuperior,
 MarkerPlacement =Right.Leg.Seg.Thigh, 
 OptX=ON,OptY=ON,OptZ=ON,
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 )= {
   sRelOpt = {0.0, -0.1, 0.1};
   sRelOptDelta = {3.728481808195790e-002, -3.255583942745915e-002, -5.862821320407746e-003};
@@ -160,11 +173,12 @@ WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 CreateMarkerDriver RThighInferior ( 
 MarkerName=  RThighInferior,
 MarkerPlacement =Right.Leg.Seg.Thigh, 
-OptX=ON,OptY=ON,OptZ=ON,
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+OptX=OFF,OptY=ON,OptZ=OFF,
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 )= {
-  sRelOpt = {0.05, -0.3, 0.1};
-  sRelOptDelta = {3.866258073971372e-002, -7.433211395768835e-002, -4.623944829760494e-002};
+  sRelOpt = {0.041, -0.38, 0.038};
+  sRelOptDelta = {0, 0, 0};
 };
 
 // Marker on the Right Tibia
@@ -172,7 +186,8 @@ CreateMarkerDriver RShankLateral (
 MarkerName= RShankLateral, 
 MarkerPlacement=Right.Leg.Seg.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt = {0.0, -0.21, 0.05};
   sRelOptDelta = {5.539990738901292e-002, 4.076080214897407e-003, -4.342266343416248e-002};
@@ -182,7 +197,8 @@ CreateMarkerDriver RShankSuperior (
 MarkerName= RShankSuperior, 
 MarkerPlacement=Right.Leg.Seg.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 ) = {
    sRelOpt = {0.0, -0.05, 0.05};
    sRelOptDelta = {9.108936469205478e-003, -2.997729452680681e-002, 3.219312642356894e-002};
@@ -191,23 +207,24 @@ WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
 CreateMarkerDriver RShankInferior (
 MarkerName= RShankInferior, 
 MarkerPlacement=Right.Leg.Seg.Shank,
-OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+OptX=ON,OptY=ON,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 ) = {
     sRelOpt = {0.0, -0.28, 0.05};
     sRelOptDelta = {1.147059634176613e-002, -2.699140262551636e-002, -1.460903582796406e-003};
 };
 
 // Marker on the Right Lateral Ankle
-CreateMarkerDriver RAnkleLateral ( 
-MarkerName= RAnkleLateral ,
-MarkerPlacement=Right.Leg.Seg.Shank,
-PlaceMarkerAt = LateralMalleolus,
+CreateMarkerDriver RHindfoot ( 
+MarkerName= RHindfoot ,
+MarkerPlacement=Right.Leg.Seg.Foot,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 ) = {
-  sRelOpt = {-0.00, -0.0, 0.015};
-  sRelOptDelta = {1.119497362571651e-002, -3.694763057637297e-002, 2.910475229506795e-002};
+ sRelOpt =  {-0.07 + 0.07, -0.04, -0.001512914 + 0.05};
+ sRelOptDelta = {5.283303983585375e-002, -6.541685627869250e-002, 7.322103609461393e-003};
 };
                    
 // Marker on the Right Toe
@@ -215,7 +232,8 @@ CreateMarkerDriver RToe (
 MarkerName= RToe,  
 MarkerPlacement=Right.Leg.Seg.Foot,
 OptX=OFF, OptY=OFF, OptZ=OFF,
-WeightX=5.0,WeightY=5.0,WeightZ=5.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
 ) = {
    sRelOpt = {0.19, -0.06, 0.02};
 };
@@ -224,7 +242,8 @@ CreateMarkerDriver RToeLateral (
 MarkerName= RToeLateral,  
 MarkerPlacement=Right.Leg.Seg.Foot,
 OptX=ON, OptY=OFF, OptZ=ON,
-WeightX=5.0,WeightY=5.0,WeightZ=5.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
 ) = {
   sRelOpt =  {0.18, -0.06, 0.05};
 
@@ -234,7 +253,8 @@ CreateMarkerDriver RToeMedial (
 MarkerName= RToeMedial ,  
 MarkerPlacement=Right.Leg.Seg.Foot,
 OptX=ON, OptY=OFF, OptZ=ON,
-WeightX=5.0,WeightY=5.0,WeightZ=5.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
 ) = {
   sRelOpt =  {0.17, -0.06, -0.03};
 };
@@ -243,10 +263,12 @@ WeightX=5.0,WeightY=5.0,WeightZ=5.0
 CreateMarkerDriver RHeel (
 MarkerName= RHeel,
 MarkerPlacement=Right.Leg.Seg.Foot,
-OptX=OFF, OptY=OFF, OptZ=OFF,
-WeightX=5.0,WeightY=5.0,WeightZ=5.0
+OptX=OFF, OptY=ON, OptZ=OFF,
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
 ) = {
- sRelOpt =  {-0.07, -0.04, -0.001512914};
+ //sRelOpt =  {-0.07, -0.04, -0.001512914};
+ sRelOpt =  {-0.07 + 0.02, -0.04, -0.001512914};
 };
 #endif
 
@@ -255,30 +277,32 @@ CreateMarkerDriver LThighLateral (
 MarkerName= LThighLateral ,
 MarkerPlacement=Left.Leg.Seg.Thigh,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 ) = {
     sRelOpt = {0.08, -0.25, -0.05};
-   //sRelOpt= {-0.03870067, -0.2822034, -0.10036};
+    sRelOptDelta = {2.468222008645767e-002, 9.264820683019570e-003, 4.951772112609798e-003};
 };
 
 CreateMarkerDriver LThighSuperior ( 
 MarkerName= LThighSuperior,
 MarkerPlacement=Left.Leg.Seg.Thigh,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 ) = {
    sRelOpt = {0.0, -0.10, -0.1}; 
-   //sRelOpt= {-0.03870067, -0.2822034, -0.10036};
+   sRelOptDelta = {3.821732031813194e-002, -8.854168997953195e-003, -5.340414759915583e-003};
 };
 
 CreateMarkerDriver LThighInferior ( 
 MarkerName= LThighInferior,
 MarkerPlacement=Left.Leg.Seg.Thigh,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 ) = {
-   sRelOpt = {0.05, -0.30, -0.1}; 
-   //sRelOpt= {-0.03870067, -0.2822034, -0.10036};
+   sRelOpt = {0.041, -0.38, -0.035};
 };
 
 // Marker on the Left Tibia
@@ -286,40 +310,45 @@ CreateMarkerDriver LShankLateral (
 MarkerName= LShankLateral,
 MarkerPlacement=Left.Leg.Seg.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt = {0.0, -0.16, -0.05};
+  sRelOptDelta = {5.374450635614104e-002, -1.594930751166518e-002, 3.799114338593220e-002};
 };
 
 CreateMarkerDriver LShankSuperior (
 MarkerName= LShankSuperior,
 MarkerPlacement=Left.Leg.Seg.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt = {0.0, -0.05, -0.05};
-  //sRelOpt = {0.007298208, -0.2526878, -0.06747357};
+  sRelOptDelta = {2.868835123236436e-002, 1.084341702085235e-002, -2.935142561827216e-002};
 };
 
 CreateMarkerDriver LShankInferior (
 MarkerName= LShankInferior,
 MarkerPlacement=Left.Leg.Seg.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt = {0.0, -0.28, -0.05};
-  //sRelOpt = {0.007298208, -0.2526878, -0.06747357};
+  sRelOptDelta = {1.892990727255045e-002, -1.545168516386526e-002, -6.504704902749914e-004};
 };
 
 // Marker on the Left Ankle
-CreateMarkerDriver LAnkleLateral (
-MarkerName= LAnkleLateral,
-MarkerPlacement=Left.Leg.Seg.Shank,
-PlaceMarkerAt = LateralMalleolus,
+CreateMarkerDriver LHindfoot (
+MarkerName= LHindfoot,
+MarkerPlacement=Left.Leg.Seg.Foot,
 OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, ScaleMarkerPosOnOff = 0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
 ) = {
-    sRelOpt = {-0.00, -0.0, -0.015};
+  sRelOpt =  {-0.07 + 0.07, -0.04, 0.001512914 - 0.05};
+  sRelOptDelta = {3.127341898753362e-002, -4.599760650812604e-002, -2.081487528189753e-002};
 };
                     
 // Marker on the Left Toe
@@ -327,7 +356,8 @@ CreateMarkerDriver LToe (
 MarkerName= LToe, 
 MarkerPlacement=Left.Leg.Seg.Foot,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
-WeightX=5.0,WeightY=5.0,WeightZ=5.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
 ) = {
   sRelOpt = {0.19, -0.06, -0.02};
 };
@@ -337,7 +367,8 @@ CreateMarkerDriver LToeLateral (
 MarkerName= LToeLateral, 
 MarkerPlacement=Left.Leg.Seg.Foot,
 OptX=ON,OptY=OFF,OptZ=ON,  
-WeightX=5.0,WeightY=5.0,WeightZ=5.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
 ) = {
   sRelOpt =  {0.16, -0.06, -0.05};
 };
@@ -346,7 +377,8 @@ CreateMarkerDriver LToeMedial (
 MarkerName= LToeMedial , 
 MarkerPlacement=Left.Leg.Seg.Foot,
 OptX=ON,OptY=OFF,OptZ=ON,  
-WeightX=5.0,WeightY=5.0,WeightZ=5.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
 ) = {
   sRelOpt =  {0.17, -0.06, 0.03};
 };
@@ -356,9 +388,10 @@ CreateMarkerDriver LHeel(
 MarkerName= LHeel, 
 MarkerPlacement=Left.Leg.Seg.Foot,
 OptX=OFF, OptY=OFF, OptZ=OFF,
-WeightX=5.0,WeightY=5.0,WeightZ=5.0
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt =  {-0.07, -0.04, 0.001512914};
+  sRelOpt =  {-0.07 + 0.02, -0.04, 0.001512914};
 };
 #endif
 

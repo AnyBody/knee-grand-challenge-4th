@@ -45,6 +45,11 @@ AnyFolder ExtraDrivers = {
 #endif
   
 
+#if INCLUDE_UPPERBODY == OFF
+
+#define BM_MANNEQUIN_DRIVER_NECK  ON
+
+#endif
   // This link to the mannequin drivers ensures they are picked up by the study.
   AnyFolder& MannequinDrivers = Main.HumanModel.DefaultMannequinDrivers;
 
