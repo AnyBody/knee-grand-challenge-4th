@@ -27,13 +27,13 @@ AnyFolder ExcludedMuscles =
     arrcat(
     RETURN_OBJ_MUSCLE("..Mus", "IliacusMedialis1"),
     RETURN_OBJ_MUSCLE("..Mus", "IliacusMedialis2")
-    ),
-    arrcat(
-    RETURN_OBJ_MUSCLE("..Mus", "Pectineus1"),
-    RETURN_OBJ_MUSCLE("..Mus", "Pectineus2"),
-    RETURN_OBJ_MUSCLE("..Mus", "Pectineus3"),
-    RETURN_OBJ_MUSCLE("..Mus", "Pectineus4")
     )
+//    arrcat(
+//    RETURN_OBJ_MUSCLE("..Mus", "Pectineus1"),
+//    RETURN_OBJ_MUSCLE("..Mus", "Pectineus2"),
+//    RETURN_OBJ_MUSCLE("..Mus", "Pectineus3"),
+//    RETURN_OBJ_MUSCLE("..Mus", "Pectineus4")
+//    )
   );
   AnyObjectPtr pArrSPLines = arrcat
   (
@@ -58,13 +58,13 @@ AnyFolder ExcludedMuscles =
     arrcat(
     RETURN_OBJ_SPLINE("..Mus", "IliacusMedialis1"),
     RETURN_OBJ_SPLINE("..Mus", "IliacusMedialis2")
-    ),
-    arrcat(
-    RETURN_OBJ_SPLINE("..Mus", "Pectineus1"),
-    RETURN_OBJ_SPLINE("..Mus", "Pectineus2"),
-    RETURN_OBJ_SPLINE("..Mus", "Pectineus3"),
-    RETURN_OBJ_SPLINE("..Mus", "Pectineus4")
     )
+//    arrcat(
+//    RETURN_OBJ_SPLINE("..Mus", "Pectineus1"),
+//    RETURN_OBJ_SPLINE("..Mus", "Pectineus2"),
+//    RETURN_OBJ_SPLINE("..Mus", "Pectineus3"),
+//    RETURN_OBJ_SPLINE("..Mus", "Pectineus4")
+//    )
   );
   
   AnyObjectPtr Objects = arrcat(pArrMuscles, pArrSPLines);
@@ -82,10 +82,10 @@ IliacusMid1.DrwMus.Visible = Off;
 IliacusMid2.DrwMus.Visible = Off;
 IliacusMedialis1.DrwMus.Visible = Off;
 IliacusMedialis2.DrwMus.Visible = Off;
-Pectineus1.DrwMus.Visible = Off;
-Pectineus2.DrwMus.Visible = Off;
-Pectineus3.DrwMus.Visible = Off;
-Pectineus4.DrwMus.Visible = Off;
+//Pectineus1.DrwMus.Visible = Off;
+//Pectineus2.DrwMus.Visible = Off;
+//Pectineus3.DrwMus.Visible = Off;
+//Pectineus4.DrwMus.Visible = Off;
 
 #undef RETURN_OBJ_MUSCLE
 #undef RETURN_OBJ_SPLINE

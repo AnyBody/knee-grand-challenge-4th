@@ -165,58 +165,58 @@ AnyShortestPathMuscle IliacusMedialis2New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };//IliacusMedialis2New
 
-AnyShortestPathMuscle Pectineus1New = 
-{
-  AnyMuscleModel& MusMdl = ..MusPar.Pectineus1NewPar;
-  AnyRefFrame& Org = .Pectineus1.Org;
-  AnyRefFrame& Ins = .Pectineus1.Ins;
-  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
-  SPLine = 
-  {
-    StringMesh = ..Pectineus1.SPLine.StringMesh;
-    
-  };
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
-};//Pectineus1New
-
-AnyShortestPathMuscle Pectineus2New = 
-{
-  AnyMuscleModel& MusMdl = ..MusPar.Pectineus2NewPar;
-  AnyRefFrame& Org = .Pectineus2.Org;
-  AnyRefFrame& Ins = .Pectineus2.Ins;
-  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
-  SPLine = 
-  {
-    StringMesh = ..Pectineus2.SPLine.StringMesh;
-    
-  };
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
-};//Pectineus2New
-
-AnyShortestPathMuscle Pectineus3New = 
-{
-  AnyMuscleModel& MusMdl = ..MusPar.Pectineus3NewPar;
-  AnyRefFrame& Org = .Pectineus3.Org;
-  AnyRefFrame& Ins = .Pectineus3.Ins;
-  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
-  SPLine = 
-  {
-    StringMesh = ..Pectineus3.SPLine.StringMesh;
-    
-  };
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
-};//Pectineus3New
-
-AnyShortestPathMuscle Pectineus4New = 
-{
-  AnyMuscleModel& MusMdl = ..MusPar.Pectineus4NewPar;
-  AnyRefFrame& Org = .Pectineus4.Org;
-  AnyRefFrame& Ins = .Pectineus4.Ins;
-  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
-  SPLine = 
-  {
-    StringMesh = ..Pectineus4.SPLine.StringMesh;
-    
-  };
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
-};//Pectineus4New
+//AnyShortestPathMuscle Pectineus1New = 
+//{
+//  AnyMuscleModel& MusMdl = ..MusPar.Pectineus1NewPar;
+//  AnyRefFrame& Org = .Pectineus1.Org;
+//  AnyRefFrame& Ins = .Pectineus1.Ins;
+//  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
+//  SPLine = 
+//  {
+//    StringMesh = ..Pectineus1.SPLine.StringMesh;
+//    
+//  };
+//  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+//};//Pectineus1New
+//
+//AnyShortestPathMuscle Pectineus2New = 
+//{
+//  AnyMuscleModel& MusMdl = ..MusPar.Pectineus2NewPar;
+//  AnyRefFrame& Org = .Pectineus2.Org;
+//  AnyRefFrame& Ins = .Pectineus2.Ins;
+//  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
+//  SPLine = 
+//  {
+//    StringMesh = ..Pectineus2.SPLine.StringMesh;
+//    
+//  };
+//  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+//};//Pectineus2New
+//
+//AnyShortestPathMuscle Pectineus3New = 
+//{
+//  AnyMuscleModel& MusMdl = ..MusPar.Pectineus3NewPar;
+//  AnyRefFrame& Org = .Pectineus3.Org;
+//  AnyRefFrame& Ins = .Pectineus3.Ins;
+//  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
+//  SPLine = 
+//  {
+//    StringMesh = ..Pectineus3.SPLine.StringMesh;
+//    
+//  };
+//  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+//};//Pectineus3New
+//
+//AnyShortestPathMuscle Pectineus4New = 
+//{
+//  AnyMuscleModel& MusMdl = ..MusPar.Pectineus4NewPar;
+//  AnyRefFrame& Org = .Pectineus4.Org;
+//  AnyRefFrame& Ins = .Pectineus4.Ins;
+//  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
+//  SPLine = 
+//  {
+//    StringMesh = ..Pectineus4.SPLine.StringMesh;
+//    
+//  };
+//  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+//};//Pectineus4New
