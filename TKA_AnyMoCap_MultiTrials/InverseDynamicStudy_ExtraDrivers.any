@@ -1,0 +1,73 @@
+InverseDynamicStudy = 
+{
+  AnyMechObjectExcluder ExcluderDrivers = 
+  {
+    Objects = {&Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.JointsAndDrivers.JntDriverRightLegTD};
+  };
+  
+  ModelEnvironmentConnection = 
+  {
+    JointsAndDrivers = 
+    {
+      AnyKinEqInterPolDriver JntDriverRightLegAnkle = 
+      {
+        Type = Bspline;
+        BsplineOrder = 4;
+        T = .JntDriverRightLegTD.FileReader.T ;
+        Data = 
+        {
+          .JntDriverRightLegTD.FileReader.Data[4],
+          .JntDriverRightLegTD.FileReader.Data[5]
+        };
+       AnyKinMeasure &AnklePlantarFlexion = ...BodyModel.Interface.Right.AnklePlantarFlexion;
+       AnyKinMeasure &SubTalarEversion = ...BodyModel.Interface.Right.SubTalarEversion;
+       Reaction.Type = {Off, Off};
+       CType = {Hard, Hard};      
+      };
+      
+      AnyKinEqSimpleDriver RThighInferior =
+      {
+        AnyKinLinear lin = 
+        {
+          AnyRefFrame& marker = Main.ModelSetup.C3DFileData.Model.RThighInferior.Seg;
+          AnyRefFrame& node = ....BodyModel.Right.Leg.Seg.Thigh.RThighInferior ;
+          Ref = 1; // local
+        };
+        MeasureOrganizer = {0, 2}; //local x, z
+        DriverPos = {0, 0};
+        DriverVel = {0, 0};
+        Reaction.Type = {Off, Off};
+      };
+      
+      AnyKinEqSimpleDriver RShankInferior =
+      {
+        AnyKinLinear lin = 
+        {
+          AnyRefFrame& marker = Main.ModelSetup.C3DFileData.Model.RShankInferior.Seg;
+          AnyRefFrame& node = ....BodyModel.Right.Leg.Seg.Shank.RShankInferior ;
+          Ref = 1; // local
+        };
+        MeasureOrganizer = {0}; //local X
+        DriverPos = {0};
+        DriverVel = {0};
+        Reaction.Type = {Off};
+      };  
+      
+      AnyKinEqSimpleDriver RShankLateral =
+      {
+        AnyKinLinear lin = 
+        {
+          AnyRefFrame& marker = Main.ModelSetup.C3DFileData.Model.RShankLateral.Seg;
+          AnyRefFrame& node = ....BodyModel.Right.Leg.Seg.Shank.RShankLateral ;
+          Ref = 1; // local
+        };
+        MeasureOrganizer = {2}; //local Z
+        DriverPos = {0};
+        DriverVel = {0};
+        Reaction.Type = {Off};
+      };  
+      
+      
+    };//JointAndDrivers    
+  };
+};

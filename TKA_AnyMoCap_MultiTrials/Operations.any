@@ -1,0 +1,21 @@
+Main = 
+{
+  Studies = 
+  {
+    #include "Studies_Extra.any"
+    //#include "InverseDynamicStudy_ExtraDrivers.any"
+  };
+  
+  #if USE_FDK == 1
+  AnyOperationSequence RunFDKAnalysis = 
+  {
+    AnyOperation& LigamentCalibrationSequence = .Studies.LigamentCalibrationSequence;
+    AnyOperation& MarkerTracing = .Studies.MarkerTracking.Kinematics;
+    #if BM_LEG_MUSCLES_BOTH == CONST_MUSCLES_3E_HILL
+    AnyOperationSequence &MuscleCalibration = Main.HumanModel.Calibration.CalibrationSequence;
+    #endif      
+    AnyOperation &RunInverseDynamics = .Studies.InverseDynamicStudy.InverseDynamics;
+    AnyOperation& SaveHDF5= Main.ModelSetup.Macros.SaveOutputToHDF;
+  };
+  #endif
+};

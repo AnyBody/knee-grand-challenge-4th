@@ -1,0 +1,58 @@
+//AnyInputC3D
+Main.ModelSetup.C3DFileData = {
+
+   FileName = MOCAP_C3D_DATA_PATH +"/"+ Main.ModelSetup.TrialSpecificData.TrialFileName + ".c3d"; //add the extension to the file name here
+   
+   // Search/replace in marker names. 
+   // This option can be used to remove 
+   // prefixes from marker name, or replace
+   // characters from which are illegal in AnyScript
+   SearchAndReplace = {{"JW:", ""}};
+      
+   ConstructModelOnOff = On;
+   ConstructChartOnOff = Off;
+   GapFillUsingResidualsOnOff = On;
+  
+   
+   MarkerUseAllPointsOnOff = Off; 
+   MarkerUseCamMaskOnOff = Off;
+   PointsScaleFactor = 1/1000;
+   MarkerDrawOnOff = Off;
+   
+                                    
+   MarkerFilterIndex = 0;
+   AnalogFilterIndex = 1;    
+   
+   MarkerBsplineOrder = 4;
+   
+   Filter =  {
+      N = Main.ModelSetup.LabSpecificData.LowPassFilterSettings.MarkerFilterOrder;
+      Fc = {Main.ModelSetup.LabSpecificData.LowPassFilterSettings.MarkerFilterCutOffFrequency};
+     Type = LowPass;
+   };
+   
+   /// This filter is used for the analog data
+   AnyFunButterworthFilter LowPassFilter = {
+     FilterForwardBackwardOnOff = Off;
+     AutomaticInitialConditionOnOff = On;
+      N = Main.ModelSetup.LabSpecificData.LowPassFilterSettings.ForceFilterOrder;
+      AnyVar CutOffFrequency=Main.ModelSetup.LabSpecificData.LowPassFilterSettings.ForceFilterCutOffFrequency;
+     AnyVar SampleFreq=.Header.VideoFrameRate* .Header.NoAnalogSamplesPer3DFrame   ;
+     W = {CutOffFrequency/(iffun(eqfun(SampleFreq,0),100.0,SampleFreq)*0.5)};
+     Type = LowPass;
+   };
+   
+   MarkerScaleXYZ = 0.015*{1,1,1};
+   MarkerRGB={0,0,1};    
+
+
+   MarkerLabels =
+   {
+     "LPsis", "RPsis", "RAsis", "LAsis", 
+     "Sternum", "Xiphoid", "Thoracic",
+     "RThighLateral", "RThighSuperior", "RThighInferior", "RShankLateral", "RShankSuperior", "RShankInferior", "RHindfoot", "RToe", "RToeLateral", "RToeMedial", "RHeel",
+     "LThighLateral", "LThighSuperior", "LThighInferior", "LShankLateral", "LShankSuperior", "LShankInferior", "LHindfoot", "LToe", "LToeLateral", "LToeMedial", "LHeel",
+     "RShoulder", "RElbow", "RRadius", "RUlna", "RWrist",
+     "LShoulder", "LElbow", "LRadius", "LUlna", "LWrist"
+   };   
+};
