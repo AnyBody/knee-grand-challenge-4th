@@ -1,0 +1,159 @@
+/* This file defines a subject-specific morphing law for the Lesson 4 of Scaling tutorial*/
+
+AnyFolder MyScalingLaw = 
+{
+  AnyFloat MirrorMat = {{1, 0, 0}, {0, 1, 0}, {0, 0, -1}};
+  AnyFunTransform3DLin MirrorTransform = 
+  {
+    ScaleMat = {{1, 0, 0}, {0, 1, 0}, {0, 0, -1}};
+    Offset = {0, 0, 0};
+  }; 
+  
+  AnyFunTransform3DLin Transform = 
+  {
+    ScaleMat = {{1,0,0},{0,1,0},{0,0,1}};
+    Offset = {0,0,0};
+    #if DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH == "AFFINE"
+    PreTransforms = {&.AffineTransform, &.ReverseTransform};
+    #endif    
+    #if DEF_CUSTOM_SCALING_LEVEL_LEFT_PATELLA == "RBF"
+    PreTransforms = {&.RBFTransform, &.ReverseTransform};
+    #endif
+    #if DEF_CUSTOM_SCALING_LEVEL_LEFT_PATELLA == "STL"
+    PreTransforms = {&.STLTransform, &.ReverseTransform};
+    #endif
+  };
+  
+  AnyFolder Landmarks = 
+  {
+    AnyFolder Source_Original = 
+    {
+      AnyInputXML XMLObject = 
+      {
+        FileName = PATH_SOURCE_PATELLA_LANDMARKS ;
+      };
+      AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+      AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+      AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+      AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+      AnyFloat Points = {xptr0',yptr0',zptr0'}'; 
+    };
+    
+    AnyFolder Target_Original = 
+    {
+      AnyInputXML XMLObject = 
+      {
+        FileName = PATH_TARGET_PATELLA_LANDMARKS  ;
+      };
+      AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+      AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+      AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+      AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+      AnyFloat Points = {xptr0',yptr0',zptr0'}'; 
+    };
+    
+    AnyFolder Source = 
+    {
+      AnyFloat Points = .Source_Original.Points * ..MirrorMat;
+      AnyString PointNames = .Source_Original.PointNames;
+    };
+    
+    AnyFolder Target = 
+    {
+      AnyFloat Points = .Target_Original.Points * ..MirrorMat;
+      AnyString PointNames = .Target_Original.PointNames;
+    };    
+  };
+  
+  AnyFolder Surfaces = 
+  {
+    AnyString Source_Path = PATH_SOURCE_PATELLA_STL ;
+    AnyString Target_Path = PATH_TARGET_PATELLA_PREOP_STL ;
+    AnyFile Source = Source_Path;
+    AnyFile Target = Target_Path;    
+  };   
+  
+  AnyFunTransform3DLin2 AffineTransform = 
+  {
+    //PreTransforms = {};
+    Points0 = ..TSeg2ScaleFrame(.Landmarks.Source.Points);
+    Points1 = .Landmarks.Target.Points;
+    
+    Mode = VTK_LANDMARK_AFFINE;
+  };
+    
+  AnyFunTransform3DLin2 ReverseTransform = {
+    Points0 = .AffineTransform.Points1;
+    Points1 = .AffineTransform.Points0;
+    Mode = VTK_LANDMARK_RIGIDBODY;
+  };
+  
+  #if DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH == "RBF" | DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH == "STL"
+  AnyFunTransform3DRBF RBFTransform = 
+  {
+    PreTransforms = {&.AffineTransform};
+    RBFDef = 
+    {
+      //Type = RBF_ThinPlate;
+      Type = RBF_Triharmonic;
+      Param = 1;
+    };
+    Points0 = .AffineTransform.Points0;
+    Points1 = .AffineTransform.Points1;
+
+    BoundingBox = 
+    {
+      Type = BB_Cartesian;
+      ScaleXYZ = 2*{1, 1, 1};
+      DivisionFactorXYZ = 5*{1, 1, 1};
+    };
+    BoundingBoxOnOff = On;
+  };  
+  #endif
+  
+  #if DEF_CUSTOM_SCALING_LEVEL_LEFT_PATELLA == "STL"
+  AnyFunTransform3DSTL STLTransform = 
+  {
+    PreTransforms = {&.RBFTransform};
+    //RBFDef.Type = RBF_ThinPlate;
+    RBFDef.Type = RBF_Triharmonic;
+    AnyFixedRefFrame Input = 
+    {
+      AnySurfSTL SourceSurf = 
+      {
+        FileName = ...Surfaces.Source;
+        ScaleXYZ = {1, 1, 1} ;
+        AnyFunTransform3D Transform = 
+        {
+          PreTransforms = 
+          {
+            &....MirrorTransform ,
+            &.....TSeg2ScaleFrame
+          };
+        };        
+      };
+      AnySurfSTL TargetSurf = 
+      {
+        FileName = ...Surfaces.Target;
+        ScaleXYZ = {1, 1, 1};
+        AnyFunTransform3D Transform = 
+        {
+          PreTransforms = 
+          {
+            &....MirrorTransform
+          };
+        };         
+      };
+    };
+    
+    SurfaceObjects0 = {&Input.SourceSurf};
+    SurfaceObjects1 = {&Input.TargetSurf};
+
+    NumPoints = 100;
+    BoundingBox.ScaleXYZ = 2.0*{1, 1, 1};
+    BoundingBox.DivisionFactorXYZ = {1, 1, 1};
+    BoundingBoxOnOff = On;
+  };
+  #endif
+  
+};  // MyScalingLaw

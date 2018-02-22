@@ -2,10 +2,10 @@ Main =
 {
   ModelSetup = 
   {
-    TrialSpecificData =
-    {
-      #include "<USER_PATH_COMMONS>\eKneeData.any"
-    };
+//    TrialSpecificData =
+//    {
+//      #include "<USER_PATH_COMMONS>\eKneeData.any"
+//    };
     SubjectSpecificData = 
     {
       #include "<USER_PATH_INPUTDATA>\Ligament\Attachment_Points.any"
@@ -13,7 +13,15 @@ Main =
     };
   };
   
-  #include "<USER_PATH_COMMONS>\CustomScaling.any"
+#if YEAR == 4  
+  #include "<USER_PATH_COMMONS>\CustomScaling_GC4.any"
+#endif
+
+#if YEAR == 6  
+  #include "<USER_PATH_COMMONS>\CustomScaling_GC6.any"
+#endif
+
+
   #include "<USER_PATH_COMMONS>\CustomSegments.any"
   #include "<USER_PATH_COMMONS>\CustomMuscles.any"  
   #include "<USER_PATH_COMMONS>\Measures.any"
