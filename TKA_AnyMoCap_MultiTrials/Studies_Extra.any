@@ -196,6 +196,7 @@ InverseDynamicStudy =
 
 #endif
 
+#if USE_FDK == 1
 AnyOperationSequence LigamentCalibrationSequence = 
 {
   AnyOperation &LoadParameters = Main.ModelSetup.Macros.Load_parameters;
@@ -207,6 +208,7 @@ AnyOperationSequence LigamentCalibrationSequence =
       "classoperation Main" + strquote("Update Values")
     };
   };  
-};//LigamentCalibrationSequence    
+};//LigamentCalibrationSequence
+#endif
 
 
