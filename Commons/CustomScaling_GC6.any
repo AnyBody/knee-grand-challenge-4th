@@ -5,7 +5,7 @@ HumanModel.Scaling.GeometricalScaling =
    #ifdef CUSTOM_SCALING_Right_Thigh
     Right.Thigh = 
     {
-      #include "CustomScalingLaw_Femur_Right_GC4.any"
+      #include "CustomScalingLaw_Femur_Right_GC6.any"
       AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
     };
    #endif
@@ -13,7 +13,7 @@ HumanModel.Scaling.GeometricalScaling =
    #ifdef CUSTOM_SCALING_Right_Shank
     Right.Shank = 
     {
-      #include "CustomScalingLaw_Tibia_Right_GC4.any"
+      #include "CustomScalingLaw_Tibia_Right_GC6.any"
       AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
     };
    #endif  
@@ -21,7 +21,7 @@ HumanModel.Scaling.GeometricalScaling =
    #ifdef CUSTOM_SCALING_Right_Patella
     Right.Patella = 
     {
-      #include "CustomScalingLaw_Patella_Right_GC4.any"
+      #include "CustomScalingLaw_Patella_Right_GC6.any"
       AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
     };
    #endif  
@@ -31,7 +31,7 @@ HumanModel.Scaling.GeometricalScaling =
    #ifdef CUSTOM_SCALING_Left_Thigh
     Left.Thigh = 
     {
-      #include "CustomScalingLaw_Femur_Left_GC4.any"
+      #include "CustomScalingLaw_Femur_Left_GC6.any"
       AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
     };
    #endif
@@ -39,7 +39,7 @@ HumanModel.Scaling.GeometricalScaling =
    #ifdef CUSTOM_SCALING_Left_Shank
     Left.Shank = 
     {
-      #include "CustomScalingLaw_Tibia_Left_GC4.any"
+      #include "CustomScalingLaw_Tibia_Left_GC6.any"
       AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
     };
    #endif
@@ -47,7 +47,7 @@ HumanModel.Scaling.GeometricalScaling =
    #ifdef CUSTOM_SCALING_Left_Patella
     Left.Patella = 
     {
-      #include "CustomScalingLaw_Patella_Left_GC4.any" 
+      #include "CustomScalingLaw_Patella_Left_GC6.any" 
       AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
     };
    #endif
