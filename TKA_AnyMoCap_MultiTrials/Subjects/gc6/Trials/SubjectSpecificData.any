@@ -2,9 +2,23 @@
 
 Main.ModelSetup.SubjectSpecificData = 
 {
-  
-  
-  
+   AnyFileVar FemurLeftSourceSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Femur_source_L.stl";
+   AnyFileVar FemurLeftTargetSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Femur_target_L.stl";
+
+   AnyFileVar FemurRightSourceSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Femur_source_R.stl";
+   AnyFileVar FemurRightTargetSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Femur_target_R.stl";
+
+   AnyFileVar TibiaLeftSourceSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Tibia_source_L.stl";
+   AnyFileVar TibiaLeftTargetSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Tibia_target_L.stl";
+
+   AnyFileVar TibiaRightSourceSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Tibia_source_R.stl";
+   AnyFileVar TibiaRightTargetSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Tibia_target_R.stl";
+
+   AnyFileVar PatellaLeftSourceSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Patella_source_L.stl";
+   AnyFileVar PatellaLeftTargetSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Patella_target_L.stl";
+
+   AnyFileVar PatellaRightSourceSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Patella_source_R.stl";
+   AnyFileVar PatellaRightTargetSTL = ANYBODY_PATH_MAINFILEDIR+"\..\"+"SubjectSpecificScalingSTLs\Patella_target_R.stl";
 };
 
 // This sets the Anthropometrics for all trials for this subject

@@ -1,6 +1,6 @@
 Main.ModelSetup.SubjectSpecificData = 
 {
-  
+#define YEAR 4
   
   
 };
