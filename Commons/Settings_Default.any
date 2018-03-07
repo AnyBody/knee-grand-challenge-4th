@@ -1,3 +1,12 @@
+Main = 
+{
+  DrawSettings.Colors =
+  {
+    AnyVec3 Ligaments = {0, 1, 1};
+    AnyVec3 Tendons = {1, 0, 1};      
+  };
+};
+
 #path PATH_DRAWSETTINGS_AMMR "<ANYBODY_PATH_BODY>\DrawSettings\"
 
 #path PATH_SOURCE_FEMUR_LANDMARKS  "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Femur_picked_points.pp"

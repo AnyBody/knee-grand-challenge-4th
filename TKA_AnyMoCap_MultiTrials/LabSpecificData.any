@@ -51,11 +51,11 @@ Main.ModelSetup.LabSpecificData = {
   ) ={};
 };
 
-Main.DrawSettings.Colors = 
-{
- AnyVec3 Ligaments = {0, 1, 1};
- AnyVec3 Tendons = {1, 0, 1};        
-};
+//Main.DrawSettings.Colors = 
+//{
+// AnyVec3 Ligaments = {0, 1, 1};
+// AnyVec3 Tendons = {1, 0, 1};        
+//};
 
 #define REF_HUMAN_BODYMODEL Main.HumanModel.BodyModel
 
