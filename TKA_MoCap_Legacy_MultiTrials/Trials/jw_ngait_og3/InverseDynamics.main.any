@@ -73,8 +73,8 @@ Main =
 //        };         
 //      };      
       #endif
-      #include "MovingCamera1.any"
-      #include "MovingCamera2.any"
+//      #include "MovingCamera1.any"
+//      #include "MovingCamera2.any"
     };
     
   };
