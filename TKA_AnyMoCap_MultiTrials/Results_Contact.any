@@ -33,5 +33,20 @@ Results =
       };
     };
     
+    AnyOutputFile OutputFile2 = 
+    {
+      FileName = ANYBODY_PATH_MAINFILEDIR + "\" + Main.ModelSetup.TrialSpecificData.TrialFileName + "_Results_Contact_BW_Ratio.csv";
+      Values = ObjSearch(".BW_*");
+      Header = 
+      {
+        TitleSectionOnOff = Off;
+        ConstSectionOnOff = Off;
+        ConstSectionSaveOptionsOnOff = Off;
+        VarSectionOnOff = Off;
+        ColumnNamesOnOff = On;
+        ShortenNamesOnOff = On;
+      };
+    };
+    
   };//Contact
 };

@@ -9,7 +9,7 @@ Main.ModelSetup.C3DFileData = {
    // characters from which are illegal in AnyScript
    SearchAndReplace = {{"JW:", ""}};
       
-   ConstructModelOnOff = On;
+   ConstructModelOnOff = Off;
    ConstructChartOnOff = Off;
    GapFillUsingResidualsOnOff = On;
   

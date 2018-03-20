@@ -17,9 +17,9 @@ Main = {
 #ifndef BM_SCALING
   #define BM_SCALING _SCALING_LENGTHMASSFAT_
 #endif
-#ifndef BM_DRAWSETTINGS_FILE
-  #path BM_DRAWSETTINGS_FILE "DrawSettings.any"
-#endif
+//#ifndef BM_DRAWSETTINGS_FILE
+//  #path BM_DRAWSETTINGS_FILE "DrawSettings.any"
+//#endif
 #ifndef BM_SCALING_ANTHRO_FILE
   #path BM_SCALING_ANTHRO_FILE "AnyMan.any"
 #endif

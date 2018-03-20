@@ -21,7 +21,14 @@
 #include "..\..\MoCap_FullBody.main.any"
 
 Main = 
-{  
+{
+  DrawSettings = 
+  {
+    Muscle = 
+    {
+      Opacity = 0.5;
+    };
+  };
   Studies = 
   {
     InverseDynamicStudy = 
@@ -67,6 +74,7 @@ Main =
 //      };      
       #endif
       #include "MovingCamera1.any"
+      #include "MovingCamera2.any"
     };
     
   };
