@@ -2,10 +2,10 @@ Main =
 {
   ModelSetup = 
   {
-//    TrialSpecificData =
-//    {
-//      #include "<USER_PATH_COMMONS>\eKneeData.any"
-//    };
+    TrialSpecificData =
+    {
+      #include "<USER_PATH_COMMONS>\eKneeData.any"
+    };
     SubjectSpecificData = 
     {
       #include "<USER_PATH_INPUTDATA>\Ligament\Attachment_Points.any"
