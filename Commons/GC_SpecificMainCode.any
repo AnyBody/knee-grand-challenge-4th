@@ -8,7 +8,7 @@ Main =
 //    };
     SubjectSpecificData = 
     {
-      #include "<USER_PATH_INPUTDATA>\Ligament\Attachment_Points.any"
+      #include "<USER_PATH_INPUTDATA>\Ligament_GC6\Attachment_Points.any"
       #include "<USER_PATH_COMMONS>\Parameters_Ligaments.any"        
     };
   };

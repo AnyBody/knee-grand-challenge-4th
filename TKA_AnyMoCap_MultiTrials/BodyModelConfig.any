@@ -72,7 +72,7 @@ Main = {
 
   
   // Default Settings
-#include "<USER_PATH_COMMONS>\Settings_Default.any"   
+#include "<USER_PATH_COMMONS>\Settings_Default_GC6.any"   
 
 
 
