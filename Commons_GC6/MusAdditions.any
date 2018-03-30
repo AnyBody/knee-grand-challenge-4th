@@ -1,0 +1,52 @@
+#ifndef INCLUDE_MUSCLE_WEIGHT_FACTOR
+  #define INCLUDE_MUSCLE_WEIGHT_FACTOR 1
+#endif
+
+#ifndef DEF_MUSCLE_RECRUITMENT_CRITERION_POWER
+  #define DEF_MUSCLE_RECRUITMENT_CRITERION_POWER 3
+#endif
+
+// left leg
+#if SignRef == 0
+
+ #if INCLUDE_MUSCLE_WEIGHT_FACTOR == 1
+ 
+ AnyVar p = DEF_MUSCLE_RECRUITMENT_CRITERION_POWER ;
+ 
+ // Muscle PCSA weight
+ #if BM_LEG_MUSCLES_LEFT == _MUSCLES_SIMPLE_
+   AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p);
+ #endif
+ 
+ // Muscle volume weight
+ #if BM_LEG_MUSCLES_LEFT == _MUSCLES_3E_HILL_
+   AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p); //assumes weight factor is inside ()^p
+ #endif
+ 
+ #endif
+
+// end of left leg
+#endif
+
+
+// right leg
+#if SignRef == 1
+
+ #if INCLUDE_MUSCLE_WEIGHT_FACTOR == 1
+ 
+ AnyVar p = DEF_MUSCLE_RECRUITMENT_CRITERION_POWER ;
+ 
+ // Muscle PCSA weight
+ #if BM_LEG_MUSCLES_LEFT == _MUSCLES_SIMPLE_
+   AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p);
+ #endif
+ 
+ // Muscle volume weight
+ #if BM_LEG_MUSCLES_LEFT == _MUSCLES_3E_HILL_
+   AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p); //assumes weight factor is inside ()^p
+ #endif
+ 
+ #endif
+
+#endif
+

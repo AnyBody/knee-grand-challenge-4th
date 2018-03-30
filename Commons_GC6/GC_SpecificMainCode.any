@@ -1,0 +1,37 @@
+Main = 
+{
+  ModelSetup = 
+  {
+//    TrialSpecificData =
+//    {
+//      #include "<USER_PATH_COMMONS>\eKneeData.any"
+//    };
+    SubjectSpecificData = 
+    {
+      #include "<USER_PATH_INPUTDATA>\Ligament_GC6\Attachment_Points.any"
+      #include "<USER_PATH_COMMONS>\Parameters_Ligaments.any"        
+    };
+  };
+
+  #include "<USER_PATH_COMMONS>\CustomScaling.any"
+
+  #include "<USER_PATH_COMMONS>\CustomSegments.any"
+  #include "<USER_PATH_COMMONS>\CustomMuscles.any"  
+  #include "<USER_PATH_COMMONS>\Measures.any"
+  
+  #if USE_FDK == 1
+   #define INPUT_REF_HUMAN_MODEL Main.HumanModel
+   #define INPUT_REF_PARAM_FOLDER Main.ModelSetup.SubjectSpecificData.Ligaments   
+   #define INPUT_REF_INIT_STUDY Main.Studies.InitStudy
+   #define INPUT_REF_EVAL_STUDY Main.Studies.EvalStudy
+     #include "<USER_PATH_COMMONS>\Ligaments.any"
+   #undef INPUT_REF_HUMAN_MODEL
+   #undef INPUT_REF_PARAM_FOLDER
+   #undef INPUT_REF_INIT_STUDY
+   #undef INPUT_REF_EVAL_STUDY
+   
+   #include "<USER_PATH_COMMONS>\Contacts.any"
+  #endif
+};
+
+#include "..\TKA_AnyMoCap_MultiTrials\Operations.any"

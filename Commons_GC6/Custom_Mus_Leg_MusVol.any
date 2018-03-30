@@ -1,0 +1,34 @@
+#ifndef DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION
+  #define DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION 1.0
+#endif
+
+#ifndef DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION
+  #define DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION 1.0
+#endif
+
+#ifndef DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS
+  #define DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS 1.0
+#endif
+
+SubjectMusPar = 
+{
+  GastrocnemiusLateralis.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS;
+  GastrocnemiusMedialis.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS;  
+  
+  BicepsFemorisCaputLongum.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION;
+  BicepsFemorisCaputBreve.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION;
+  Gracilis.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION;
+  Plantaris.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION;
+  Popliteus.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION;
+  Sartorius.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION;
+  Semimembranosus.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION;
+  Semitendinosus.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION;
+  
+  RectusFemoris.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION;
+  VastusIntermedius.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION;
+  VastusLateralisInferior.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION;
+  VastusLateralisSuperior.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION;
+  VastusMedialisInferior.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION;
+  VastusMedialisMid.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION;
+  VastusMedialisSuperior.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION;
+};

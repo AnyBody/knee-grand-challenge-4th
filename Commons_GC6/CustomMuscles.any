@@ -1,0 +1,117 @@
+#if BM_LEG_RIGHT == ON
+ #if BM_LEG_MUSCLES_RIGHT != OFF
+  HumanModel.BodyModel.Right.Leg = 
+  {
+    Seg = 
+    {
+      #include "Custom_Mus_Leg_Nodes.any"
+    };
+    MusPar = 
+    {
+      #include "Custom_Mus_Leg_MusPar.any"
+      #define DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION_RIGHT
+      #define DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION_RIGHT
+      #define DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS_RIGHT
+      #include "Custom_Mus_Leg_MusVol.any"
+      #undef DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION
+      #undef DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION
+      #undef DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS
+    };
+    Mus = 
+    {
+      #include "Custom_Mus_Leg.any"
+      #include "Custom_Mus_Leg_Addition.any"
+      #include "Excluder_Mus_Leg.any"
+    };
+    //#include "MusActConstraints.any"
+  };
+ #endif
+#endif
+
+#if BM_LEG_LEFT == ON
+ #if BM_LEG_MUSCLES_LEFT != OFF
+  HumanModel.BodyModel.Left.Leg = 
+  {
+    Seg = 
+    {
+      #include "Custom_Mus_Leg_Nodes.any"
+    };
+    MusPar = 
+    {
+      #include "Custom_Mus_Leg_MusPar.any"
+      #define DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION_LEFT
+      #define DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION_LEFT
+      #define DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS_LEFT
+      #include "Custom_Mus_Leg_MusVol.any"
+      #undef DEF_MUS_STRENGTH_SCALE_KNEE_FLEXION
+      #undef DEF_MUS_STRENGTH_SCALE_KNEE_EXTENSION
+      #undef DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS
+    };  
+    Mus = 
+    {
+      #include "Custom_Mus_Leg.any"
+      #include "Custom_Mus_Leg_Addition.any"
+      #include "Excluder_Mus_Leg.any"
+    };
+    //#include "MusActConstraints.any"
+  };
+ #endif
+#endif
+
+//REF_HUMAN_BODYMODEL.Right.Leg.Mus.GastrocnemiusLateralis1.srf = 
+//{
+//  AnyDrawParamSurf Drw = 
+//  {
+//    RGB = {1, 1, 1};
+//    Opacity = 0.5;
+//  };  
+//};
+
+//REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh =
+//{
+//  IliacusWrapSurf = 
+//  {
+//   cyl = 
+//   {
+//     AnyDrawParamSurf Drw = 
+//     {
+//       RGB = {1, 1, 1};
+//       Opacity = 0.5;
+//     };    
+//   };    
+//  };
+//
+//  AnyDrawPointCloud Drw_Points_IliacusWrapSurf = 
+//  {
+//    Points = .IliacusWrapSurf.p;
+//    RGB = {0, 0, 0};
+//    Opacity = 1;
+//    PointStyle.Size = 0.01;
+//    Points3D = On;
+//    ShowNames = Off;    
+//  };
+//};
+//REF_HUMAN_BODYMODEL.Trunk.SegmentsLumbar.PelvisSeg.Right.Muscles.GlueteusMaximusWrapSurfaces.Superior1.cyl = 
+//{
+//  AnyDrawParamSurf Drw = 
+//  {
+//    RGB = {1, 1, 1};
+//    Opacity = 0.5;
+//  };
+//};
+//REF_HUMAN_BODYMODEL.Trunk.SegmentsLumbar.PelvisSeg.Right.Muscles.GlueteusMaximusWrapSurfaces.Superior2.cyl = 
+//{
+//  AnyDrawParamSurf Drw = 
+//  {
+//    RGB = {1, 1, 1};
+//    Opacity = 0.5;
+//  };
+//};
+//REF_HUMAN_BODYMODEL.Trunk.SegmentsLumbar.PelvisSeg.Right.Muscles.GlueteusMaximusWrapSurfaces.Superior3.cyl =
+//{
+//  AnyDrawParamSurf Drw = 
+//  {
+//    RGB = {1, 1, 1};
+//    Opacity = 0.5;
+//  };
+//};

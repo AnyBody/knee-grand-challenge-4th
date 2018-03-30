@@ -1,0 +1,158 @@
+#ifndef k_PFL
+  #define k_PFL 2000
+#endif
+#ifndef er_PFL
+  #define er_PFL 0.06
+#endif
+
+#ifndef k_aALS
+  #define k_aALS 2000
+#endif
+#ifndef er_aALS
+  #define er_aALS 0.01
+#endif
+
+#ifndef k_pALS
+  #define k_pALS 2000
+#endif
+#ifndef er_pALS
+  #define er_pALS 0.01
+#endif
+
+#ifndef k_aLCL
+  #define k_aLCL 3000
+#endif
+#ifndef er_aLCL
+  #define er_aLCL 0.03
+#endif
+
+#ifndef k_pLCL
+  #define k_pLCL 3000
+#endif
+#ifndef er_pLCL
+  #define er_pLCL 0.03
+#endif
+
+#ifndef k_aMCL
+  #define k_aMCL 2750
+#endif
+#ifndef er_aMCL
+  #define er_aMCL 0.04
+#endif
+
+#ifndef k_cMCL
+  #define k_cMCL 2750
+#endif
+#ifndef er_cMCL
+  #define er_cMCL 0.04
+#endif
+
+#ifndef k_pMCL
+  #define k_pMCL 2750
+#endif
+#ifndef er_pMCL
+  #define er_pMCL 0.05
+#endif
+
+#ifndef k_aCM
+  #define k_aCM 2000
+#endif
+#ifndef er_aCM
+  #define er_aCM 0.01
+#endif
+
+#ifndef k_pCM
+  #define k_pCM 4000
+#endif
+#ifndef er_pCM
+  #define er_pCM 0.04
+#endif
+
+#ifndef k_aPCL
+  #define k_aPCL 9000
+#endif
+#ifndef er_aPCL
+  #define er_aPCL -0.1
+#endif
+
+#ifndef k_pPCL
+  #define k_pPCL 9000
+#endif
+#ifndef er_pPCL
+  //#define er_pPCL -0.03
+  #define er_pPCL -0.05
+#endif
+
+#ifndef k_lLcap
+  #define k_lLcap 1000
+#endif
+#ifndef er_lLcap
+  #define er_lLcap 0.07
+#endif
+
+#ifndef k_mLcap
+  #define k_mLcap 1000
+#endif
+#ifndef er_mLcap
+  #define er_mLcap 0.07
+#endif
+
+#ifndef k_lMcap
+  #define k_lMcap 1000
+#endif
+#ifndef er_lMcap
+  #define er_lMcap 0.07
+#endif
+
+#ifndef k_mMcap
+  #define k_mMcap 1000
+#endif
+#ifndef er_mMcap
+  #define er_mMcap 0.07
+#endif
+
+#ifndef k_sMPFL
+  #define k_sMPFL 1200
+#endif
+#ifndef er_sMPFL
+  #define er_sMPFL 0.07
+#endif
+
+#ifndef k_mMPFL
+  #define k_mMPFL 1100
+#endif
+#ifndef er_mMPFL
+  #define er_mMPFL 0.07
+#endif
+
+#ifndef k_iMPFL
+  #define k_iMPFL 1000
+#endif
+#ifndef er_iMPFL
+  #define er_iMPFL 0.07
+#endif
+
+#ifndef k_sLPFL
+  #define k_sLPFL 1200
+#endif
+#ifndef er_sLPFL
+  #define er_sLPFL 0.06
+#endif
+
+#ifndef k_mLPFL
+  #define k_mLPFL 1100
+#endif
+#ifndef er_mLPFL
+  #define er_mLPFL 0.06
+#endif
+
+#ifndef k_iLPFL
+  #define k_iLPFL 1000
+#endif
+#ifndef er_iLPFL
+  #define er_iLPFL 0.06
+#endif
+
+
+
+

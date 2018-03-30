@@ -1,0 +1,342 @@
+HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg = 
+{
+  #if BM_LEG_RIGHT == ON
+  Right = 
+  {
+    #if (BM_JOINT_TYPE_HIP_RIGHT == _JOINT_TYPE_USERDEFINED_)
+    AnyRefNode HipJoint = {
+      AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
+      sRel = ..Scale_Leg_Pelvis(sRelUnscaled );
+      #include "<ANYBODY_PATH_BODY>/DrawSettings/JointAxesProximal.any"
+      ARel = ..AnatomicalFrame.ARel;
+    };
+    #endif    
+  };
+  #endif
+  
+  #if BM_LEG_LEFT == ON
+  Left =
+  {
+    #if (BM_JOINT_TYPE_HIP_LEFT == _JOINT_TYPE_USERDEFINED_)
+    AnyRefNode HipJoint = {
+      AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
+      sRel = ..Scale_Leg_Pelvis(sRelUnscaled );
+      #include "<ANYBODY_PATH_BODY>/DrawSettings/JointAxesProximal.any"
+      ARel = ..AnatomicalFrame.ARel;
+    };
+    #endif    
+  };
+  #endif
+};
+
+#if BM_LEG_RIGHT == ON
+ #ifdef CUSTOM_SCALING_Right_Thigh
+  HumanModel.BodyModel.Right.Leg = 
+  {
+    Seg.Thigh = 
+    {
+      #define SEG_SIGN 1
+      #include "Custom_Seg_Thigh.any"
+      #undef SEG_SIGN
+      
+      Drw3.Visible = Off;
+      
+      Femoral_Head_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      Femoral_Head_Fitting_Surf_Node.Surf.Drw.RGB = {1, 0, 0};
+      Femoral_Head_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      Femoral_Head_Axial_Fitting_Surf_Node.Surf.Drw.Visible = On;
+      Femoral_Head_Axial_Fitting_Surf_Node.Surf.Drw.RGB = {0, 1, 0};
+      Femoral_Head_Axial_Fitting_Surf_Node.Surf.Drw.Opacity = 1.0;
+      
+      Femoral_Head_Wrapping_Surf_Node.Surf.Drw.Visible = Off;
+      Femoral_Head_Wrapping_Surf_Node.Surf.Drw.RGB = {0, 0, 1};
+      Femoral_Head_Wrapping_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.Surf.Drw.RGB = {1, 1, 0};
+      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.Surf.Drw.Opacity = 0.2;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node.Surf.Drw.RGB = {0, 1, 1};
+      PatientRefNode.Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node.Surf.Drw.RGB = {1, 0, 1};
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.Surf.Drw.RGB = {1, 1, 0.5};
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.RGB = {1, 0.5, 1};
+      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.Surf.Drw.RGB = {0.5, 1, 1};
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.Surf.Drw.Opacity = 0.5;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Visible = Off;
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.RGB = {1, 0, 0.5};
+      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Opacity = 0.5;
+    };  
+  };
+ #endif //Right Thigh
+ 
+ #ifdef CUSTOM_SCALING_Right_Shank
+  HumanModel.BodyModel.Right.Leg = 
+  {
+    Seg.Shank = 
+    {
+      #define SEG_SIGN 1
+      #include "Custom_Seg_Shank.any"
+      #undef SEG_SIGN  
+      
+      DrwSurfTibia.Visible = On;
+      DrwSurfFibula.Visible = On;    
+      
+      PatientRefNode.Wrapping_Medial_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Wrapping_Medial_Node.Surf.Drw.RGB = {0, 1, 0};
+      PatientRefNode.Wrapping_Medial_Node.Surf.Drw.Opacity = 0.5;
+    };
+  };
+ #endif //Right Shank
+ 
+ #ifdef CUSTOM_SCALING_Right_Patella
+  HumanModel.BodyModel.Right.Leg =
+  {  
+    Seg.Patella = 
+    {
+      #define SEG_SIGN 1
+      #include "Custom_Seg_Patella.any"
+      #undef SEG_SIGN
+      
+      DrwSurf.Visible = Off;    
+    };
+  };
+ #endif // Right Patella
+ 
+ HumanModel.BodyModel.Right.Leg =
+ {  
+   Seg.Talus = 
+   {
+     #define SEG_SIGN 1
+     #include "Custom_Seg_Talus.any"
+     #undef SEG_SIGN
+   };
+ };
+#endif
+
+#if BM_LEG_LEFT == ON
+ #ifdef CUSTOM_SCALING_Left_Thigh
+  HumanModel.BodyModel.Left.Leg = 
+  {
+    Seg.Thigh = 
+    {
+      #define SEG_SIGN -1
+      #include "Custom_Seg_Thigh.any"
+      #undef SEG_SIGN
+      
+      Drw3.Visible = Off;
+      
+      Femoral_Head_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+      Femoral_Head_Axial_Fitting_Surf_Node.Surf.Drw.Visible = On;      
+      Femoral_Head_Wrapping_Surf_Node.Surf.Drw.Visible = Off;
+      
+      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.Surf.Drw.Visible = Off;
+    };
+  };
+ #endif // Left Thigh
+ 
+ #ifdef CUSTOM_SCALING_Left_Shank
+  HumanModel.BodyModel.Left.Leg = 
+  {
+    Seg.Shank = 
+    {
+      #define SEG_SIGN -1
+      #include "Custom_Seg_Shank.any"
+      #undef SEG_SIGN 
+      
+      DrwSurfTibia.Visible = Off;
+      DrwSurfFibula.Visible = Off; 
+          
+    };  
+  };
+ #endif // Left Shank
+ 
+ #ifdef CUSTOM_SCALING_Left_Patella
+  HumanModel.BodyModel.Left.Leg =
+  { 
+    Seg.Patella = 
+    {
+      #define SEG_SIGN -1
+      #include "Custom_Seg_Patella.any"
+      #undef SEG_SIGN
+    
+      DrwSurf.Visible = Off;    
+    };
+  };
+ #endif //Left Patella
+ 
+ HumanModel.BodyModel.Left.Leg =
+ {  
+   Seg.Talus = 
+   {
+     #define SEG_SIGN -1
+     #include "Custom_Seg_Talus.any"
+     #undef SEG_SIGN
+   };
+ };
+#endif
+
+HumanModel.BodyModel =
+{
+  #if BM_LEG_RIGHT == ON
+  Right.Leg =
+  {
+    Jnt = 
+    {
+      #if (BM_JOINT_TYPE_HIP_RIGHT == _JOINT_TYPE_USERDEFINED_)
+      AnySphericalJoint Hip = 
+      {
+        AnyRefNode &ThighNode = ..Seg.Thigh.HipJoint;
+        AnyRefNode &PelvisNode = ..Seg.Pelvis.HipJoint;
+      };//Hip
+      #endif
+      
+      #if (BM_JOINT_TYPE_KNEE_RIGHT == _JOINT_TYPE_USERDEFINED_)
+      AnyRevoluteJoint Knee = 
+      {
+        Axis = z;
+        AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
+        AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+        //AnyDrawStdJoint Knee = {  };
+      };//Knee
+      #endif
+      
+      #if (BM_JOINT_TYPE_PATELLOFEMORAL_RIGHT == _JOINT_TYPE_USERDEFINED_)
+      AnyRevoluteJoint PatellaFemur = 
+      {
+        Axis = z;
+        AnyRefNode &ThighNode = ..Seg.Thigh.PatellaFemurJoint;
+        AnyRefNode &PatellaNode = ..Seg.Patella.PatellaFemurJoint;
+      };//Patellafemur
+      #endif
+      
+      #if (BM_JOINT_TYPE_ANKLE_RIGHT == _JOINT_TYPE_USERDEFINED_)
+      AnyRevoluteJoint Ankle = 
+      {
+        Axis = z; //flexion extension
+        AnyRefNode &ShankNode = ..Seg.Shank.AnkleJoint;
+        AnyRefNode &FootNode  = ..Seg.Talus.AnkleJoint;
+      };//Ankle
+      #endif
+      
+      #if (BM_JOINT_TYPE_PATELLATENDON_RIGHT == _JOINT_TYPE_USERDEFINED_)
+      AnyFolder KinematicMeasures = 
+      {
+        AnyKinPLine Patella = 
+        {
+          AnyRefNode &Origin_patella_tendon = ...Seg.Patella.Origin_patella_tendon;
+          AnyRefNode &Insertion_patella_tendon = ...Seg.Shank.Insertion_patella_tendon;
+          
+          AnyDrawPLine Patella_tendon = 
+          {
+            Thickness = 0.001;
+            RGB = {1,0,0};
+            Opacity = ....BonesOpacity.Patella;
+          };
+        };
+      };  
+      AnyKinEqSimpleDriver PatellaMovement = 
+      {
+        AnyKinPLine &Jnt = .KinematicMeasures.Patella;
+        AnyVar lengthScale = vnorm(..Seg.Shank.KneeJoint.sRel - ..Seg.Shank.Insertion_patella_tendon.sRel)
+        / vnorm(..Seg.Shank.StdPar.Insertion_patella_tendon-..Seg.Shank.StdPar.KneeJoint);
+        AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.PatellarLigamentLength; 
+        AnyVar TendonLength_Custom = DEF_CUSTOM_SCALING_PATELLA_TENDON_LENGTH;
+        
+        DriverPos = {TendonLength_Custom};
+        DriverVel = {0.0};
+        Reaction.Type = {On};  // The muscles must do the work
+      };
+      #endif
+    };//Jnt
+  };
+  #endif
+  
+  #if BM_LEG_LEFT == ON
+  Left.Leg = 
+  {
+    Jnt = 
+    {
+      #if (BM_JOINT_TYPE_HIP_LEFT == _JOINT_TYPE_USERDEFINED_)
+      AnySphericalJoint Hip = 
+      {
+        AnyRefNode &ThighNode = ..Seg.Thigh.HipJoint;
+        AnyRefNode &PelvisNode = ..Seg.Pelvis.HipJoint;
+      };//Hip
+      #endif
+      
+      #if (BM_JOINT_TYPE_KNEE_LEFT == _JOINT_TYPE_USERDEFINED_)
+      AnyRevoluteJoint Knee = 
+      {
+        Axis = z;
+        AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
+        AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+        //AnyDrawStdJoint Knee = {  };
+      };//Knee
+      #endif
+      
+      #if (BM_JOINT_TYPE_PATELLOFEMORAL_LEFT == _JOINT_TYPE_USERDEFINED_)
+      AnyRevoluteJoint PatellaFemur = 
+      {
+        Axis = z;
+        AnyRefNode &ThighNode = ..Seg.Thigh.PatellaFemurJoint;
+        AnyRefNode &PatellaNode = ..Seg.Patella.PatellaFemurJoint;
+      };//Patellafemur 
+      #endif
+      
+      #if (BM_JOINT_TYPE_ANKLE_LEFT == _JOINT_TYPE_USERDEFINED_)
+      AnyRevoluteJoint Ankle = 
+      {
+        Axis = z; //flexion extension
+        AnyRefNode &ShankNode = ..Seg.Shank.AnkleJoint;
+        AnyRefNode &FootNode  = ..Seg.Talus.AnkleJoint;
+      };//Ankle
+      #endif
+      
+      #if (BM_JOINT_TYPE_PATELLATENDON_LEFT == _JOINT_TYPE_USERDEFINED_)
+      AnyFolder KinematicMeasures = 
+      {
+        AnyKinPLine Patella = 
+        {
+          AnyRefNode &Origin_patella_tendon = ...Seg.Patella.Origin_patella_tendon;
+          AnyRefNode &Insertion_patella_tendon = ...Seg.Shank.Insertion_patella_tendon;
+          
+          AnyDrawPLine Patella_tendon = 
+          {
+            Thickness = 0.001;
+            RGB = {1,0,0};
+            Opacity = ....BonesOpacity.Patella;
+          };
+        };
+      };  
+      AnyKinEqSimpleDriver PatellaMovement = 
+      {
+        AnyKinPLine &Jnt = .KinematicMeasures.Patella;
+        AnyVar lengthScale = vnorm(..Seg.Shank.KneeJoint.sRel - ..Seg.Shank.Insertion_patella_tendon.sRel)
+        / vnorm(..Seg.Shank.StdPar.Insertion_patella_tendon-..Seg.Shank.StdPar.KneeJoint);
+        AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.PatellarLigamentLength; 
+        AnyVar TendonLength_Custom = DEF_CUSTOM_SCALING_PATELLA_TENDON_LENGTH;
+        
+        DriverPos = {TendonLength_Custom};
+        DriverVel = {0.0};
+        Reaction.Type = {On};  // The muscles must do the work
+      }; 
+      #endif
+    };//Jnt
+  };
+  #endif
+};

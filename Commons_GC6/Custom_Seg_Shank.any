@@ -1,0 +1,210 @@
+AnyRefNode PatientRefNode = 
+{
+  AnyVec3 O = {0, 0, 0};
+  AnyVec3 X = {1, 0, 0};
+  AnyVec3 Y = {0, 1, 0};
+  AnyVec3 Z  ={0, 0, 1};
+  
+  AnyVec3 O_New = .Align_Transform(O);
+  AnyVec3 X_New = .Align_Transform(X);
+  AnyVec3 Y_New = .Align_Transform(Y);
+  AnyVec3 Z_New = .Align_Transform(Z);    
+  
+  sRel = O_New;
+  ARel = {X_New-O_New, Y_New-O_New, Z_New-O_New}';
+  
+  AnyRefNode RotNode = 
+  {
+    ARel = RotMat((SEG_SIGN)*pi, y);
+  };
+  
+  AnyRefNode OffsetNode = 
+  {
+    //sRel = {0.01 - IMPLANT_AP_OFFSET, 0.029, 0.0};
+    sRel = {0.0,0.0,0.0}; //{0, 0.044 - 0.002, (SEG_SIGN)*0};
+    ARel = .RotNode.ARel;    
+    
+    //      AnyDrawRefFrame DrwFrame =
+    //      {
+    //        RGB = {1, 0, 0};
+    //        ScaleXYZ = 0.15*{1, 1, 1};
+    //      };      
+  };
+  
+  #if SEG_SIGN == 1
+  AnyDrawSurf Drw_Bone_PostOp = 
+  {
+    FileName = PATH_TARGET_TIBIA_POSTOP_STL ;
+    RGB = Main.DrawSettings.Colors.Segments;
+    //Opacity = 0.0;
+    ScaleXYZ = {1, 1, 1};
+  };
+    
+  AnyDrawSurf Drw_Implant_Tibia_Base = 
+  {
+    FileName = PATH_IMPLANT_TIBIA_BASE_STL;
+    RGB = 0.0*{1, 1, 1};
+    Opacity = 1;
+  };
+  
+  AnyDrawSurf Drw_Implant_Tibia_Insert_Medial = 
+  {
+    FileName = PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL;
+    RGB = {1, 1, 1};
+    Opacity = 0.5;
+  };
+
+  AnyDrawSurf Drw_Implant_Tibia_Insert_Lateral = 
+  {
+    FileName = PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL;
+    RGB = {1, 1, 1};
+    Opacity = 0.5;
+  };
+ 
+  #endif
+  
+  #if SEG_SIGN == -1
+  AnyDrawSurf Drw_Bone_PreOp = 
+  {
+    FileName = ....GeoScaling.Shank.MyScalingLaw.Surfaces.Target;
+    RGB = Main.DrawSettings.Colors.Segments;
+    ScaleXYZ = {1, 1, -1};
+  };  
+  #endif
+  
+  AnyDrawSurf Drw_Bone_Fibula = 
+  {
+    FileName = PATH_TARGET_FIBULA_STL ;
+    RGB = Main.DrawSettings.Colors.Segments;
+    ScaleXYZ = {1, 1, SEG_SIGN };
+  };
+    
+  #if SEG_SIGN == 1
+  AnyRefNode Wrapping_Medial_Node = 
+  {
+    sRel = {-0.022, -0.017 + 0.005, 0.0345 + 0.0015} ;
+    ARel = {{0.0, 0.0, 1.0}, {0.0, 1.0, 0.0}, {-1.0, 0.0, 0.0}};
+    
+    AnySurfCylinder Surf = 
+    {
+      Radius = 0.005;
+      Length = 0.05;
+      CapRatio = 1.0;
+      
+      AnyDrawParamSurf Drw = 
+      {
+        //RGB = {1, 1, 1};
+        //Opacity = 0.5;
+      };        
+    };
+  };
+  
+  AnyFolder Implant_Tibial_Insert_Central_Posterior_Points_Picked = 
+  {
+    AnyInputXML XMLObject = 
+    {
+      FileName = PATH_TARGET_IMPLANT_TIBIA_INSERT_PICKED_POINTS_CENTRAL_POSTERIOR ;
+    };
+    
+    AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+    AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+    AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+    AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+    AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
+    AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
+  };
+  
+  AnyRefNode Implant_Tibial_Insert_Central_Posterior_Fitting_Surf_Node = 
+  {
+    sRel = Surf.sRel ;
+    ARel = Surf.ARel ;
+//    AnyDrawRefFrame Drw = 
+//    {
+//      RGB = {1, 1, 0};
+//      ScaleXYZ = 0.15*{1, 1, 1};
+//    };
+    
+    AnySurfCylinderFit Surf = 
+    {
+      Points = ..Implant_Tibial_Insert_Central_Posterior_Points_Picked.Points_Transformed ;
+      Length = 0.1;
+      FixedDirection = On;
+      Direction = {0, 0, 1};
+//      AnyDrawParamSurf Drw = 
+//      {
+//        RGB = {1, 0, 1};
+//        Opacity = 0.5;
+//      };    
+    };
+  };
+
+  AnyParamSurf& Surf_Wrapping_Cylinder_Medial = Wrapping_Medial_Node.Surf ;  
+  AnyParamSurf& Surf_Wrapping_Plane_Central_Posterior = Implant_Tibial_Insert_Central_Posterior_Fitting_Surf_Node.Surf ;
+  #endif
+};
+
+AnyRefNode KneeJointNew = 
+{
+  sRel = .PatientRefNode.sRel + 
+  .PatientRefNode.OffsetNode.sRel * .PatientRefNode.ARel';
+  ARel = .PatientRefNode.ARel * .PatientRefNode.OffsetNode.ARel;
+  
+  AnyVec3 sRelUnscaled = sRel;
+  AnyFloat ARelUnscaled = ARel;
+  
+//  AnyDrawRefFrame Drw = 
+//  {
+//    RGB = {0, 1, 1};
+//    ScaleXYZ = 0.2*{1, 1, 1};
+//  };
+};    
+
+AnyRefNode AnkleJointNew = 
+{
+  AnyVec3 AnkleShankCenterNode = .Mapping_Transform(({0.0191,0.0028,(-0.4057)}+{(-0.0179),0.0283,(-0.4057)})/2.0); 
+  AnyVec3 AnkleShankAxisNode = .Mapping_Transform({(-0.0179),0.0283,(-0.4057)});
+  AnyMat33 AnkleShankRotMat = RotMat(AnkleShankCenterNode,AnkleShankAxisNode,.KneeJointNew.sRel)*RotMat(SEG_SIGN*pi/2,y);
+  sRel = AnkleShankCenterNode;
+  ARel = AnkleShankRotMat;
+  
+  AnyVec3 sRelUnscaled = sRel;
+  AnyFloat ARelUnscaled = ARel;
+  
+  AnyDrawRefFrame Drw = 
+  {
+    RGB = {0, 1, 1};
+    ScaleXYZ = 0.2*{1, 1, 1};
+  };
+};  
+
+#if (BM_JOINT_TYPE_KNEE_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_KNEE_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
+AnyRefNode& KneeJoint = KneeJointNew;
+#endif
+
+#if (BM_JOINT_TYPE_ANKLE_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_ANKLE_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
+AnyRefNode& AnkleJoint = AnkleJointNew;
+#endif
+
+#if (BM_JOINT_TYPE_PATELLATENDON_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_PATELLATENDON_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
+AnyRefNode Insertion_patella_tendon =
+{
+  //sRel = .Scale( .StdPar.Insertion_patella_tendon );
+  sRel = .Mapping_Transform({-0.0105,-0.0200,-0.0872}); //
+};
+#endif
+
+#if SEG_SIGN == 1
+PatientRefNode = 
+{
+//   AnyDrawPointCloud Drw_Ligament_Points = 
+//   {
+//     Points = INPUT_REF_PARAM_FOLDER.Attachment_Points.Tibia.Points_Original ;
+//     PointNames = INPUT_REF_PARAM_FOLDER.Attachment_Points.Tibia.PointNames;
+//     RGB = {1, 1, 1};
+//     Opacity = 0.5;
+//     PointStyle.Size = 0.0025;
+//     Points3D = On;
+//     ShowNames = Off;
+//   };
+};
+#endif

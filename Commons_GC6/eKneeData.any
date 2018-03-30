@@ -1,0 +1,38 @@
+AnyFolder eKneeData = 
+{
+  AnyInputFile InputFile = 
+  {
+    FileName = PATH_eKneeData ;
+  };
+  
+  AnyFloat RawData = InputFile.Data;
+  
+  AnyFloat pm = RawData[0];
+  AnyFloat am = RawData[1];
+  AnyFloat al = RawData[2];
+  AnyFloat pl = RawData[3];
+  
+  AnyVar c1 = 0.9871;
+  AnyVar c2 = 0.9683;
+  AnyVar c3 = 0.0387;
+  AnyVar c4 = 0.0211;
+  
+  AnyFloat F_medial = (c1*am+c2*pm+c3*al+c4*pl)*4.4482216 ;
+  AnyFloat F_lateral = ((1-c1)*am+(1-c2)*pm+(1-c3)*al+(1-c4)*pl)*4.4482216 ;
+  
+  AnyFunInterpol Fun_F_medial = 
+  {
+    T = .InputFile.T;
+    Data = {.F_medial} ;
+    Type = Bspline;
+    BsplineOrder = 4;
+  };
+  
+  AnyFunInterpol Fun_F_lateral = 
+  {
+    T = .InputFile.T;
+    Data = {.F_lateral} ;
+    Type = Bspline;
+    BsplineOrder = 4;
+  };
+};

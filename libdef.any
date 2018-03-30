@@ -1,4 +1,4 @@
 #include "..\ammr\libdef.any"
 
 #path USER_PATH_INPUTDATA "[Input]"
-#path USER_PATH_COMMONS   "Commons"
+#path USER_PATH_COMMONS   "Commons_GC6"

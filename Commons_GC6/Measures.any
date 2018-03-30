@@ -1,0 +1,111 @@
+REF_HUMAN_BODYMODEL = 
+{
+  Interface =
+  {
+    Right = 
+    {
+      AnyKinLinear GlobalFootPos = 
+      {
+        AnyRefFrame& ref = ...Right.Leg.Seg.Foot;
+      };
+      AnyKinRotational GlobalFootRot = 
+      {
+        AnyRefFrame& ref = ...Right.Leg.Seg.Foot;
+        Type = RotAxesAngles;
+      };      
+      AnyKinMeasureOrg GlobalFootPosX = 
+      {
+        AnyKinMeasure& ref = .GlobalFootPos ;
+        MeasureOrganizer = {0};
+      };
+      AnyKinMeasureOrg GlobalFootPosY = 
+      {
+        AnyKinMeasure& ref = .GlobalFootPos ;
+        MeasureOrganizer = {1};
+      };
+      AnyKinMeasureOrg GlobalFootPosZ = 
+      {
+        AnyKinMeasure& ref = .GlobalFootPos ;
+        MeasureOrganizer = {2};
+      };
+      AnyKinMeasureOrg GlobalFootRotX = 
+      {
+        AnyKinMeasure& ref = .GlobalFootRot ;
+        MeasureOrganizer = {2};
+      };      
+      AnyKinMeasureOrg GlobalFootRotY = 
+      {
+        AnyKinMeasure& ref = .GlobalFootRot ;
+        MeasureOrganizer = {1};
+      };
+      AnyKinMeasureOrg GlobalFootRotZ = 
+      {
+        AnyKinMeasure& ref = .GlobalFootRot ;
+        MeasureOrganizer = {0};
+      }; 
+      AnyKinLinear GlobalToeLateralContactNodePos = 
+      {
+        AnyRefFrame& ref = ...Right.Leg.Seg.Foot.ToeLateralContactNode;
+      };
+      AnyKinMeasureOrg GlobalToeLateralContactNodePosX = 
+      {
+        AnyKinMeasure& ref = .GlobalToeLateralContactNodePos ;
+        MeasureOrganizer = {0};
+      };
+      AnyKinMeasureOrg GlobalToeLateralContactNodePosY = 
+      {
+        AnyKinMeasure& ref = .GlobalToeLateralContactNodePos ;
+        MeasureOrganizer = {1};
+      };
+      AnyKinMeasureOrg GlobalToeLateralContactNodePosZ = 
+      {
+        AnyKinMeasure& ref = .GlobalToeLateralContactNodePos ;
+        MeasureOrganizer = {2};
+      };
+      AnyKinLinear GlobalToeMedialContactNodePos = 
+      {
+        AnyRefFrame& ref = ...Right.Leg.Seg.Foot.ToeMedialContactNode;
+      };
+      AnyKinMeasureOrg GlobalToeMedialContactNodePosX = 
+      {
+        AnyKinMeasure& ref = .GlobalToeMedialContactNodePos ;
+        MeasureOrganizer = {0};
+      };
+      AnyKinMeasureOrg GlobalToeMedialContactNodePosY = 
+      {
+        AnyKinMeasure& ref = .GlobalToeMedialContactNodePos ;
+        MeasureOrganizer = {1};
+      };
+      AnyKinMeasureOrg GlobalToeMedialContactNodePosZ = 
+      {
+        AnyKinMeasure& ref = .GlobalToeMedialContactNodePos ;
+        MeasureOrganizer = {2};
+      };
+      
+      AnyKinLinear AnkleJointPos = 
+      {
+        AnyRefFrame& ref0 = ...Right.Leg.Seg.Thigh.KneeJoint;
+        AnyRefFrame& ref1 = ...Right.Leg.Seg.Shank.AnkleJoint;
+        Ref = 0;
+      };
+      AnyKinMeasureOrg AnkleJointPosX = 
+      {
+        AnyKinMeasure& erf = .AnkleJointPos ;
+        MeasureOrganizer = {0};
+      };
+      AnyKinMeasureOrg AnkleJointPosY = 
+      {
+        AnyKinMeasure& erf = .AnkleJointPos ;
+        MeasureOrganizer = {1};
+      };
+      AnyKinMeasureOrg AnkleJointPosZ = 
+      {
+        AnyKinMeasure& erf = .AnkleJointPos ;
+        MeasureOrganizer = {2};
+      };      
+    };
+  };//Interface
+};
+
+
+

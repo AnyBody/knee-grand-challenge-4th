@@ -1,0 +1,91 @@
+#define RETURN_OBJ_MUSCLE(strMusFolder,strMusName) ObjSearchRecursive(strMusFolder, strMusName, "AnyMuscle")
+#define RETURN_OBJ_SPLINE(strMusFolder,strMusName) ObjSearchRecursive(strMusFolder+"."+strMusName, "*", "AnyMechObject")
+//#define RETURN_OBJ_MUSCLEMODEL(strMusFolder,strMusName)
+
+AnyFolder ExcludedMuscles = 
+{
+  AnyObjectPtr pArrMuscles = arrcat
+  (
+    arrcat(
+    RETURN_OBJ_MUSCLE("..Mus", "TensorFasciaeLatae1"),
+    RETURN_OBJ_MUSCLE("..Mus", "TensorFasciaeLatae2")    
+    ),
+    arrcat(
+    RETURN_OBJ_MUSCLE("..Mus", "BicepsFemorisCaputLongum1"),
+    RETURN_OBJ_MUSCLE("..Mus", "BicepsFemorisCaputBreve1"),
+    RETURN_OBJ_MUSCLE("..Mus", "BicepsFemorisCaputBreve2"),
+    RETURN_OBJ_MUSCLE("..Mus", "BicepsFemorisCaputBreve3")
+    ),
+    arrcat(
+    RETURN_OBJ_MUSCLE("..Mus", "RectusFemoris1"),
+    RETURN_OBJ_MUSCLE("..Mus", "RectusFemoris2")
+    ),
+    arrcat(
+    RETURN_OBJ_MUSCLE("..Mus", "IliacusMid1"),
+    RETURN_OBJ_MUSCLE("..Mus", "IliacusMid2")
+    ),
+    arrcat(
+    RETURN_OBJ_MUSCLE("..Mus", "IliacusMedialis1"),
+    RETURN_OBJ_MUSCLE("..Mus", "IliacusMedialis2")
+    )
+//    arrcat(
+//    RETURN_OBJ_MUSCLE("..Mus", "Pectineus1"),
+//    RETURN_OBJ_MUSCLE("..Mus", "Pectineus2"),
+//    RETURN_OBJ_MUSCLE("..Mus", "Pectineus3"),
+//    RETURN_OBJ_MUSCLE("..Mus", "Pectineus4")
+//    )
+  );
+  AnyObjectPtr pArrSPLines = arrcat
+  (
+    arrcat(
+    RETURN_OBJ_SPLINE("..Mus", "TensorFasciaeLatae1"),
+    RETURN_OBJ_SPLINE("..Mus", "TensorFasciaeLatae2")    
+    ),  
+    arrcat(
+    RETURN_OBJ_SPLINE("..Mus", "BicepsFemorisCaputLongum1"),
+    RETURN_OBJ_SPLINE("..Mus", "BicepsFemorisCaputBreve1"),
+    RETURN_OBJ_SPLINE("..Mus", "BicepsFemorisCaputBreve2"),
+    RETURN_OBJ_SPLINE("..Mus", "BicepsFemorisCaputBreve3")
+    ),
+    arrcat(
+    RETURN_OBJ_SPLINE("..Mus", "RectusFemoris1"),
+    RETURN_OBJ_SPLINE("..Mus", "RectusFemoris2")
+    ),
+    arrcat(
+    RETURN_OBJ_SPLINE("..Mus", "IliacusMid1"),
+    RETURN_OBJ_SPLINE("..Mus", "IliacusMid2")
+    ),
+    arrcat(
+    RETURN_OBJ_SPLINE("..Mus", "IliacusMedialis1"),
+    RETURN_OBJ_SPLINE("..Mus", "IliacusMedialis2")
+    )
+//    arrcat(
+//    RETURN_OBJ_SPLINE("..Mus", "Pectineus1"),
+//    RETURN_OBJ_SPLINE("..Mus", "Pectineus2"),
+//    RETURN_OBJ_SPLINE("..Mus", "Pectineus3"),
+//    RETURN_OBJ_SPLINE("..Mus", "Pectineus4")
+//    )
+  );
+  
+  AnyObjectPtr Objects = arrcat(pArrMuscles, pArrSPLines);
+};
+
+TensorFasciaeLatae1.DrwMus.Visible = Off;
+TensorFasciaeLatae2.DrwMus.Visible = Off;
+BicepsFemorisCaputLongum1.DrwMus.Visible = Off;
+BicepsFemorisCaputBreve1.DrwMus.Visible = Off;
+BicepsFemorisCaputBreve2.DrwMus.Visible = Off;
+BicepsFemorisCaputBreve3.DrwMus.Visible = Off;
+RectusFemoris1.DrwMus.Visible = Off;
+RectusFemoris2.DrwMus.Visible = Off;
+IliacusMid1.DrwMus.Visible = Off;
+IliacusMid2.DrwMus.Visible = Off;
+IliacusMedialis1.DrwMus.Visible = Off;
+IliacusMedialis2.DrwMus.Visible = Off;
+//Pectineus1.DrwMus.Visible = Off;
+//Pectineus2.DrwMus.Visible = Off;
+//Pectineus3.DrwMus.Visible = Off;
+//Pectineus4.DrwMus.Visible = Off;
+
+#undef RETURN_OBJ_MUSCLE
+#undef RETURN_OBJ_SPLINE

@@ -1,0 +1,299 @@
+// This is a place holder for the inclusion of custom scaling laws
+HumanModel.Scaling.GeometricalScaling = 
+{
+  #if BM_LEG_RIGHT == ON
+   #ifdef CUSTOM_SCALING_Right_Thigh
+    Right.Thigh = 
+    {
+      #include "CustomScalingLaw_Femur_Right.any"
+      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+    };
+   #endif
+   
+   #ifdef CUSTOM_SCALING_Right_Shank
+    Right.Shank = 
+    {
+      #include "CustomScalingLaw_Tibia_Right.any"
+      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+    };
+   #endif  
+   
+   #ifdef CUSTOM_SCALING_Right_Patella
+    Right.Patella = 
+    {
+      #include "CustomScalingLaw_Patella_Right.any"
+      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+    };
+   #endif  
+  #endif
+  
+  #if BM_LEG_LEFT == ON
+   #ifdef CUSTOM_SCALING_Left_Thigh
+    Left.Thigh = 
+    {
+      #include "CustomScalingLaw_Femur_Left.any"
+      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+    };
+   #endif
+   
+   #ifdef CUSTOM_SCALING_Left_Shank
+    Left.Shank = 
+    {
+      #include "CustomScalingLaw_Tibia_Left.any"
+      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+    };
+   #endif
+   
+   #ifdef CUSTOM_SCALING_Left_Patella
+    Left.Patella = 
+    {
+      #include "CustomScalingLaw_Patella_Left.any" 
+      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+    };
+   #endif
+  #endif
+};
+
+#if BM_LEG_RIGHT == ON
+ #ifdef CUSTOM_SCALING_Right_Thigh
+  HumanModel.BodyModel.Right.Leg.Seg.Thigh = 
+  { 
+    AnyFunTransform3D Align_Transform = 
+    {
+      PreTransforms = 
+      {
+        &...GeoScaling.Thigh.MyScalingLaw.ReverseTransform,
+        &.Scale.T1_Inv
+      };
+    };
+    
+    AnyFunTransform3DLin2 Align_Transform2 = 
+    {
+      //PreTransforms = {};
+      AnyFloat Points_Source = .Scale(...GeoScaling.Thigh.MyScalingLaw.Landmarks.Source.Points);
+      AnyFloat Points_Target = ...GeoScaling.Thigh.MyScalingLaw.Landmarks.Target.Points ;
+      
+      Points0 = Points_Target;
+      Points1 = Points_Source;
+      Mode = VTK_LANDMARK_RIGIDBODY ;
+    };
+   
+    AnyFunTransform3DLin Mirror_Transform = 
+    {
+      ScaleMat = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
+      Offset = {0, 0, 0};
+    };
+    
+    AnyFunTransform3D Mapping_Transform = 
+    {
+      PreTransforms = 
+      {
+        &.Mirror_Transform,
+        &.Align_Transform
+      };
+    }; 
+  };
+ #endif
+ 
+ #ifdef CUSTOM_SCALING_Right_Shank
+  HumanModel.BodyModel.Right.Leg.Seg.Shank = 
+  {
+    AnyFunTransform3D Align_Transform = 
+    {
+      PreTransforms = 
+      {
+        &...GeoScaling.Shank.MyScalingLaw.ReverseTransform,
+        &.Scale.T1_Inv
+      };
+    };
+    
+    AnyFunTransform3DLin2 Align_Transform2 = 
+    {
+      //PreTransforms = {};
+      AnyFloat Points_Source = .Scale(...GeoScaling.Shank.MyScalingLaw.Landmarks.Source.Points);
+      AnyFloat Points_Target = ...GeoScaling.Shank.MyScalingLaw.Landmarks.Target.Points ;
+      
+      Points0 = Points_Target;
+      Points1 = Points_Source;
+      Mode = VTK_LANDMARK_RIGIDBODY ;
+    };
+    
+    AnyFunTransform3DLin Mirror_Transform = 
+    {
+      ScaleMat = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
+      Offset = {0, 0, 0};
+    };
+    
+    AnyFunTransform3D Mapping_Transform = 
+    {
+      PreTransforms = 
+      {
+        &.Mirror_Transform,
+        &.Align_Transform
+      };
+    };    
+  };
+ #endif
+ 
+ #ifdef CUSTOM_SCALING_Right_Patella
+  HumanModel.BodyModel.Right.Leg.Seg.Patella = 
+  {
+    AnyFunTransform3D Align_Transform = 
+    {
+      PreTransforms = 
+      {
+        &...GeoScaling.Patella.MyScalingLaw.ReverseTransform,
+        &.Scale.T1_Inv
+      };
+    };
+    
+    AnyFunTransform3DLin2 Align_Transform2 = 
+    {
+      //PreTransforms = {};
+      AnyFloat Points_Source = .Scale(...GeoScaling.Patella.MyScalingLaw.Landmarks.Source.Points);
+      AnyFloat Points_Target = ...GeoScaling.Patella.MyScalingLaw.Landmarks.Target.Points ;
+      
+      Points0 = Points_Target;
+      Points1 = Points_Source;
+      Mode = VTK_LANDMARK_RIGIDBODY ;
+    };
+   
+    AnyFunTransform3DLin Mirror_Transform = 
+    {
+      ScaleMat = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
+      Offset = {0, 0, 0};
+    };
+    
+    AnyFunTransform3D Mapping_Transform = 
+    {
+      PreTransforms = 
+      {
+        &.Mirror_Transform,
+        &.Align_Transform
+      };
+    };    
+  };
+ #endif
+#endif
+
+#if BM_LEG_LEFT == ON
+ #ifdef CUSTOM_SCALING_Left_Thigh
+  HumanModel.BodyModel.Left.Leg.Seg.Thigh = 
+  {
+    AnyFunTransform3D Align_Transform = 
+    {
+      PreTransforms = 
+      {
+        &...GeoScaling.Thigh.MyScalingLaw.ReverseTransform,
+        &.Scale.T1_Inv
+      };
+    };
+    
+    AnyFunTransform3DLin2 Align_Transform2 = 
+    {
+      //PreTransforms = {};
+      AnyFloat Points_Source = .Scale(...GeoScaling.Thigh.MyScalingLaw.Landmarks.Source.Points);
+      AnyFloat Points_Target = ...GeoScaling.Thigh.MyScalingLaw.Landmarks.Target.Points ;
+      
+      Points0 = Points_Target;
+      Points1 = Points_Source;
+      Mode = VTK_LANDMARK_RIGIDBODY ;
+    };
+    
+    AnyFunTransform3DLin Mirror_Transform = 
+    {
+      ScaleMat = {{1, 0, 0}, {0, 1, 0}, {0, 0, -1}};
+      Offset = {0, 0, 0};
+    };
+    
+    AnyFunTransform3D Mapping_Transform = 
+    {
+      PreTransforms = 
+      {
+        &.Mirror_Transform,
+        &.Align_Transform
+      };
+    };  
+  };
+ #endif
+ 
+ #ifdef CUSTOM_SCALING_Left_Shank
+  HumanModel.BodyModel.Left.Leg.Seg.Shank = 
+  {
+    AnyFunTransform3D Align_Transform = 
+    {
+      PreTransforms = 
+      {
+        &...GeoScaling.Shank.MyScalingLaw.ReverseTransform,
+        &.Scale.T1_Inv
+      };
+    };
+    
+    AnyFunTransform3DLin2 Align_Transform2 = 
+    {
+      //PreTransforms = {};
+      AnyFloat Points_Source = .Scale(...GeoScaling.Shank.MyScalingLaw.Landmarks.Source.Points);
+      AnyFloat Points_Target = ...GeoScaling.Shank.MyScalingLaw.Landmarks.Target.Points ;
+      
+      Points0 = Points_Target;
+      Points1 = Points_Source;
+      Mode = VTK_LANDMARK_RIGIDBODY ;
+    };
+    
+    AnyFunTransform3DLin Mirror_Transform = 
+    {
+      ScaleMat = {{1, 0, 0}, {0, 1, 0}, {0, 0, -1}};
+      Offset = {0, 0, 0};
+    };
+    
+    AnyFunTransform3D Mapping_Transform = 
+    {
+      PreTransforms = 
+      {
+        &.Mirror_Transform,
+        &.Align_Transform
+      };
+    };  
+  };
+ #endif
+ 
+ #ifdef CUSTOM_SCALING_Left_Patella
+  HumanModel.BodyModel.Left.Leg.Seg.Patella = 
+  {
+    AnyFunTransform3D Align_Transform = 
+    {
+      PreTransforms = 
+      {
+        &...GeoScaling.Patella.MyScalingLaw.ReverseTransform,
+        &.Scale.T1_Inv
+      };
+    };
+    
+    AnyFunTransform3DLin2 Align_Transform2 = 
+    {
+      //PreTransforms = {};
+      AnyFloat Points_Source = .Scale(...GeoScaling.Patella.MyScalingLaw.Landmarks.Source.Points);
+      AnyFloat Points_Target = ...GeoScaling.Patella.MyScalingLaw.Landmarks.Target.Points ;
+      
+      Points0 = Points_Target;
+      Points1 = Points_Source;
+      Mode = VTK_LANDMARK_RIGIDBODY ;
+    };
+    
+    AnyFunTransform3DLin Mirror_Transform = 
+    {
+      ScaleMat = {{1, 0, 0}, {0, 1, 0}, {0, 0, -1}};
+      Offset = {0, 0, 0};
+    };
+    
+    AnyFunTransform3D Mapping_Transform = 
+    {
+      PreTransforms = 
+      {
+        &.Mirror_Transform,
+        &.Align_Transform
+      };
+    };  
+  };
+ #endif
+#endif

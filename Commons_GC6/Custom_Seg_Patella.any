@@ -1,0 +1,93 @@
+AnyRefNode PatientRefNode = 
+{
+  AnyVec3 O = {0, 0, 0};
+  AnyVec3 X = {1, 0, 0};
+  AnyVec3 Y = {0, 1, 0};
+  AnyVec3 Z  ={0, 0, 1};
+  
+  AnyVec3 O_New = .Align_Transform(O);
+  AnyVec3 X_New = .Align_Transform(X);
+  AnyVec3 Y_New = .Align_Transform(Y);
+  AnyVec3 Z_New = .Align_Transform(Z);    
+  
+  sRel = O_New;
+  ARel = {X_New-O_New, Y_New-O_New, Z_New-O_New}';
+ 
+//  AnyDrawRefFrame Drw = 
+//  {
+//    RGB = 0*{1, 1, 1};
+//    ScaleXYZ = 0.05*{1, 1, 1};
+//  };      
+  
+  #if SEG_SIGN == 1  
+  AnyDrawSurf Drw_Bone_PostOp =
+  {
+    FileName = PATH_TARGET_PATELLA_POSTOP_STL ;
+    RGB = Main.DrawSettings.Colors.Segments;
+    ScaleXYZ = {1, 1, SEG_SIGN};      
+  };  
+  
+  AnyDrawSurf Drw_Implant_Patella = 
+  {
+    FileName = PATH_IMPLANT_PATELLA_DOME_STL ;
+    RGB = 0.5*{1, 1, 1};
+    Opacity = 1.0;
+  };     
+  #endif
+  
+  #if SEG_SIGN == -1
+  AnyDrawSurf Drw_Bone_PreOp =
+  {
+    FileName = PATH_TARGET_PATELLA_PREOP_STL ;
+    RGB = Main.DrawSettings.Colors.Segments;
+    ScaleXYZ = {1, 1, SEG_SIGN};      
+  };    
+  #endif
+  
+  AnyRefNode Patella_Tendon_Node = 
+  {
+    sRel = ..Mirror_Transform({-0.0130,-0.0441,-0.0203});  
+    AnyDrawNode DrwNode = 
+    {
+      RGB = {1, 0, 0};
+      ScaleXYZ = 0.001*{1, 1, 1};
+    };
+  }; 
+  
+  AnyRefNode PatellaFemurJointBase = 
+  {
+    sRel = {0.0, 0.0, 0};
+    ARel = RotMat(pi, y);
+    
+    AnyDrawRefFrame Drw = 
+    {
+      RGB = 0*{1, 1, 1};
+      ScaleXYZ = 0.1*{1, 1, 1};
+    };       
+  };  
+};
+
+#if (BM_JOINT_TYPE_PATELLATENDON_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_PATELLATENDON_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
+AnyRefNode& Origin_patella_tendon = PatientRefNode.Patella_Tendon_Node;
+#endif  
+
+#if (BM_JOINT_TYPE_PATELLOFEMORAL_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_PATELLOFEMORAL_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
+AnyRefNode PatellaFemurJointNew = 
+{
+  sRel = .PatientRefNode.sRel + 
+  .PatientRefNode.PatellaFemurJointBase.sRel * .PatientRefNode.ARel';
+  ARel = .PatientRefNode.ARel * .PatientRefNode.PatellaFemurJointBase.ARel;
+  
+  AnyVec3 sRelUnscaled = sRel ;
+  AnyMat33 ARelUnscaled = ARel ;  
+//  
+//  AnyDrawRefFrame Drw = 
+//  {
+//    RGB = 1*{1, 1, 1};
+//    ScaleXYZ = 0.05*{1, 1, 1};
+//  };   
+};
+AnyRefNode& PatellaFemurJoint = PatellaFemurJointNew;
+#endif
+
+

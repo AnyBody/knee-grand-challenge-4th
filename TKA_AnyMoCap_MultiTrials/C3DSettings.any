@@ -48,11 +48,13 @@ Main.ModelSetup.C3DFileData = {
 
    MarkerLabels =
    {
-     "LPsis", "RPsis", "RAsis", "LAsis", 
-     "Sternum", "Xiphoid", "Thoracic",
-     "RThighLateral", "RThighSuperior", "RThighInferior", "RShankLateral", "RShankSuperior", "RShankInferior", "RHindfoot", "RToe", "RToeLateral", "RToeMedial", "RHeel",
-     "LThighLateral", "LThighSuperior", "LThighInferior", "LShankLateral", "LShankSuperior", "LShankInferior", "LHindfoot", "LToe", "LToeLateral", "LToeMedial", "LHeel",
-     "RShoulder", "RElbow", "RRadius", "RUlna", "RWrist",
-     "LShoulder", "LElbow", "LRadius", "LUlna", "LWrist"
+     "LPsis","RPsis","RAsis","LAsis","Sternum","Xiphoid","Thoracic","Neck","Lumbar","Sacral",
+     "RThighLateral","RThighSuperior","RThighInferior","RKneeLateral","RPatella",
+     "RShankSuperior","RShankInferior","RAnkleLateral","RMidfootSuperior",
+     "RMidfootLateral","RMidfootMedial","RHeel",
+     "LThighLateral","LThighSuperior","LThighInferior","LKneeLateral","LKneeMedial","LPatella",
+     "LShankLateral","LShankSuperior","LShankInferior","LAnkleLateral","LAnkleMedial",
+     "LHeel","LMidfootSuperior","LMidfootLateral","LMidfootMedial","RShoulder","RElbow","RRadius","RUlna","RWrist",
+     "LShoulder","LElbow","LRadius","LUlna","LWrist"
    };   
 };

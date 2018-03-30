@@ -1,0 +1,570 @@
+AnyFolder MuscleActivityConstraints = 
+{
+  AnyFolder &refMus = .Mus;
+  
+  AnyMuscleActivityConstraint SoleusMedialis_Link = {
+    AnyMuscle &muscle0 = .refMus.SoleusMedialis1;
+    AnyMuscle &muscle1 = .refMus.SoleusMedialis2;
+    AnyMuscle &muscle2 = .refMus.SoleusMedialis3;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+  };
+  
+  AnyMuscleActivityConstraint SoleusLateralis_Link = {
+    AnyMuscle &muscle0 = .refMus.SoleusLateralis1;
+    AnyMuscle &muscle1 = .refMus.SoleusLateralis2;
+    AnyMuscle &muscle2 = .refMus.SoleusLateralis3;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+  };
+  
+  AnyMuscleActivityConstraint FlexorDigitorumLongus_Link = {
+    AnyMuscle &muscle0 = .refMus.FlexorDigitorumLongus1;
+    AnyMuscle &muscle1 = .refMus.FlexorDigitorumLongus2;
+    AnyMuscle &muscle2 = .refMus.FlexorDigitorumLongus3;
+    AnyMuscle &muscle3 = .refMus.FlexorDigitorumLongus4;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0};
+    nCon = 3;
+  };
+  
+  AnyMuscleActivityConstraint FlexorHallucisLongus_Link = {
+    AnyMuscle &muscle0 = .refMus.FlexorHallucisLongus1;
+    AnyMuscle &muscle1 = .refMus.FlexorHallucisLongus2;
+    AnyMuscle &muscle2 = .refMus.FlexorHallucisLongus3;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+  }; 
+  
+  AnyMuscleActivityConstraint TibialisPosteriorLateralis_Link = {
+    AnyMuscle &muscle0 = .refMus.TibialisPosteriorLateralis1;
+    AnyMuscle &muscle1 = .refMus.TibialisPosteriorLateralis2;
+    AnyMuscle &muscle2 = .refMus.TibialisPosteriorLateralis3;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+  };
+  
+  AnyMuscleActivityConstraint TibialisPosteriorMedialis_Link = {
+    AnyMuscle &muscle0 = .refMus.TibialisPosteriorMedialis1;
+    AnyMuscle &muscle1 = .refMus.TibialisPosteriorMedialis2;
+    AnyMuscle &muscle2 = .refMus.TibialisPosteriorMedialis3;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+  };  
+  
+  AnyMuscleActivityConstraint TibialisAnterior_Link = {
+    AnyMuscle &muscle0 = .refMus.TibialisAnterior1;
+    AnyMuscle &muscle1 = .refMus.TibialisAnterior2;
+    AnyMuscle &muscle2 = .refMus.TibialisAnterior3;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+  };
+  
+  AnyMuscleActivityConstraint PeroneusBrevis_Link = {
+    AnyMuscle &muscle0 = .refMus.PeroneusBrevis1;
+    AnyMuscle &muscle1 = .refMus.PeroneusBrevis2;
+    AnyMuscle &muscle2 = .refMus.PeroneusBrevis3;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+  };
+  
+  AnyMuscleActivityConstraint PeroneusLongus_Link = {
+    AnyMuscle &muscle0 = .refMus.PeroneusLongus1;
+    AnyMuscle &muscle1 = .refMus.PeroneusLongus2;
+    AnyMuscle &muscle2 = .refMus.PeroneusLongus3;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+  };
+  
+  
+  AnyMuscleActivityConstraint ExtensorDigitorumLongus_Link = {
+    AnyMuscle &muscle0 = .refMus.ExtensorDigitorumLongus1;
+    AnyMuscle &muscle1 = .refMus.ExtensorDigitorumLongus2;
+    AnyMuscle &muscle2 = .refMus.ExtensorDigitorumLongus3;
+    AnyMuscle &muscle3 = .refMus.ExtensorDigitorumLongus4;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0};
+    nCon = 3;
+  };
+  
+  AnyMuscleActivityConstraint ExtensorHallucisLongus_Link = {
+    AnyMuscle &muscle0 = .refMus.ExtensorHallucisLongus1;
+    AnyMuscle &muscle1 = .refMus.ExtensorHallucisLongus2;
+    AnyMuscle &muscle2 = .refMus.ExtensorHallucisLongus3;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+  };  
+  
+  AnyMuscleActivityConstraint VastusLateralis_Link = {
+    AnyMuscle &muscle0 = .refMus.VastusLateralisInferior1;
+    AnyMuscle &muscle1 = .refMus.VastusLateralisInferior2;
+    AnyMuscle &muscle2 = .refMus.VastusLateralisInferior3;
+    AnyMuscle &muscle3 = .refMus.VastusLateralisInferior4;
+    AnyMuscle &muscle4 = .refMus.VastusLateralisInferior5;
+    AnyMuscle &muscle5 = .refMus.VastusLateralisInferior6;
+    AnyMuscle &muscle6 = .refMus.VastusLateralisSuperior1;
+    AnyMuscle &muscle7 = .refMus.VastusLateralisSuperior2;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0, 0, 0, 0, 0};
+    nCon = 7;
+    
+  };
+ 
+  AnyMuscleActivityConstraint VastusMedialis_Link = {
+    AnyMuscle &muscle0 = .refMus.VastusMedialisInferior1;
+    AnyMuscle &muscle1 = .refMus.VastusMedialisInferior2;
+    AnyMuscle &muscle2 = .refMus.VastusMedialisMid1;
+    AnyMuscle &muscle3 = .refMus.VastusMedialisMid2;
+    AnyMuscle &muscle4 = .refMus.VastusMedialisSuperior1;
+    AnyMuscle &muscle5 = .refMus.VastusMedialisSuperior2;
+    AnyMuscle &muscle6 = .refMus.VastusMedialisSuperior3;
+    AnyMuscle &muscle7 = .refMus.VastusMedialisSuperior4;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0, 0, 0, 0, 0};
+    nCon = 7;
+    
+  };
+ 
+  AnyMuscleActivityConstraint VastusIntermedius_Link = {
+    AnyMuscle &muscle0 = .refMus.VastusIntermedius1;
+    AnyMuscle &muscle1 = .refMus.VastusIntermedius2;
+    AnyMuscle &muscle2 = .refMus.VastusIntermedius3;
+    AnyMuscle &muscle3 = .refMus.VastusIntermedius4;
+    AnyMuscle &muscle4 = .refMus.VastusIntermedius5;
+    AnyMuscle &muscle5 = .refMus.VastusIntermedius6;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0, 0, 0};
+    nCon = 5;
+    
+  };
+  
+  AnyMuscleActivityConstraint RectusFemoris_Link = {
+    AnyMuscle &muscle0 = .refMus.RectusFemoris1New;
+    AnyMuscle &muscle1 = .refMus.RectusFemoris2New;
+    
+    Coef = {
+      {-1.0, 1.0}
+    };
+    Const = {0};
+    nCon = 1;
+  };
+          
+  AnyMuscleActivityConstraint Semimembranosus_Link = {
+    AnyMuscle &muscle0 = .refMus.Semimembranosus1;
+    AnyMuscle &muscle1 = .refMus.Semimembranosus2;
+    AnyMuscle &muscle2 = .refMus.Semimembranosus3;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+  };
+  
+  AnyMuscleActivityConstraint BicepsFemorisCaputBreve_Link = {
+    AnyMuscle &muscle0 = .refMus.BicepsFemorisCaputBreve1New;
+    AnyMuscle &muscle1 = .refMus.BicepsFemorisCaputBreve2New;
+    AnyMuscle &muscle2 = .refMus.BicepsFemorisCaputBreve3New;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+    
+  };
+  
+  AnyMuscleActivityConstraint Iliacus_Link = {
+    AnyMuscle &muscle0 = .refMus.IliacusLateralis1;
+    AnyMuscle &muscle1 = .refMus.IliacusLateralis2;
+    AnyMuscle &muscle2 = .refMus.IliacusMid1New;
+    AnyMuscle &muscle3 = .refMus.IliacusMid2New;
+    AnyMuscle &muscle4 = .refMus.IliacusMedialis1New;
+    AnyMuscle &muscle5 = .refMus.IliacusMedialis2New;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0, 0, 0};
+    nCon = 5;
+    
+  };
+  
+//  AnyMuscleActivityConstraint PsoasMajor_Link = {
+//    AnyMuscle &muscle0 = .refMus.PsoasMajor1;
+//    AnyMuscle &muscle1 = .refMus.PsoasMajor2;
+//    AnyMuscle &muscle2 = .refMus.PsoasMajor3;
+//    AnyMuscle &muscle3 = .refMus.PsoasMajor4;
+//    AnyMuscle &muscle4 = .refMus.PsoasMajor5;
+//    
+//    Coef = {
+//      {-1.0, 1.0, 0.0, 0.0, 0.0},
+//      {0.0, -1.0, 1.0, 0.0, 0.0},
+//      {0.0, 0.0, -1.0, 1.0, 0.0},
+//      {0.0, 0.0, 0.0, -1.0, 1.0}
+//    };
+//    Const = {0, 0, 0, 0};
+//    nCon = 4;
+//    
+//  };
+  
+  AnyMuscleActivityConstraint GluteusMinimus_Link = {
+    AnyMuscle &muscle0 = .refMus.GluteusMinimusAnterior1;
+    AnyMuscle &muscle2 = .refMus.GluteusMinimusMid1;
+    AnyMuscle &muscle4 = .refMus.GluteusMinimusPosterior1;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+    
+  };
+  
+  AnyMuscleActivityConstraint GluteusMedius_Link = {
+    AnyMuscle &muscle0 = .refMus.GluteusMediusAnterior1;
+    AnyMuscle &muscle1 = .refMus.GluteusMediusAnterior2;
+    AnyMuscle &muscle2 = .refMus.GluteusMediusAnterior3;
+    AnyMuscle &muscle3 = .refMus.GluteusMediusAnterior4;
+    AnyMuscle &muscle4 = .refMus.GluteusMediusAnterior5;
+    AnyMuscle &muscle5 = .refMus.GluteusMediusAnterior6;
+    AnyMuscle &muscle6 = .refMus.GluteusMediusPosterior1;
+    AnyMuscle &muscle7 = .refMus.GluteusMediusPosterior2;
+    AnyMuscle &muscle8 = .refMus.GluteusMediusPosterior3;
+    AnyMuscle &muscle9 = .refMus.GluteusMediusPosterior4;
+    AnyMuscle &muscle10 = .refMus.GluteusMediusPosterior5;
+    AnyMuscle &muscle11 = .refMus.GluteusMediusPosterior6;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    nCon = 11;
+    
+  };
+  
+  AnyMuscleActivityConstraint GluteusMaximus_Link = {
+    AnyMuscle &muscle0 = .refMus.GluteusMaximusSuperior1;
+    AnyMuscle &muscle1 = .refMus.GluteusMaximusSuperior2;
+    AnyMuscle &muscle2 = .refMus.GluteusMaximusSuperior3;
+    AnyMuscle &muscle3 = .refMus.GluteusMaximusSuperior4;
+    AnyMuscle &muscle4 = .refMus.GluteusMaximusSuperior5;
+    AnyMuscle &muscle5 = .refMus.GluteusMaximusSuperior6;
+    AnyMuscle &muscle6 = .refMus.GluteusMaximusInferior1;
+    AnyMuscle &muscle7 = .refMus.GluteusMaximusInferior2;
+    AnyMuscle &muscle8 = .refMus.GluteusMaximusInferior3;
+    AnyMuscle &muscle9 = .refMus.GluteusMaximusInferior4;
+    AnyMuscle &muscle10 = .refMus.GluteusMaximusInferior5;
+    AnyMuscle &muscle11 = .refMus.GluteusMaximusInferior6;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    nCon = 11;
+    
+  };
+  
+  AnyMuscleActivityConstraint TensorFasciaeLatae_Link = {
+    AnyMuscle &muscle0 = .refMus.TensorFasciaeLatae1New;
+    AnyMuscle &muscle1 = .refMus.TensorFasciaeLatae2New;
+    
+    Coef = {
+      {-1.0, 1.0}
+    };
+    Const = {0};
+    nCon = 1;
+    
+  };
+  
+  AnyMuscleActivityConstraint Gracilis_Link = {
+    AnyMuscle &muscle0 = .refMus.Gracilis1;
+    AnyMuscle &muscle1 = .refMus.Gracilis2;
+    
+    Coef = {
+      {-1.0, 1.0}
+    };
+    Const = {0};
+    nCon = 1;
+    
+  };
+  
+  AnyMuscleActivityConstraint AdductorLongus_Link = {
+    AnyMuscle &muscle0 = .refMus.AdductorLongus1;
+    AnyMuscle &muscle1 = .refMus.AdductorLongus2;
+    AnyMuscle &muscle2 = .refMus.AdductorLongus3;
+    AnyMuscle &muscle3 = .refMus.AdductorLongus4;
+    AnyMuscle &muscle4 = .refMus.AdductorLongus5;
+    AnyMuscle &muscle5 = .refMus.AdductorLongus6;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0, 0, 0};
+    nCon = 5;
+    
+  };
+  
+  AnyMuscleActivityConstraint AdductorMagnus_Link = {
+    AnyMuscle &muscle0 = .refMus.AdductorMagnusDistal1;
+    AnyMuscle &muscle1 = .refMus.AdductorMagnusDistal2;
+    AnyMuscle &muscle2 = .refMus.AdductorMagnusDistal3;
+    AnyMuscle &muscle3 = .refMus.AdductorMagnusMid1;
+    AnyMuscle &muscle4 = .refMus.AdductorMagnusMid2;
+    AnyMuscle &muscle5 = .refMus.AdductorMagnusMid3;
+    AnyMuscle &muscle6 = .refMus.AdductorMagnusMid4;
+    AnyMuscle &muscle7 = .refMus.AdductorMagnusMid5;
+    AnyMuscle &muscle8 = .refMus.AdductorMagnusMid6;
+    AnyMuscle &muscle9 = .refMus.AdductorMagnusProximal1;
+    AnyMuscle &muscle10 = .refMus.AdductorMagnusProximal2;
+    AnyMuscle &muscle11 = .refMus.AdductorMagnusProximal3;
+    AnyMuscle &muscle12 = .refMus.AdductorMagnusProximal4;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    nCon = 12;
+    
+  };
+  
+  AnyMuscleActivityConstraint AdductorBrevis_Link = {
+    AnyMuscle &muscle0 = .refMus.AdductorBrevisProximal1;
+    AnyMuscle &muscle1 = .refMus.AdductorBrevisProximal2;
+    AnyMuscle &muscle2 = .refMus.AdductorBrevisMid1;
+    AnyMuscle &muscle3 = .refMus.AdductorBrevisMid2;
+    AnyMuscle &muscle4 = .refMus.AdductorBrevisDistal1;
+    AnyMuscle &muscle5 = .refMus.AdductorBrevisDistal2;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0, 0, 0};
+    nCon = 5;
+    
+  };
+  
+  AnyMuscleActivityConstraint Gemelli_Link = {
+    AnyMuscle &muscle0 = .refMus.GemellusInferior1;
+    AnyMuscle &muscle1 = .refMus.GemellusSuperior1;
+    
+    Coef = {
+      {-1.0, 1.0}
+    };
+    Const = {0};
+    nCon = 1;
+    
+  };
+  
+  AnyMuscleActivityConstraint ObturatorExternus_Link = {
+    AnyMuscle &muscle0 = .refMus.ObturatorExternusSuperior1;
+    AnyMuscle &muscle1 = .refMus.ObturatorExternusSuperior2;
+    AnyMuscle &muscle2 = .refMus.ObturatorExternusSuperior3;
+    AnyMuscle &muscle3 = .refMus.ObturatorExternusInferior1;
+    AnyMuscle &muscle4 = .refMus.ObturatorExternusInferior2;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0, 0};
+    nCon = 4;
+    
+  };
+  
+  AnyMuscleActivityConstraint ObturatorInternus_Link = {
+    AnyMuscle &muscle0 = .refMus.ObturatorInternus1;
+    AnyMuscle &muscle1 = .refMus.ObturatorInternus2;
+    AnyMuscle &muscle2 = .refMus.ObturatorInternus3;
+    AnyMuscle &muscle3 = .refMus.ObturatorInternus4;
+    AnyMuscle &muscle4 = .refMus.ObturatorInternus5;
+    AnyMuscle &muscle5 = .refMus.ObturatorInternus6;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0, 0.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0, 0.0, 0.0},
+      {0.0, 0.0, 0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, 0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0, 0, 0};
+    nCon = 5;
+    
+  };
+  
+  AnyMuscleActivityConstraint Pectineus_Link = {
+    AnyMuscle &muscle0 = .refMus.Pectineus1New;
+    AnyMuscle &muscle1 = .refMus.Pectineus2New;
+    AnyMuscle &muscle2 = .refMus.Pectineus3New;
+    AnyMuscle &muscle3 = .refMus.Pectineus4New;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0};
+    nCon = 3;
+    
+  };
+  
+  AnyMuscleActivityConstraint Popliteus_Link = {
+    AnyMuscle &muscle0 = .refMus.Popliteus1;
+    AnyMuscle &muscle1 = .refMus.Popliteus2;
+    AnyMuscle &muscle2 = .refMus.Popliteus3;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0},
+      {0.0, -1.0, 1.0}
+    };
+    Const = {0, 0};
+    nCon = 2;
+    
+  };
+  
+  AnyMuscleActivityConstraint QuadratusFemoris_Link = {
+    AnyMuscle &muscle0 = .refMus.QuadratusFemoris1;
+    AnyMuscle &muscle1 = .refMus.QuadratusFemoris2;
+    AnyMuscle &muscle2 = .refMus.QuadratusFemoris3;
+    AnyMuscle &muscle3 = .refMus.QuadratusFemoris4;
+    
+    Coef = {
+      {-1.0, 1.0, 0.0, 0.0},
+      {0.0, -1.0, 1.0, 0.0},
+      {0.0, 0.0, -1.0, 1.0}
+    };
+    Const = {0, 0, 0};
+    nCon = 3;
+    
+  };
+  
+  
+};
