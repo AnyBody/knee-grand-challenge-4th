@@ -234,7 +234,8 @@ AnyRefNode& AnkleJoint = AnkleJointNew;
 AnyRefNode Insertion_patella_tendon =
 {
   //sRel = .Scale( .StdPar.Insertion_patella_tendon );
-  sRel = .Mapping_Transform({-0.0343431, -0.0346712, -0.0110248});
+  //sRel = .Mapping_Transform({-0.0343431, -0.0346712, -0.0110248});
+  sRel = .Mapping_Transform({-0.0334128, -0.0411684, -0.0104659});
 };
 #endif
 

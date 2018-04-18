@@ -1,6 +1,6 @@
 Main = 
 {
-  #path PATH_FEMUR_PP_FILE "GCK4_Femur_picked_points.pp"
+  #path PATH_FEMUR_PP_FILE "GCK4_Femur_Ligament_picked_points.pp"
   
   AnyFileVar file_femur_pp = PATH_FEMUR_PP_FILE ; 
   AnyStringVar test_file_string = FilePathCompleteOf(file_femur_pp) ;

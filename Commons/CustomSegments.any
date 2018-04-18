@@ -266,7 +266,14 @@ HumanModel.BodyModel =
         
         DriverPos = {TendonLength_Custom};
         DriverVel = {0.0};
-        Reaction.Type = {On};  // The muscles must do the work
+        #if USE_FDK == 1
+          #ifdef USE_FDK_PATELLOFEMORAL
+          Reaction.Type = {Off};
+          CType = {ForceDep};
+          #endif
+        #else
+          Reaction.Type = {On};  // The muscles must do the work
+        #endif
       };
       #endif
     };//Jnt

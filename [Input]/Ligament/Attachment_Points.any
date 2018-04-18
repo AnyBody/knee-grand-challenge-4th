@@ -25,10 +25,42 @@ Ligaments =
       {
         FileName = PATH_TARGET_LIGAMENT_FIBULA_PICKED_POINTS ;
       };  
-      AnyFloat xptr0 = arrcat(Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*")), Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".x_*"))) ;
-      AnyFloat yptr0 = arrcat(Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*")), Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".y_*"))) ;
-      AnyFloat zptr0 = arrcat(Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*")), Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".z_*"))) ;
-      AnyString PointNames = arrcat(Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")), Obj2Str(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".name"))) ;
+      AnyInputXML XMLObject3 = 
+      {
+        FileName = PATH_TARGET_TENDON_TIBIA_PICKED_POINTS ;
+      };
+      AnyFloat xptr0 = 
+      arrcat(
+        arrcat(
+          Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*")), 
+          Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".x_*"))
+        ),
+        Obj2Num(ObjSelect("XMLObject3.Contents.PickedPoints.point*.active", "==1", ".x_*"))
+      );
+      AnyFloat yptr0 = 
+      arrcat(
+        arrcat(
+          Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*")), 
+          Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".y_*"))
+        ),
+        Obj2Num(ObjSelect("XMLObject3.Contents.PickedPoints.point*.active", "==1", ".y_*"))
+      );
+      AnyFloat zptr0 = 
+      arrcat(
+        arrcat(
+          Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*")), 
+          Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".z_*"))
+        ),
+        Obj2Num(ObjSelect("XMLObject3.Contents.PickedPoints.point*.active", "==1", ".z_*"))
+      );
+      AnyString PointNames = 
+      arrcat(
+        arrcat(
+          Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")), 
+          Obj2Str(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".name"))
+        ),
+        Obj2Str(ObjSelect("XMLObject3.Contents.PickedPoints.point*.active", "==1", ".name"))
+      );
       AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
     };    
     
@@ -38,10 +70,30 @@ Ligaments =
       {
         FileName = PATH_TARGET_LIGAMENT_PATELLA_PICKED_POINTS ;
       };
-      AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
-      AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
-      AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
-      AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+      AnyInputXML XMLObject2 = 
+      {
+        FileName = PATH_TARGET_TENDON_PATELLA_PICKED_POINTS ;
+      };      
+      AnyFloat xptr0 = 
+      arrcat(
+        Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*")),
+        Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".x_*"))
+      );
+      AnyFloat yptr0 = 
+      arrcat(
+        Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*")),
+        Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".y_*"))
+      );
+      AnyFloat zptr0 = 
+      arrcat(
+        Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*")),
+        Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".z_*"))
+      );
+      AnyString PointNames = 
+      arrcat(
+        Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")),
+        Obj2Str(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".name"))
+      );
       AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';   
     };      
   };

@@ -546,6 +546,67 @@ AnyFolder Ligaments =
     AnyParamSurf& RefSurf0 = RefSeg0.PatientRefNode.Surf_Wrapping_Ellipsoid_Lateral_Anterior ;   
   };    
   
+  AnyFolder mPT = 
+  {
+    AnySeg& RefSeg0 = ..RefSegFolder.Shank;
+    AnySeg& RefSeg1 = ..RefSegFolder.Patella;
+    
+    AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
+    AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
+    
+    AnyVec3 PosInFrame0 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "mPT")];
+    AnyVec3 PosInFrame1 = .Attachment_Points.Patella.Points_Original[argfind(.Attachment_Points.Patella.PointNames, "mPT")];    
+    
+    AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
+    AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
+    
+    AnyVar InitLength = 0.05;
+    AnyVar RefLength = DesignVar(InitLength);    
+    
+    AnyVar Stiffness = DesignVar(k_mPT);
+    
+  };
+  
+  AnyFolder cPT = 
+  {
+    AnySeg& RefSeg0 = ..RefSegFolder.Shank;
+    AnySeg& RefSeg1 = ..RefSegFolder.Patella;
+    
+    AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
+    AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
+    
+    AnyVec3 PosInFrame0 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "cPT")];
+    AnyVec3 PosInFrame1 = .Attachment_Points.Patella.Points_Original[argfind(.Attachment_Points.Patella.PointNames, "cPT")];    
+    
+    AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
+    AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
+    
+    AnyVar InitLength = 0.05;
+    AnyVar RefLength = DesignVar(InitLength);    
+    
+    AnyVar Stiffness = DesignVar(k_cPT);
+  }; 
+  
+  AnyFolder lPT = 
+  {
+    AnySeg& RefSeg0 = ..RefSegFolder.Shank;
+    AnySeg& RefSeg1 = ..RefSegFolder.Patella;
+    
+    AnyRefFrame& RefFrame0 = RefSeg0.PatientRefNode;
+    AnyRefFrame& RefFrame1 = RefSeg1.PatientRefNode;
+    
+    AnyVec3 PosInFrame0 = .Attachment_Points.Tibia.Points_Original[argfind(.Attachment_Points.Tibia.PointNames, "lPT")];
+    AnyVec3 PosInFrame1 = .Attachment_Points.Patella.Points_Original[argfind(.Attachment_Points.Patella.PointNames, "lPT")];    
+    
+    AnyVec3 PosInGlobal0 = RefSeg0.r0 + (RefFrame0.sRel + PosInFrame0 * RefFrame0.ARel')*RefSeg0.Axes';
+    AnyVec3 PosInGlobal1 = RefSeg1.r0 + (RefFrame1.sRel + PosInFrame1 * RefFrame1.ARel')*RefSeg1.Axes';
+    
+    AnyVar InitLength = 0.05;
+    AnyVar RefLength = DesignVar(InitLength);    
+    
+    AnyVar Stiffness = DesignVar(k_lPT);
+    
+  };   
 //  // aACL : anterior bundle of ACL
 //  AnyFolder aACL = 
 //  {

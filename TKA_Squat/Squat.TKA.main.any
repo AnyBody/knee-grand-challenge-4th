@@ -3,6 +3,7 @@
 #include "<USER_PATH_COMMONS>\Class\CreateFootPrintClass.any"
 #include "<USER_PATH_COMMONS>\Class\CreateFootConnectionClasses.any"
 #include "<USER_PATH_COMMONS>\Class\Class_CreateLigament.any"
+#include "<USER_PATH_COMMONS>\Class\Class_CreateTendon.any"
 
 Main = 
 {    
@@ -30,6 +31,7 @@ Main =
    #define INPUT_REF_INIT_STUDY Main.InitStudy
    #define INPUT_REF_EVAL_STUDY Main.EvalStudy
      #include "<USER_PATH_COMMONS>\Ligaments.any"
+     #include "<USER_PATH_COMMONS>\Tendons.any"
    #undef INPUT_REF_HUMAN_MODEL
    #undef INPUT_REF_PARAM_FOLDER
    #undef INPUT_REF_INIT_STUDY

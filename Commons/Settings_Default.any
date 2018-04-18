@@ -53,6 +53,9 @@ Main =
 #path PATH_TARGET_LIGAMENT_FIBULA_PICKED_POINTS "<USER_PATH_INPUTDATA>\Ligament\GCK4_Fibula_Ligament_picked_points.pp"
 #path PATH_TARGET_LIGAMENT_PATELLA_PICKED_POINTS "<USER_PATH_INPUTDATA>\Ligament\GCK4_Patella_Ligament_picked_points.pp"
 
+#path PATH_TARGET_TENDON_TIBIA_PICKED_POINTS "<USER_PATH_INPUTDATA>\Ligament\GCK4_Tibia_Tendon_picked_points.pp"
+#path PATH_TARGET_TENDON_PATELLA_PICKED_POINTS "<USER_PATH_INPUTDATA>\Ligament\GCK4_Patella_Tendon_picked_points.pp"
+
 #path PATH_TARGET_IMPLANT_HIP_PICKED_POINTS "<USER_PATH_INPUTDATA>\STL\Implant\Hip Implant Femoral Component_picked_points.pp"
 #path PATH_TARGET_IMPLANT_HIP_PICKED_POINTS_AXIAL "<USER_PATH_INPUTDATA>\STL\Implant\Hip Implant Femoral Component_picked_points_axial.pp"
 #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_ANTERIOR "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_anterior.pp"
@@ -187,7 +190,13 @@ Main =
 #endif
 
 #ifndef USE_FDK
-  #define USE_FDK 0
+  #define USE_FDK 1
+#endif
+#ifndef USE_FDK_TIBIOFEMORAL
+  #define USE_FDK_TIBIOFEMORAL
+#endif
+#ifndef USE_FDK_PATELLOFEMORAL
+  #define USE_FDK_PATELLOFEMORAL
 #endif
 #ifndef USE_FDK_SOFT_DRIVERS
   #define USE_FDK_SOFT_DRIVERS 0

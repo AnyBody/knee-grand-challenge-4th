@@ -1,0 +1,138 @@
+//#define NONE_ZERO_DIVISION(A, B, Threshold) A/iffun(gteqfun(B, Threshold), B, 1e10)
+
+#class_template CREATE_TENDON(REF_HUMAN_MODEL, REF_PARAM_FOLDER, REF_INIT_STUDY, REF_EVAL_STUDY, TENDON_NAME, WRAPPING)
+{
+  #var AnyVar NumStringMesh = 20;
+  #var AnySwitch VisibleOnOff = On;
+  
+  AnyFolder& RefParam = REF_PARAM_FOLDER.TENDON_NAME;
+  
+  RefParam = 
+  {
+    RefFrame0 = 
+    {
+      AnyRefNode TENDON_NAME = 
+      {
+        sRel = ..PosInFrame0;
+      };        
+    };
+    RefFrame1 = 
+    {
+      AnyRefNode TENDON_NAME = 
+      {
+        sRel = ..PosInFrame1;
+      };        
+    };      
+  };    
+  
+  #if WRAPPING > 0
+  AnyKinSPLine PLine = 
+  {
+    AnyRefFrame& ref0 = .RefParam.RefFrame0.TENDON_NAME;
+    AnyRefFrame& ref1 = .RefParam.RefFrame1.TENDON_NAME;
+    StringMesh = .NumStringMesh;
+    InitWrapPosVectors = .RefParam.InitWrapPosVectors ;
+    
+    RelTol = 1e-6;
+    //AbsTol = 1e-6;
+    //MaxRelStepSize = 0.5;
+    
+    #if WRAPPING >= 1
+    AnyParamSurf& surf0 = .RefParam.RefSurf0 ;
+    #endif
+    #if WRAPPING >= 2
+    AnyParamSurf& surf1 = .RefParam.RefSurf1 ;
+    #endif
+    #if WRAPPING >= 3
+    AnyParamSurf& surf2 = .RefParam.RefSurf2 ;
+    #endif
+    #if WRAPPING >= 4
+    AnyParamSurf& surf3 = .RefParam.RefSurf3 ;
+    #endif
+    #if WRAPPING >= 5
+    AnyParamSurf& surf4 = .RefParam.RefSurf4 ;
+    #endif      
+    
+    AnyDrawPLine Drw = 
+    {
+      Thickness = 0.0025;
+      RGB = Main.DrawSettings.Colors.Ligaments;
+      Visible = ..VisibleOnOff  ;
+      
+      AnyStyleDrawMaterial1 DrawStyle = 
+      {
+        AnyVar ColorSwitch = iffun(ltfun(...Force.F[0], 0.0), 1.0, 0.0);
+        
+        RGB = ColorSwitch*Main.DrawSettings.Colors.Ligaments + (1-ColorSwitch)*{1, 1, 1};
+        DiffuseRGB = 0.8*RGB ;
+        SpecularRGB = {1, 1, 1};
+        EmissionRGB = 0.1*{1, 1, 1};
+        //Shininess = 0.7;
+        //Opacity = 1;
+      };       
+    };
+  };   
+  #else
+  AnyKinPLine PLine = 
+  {
+    AnyRefFrame& ref0 = .RefParam.RefFrame0.TENDON_NAME;
+    AnyRefFrame& ref1 = .RefParam.RefFrame1.TENDON_NAME;
+    AnyDrawPLine Drw = 
+    {
+      Thickness = 0.0025;
+      RGB = Main.DrawSettings.Colors.Ligaments;
+      Visible = ..VisibleOnOff  ;
+      
+      AnyStyleDrawMaterial1 DrawStyle = 
+      {
+        AnyVar ColorSwitch = iffun(ltfun(...Force.F[0], 0.0), 1.0, 0.0);
+        
+        RGB = ColorSwitch*Main.DrawSettings.Colors.Ligaments + (1-ColorSwitch)*{1, 1, 1};
+        DiffuseRGB = 0.8*RGB ;
+        SpecularRGB = {1, 1, 1};
+        EmissionRGB = 0.1*{1, 1, 1};
+        //Shininess = 0.7;
+        //Opacity = 1;
+      };        
+    };
+  };    
+  #endif
+  
+  AnyForce Force = 
+  {
+    AnyVar k = .RefParam.Stiffness;
+    AnyVar lr = .RefParam.RefLength;
+    //AnyVar er = .RefParam.RefStrain;
+    AnyKinMeasure & meas = .PLine;
+    #include "TendonModel.any"
+    F = Val;
+  };
+  
+  REF_INIT_STUDY = 
+  {
+    OutputFunctions_Length =
+    {
+      AnyOutputFun TENDON_NAME = 
+      {
+        Val = REF_HUMAN_MODEL.BodyModel.Right.Leg.Ligaments.TENDON_NAME.PLine.Pos[0];
+      };      
+    };
+  };
+  
+  REF_EVAL_STUDY =
+  {
+    AnyDesVar RefLength_##TENDON_NAME = 
+    {
+      Val = REF_PARAM_FOLDER.TENDON_NAME.RefLength;
+    };
+    
+    AnyDesMeasure Measure_##TENDON_NAME = 
+    {
+      Val = max(REF_INIT_STUDY.OutputFunctions_Length.TENDON_NAME());
+      Type = OutputFun;
+    };
+  };
+}; // CREATE_TENDON
+
+
+

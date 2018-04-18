@@ -153,6 +153,16 @@
   #define er_iLPFL 0.06
 #endif
 
+#ifndef k_cPT
+  #define k_cPT 127*643/3.0
+#endif
 
+#ifndef k_mPT
+  #define k_mPT 127*643/3.0
+#endif
+
+#ifndef k_lPT
+  #define k_lPT 127*643/3.0
+#endif
 
 
