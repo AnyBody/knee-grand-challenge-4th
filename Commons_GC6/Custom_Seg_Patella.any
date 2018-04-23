@@ -46,7 +46,8 @@ AnyRefNode PatientRefNode =
   
   AnyRefNode Patella_Tendon_Node = 
   {
-    sRel = ..Mirror_Transform({-0.0130,-0.0441,-0.0203});  
+    //sRel = ..Mirror_Transform({-0.0130,-0.0441,-0.0203});  
+    sRel = ..Mirror_Transform({-0.0466,-0.0166,-0.0125});  
     AnyDrawNode DrwNode = 
     {
       RGB = {1, 0, 0};

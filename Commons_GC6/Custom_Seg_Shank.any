@@ -118,11 +118,11 @@ AnyRefNode PatientRefNode =
   {
     sRel = Surf.sRel ;
     ARel = Surf.ARel ;
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = {1, 1, 0};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };
+    AnyDrawRefFrame Drw = 
+    {
+      RGB = {1, 1, 0};
+      ScaleXYZ = 0.15*{1, 1, 1};
+    };
     
     AnySurfCylinderFit Surf = 
     {
@@ -161,8 +161,11 @@ AnyRefNode KneeJointNew =
 
 AnyRefNode AnkleJointNew = 
 {
-  AnyVec3 AnkleShankCenterNode = .Mapping_Transform(({0.0191,0.0028,(-0.4057)}+{(-0.0179),0.0283,(-0.4057)})/2.0); 
-  AnyVec3 AnkleShankAxisNode = .Mapping_Transform({(-0.0179),0.0283,(-0.4057)});
+  //AnyVec3 AnkleShankCenterNode = .Mapping_Transform(({0.0191,0.0028,(-0.4057)}+{(-0.0179),0.0283,(-0.4057)})/2.0); 
+  AnyVec3 AnkleShankCenterNode = .Mapping_Transform(({0.0028,(-0.4057),0.0191}+{0.0283,(-0.4057),(-0.0179)})/2.0); 
+  
+
+  AnyVec3 AnkleShankAxisNode = .Mapping_Transform({0.0283,(-0.4057),(-0.0179)});
   AnyMat33 AnkleShankRotMat = RotMat(AnkleShankCenterNode,AnkleShankAxisNode,.KneeJointNew.sRel)*RotMat(SEG_SIGN*pi/2,y);
   sRel = AnkleShankCenterNode;
   ARel = AnkleShankRotMat;
@@ -189,7 +192,8 @@ AnyRefNode& AnkleJoint = AnkleJointNew;
 AnyRefNode Insertion_patella_tendon =
 {
   //sRel = .Scale( .StdPar.Insertion_patella_tendon );
-  sRel = .Mapping_Transform({-0.0105,-0.0200,-0.0872}); //
+  //sRel = .Mapping_Transform({-0.0105,-0.0200,-0.0872}); //
+  sRel = .Mapping_Transform({-0.0203,-0.0707,-0.0096});
 };
 #endif
 
