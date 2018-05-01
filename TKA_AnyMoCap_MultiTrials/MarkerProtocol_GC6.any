@@ -339,6 +339,7 @@ ScaleMarkerPosOnOff = 0
     sRelOpt = {0.07, -0.23, 0.00};
 };
 
+#ifndef EXCLUDE_LThighSuperior
 CreateMarkerDriver LThighSuperior ( 
 MarkerName= LThighSuperior,
 MarkerPlacement=Left.Leg.Seg.Thigh,
@@ -348,6 +349,7 @@ ScaleMarkerPosOnOff = 0
 ) = {
    sRelOpt = {-0.02, -0.11, -0.08}; 
 };
+#endif
 
 CreateMarkerDriver LThighInferior ( 
 MarkerName= LThighInferior,
