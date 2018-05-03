@@ -48,11 +48,11 @@ AnyRefNode PatientRefNode =
   {
     //sRel = ..Mirror_Transform({-0.01000434, -0.024022, -0.00385535}) ;  
     sRel = ..Mirror_Transform({-0.010606, -0.0237669, -0.00418514});
-    AnyDrawNode DrwNode = 
-    {
-      RGB = {1, 0, 0};
-      ScaleXYZ = 0.001*{1, 1, 1};
-    };
+//    AnyDrawNode DrwNode = 
+//    {
+//      RGB = {1, 0, 0};
+//      ScaleXYZ = 0.001*{1, 1, 1};
+//    };
   }; 
   
   AnyRefNode PatellaFemurJointBase = 
