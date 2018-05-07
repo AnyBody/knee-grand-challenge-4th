@@ -162,10 +162,10 @@ AnyRefNode KneeJointNew =
 AnyRefNode AnkleJointNew = 
 {
   //AnyVec3 AnkleShankCenterNode = .Mapping_Transform(({0.0191,0.0028,(-0.4057)}+{(-0.0179),0.0283,(-0.4057)})/2.0); 
-  AnyVec3 AnkleShankCenterNode = .Mapping_Transform(({0.0028,(-0.4057),0.0191}+{0.0283,(-0.4057),(-0.0179)})/2.0); 
+  AnyVec3 AnkleShankCenterNode = .Mapping_Transform(({0.0054,-0.4267,0.0258}+{0.0458,-0.4420,-0.0276})/2.0); 
   
 
-  AnyVec3 AnkleShankAxisNode = .Mapping_Transform({0.0283,(-0.4057),(-0.0179)});
+  AnyVec3 AnkleShankAxisNode = .Mapping_Transform({0.0458,-0.4420,-0.0276});
   AnyMat33 AnkleShankRotMat = RotMat(AnkleShankCenterNode,AnkleShankAxisNode,.KneeJointNew.sRel)*RotMat(SEG_SIGN*pi/2,y);
   sRel = AnkleShankCenterNode;
   ARel = AnkleShankRotMat;

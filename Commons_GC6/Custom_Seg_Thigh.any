@@ -437,7 +437,8 @@ AnyRefNode Femoral_Head_Axial_Fitting_Surf_Node  =
 
     Points = ..Femoral_Head_Axial_Points_Picked.Points_Transformed ;
     Length = 0.05;
-    FixedDirection = Off;
+    FixedDirection = On;
+    Direction = {0.1,0.5,-SEG_SIGN*0.5};
     AnyDrawParamSurf Drw = 
     {
       //RGB = {1, 1, 1};
@@ -454,11 +455,11 @@ AnyRefNode Femoral_Head_Wrapping_Surf_Node =
           * RotMat((-5)/180*pi, x)
           ;
   
-//  AnyDrawRefFrame Drw = 
-//  {
-//    ScaleXYZ = 0.15*{1, 1, 1};
-//    RGB = {1, 0, 0};
-//  };
+  AnyDrawRefFrame Drw = 
+  {
+    ScaleXYZ = 0.15*{1, 1, 1};
+    RGB = {1, 0, 0};
+  };
   
   AnySurfCylinder Surf = 
   {
