@@ -8,7 +8,7 @@ AnyFolder MyScalingLaw =
   {
     ScaleMat = {{1,0,0},{0,1,0},{0,0,1}};
     Offset = {0,0,0};
-    #if DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH == "AFFINE"
+    #if DEF_CUSTOM_SCALING_LEVEL_RIGHT_PATELLA == "AFFINE"
     PreTransforms = {&.AffineTransform, &.ReverseTransform};
     #endif     
     #if DEF_CUSTOM_SCALING_LEVEL_RIGHT_PATELLA == "RBF"
@@ -71,6 +71,13 @@ AnyFolder MyScalingLaw =
     Mode = VTK_LANDMARK_RIGIDBODY;
   };
   
+  AnyFunTransform3DLin2 RegistrationTransform = {        
+    Points0 = .AffineTransform.Points1;        
+    Points1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Patella.Scale(.Landmarks.Source.Points);                        
+    Mode = VTK_LANDMARK_RIGIDBODY;      
+  };
+  
+  
   #if DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH == "RBF" | DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH == "STL"
   AnyFunTransform3DRBF RBFTransform = 
   {
@@ -83,7 +90,7 @@ AnyFolder MyScalingLaw =
     };
     Points0 = .AffineTransform.Points0;
     Points1 = .AffineTransform.Points1;
-
+    
     BoundingBox = 
     {
       Type = BB_Cartesian;

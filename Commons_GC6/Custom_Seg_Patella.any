@@ -46,8 +46,8 @@ AnyRefNode PatientRefNode =
   
   AnyRefNode Patella_Tendon_Node = 
   {
-    //sRel = ..Mirror_Transform({-0.0130,-0.0441,-0.0203});  
-    sRel = ..Mirror_Transform({-0.0466,-0.0166,-0.0125});  
+    sRel = ..Mirror_Transform({-0.0422,-0.0191,-0.0127});  
+    //sRel = Main.HumanModel.Scaling.GeometricalScaling.Right.Patella.MyScalingLaw.RegistrationTransform({-0.0440, -0.0203, -0.0127});  
     AnyDrawNode DrwNode = 
     {
       RGB = {1, 0, 0};

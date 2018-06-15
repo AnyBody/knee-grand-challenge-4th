@@ -71,6 +71,12 @@ AnyFolder MyScalingLaw =
     Mode = VTK_LANDMARK_RIGIDBODY;
   };
   
+  AnyFunTransform3DLin2 RegistrationTransform = {        
+    Points0 = .AffineTransform.Points1;        
+    Points1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.Scale(.Landmarks.Source.Points);                        
+    Mode = VTK_LANDMARK_RIGIDBODY;      
+  };
+
   #if DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH == "RBF" | DEF_CUSTOM_SCALING_LEVEL_LEFT_THIGH == "STL"
   AnyFunTransform3DRBF RBFTransform = 
   {
