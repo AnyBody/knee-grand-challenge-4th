@@ -19,6 +19,11 @@ AnyFolder MyScalingLaw =
     #if DEF_CUSTOM_SCALING_LEVEL_LEFT_PATELLA == "RBF"
     PreTransforms = {&.RBFTransform, &.ReverseTransform};
     #endif
+    
+    #if DEF_CUSTOM_SCALING_LEVEL_LEFT_PATELLA == "AFFINE"
+    PreTransforms = {&.AffineTransform, &.ReverseTransform};
+    #endif
+    
     #if DEF_CUSTOM_SCALING_LEVEL_LEFT_PATELLA == "STL"
     PreTransforms = {&.STLTransform, &.ReverseTransform};
     #endif
