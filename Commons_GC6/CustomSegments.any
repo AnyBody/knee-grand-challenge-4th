@@ -96,7 +96,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
       DrwSurfTibia.Visible = Off;
       DrwSurfFibula.Visible = Off;    
       
-      PatientRefNode.Wrapping_Medial_Node.Surf.Drw.Visible = Off;
+      PatientRefNode.Wrapping_Medial_Node.Surf.Drw.Visible = On;
       PatientRefNode.Wrapping_Medial_Node.Surf.Drw.RGB = {0, 1, 0};
       PatientRefNode.Wrapping_Medial_Node.Surf.Drw.Opacity = 0.5;
     };

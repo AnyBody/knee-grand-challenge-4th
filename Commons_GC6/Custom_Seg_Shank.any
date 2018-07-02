@@ -82,7 +82,7 @@ AnyRefNode PatientRefNode =
   #if SEG_SIGN == 1
   AnyRefNode Wrapping_Medial_Node = 
   {
-    sRel = {-0.022, -0.017 + 0.005, 0.0345 + 0.0015} ;
+    sRel = {-0.022, -0.017 - 0.022, 0.0345 + 0.0015} ;
     ARel = {{0.0, 0.0, 1.0}, {0.0, 1.0, 0.0}, {-1.0, 0.0, 0.0}};
     
     AnySurfCylinder Surf = 

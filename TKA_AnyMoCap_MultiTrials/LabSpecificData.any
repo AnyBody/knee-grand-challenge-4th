@@ -59,7 +59,7 @@ Main.DrawSettings.Colors =
 
 #define REF_HUMAN_BODYMODEL Main.HumanModel.BodyModel
 
-#define USE_FDK 0
+#define USE_FDK 1
 #define USE_FDK_TIBIOFEMORAL 
 #define USE_FDK_PATELLOFEMORAL
 #define USE_FDK_SOFT_DRIVERS 0
