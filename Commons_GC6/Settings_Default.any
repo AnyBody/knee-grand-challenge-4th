@@ -51,6 +51,8 @@
 #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_ANTERIOR "<USER_PATH_INPUTDATA>\STL_GC6\Implant\femoral_component_anterior_lateral_picked_points.pp"
 #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_MEDIAL_ANTERIOR "<USER_PATH_INPUTDATA>\STL_GC6\Implant\femoral_component_anterior_medial_picked_points.pp"
 #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_POSTERIOR "<USER_PATH_INPUTDATA>\STL_GC6\Implant\femoral_component_posterior_lateral_picked_points.pp"
+#path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_KNEE_AXIS "<USER_PATH_INPUTDATA>\STL_GC6\Implant\femoral_component_knee_axes_picked_points.pp"
+
 
 #path PATH_TARGET_IMPLANT_TIBIA_INSERT_PICKED_POINTS_CENTRAL_POSTERIOR "<USER_PATH_INPUTDATA>\STL_GC6\Implant\tibial_insert_central_posterior_picked_points.pp"
 

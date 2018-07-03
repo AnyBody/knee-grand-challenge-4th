@@ -12,24 +12,19 @@ AnyRefNode PatientRefNode =
   
   sRel = O_New;
   ARel = {X_New-O_New, Y_New-O_New, Z_New-O_New}';
-  
-  AnyRefNode RotNode = 
-  {
-    ARel = RotMat((SEG_SIGN)*pi, y);
-  };
-  
-  AnyRefNode OffsetNode = 
-  {
-    //sRel = {0.01 - IMPLANT_AP_OFFSET, 0.029, 0.0};
-    sRel = {0.0,0.0,0.0}; //{0, 0.044 - 0.002, (SEG_SIGN)*0};
-    ARel = .RotNode.ARel;    
     
-    //      AnyDrawRefFrame DrwFrame =
-    //      {
-    //        RGB = {1, 0, 0};
-    //        ScaleXYZ = 0.15*{1, 1, 1};
-    //      };      
-  };
+  AnyRefNode KneeJointBase = 
+  {
+     sRel = ...Thigh.PatientRefNode.KneeJointNewBase.sRel;
+     ARel = ...Thigh.PatientRefNode.KneeJointNewBase.ARel;
+
+//    AnyDrawRefFrame Drw = 
+//    {
+//      RGB = 0*{1, 1, 1};
+//      ScaleXYZ = 0.1*{1, 1, 1};
+//    };       
+  };  
+  
   
   #if SEG_SIGN == 1
   AnyDrawSurf Drw_Bone_PostOp = 
@@ -118,11 +113,11 @@ AnyRefNode PatientRefNode =
   {
     sRel = Surf.sRel ;
     ARel = Surf.ARel ;
-    AnyDrawRefFrame Drw = 
-    {
-      RGB = {1, 1, 0};
-      ScaleXYZ = 0.15*{1, 1, 1};
-    };
+//    AnyDrawRefFrame Drw = 
+//    {
+//      RGB = {1, 1, 0};
+//      ScaleXYZ = 0.15*{1, 1, 1};
+//    };
     
     AnySurfCylinderFit Surf = 
     {
@@ -146,8 +141,8 @@ AnyRefNode PatientRefNode =
 AnyRefNode KneeJointNew = 
 {
   sRel = .PatientRefNode.sRel + 
-  .PatientRefNode.OffsetNode.sRel * .PatientRefNode.ARel';
-  ARel = .PatientRefNode.ARel * .PatientRefNode.OffsetNode.ARel;
+  .PatientRefNode.KneeJointBase.sRel * .PatientRefNode.ARel';
+  ARel = .PatientRefNode.ARel * .PatientRefNode.KneeJointBase.ARel;
   
   AnyVec3 sRelUnscaled = sRel;
   AnyFloat ARelUnscaled = ARel;
@@ -173,11 +168,11 @@ AnyRefNode AnkleJointNew =
   AnyVec3 sRelUnscaled = sRel;
   AnyFloat ARelUnscaled = ARel;
   
-  AnyDrawRefFrame Drw = 
-  {
-    RGB = {0, 1, 1};
-    ScaleXYZ = 0.2*{1, 1, 1};
-  };
+//  AnyDrawRefFrame Drw = 
+//  {
+//    RGB = {0, 1, 1};
+//    ScaleXYZ = 0.2*{1, 1, 1};
+//  };
 };  
 
 #if (BM_JOINT_TYPE_KNEE_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_KNEE_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)

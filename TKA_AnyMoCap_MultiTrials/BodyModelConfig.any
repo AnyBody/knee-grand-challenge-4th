@@ -29,7 +29,7 @@ Main = {
       #define BM_ARM_LEFT ON
     #endif
     #ifndef BM_LEG_MUSCLES_LEFT
-      #define BM_LEG_MUSCLES_LEFT ON
+      #define BM_LEG_MUSCLES_LEFT OFF
     #endif
     #ifndef BM_LEG_MUSCLES_RIGHT
      #define BM_LEG_MUSCLES_RIGHT ON
@@ -42,10 +42,10 @@ Main = {
     #endif
   #else
     #ifndef BM_TRUNK_NECK_MUSCLES
-      #define BM_TRUNK_NECK_MUSCLES ON
+      #define BM_TRUNK_NECK_MUSCLES OFF
     #endif
     #ifndef BM_TRUNK_MUSCLES
-      #define BM_TRUNK_MUSCLES ON
+      #define BM_TRUNK_MUSCLES OFF
     #endif
     #ifndef BM_ARM_MUSCLES_BOTH
       #define BM_ARM_MUSCLES_BOTH OFF
@@ -57,7 +57,7 @@ Main = {
       #define BM_ARM_LEFT OFF
     #endif
     #ifndef BM_LEG_MUSCLES_LEFT
-      #define BM_LEG_MUSCLES_LEFT ON
+      #define BM_LEG_MUSCLES_LEFT OFF
     #endif
     #ifndef BM_LEG_MUSCLES_RIGHT
      #define BM_LEG_MUSCLES_RIGHT ON

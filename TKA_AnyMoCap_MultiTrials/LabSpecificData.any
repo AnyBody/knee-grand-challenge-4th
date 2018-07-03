@@ -28,6 +28,8 @@ Main.ModelSetup.LabSpecificData = {
  
  Gravity = -9.81*{0,0,1};
 
+ Main.Studies.InverseDynamicStudy.InverseDynamics.Criterion.UpperBoundOnOff = Off;
+ 
    // This adds different segment length as design variables to 
   // to the parameter identification study (Main.Studies.ParameterIdentification)
   // This allows the segment length to be optimized in based on the markers/motion
@@ -59,7 +61,7 @@ Main.DrawSettings.Colors =
 
 #define REF_HUMAN_BODYMODEL Main.HumanModel.BodyModel
 
-#define USE_FDK 1
+#define USE_FDK 0
 #define USE_FDK_TIBIOFEMORAL 
 #define USE_FDK_PATELLOFEMORAL
 #define USE_FDK_SOFT_DRIVERS 0

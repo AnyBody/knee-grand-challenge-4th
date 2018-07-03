@@ -25,6 +25,19 @@ AnyRefNode PatientRefNode =
     ARel = .RotNode.ARel;      
   };
     
+  AnyRefNode KneeJointNewBase = {
+    sRel = .Implant_Femoral_KneeAxis_Fitting_Surf_Node.sRel+{0.0,0.0,.Implant_Femoral_KneeAxis_Fitting_Surf_Node.Surf.Length/2.0}*.Implant_Femoral_KneeAxis_Fitting_Surf_Node.ARel'; 
+
+    ARel = .Implant_Femoral_KneeAxis_Fitting_Surf_Node.ARel;
+    
+//    AnyDrawRefFrame Drw = 
+//    {
+//      RGB = {1, 0, 1};
+//      ScaleXYZ = 0.15*{1, 1, 1};
+//    };    
+    
+  };
+  
   #if SEG_SIGN == 1
   AnyDrawSurf Drw_Bone_PostOp = 
   {
@@ -56,7 +69,47 @@ AnyRefNode PatientRefNode =
   };  
    
   #endif
+ 
+  AnyFolder Implant_Knee_Axis_Points_Picked = {
+    
+    AnyInputXML XMLObject = 
+    {
+      
+      FileName = PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_KNEE_AXIS;
+    };
+    
+    AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+    AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+    AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+    AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+    AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
+    AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
+  };
   
+   AnyRefNode Implant_Femoral_KneeAxis_Fitting_Surf_Node = 
+    {
+    sRel = Surf.sRel;
+    ARel = Surf.ARel; //* RotMat(pi*(1-SEG_SIGN)*0.5, y) ;
+    
+//    AnyDrawRefFrame Drw = 
+//    {
+//      RGB = {1, 1, 0};
+//      ScaleXYZ = 0.15*{1, 1, 1};
+//    };
+    
+    AnySurfCylinderFit Surf = 
+    {
+      Points = ..Implant_Knee_Axis_Points_Picked.Points_Transformed;
+      Length = 0.1;
+      AnyDrawParamSurf Drw = 
+      {
+        //RGB = {1, 1, 1};
+        //Opacity = 0.5;
+      };    
+    };
+  
+  };    
+ 
   AnyFolder Implant_Femoral_Condyle_Anterior_Points_Picked = 
   {
     AnyInputXML XMLObject = 
@@ -71,6 +124,18 @@ AnyRefNode PatientRefNode =
     AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
     AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
   };
+
+  AnyDrawPointCloud Drw_Implant_Femoral_Condyle_Anterior_Points_Picked = 
+  {
+    Points = .Implant_Femoral_Condyle_Anterior_Points_Picked.Points_Transformed ;
+    //PointNames = .Implant_Femoral_Condyle_Lateral_Points_Picked.PointNames;
+    RGB = {1, 1, 1};
+    Opacity = 0.5;
+    PointStyle.Size = 0.0025;
+    Points3D = On;
+    ShowNames = Off;
+  };    
+  
   
   AnyRefNode Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node = 
   {
@@ -483,21 +548,22 @@ AnyRefNode HipJointNew =
   sRel = .Femoral_Head_Fitting_Surf_Node.sRel ;
   //ARel = .Implant_Femoral_Head_Fitting_Ellipsoid_Node.ARel ;
   ARel = RotMat(sRel, .PatientRefNode.sRel, .EpicondylusFemorisLateralis.sRel) * RotMat(pi/2, z) * RotMat( (SEG_SIGN)*pi/2, y );
+    
   AnyVec3 sRelUnscaled = sRel ;
   AnyFloat ARelUnscaled = ARel ;
   
-//  AnyDrawRefFrame DrwFrame = 
-//  {
-//    RGB = {0, 1, 0};
-//    ScaleXYZ = 0.15*{1, 1, 1};
-//  };     
+  AnyDrawRefFrame DrwFrame = 
+  {
+    RGB = {0, 1, 0};
+    ScaleXYZ = 0.15*{1, 1, 1};
+  };     
 };
 
 AnyRefNode KneeJointNew = 
 {
   sRel = .PatientRefNode.sRel + 
-  .PatientRefNode.OffsetNode.sRel * .PatientRefNode.ARel';
-  ARel = .PatientRefNode.ARel * .PatientRefNode.OffsetNode.ARel;
+  .PatientRefNode.KneeJointNewBase.sRel * .PatientRefNode.ARel';
+  ARel = .PatientRefNode.ARel * .PatientRefNode.KneeJointNewBase.ARel;
   
   AnyVec3 sRelUnscaled = sRel;
   AnyFloat ARelUnscaled = ARel;

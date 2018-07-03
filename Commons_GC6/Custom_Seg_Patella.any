@@ -47,7 +47,6 @@ AnyRefNode PatientRefNode =
   AnyRefNode Patella_Tendon_Node = 
   {
     sRel = ..Mirror_Transform({-0.0422,-0.0191,-0.0127});  
-    //sRel = Main.HumanModel.Scaling.GeometricalScaling.Right.Patella.MyScalingLaw.RegistrationTransform({-0.0440, -0.0203, -0.0127});  
     AnyDrawNode DrwNode = 
     {
       RGB = {1, 0, 0};
@@ -57,9 +56,9 @@ AnyRefNode PatientRefNode =
   
   AnyRefNode PatellaFemurJointBase = 
   {
-    sRel = {0.0, 0.0, 0};
-    ARel = RotMat(pi, y);
-    
+     sRel = ...Thigh.PatientRefNode.PatellaFemurJointNewBase.sRel;
+     ARel = ...Thigh.PatientRefNode.PatellaFemurJointNewBase.ARel;
+
     AnyDrawRefFrame Drw = 
     {
       RGB = 0*{1, 1, 1};
