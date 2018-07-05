@@ -13,17 +13,6 @@ AnyRefNode PatientRefNode =
   sRel = O_New;
   ARel = {X_New-O_New, Y_New-O_New, Z_New-O_New}';
   
-  AnyRefNode RotNode = 
-  {
-    ARel = RotMat((SEG_SIGN)*pi, y);
-  };
-  
-  AnyRefNode OffsetNode = 
-  {
-    //sRel = {0.0, 0.0105 + IMPLANT_AP_OFFSET, 0.012};
-    sRel = {0, 0, (SEG_SIGN)*0};
-    ARel = .RotNode.ARel;      
-  };
     
   AnyRefNode KneeJointNewBase = {
     sRel = .Implant_Femoral_KneeAxis_Fitting_Surf_Node.sRel+{0.0,0.0,.Implant_Femoral_KneeAxis_Fitting_Surf_Node.Surf.Length/2.0}*.Implant_Femoral_KneeAxis_Fitting_Surf_Node.ARel'; 
@@ -140,20 +129,20 @@ AnyRefNode PatientRefNode =
   AnyRefNode Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node = 
   {
     sRel = Surf.sRel ;
-    ARel = Surf.ARel * RotMat(pi*(1-SEG_SIGN)*0.5, y) ;
+    ARel = Surf.ARel ;//* RotMat(pi*(1-SEG_SIGN)*0.5, y) ;
     
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = {1, 1, 0};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };
+    AnyDrawRefFrame Drw = 
+    {
+      RGB = {1, 1, 0};
+      ScaleXYZ = 0.15*{1, 1, 1};
+    };
     
     AnySurfCylinderFit Surf = 
     {
       Points = ..Implant_Femoral_Condyle_Anterior_Points_Picked.Points_Transformed ;
       Length = 0.1;
-      FixedDirection = On;
-      Direction = {0.0, 0.0, SEG_SIGN};
+      FixedDirection = Off;
+//      Direction = {0.0, 0.0, SEG_SIGN};
       AnyDrawParamSurf Drw = 
       {
         //RGB = {1, 1, 1};
@@ -164,19 +153,15 @@ AnyRefNode PatientRefNode =
   
   AnyRefNode PatellaFemurJointNewBase = 
   {
-    sRel = 
-    {
-      .Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.sRel[0], 
-      .Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.sRel[1],
-      0.0
-    };
-    ARel = RotMat(pi, y);
+    sRel = .Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.sRel +{0.0,0.0,.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.Surf.Length/2.0}*.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.ARel'; 
+
+    ARel = .Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.ARel;
     
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = {1, 0, 1};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };    
+    AnyDrawRefFrame Drw = 
+    {
+      RGB = {1, 0, 1};
+      ScaleXYZ = 0.15*{1, 1, 1};
+    };    
   };  
   
   #if SEG_SIGN == 1

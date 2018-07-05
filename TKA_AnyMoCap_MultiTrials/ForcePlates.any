@@ -1,6 +1,6 @@
 Main.EnvironmentModel.ForcePlates = 
 {
-  
+#ifndef STATIC_TRIAL  
 //  // See forceplate specification for which option 
 //  // are available for the ForcePlateAutoDetection class:
 //  // #include "<ANYMOCAP_PATH>/ForcePlates/ForcePlateAutoDetection.any"
@@ -25,4 +25,6 @@ Main.EnvironmentModel.ForcePlates =
     VelThreshold = 2.2,
     FORCEPLATE_TYPE = 2
   ) = { };
+  
+#endif  
 };
