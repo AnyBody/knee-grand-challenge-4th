@@ -1,41 +1,56 @@
 <!DOCTYPE PickedPoints>
 <PickedPoints>
  <DocumentData>
-  <DateTime date="2017-09-26" time="11:50:08"/>
-  <User name="mj"/>
-  <DataFileName name=""/>
-  <templateName name=""/>
+  <DataFileName name="D:\AnyBodyModels\git_gc_4\[Input]\STL_GC6\Implant\femoral_component.stl"/>
  </DocumentData>
- <point z="-0.0290847" x="-0.0287257" active="1" y="-0.0006671" name="1"/>
- <point z="-0.0029729" x="-0.0291857" active="1" y="0.0042317" name="2"/>
- <point z="-0.0288176" x="-0.0282422" active="1" y="-0.0042430" name="3"/>
- <point z="-0.0017459" x="-0.0289671" active="1" y="0.0002783" name="4"/>
- <point z="-0.0299821" x="-0.0273831" active="1" y="-0.0081737" name="5"/>
- <point z="0.0004671" x="-0.0287238" active="1" y="-0.0049218" name="6"/>
- <point z="-0.0296978" x="-0.0262461" active="1" y="-0.0116222" name="7"/>
- <point z="0.0022779" x="-0.0280824" active="1" y="-0.0087868" name="8"/>
- <point z="-0.0296206" x="-0.0246557" active="1" y="-0.0150331" name="9"/>
- <point z="0.0039617" x="-0.0269447" active="1" y="-0.0123829" name="10"/>
- <point z="-0.0294512" x="-0.0226505" active="1" y="-0.0183672" name="11"/>
- <point z="0.0058588" x="-0.0248585" active="1" y="-0.0165655" name="12"/>
- <point z="-0.0306542" x="-0.0201514" active="1" y="-0.0215895" name="13"/>
- <point z="0.0075008" x="-0.0223159" active="1" y="-0.0202521" name="14"/>
- <point z="-0.0299095" x="-0.0177692" active="1" y="-0.0242165" name="15"/>
- <point z="0.0092477" x="-0.0193828" active="1" y="-0.0234079" name="16"/>
- <point z="-0.0296956" x="-0.0144397" active="1" y="-0.0270713" name="17"/>
- <point z="0.0113653" x="-0.0163930" active="1" y="-0.0259008" name="18"/>
- <point z="-0.0304197" x="-0.0112187" active="1" y="-0.0293017" name="19"/>
- <point z="0.0120917" x="-0.0125272" active="1" y="-0.0283730" name="20"/>
- <point z="-0.0305575" x="-0.0072234" active="1" y="-0.0314250" name="21"/>
- <point z="0.0129505" x="-0.0086305" active="1" y="-0.0302907" name="22"/>
- <point z="-0.0306814" x="-0.0040254" active="1" y="-0.0327877" name="23"/>
- <point z="0.0141733" x="-0.0062016" active="1" y="-0.0311852" name="24"/>
- <point z="-0.0305321" x="0.0000534" active="1" y="-0.0340175" name="25"/>
- <point z="0.0156508" x="-0.0020106" active="1" y="-0.0323113" name="26"/>
- <point z="-0.0301369" x="0.0035102" active="1" y="-0.0346652" name="27"/>
- <point z="0.0170836" x="0.0031969" active="1" y="-0.0330132" name="28"/>
- <point z="-0.0301175" x="0.0070490" active="1" y="-0.0350468" name="29"/>
- <point z="0.0185873" x="0.0068573" active="1" y="-0.0330597" name="30"/>
- <point z="-0.0301110" x="0.0090982" active="1" y="-0.0351102" name="31"/>
- <point z="0.0199017" x="0.0086816" active="1" y="-0.0329039" name="32"/>
+ <point x="-0.0277" y="-0.0065" z="-0.0277" name="0" active="1"/>
+ <point x="-0.0264" y="-0.011" z="-0.028" name="1" active="1"/>
+ <point x="-0.0243" y="-0.0155" z="-0.0272" name="2" active="1"/>
+ <point x="-0.0221" y="-0.0191" z="-0.0268" name="3" active="1"/>
+ <point x="-0.0194" y="-0.0225" z="-0.0277" name="4" active="1"/>
+ <point x="-0.0157" y="-0.0261" z="-0.028" name="5" active="1"/>
+ <point x="-0.0118" y="-0.0289" z="-0.0279" name="6" active="1"/>
+ <point x="-0.0075" y="-0.0313" z="-0.028" name="7" active="1"/>
+ <point x="-0.0021" y="-0.0334" z="-0.0284" name="8" active="1"/>
+ <point x="0.0042" y="-0.0347" z="-0.0292" name="9" active="1"/>
+ <point x="0.0108" y="-0.0351" z="-0.0295" name="10" active="1"/>
+ <point x="-0.0295" y="-0.0019" z="0.0003" name="11" active="1"/>
+ <point x="-0.0287" y="-0.0074" z="0.0025" name="12" active="1"/>
+ <point x="-0.0269" y="-0.0124" z="0.004" name="13" active="1"/>
+ <point x="-0.0247" y="-0.0165" z="0.0048" name="14" active="1"/>
+ <point x="-0.0223" y="-0.0203" z="0.0075" name="15" active="1"/>
+ <point x="-0.0182" y="-0.0245" z="0.0095" name="16" active="1"/>
+ <point x="-0.0154" y="-0.0266" z="0.0106" name="17" active="1"/>
+ <point x="-0.0116" y="-0.0289" z="0.0122" name="18" active="1"/>
+ <point x="-0.0062" y="-0.0312" z="0.0142" name="19" active="1"/>
+ <point x="0.0003" y="-0.0328" z="0.0149" name="20" active="1"/>
+ <point x="0.0057" y="-0.0332" z="0.0147" name="21" active="1"/>
+ <point x="0.0166" y="-0.0344" z="-0.0303" name="22" active="1"/>
+ <point x="0.0221" y="-0.0329" z="-0.0305" name="23" active="1"/>
+ <point x="0.0103" y="-0.033" z="0.0162" name="24" active="1"/>
+ <point x="0.0144" y="-0.0322" z="0.0175" name="25" active="1"/>
+ <point x="0.0197" y="-0.0306" z="0.0169" name="26" active="1"/>
+ <point x="0.0255" y="-0.0271" z="0.0188" name="27" active="1"/>
+ <point x="0.0269" y="-0.0305" z="-0.0306" name="28" active="1"/>
+ <point x="0.0309" y="-0.0276" z="-0.0322" name="29" active="1"/>
+ <point x="0.0294" y="-0.028" z="-0.0239" name="30" active="1"/>
+ <point x="0.0239" y="-0.0315" z="-0.0232" name="31" active="1"/>
+ <point x="0.0196" y="-0.0332" z="-0.023" name="32" active="1"/>
+ <point x="0.0123" y="-0.0346" z="-0.0233" name="33" active="1"/>
+ <point x="0.0069" y="-0.0348" z="-0.0244" name="34" active="1"/>
+ <point x="-0.0002" y="-0.0337" z="-0.0239" name="35" active="1"/>
+ <point x="-0.0078" y="-0.031" z="-0.0243" name="36" active="1"/>
+ <point x="0.0249" y="-0.028" z="0.0135" name="37" active="1"/>
+ <point x="0.0188" y="-0.0312" z="0.0135" name="38" active="1"/>
+ <point x="0.0113" y="-0.033" z="0.0119" name="39" active="1"/>
+ <point x="-0.0012" y="-0.0326" z="0.0113" name="40" active="1"/>
+ <point x="-0.0124" y="-0.028" z="0.0075" name="41" active="1"/>
+ <point x="-0.004" y="-0.0318" z="0.0175" name="42" active="1"/>
+ <point x="0.0029" y="-0.0329" z="0.0207" name="43" active="1"/>
+ <point x="0.0105" y="-0.0326" z="0.0225" name="44" active="1"/>
+ <point x="0.0209" y="-0.0295" z="0.024" name="45" active="1"/>
+ <point x="0.0148" y="-0.0318" z="0.0244" name="46" active="1"/>
+ <point x="-0.0013" y="-0.0337" z="-0.0341" name="47" active="1"/>
+ <point x="0.0074" y="-0.0352" z="-0.0336" name="48" active="1"/>
+ <point x="0.0188" y="-0.0342" z="-0.0343" name="49" active="1"/>
 </PickedPoints>
