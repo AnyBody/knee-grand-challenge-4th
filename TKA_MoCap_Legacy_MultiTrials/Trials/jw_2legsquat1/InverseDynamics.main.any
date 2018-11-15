@@ -22,50 +22,50 @@
 
 Main = 
 {
-  Studies = 
-  {
-    InverseDynamicStudy = 
-    {
-      AnyMechObjectExcluder ExcluderPFJointAnyKinEq = 
-      {
-        Objects = arrcat(
-          ObjSearchRecursive("Main.Studies.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur", "*", "AnyKinEq"),
-          ObjSearchRecursive("Main.Studies.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur.Constraints", "*", "AnyMechObject")
-        );
-      };
-
-      ExtraConstraints = 
-      {
-        AnyKinEqSimpleDriver PatelloFemoral_Lin = 
-        {
-          AnyKinLinear lin = 
-          {
-            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
-            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode;
-            Ref = 0;
-          };
-          DriverPos = DEF_CUSTOM_JOINT_INIT_OFFSET_PATELLOFEMORAL_LIN;
-          DriverVel = {0, 0, 0};
-          Reaction.Type = {Off, Off, Off};
-          CType = {ForceDep, ForceDep, ForceDep}; 
-        };
-        AnyKinEqSimpleDriver PatelloFemoral_Rot = 
-        {
-          AnyKinRotational rot = 
-          {
-            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
-            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode;
-            Type = PlanarAngles;
-          };
-          MeasureOrganizer = {1, 2};
-          DriverPos = {0, 0};
-          DriverVel = {0, 0};
-          Reaction.Type = {Off, Off};      
-          CType = {ForceDep, ForceDep};
-        };         
-      };
-    };
-    
-  };
+//  Studies = 
+//  {
+//    InverseDynamicStudy = 
+//    {
+//      AnyMechObjectExcluder ExcluderPFJointAnyKinEq = 
+//      {
+//        Objects = arrcat(
+//          ObjSearchRecursive("Main.Studies.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur", "*", "AnyKinEq"),
+//          ObjSearchRecursive("Main.Studies.HumanModel.BodyModel.Right.Leg.Jnt.PatellaFemur.Constraints", "*", "AnyMechObject")
+//        );
+//      };
+//
+//      ExtraConstraints = 
+//      {
+//        AnyKinEqSimpleDriver PatelloFemoral_Lin = 
+//        {
+//          AnyKinLinear lin = 
+//          {
+//            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
+//            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode;
+//            Ref = 0;
+//          };
+//          DriverPos = DEF_CUSTOM_JOINT_INIT_OFFSET_PATELLOFEMORAL_LIN;
+//          DriverVel = {0, 0, 0};
+//          Reaction.Type = {Off, Off, Off};
+//          CType = {ForceDep, ForceDep, ForceDep}; 
+//        };
+//        AnyKinEqSimpleDriver PatelloFemoral_Rot = 
+//        {
+//          AnyKinRotational rot = 
+//          {
+//            AnyRefFrame & ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode;
+//            AnyRefFrame & ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode;
+//            Type = PlanarAngles;
+//          };
+//          MeasureOrganizer = {1, 2};
+//          DriverPos = {0, 0};
+//          DriverVel = {0, 0};
+//          Reaction.Type = {Off, Off};      
+//          CType = {ForceDep, ForceDep};
+//        };         
+//      };
+//    };
+//    
+//  };
   
 };
