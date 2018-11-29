@@ -2,29 +2,38 @@
 
 #include "<USER_PATH_COMMONS>\Class\CreateFootPrintClass.any"
 #include "<USER_PATH_COMMONS>\Class\CreateFootConnectionClasses.any"
+// Declaration of the CREATE_LIGAMENT class template
 #include "<USER_PATH_COMMONS>\Class\Class_CreateLigament.any"
 
 Main = 
 {    
+  // Custom settings for this model, a number of differenet #define statements are included
   #include "Input\Settings_Custom.any"
+  // Default settings for all models, a complete set of all necessary #define statements
   #include "<USER_PATH_COMMONS>\Settings_Default.any"
-  
+  // Model parameters, especially for the definition of the squat motion, and the conditional contact between the feet and the ground
   #include "Input\Parameters.any" 
   Parameters = 
   {
+    // Folder structure of the ligament attachment points based on point-picking procedures on the bone geometry files
     #include "<USER_PATH_INPUTDATA>\Ligament\Attachment_Points.any"
+    // Folder structure of the ligament parameters
     #include "<USER_PATH_COMMONS>\Parameters_Ligaments.any"
   };
     
   // Include default human model
   #include "<ANYBODY_PATH_BODY>\HumanModel.any"
-  
+  // Custom definitions of segment scaling
   #include "<USER_PATH_COMMONS>\CustomScaling.any"
+  // Custom definition of segments and joints
   #include "<USER_PATH_COMMONS>\CustomSegments.any"
+  // Custom definition of muscles
   #include "<USER_PATH_COMMONS>\CustomMuscles.any"  
+  // Definitions of some extra measurements
   #include "<USER_PATH_COMMONS>\Measures.any"
   
   #if USE_FDK == 1
+   // Create ligaments using CREATE_LIGAMENT class template
    #define INPUT_REF_HUMAN_MODEL Main.HumanModel
    #define INPUT_REF_PARAM_FOLDER Main.Parameters.Ligaments   
    #define INPUT_REF_INIT_STUDY Main.InitStudy
@@ -34,7 +43,7 @@ Main =
    #undef INPUT_REF_PARAM_FOLDER
    #undef INPUT_REF_INIT_STUDY
    #undef INPUT_REF_EVAL_STUDY
-   
+   // Define the contact surfaces and the contacts between femur, tibia and patella
    #include "<USER_PATH_COMMONS>\Contacts.any"
   #endif
 
@@ -47,11 +56,13 @@ Main =
     AnyFolder ModelEnvironmentConnection = 
     {
       #include "Model\JointsAndDrivers.any"
+      // Define some conditional contact elements between both feet and the ground
       #include "Model\Supports.any"
+      // Create the footprints for both feet
       #include "Model\FootPrintGeneration.any"
     };
   };
-  
+  // All necessary AnyStudy and AnyOperationSequence oriented class instances
   #include "Model\Operations.any"
 }; //Main
 
