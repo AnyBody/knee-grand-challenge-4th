@@ -1,7 +1,9 @@
+// A file that includes a kind of default assumptions of all ligaments' stiffness and reference strain values
 #include "Parameters_Ligaments_Default.any"
 
 AnyFolder& RefSegFolder = REF_HUMAN_BODYMODEL.Right.Leg.Seg;
 
+// Folder for the ligment parameters
 AnyFolder Ligaments = 
 {  
   // PFL: popliteofibular ligament
