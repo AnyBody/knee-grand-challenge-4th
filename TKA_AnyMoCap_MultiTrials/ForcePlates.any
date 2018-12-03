@@ -9,20 +9,26 @@ Main.EnvironmentModel.ForcePlates =
     PLATE_NO=1,
     HeightTolerance = 0.07,
     VelThreshold = 2.2,
-    FORCEPLATE_TYPE = 2
+    FORCEPLATE_TYPE = 2,
+    LIMB1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Foot,
+    LIMB2 = Main.HumanModel.BodyModel.Right.Leg.Seg.Foot
   ) = { };
   
   ForcePlateAutoDetection Plate2(
     PLATE_NO=2,
     HeightTolerance = 0.07,
     VelThreshold = 2.2,
-    FORCEPLATE_TYPE = 2
+    FORCEPLATE_TYPE = 2,
+    LIMB1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Foot,
+    LIMB2 = Main.HumanModel.BodyModel.Right.Leg.Seg.Foot    
   ) = { };
   
   ForcePlateAutoDetection Plate3(
     PLATE_NO=3,
     HeightTolerance = 0.07,
     VelThreshold = 2.2,
-    FORCEPLATE_TYPE = 2
+    FORCEPLATE_TYPE = 2,
+    LIMB1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Foot,
+    LIMB2 = Main.HumanModel.BodyModel.Right.Leg.Seg.Foot    
   ) = { };
 };
