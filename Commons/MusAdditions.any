@@ -15,12 +15,14 @@
  
  // Muscle PCSA weight
  #if BM_LEG_MUSCLES_LEFT == _MUSCLES_SIMPLE_
-   AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p);
+   //AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p); //assumes weight factor is inside ()^p
+   AnyVar WeightFactor = (MusMdl.Vol0);
  #endif
  
  // Muscle volume weight
  #if BM_LEG_MUSCLES_LEFT == _MUSCLES_3E_HILL_
-   AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p); //assumes weight factor is inside ()^p
+   //AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p); //assumes weight factor is inside ()^p
+   AnyVar WeightFactor = (MusMdl.Vol0);
  #endif
  
  #endif
@@ -37,13 +39,15 @@
  AnyVar p = DEF_MUSCLE_RECRUITMENT_CRITERION_POWER ;
  
  // Muscle PCSA weight
- #if BM_LEG_MUSCLES_LEFT == _MUSCLES_SIMPLE_
-   AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p);
+ #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_SIMPLE_
+   //AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p); //assumes weight factor is inside ()^p
+   AnyVar WeightFactor = (MusMdl.Vol0); 
  #endif
  
  // Muscle volume weight
- #if BM_LEG_MUSCLES_LEFT == _MUSCLES_3E_HILL_
-   AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p); //assumes weight factor is inside ()^p
+ #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
+   //AnyVar WeightFactor = (MusMdl.Vol0)^(1.0/p); //assumes weight factor is inside ()^p
+   AnyVar WeightFactor = (MusMdl.Vol0);
  #endif
  
  #endif
