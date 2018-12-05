@@ -1,0 +1,1 @@
+In the 'Trials' folder, there are several trials from the Grand Challenge Competition to Predict In Vivo Knee Loads . In each trial folder, there is a 'Main.any' file. Users can load this file.
