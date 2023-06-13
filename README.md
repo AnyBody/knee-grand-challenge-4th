@@ -1,7 +1,7 @@
 <img src="https://github.com/AnyBody/ammr/raw/master/Docs/_static/AMMR_Logo2.png" align="right" />
 
-# AnyBody Grand Challenge Knee Model
-> 4th year dataset
+# AnyBody FDK knee model
+> based on the 4th year Grand Challenge dataset
 
 > **Warning**
 > This repository is has not yet been updated to work with newer versions of AnyBody Modeling System and Body models (AMMR). This is work is on going. 
