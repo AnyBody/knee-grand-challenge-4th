@@ -1,5 +1,5 @@
 > **Warning**
-> This repository is has not yet been updated to work with newer versions of AnyBody Modeling System and Body models (AMMR). This is work is on going. 
+> This repository is has not yet been updated to work with newer versions of AnyBody Modeling System and Body models (AMMR). This work is on going. 
 
 
 <img src="https://github.com/AnyBody/ammr/raw/master/Docs/_static/AMMR_Logo2.png" align="right" />
