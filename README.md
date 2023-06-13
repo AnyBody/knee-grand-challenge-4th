@@ -1,13 +1,16 @@
+> **Warning**
+> This repository is has not yet been updated to work with newer versions of AnyBody Modeling System and Body models (AMMR). This is work is on going. 
+
+
 <img src="https://github.com/AnyBody/ammr/raw/master/Docs/_static/AMMR_Logo2.png" align="right" />
 
 # AnyBody FDK knee model
 > based on the 4th year Grand Challenge dataset
 
-> **Warning**
-> This repository is has not yet been updated to work with newer versions of AnyBody Modeling System and Body models (AMMR). This is work is on going. 
+This is an implementaiton of the dtailed knee model based on the dataset from the "*Grand Challenge Competition to Predict In-Vivo Knee Loads*". 
+An annual competition hosted at the ASME conference for researchers to blindly predict knee loads with musculskeletal models.
 
-
-
+THis model implementation was based on the is based on the 4th year dataset.
 
 
 ### Details on files/folders and model structure
