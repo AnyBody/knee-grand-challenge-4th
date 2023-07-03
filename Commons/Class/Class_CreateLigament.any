@@ -12,7 +12,7 @@
 #class_template CREATE_LIGAMENT(REF_HUMAN_MODEL, REF_PARAM_FOLDER, REF_INIT_STUDY, REF_EVAL_STUDY, LIGAMENT_NAME, WRAPPING)
 {
   // Definition of the number of string mesh objects in the wrapping object of a ligament
-  #var AnyVar NumStringMesh = 20;
+  #var AnyInt NumStringMesh = 20;
   #var AnySwitch VisibleOnOff = On;
   
   // Reference of the ligament parameter folder based on REF_PARAM_FOLDER
@@ -155,7 +155,7 @@
 // Class template for creating a ligament, but without using of relevant studies such as REF_INIT_STUDY and REF_EVAL_STUDY
 #class_template CREATE_LIGAMENT_NO_STUDY(REF_HUMAN_MODEL, REF_PARAM_FOLDER, LIGAMENT_NAME, WRAPPING)
 {
-  #var AnyVar NumStringMesh = 20;
+  #var AnyInt NumStringMesh = 20;
   #var AnySwitch VisibleOnOff = On;
   
   AnyFolder& RefParam = REF_PARAM_FOLDER.LIGAMENT_NAME;
