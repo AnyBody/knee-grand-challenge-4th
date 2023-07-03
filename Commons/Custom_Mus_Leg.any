@@ -1,4 +1,4 @@
-AnyViaPointMuscle TensorFasciaeLatae1New = 
+AnyMuscleViaPoint TensorFasciaeLatae1New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.TensorFasciaeLatae1NewPar;
   AnyRefFrame& Org = .TensorFasciaeLatae1.Org;
@@ -7,7 +7,7 @@ AnyViaPointMuscle TensorFasciaeLatae1New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };
 
-AnyViaPointMuscle TensorFasciaeLatae2New = 
+AnyMuscleViaPoint TensorFasciaeLatae2New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.TensorFasciaeLatae2NewPar;
   AnyRefFrame& Org = .TensorFasciaeLatae2.Org;
@@ -16,7 +16,7 @@ AnyViaPointMuscle TensorFasciaeLatae2New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };
 
-AnyViaPointMuscle BicepsFemorisCaputLongum1New = 
+AnyMuscleViaPoint BicepsFemorisCaputLongum1New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.BicepsFemorisCaputLongum1NewPar;
   AnyRefFrame& Org = .BicepsFemorisCaputLongum1.Org;
@@ -25,7 +25,7 @@ AnyViaPointMuscle BicepsFemorisCaputLongum1New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };
 
-AnyShortestPathMuscle BicepsFemorisCaputBreve1New = 
+AnyMuscleShortestPath BicepsFemorisCaputBreve1New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.BicepsFemorisCaputBreve1NewPar ;
   AnyRefFrame& Org = .BicepsFemorisCaputBreve1.Org;
@@ -41,7 +41,7 @@ AnyShortestPathMuscle BicepsFemorisCaputBreve1New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };
 
-AnyShortestPathMuscle BicepsFemorisCaputBreve2New = 
+AnyMuscleShortestPath BicepsFemorisCaputBreve2New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.BicepsFemorisCaputBreve2NewPar ;
   AnyRefFrame& Org = .BicepsFemorisCaputBreve2.Org;
@@ -57,7 +57,7 @@ AnyShortestPathMuscle BicepsFemorisCaputBreve2New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };
 
-AnyShortestPathMuscle BicepsFemorisCaputBreve3New = 
+AnyMuscleShortestPath BicepsFemorisCaputBreve3New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.BicepsFemorisCaputBreve3NewPar ;
   AnyRefFrame& Org = .BicepsFemorisCaputBreve3.Org;
@@ -73,7 +73,7 @@ AnyShortestPathMuscle BicepsFemorisCaputBreve3New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };
 
-AnyShortestPathMuscle RectusFemoris1New = 
+AnyMuscleShortestPath RectusFemoris1New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.RectusFemoris1NewPar;
   AnyRefFrame& Org = .RectusFemoris1.Org;
@@ -89,7 +89,7 @@ AnyShortestPathMuscle RectusFemoris1New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };//RectusFemoris1New
 
-AnyShortestPathMuscle RectusFemoris2New = 
+AnyMuscleShortestPath RectusFemoris2New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.RectusFemoris2NewPar;
   AnyRefFrame& Org = .RectusFemoris2.Org;
@@ -105,7 +105,7 @@ AnyShortestPathMuscle RectusFemoris2New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };//RectusFemoris2New
 
-AnyShortestPathMuscle IliacusMid1New = 
+AnyMuscleShortestPath IliacusMid1New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.IliacusMid1NewPar;
   AnyRefFrame& Org = .IliacusMid1.Org;
@@ -120,7 +120,7 @@ AnyShortestPathMuscle IliacusMid1New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };//IliacusMid2New
 
-AnyShortestPathMuscle IliacusMid2New = 
+AnyMuscleShortestPath IliacusMid2New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.IliacusMid2NewPar;
   AnyRefFrame& Org = .IliacusMid2.Org;
@@ -135,7 +135,7 @@ AnyShortestPathMuscle IliacusMid2New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };//IliacusMid2New
 
-AnyShortestPathMuscle IliacusMedialis1New = 
+AnyMuscleShortestPath IliacusMedialis1New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.IliacusMedialis1NewPar;
   AnyRefFrame& Org = .IliacusMedialis1.Org;
@@ -150,7 +150,7 @@ AnyShortestPathMuscle IliacusMedialis1New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };//IliacusMedialis1New
 
-AnyShortestPathMuscle IliacusMedialis2New = 
+AnyMuscleShortestPath IliacusMedialis2New = 
 {
   AnyMuscleModel& MusMdl = ..MuscleModels.IliacusMedialis2NewPar;
   AnyRefFrame& Org = .IliacusMedialis2.Org;
@@ -165,7 +165,7 @@ AnyShortestPathMuscle IliacusMedialis2New =
   AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 };//IliacusMedialis2New
 
-//AnyShortestPathMuscle Pectineus1New = 
+//AnyMuscleShortestPath Pectineus1New = 
 //{
 //  AnyMuscleModel& MusMdl = ..MuscleModels.Pectineus1NewPar;
 //  AnyRefFrame& Org = .Pectineus1.Org;
@@ -179,7 +179,7 @@ AnyShortestPathMuscle IliacusMedialis2New =
 //  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 //};//Pectineus1New
 //
-//AnyShortestPathMuscle Pectineus2New = 
+//AnyMuscleShortestPath Pectineus2New = 
 //{
 //  AnyMuscleModel& MusMdl = ..MuscleModels.Pectineus2NewPar;
 //  AnyRefFrame& Org = .Pectineus2.Org;
@@ -193,7 +193,7 @@ AnyShortestPathMuscle IliacusMedialis2New =
 //  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 //};//Pectineus2New
 //
-//AnyShortestPathMuscle Pectineus3New = 
+//AnyMuscleShortestPath Pectineus3New = 
 //{
 //  AnyMuscleModel& MusMdl = ..MuscleModels.Pectineus3NewPar;
 //  AnyRefFrame& Org = .Pectineus3.Org;
@@ -207,7 +207,7 @@ AnyShortestPathMuscle IliacusMedialis2New =
 //  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
 //};//Pectineus3New
 //
-//AnyShortestPathMuscle Pectineus4New = 
+//AnyMuscleShortestPath Pectineus4New = 
 //{
 //  AnyMuscleModel& MusMdl = ..MuscleModels.Pectineus4NewPar;
 //  AnyRefFrame& Org = .Pectineus4.Org;
