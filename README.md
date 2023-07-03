@@ -1,5 +1,5 @@
 > **Warning**
-> This repository is has not yet been updated to work with newer versions of AnyBody Modeling System and Body models (AMMR). This work is on going. 
+> Note: To use this repository with the beta version of AnyBody and AMMR (AMS 7.5-beta4, and AMMR 2.5), you need to use the `dev` branch of this repository. 
 
 
 <img src="https://github.com/AnyBody/ammr/raw/master/Docs/_static/AMMR_Logo2.png" align="right" />
