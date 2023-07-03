@@ -1,6 +1,5 @@
-> **Warning**
-> Note: To use this repository with the beta version of AnyBody and AMMR (AMS 7.5-beta4, and AMMR 2.5), you need to use the `dev` branch of this repository. 
-
+> **Note**
+> Use the [dev branch](https://github.com/AnyBody/knee-grand-challenge-4th/tree/dev) to use this repository with the beta version of AnyBody and AMMR (AMS 7.5-beta4, and AMMR 2.5)
 
 <img src="https://github.com/AnyBody/ammr/raw/master/Docs/_static/AMMR_Logo2.png" align="right" />
 
