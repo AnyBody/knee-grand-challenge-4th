@@ -10,7 +10,7 @@
   #define DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS 1.0
 #endif
 
-SubjectMusPar = 
+Muscles = 
 {
   GastrocnemiusLateralis.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS;
   GastrocnemiusMedialis.VolumeScaleFactor = DEF_MUS_STRENGTH_SCALE_GASTROCNEMIUS;  

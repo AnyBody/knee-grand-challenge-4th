@@ -1,10 +1,10 @@
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E TensorFasciaeLatae1NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.TensorFasciaeLatae;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.TensorFasciaeLatae;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -14,17 +14,17 @@ AnyMuscleModel3E TensorFasciaeLatae1NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel TensorFasciaeLatae1NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.TensorFasciaeLatae;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.TensorFasciaeLatae;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -35,10 +35,10 @@ AnyMuscleModel TensorFasciaeLatae1NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E TensorFasciaeLatae2NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.TensorFasciaeLatae;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.TensorFasciaeLatae;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -48,17 +48,17 @@ AnyMuscleModel3E TensorFasciaeLatae2NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel TensorFasciaeLatae2NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.TensorFasciaeLatae;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.TensorFasciaeLatae;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -69,10 +69,10 @@ AnyMuscleModel TensorFasciaeLatae2NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E BicepsFemorisCaputLongum1NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.BicepsFemorisCaputLongum;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.BicepsFemorisCaputLongum;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -82,17 +82,17 @@ AnyMuscleModel3E BicepsFemorisCaputLongum1NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel BicepsFemorisCaputLongum1NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.BicepsFemorisCaputLongum;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.BicepsFemorisCaputLongum;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -103,10 +103,10 @@ AnyMuscleModel BicepsFemorisCaputLongum1NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E BicepsFemorisCaputBreve1NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.BicepsFemorisCaputBreve;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -116,17 +116,17 @@ AnyMuscleModel3E BicepsFemorisCaputBreve1NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel BicepsFemorisCaputBreve1NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.BicepsFemorisCaputBreve;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -137,10 +137,10 @@ AnyMuscleModel BicepsFemorisCaputBreve1NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E BicepsFemorisCaputBreve2NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.BicepsFemorisCaputBreve;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -150,17 +150,17 @@ AnyMuscleModel3E BicepsFemorisCaputBreve2NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel BicepsFemorisCaputBreve2NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.BicepsFemorisCaputBreve;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -171,10 +171,10 @@ AnyMuscleModel BicepsFemorisCaputBreve2NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E BicepsFemorisCaputBreve3NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.BicepsFemorisCaputBreve;
   AnyIntVar MuscleElemNo = 3; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -184,17 +184,17 @@ AnyMuscleModel3E BicepsFemorisCaputBreve3NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel BicepsFemorisCaputBreve3NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.BicepsFemorisCaputBreve;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.BicepsFemorisCaputBreve;
   AnyIntVar MuscleElemNo = 3; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -205,10 +205,10 @@ AnyMuscleModel BicepsFemorisCaputBreve3NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E RectusFemoris1NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.RectusFemoris;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.RectusFemoris;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -218,17 +218,17 @@ AnyMuscleModel3E RectusFemoris1NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel RectusFemoris1NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.RectusFemoris;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.RectusFemoris;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -239,10 +239,10 @@ AnyMuscleModel RectusFemoris1NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E RectusFemoris2NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.RectusFemoris;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.RectusFemoris;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -252,17 +252,17 @@ AnyMuscleModel3E RectusFemoris2NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel RectusFemoris2NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.RectusFemoris;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.RectusFemoris;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -273,10 +273,10 @@ AnyMuscleModel RectusFemoris2NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E IliacusMid1NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.IliacusMid;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.IliacusMid;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -286,17 +286,17 @@ AnyMuscleModel3E IliacusMid1NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel IliacusMid1NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.IliacusMid;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.IliacusMid;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -307,10 +307,10 @@ AnyMuscleModel IliacusMid1NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E IliacusMid2NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.IliacusMid;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.IliacusMid;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -320,17 +320,17 @@ AnyMuscleModel3E IliacusMid2NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel IliacusMid2NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.IliacusMid;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.IliacusMid;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -341,10 +341,10 @@ AnyMuscleModel IliacusMid2NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E IliacusMedialis1NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.IliacusMedialis;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.IliacusMedialis;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -354,17 +354,17 @@ AnyMuscleModel3E IliacusMedialis1NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel IliacusMedialis1NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.IliacusMedialis;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.IliacusMedialis;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -375,10 +375,10 @@ AnyMuscleModel IliacusMedialis1NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E IliacusMedialis2NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.IliacusMedialis;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.IliacusMedialis;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -388,17 +388,17 @@ AnyMuscleModel3E IliacusMedialis2NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel IliacusMedialis2NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.IliacusMedialis;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.IliacusMedialis;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -409,10 +409,10 @@ AnyMuscleModel IliacusMedialis2NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E Pectineus1NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.Pectineus;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -422,17 +422,17 @@ AnyMuscleModel3E Pectineus1NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel Pectineus1NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.Pectineus;
   AnyIntVar MuscleElemNo = 1; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -443,10 +443,10 @@ AnyMuscleModel Pectineus1NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E Pectineus2NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.Pectineus;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -456,17 +456,17 @@ AnyMuscleModel3E Pectineus2NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel Pectineus2NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.Pectineus;
   AnyIntVar MuscleElemNo = 2; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -477,10 +477,10 @@ AnyMuscleModel Pectineus2NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E Pectineus3NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.Pectineus;
   AnyIntVar MuscleElemNo = 3; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -490,17 +490,17 @@ AnyMuscleModel3E Pectineus3NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel Pectineus3NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.Pectineus;
   AnyIntVar MuscleElemNo = 3; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
@@ -511,10 +511,10 @@ AnyMuscleModel Pectineus3NewPar =
 #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_
 AnyMuscleModel3E Pectineus4NewPar =
 {
-  AnyFolder& MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyFolder& MuscleParameters = ..ModelParameters.Muscles.Pectineus;
   AnyIntVar MuscleElemNo = 4; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; ///< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength; ///< Optimum fiber length
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; /// Muscle volume in (m3)
   AnyVar PCSA = 1e4*Vol0/Lf0;///< PCSA (cm2) is calculated as muscle volume divided between muscle branches and divided by fiber length
@@ -524,17 +524,17 @@ AnyMuscleModel3E Pectineus4NewPar =
   K1 = MuscleParameters.K1; ///< Factor for determining shortening speed at optimum length
   K2 = MuscleParameters.K2; ///< Factor for determining shortening speed at optimum length
   Fcfast = MuscleParameters.Fcfast; ///< Factor for determining shortening speed at optimum length
-  Jt = .SubjectMusPar.Jt; ///< Shape parameter for the tendon stiffness
-  Jpe = .SubjectMusPar.Jpe; ///< Shape parameter for the parallel stiffness
-  PEFactor = .SubjectMusPar.PEFactor; ///< Parameter for influence of parallel stiffness
+  Jt = ..ModelParameters.Muscles.Jt; ///< Shape parameter for the tendon stiffness
+  Jpe = ..ModelParameters.Muscles.Jpe; ///< Shape parameter for the parallel stiffness
+  PEFactor = ..ModelParameters.Muscles.PEFactor; ///< Parameter for influence of parallel stiffness
 };
 #else
 AnyMuscleModel Pectineus4NewPar =
 {
-  AnyFolder &MuscleParameters = .SubjectMusPar.Pectineus;
+  AnyFolder &MuscleParameters = ..ModelParameters.Muscles.Pectineus;
   AnyIntVar MuscleElemNo = 4; ///< The number of this element of the muscle
   AnyIntVar MuscleElemAmount = MuscleParameters.MuscleElemAmount; ///< The total amount of elements for this muscle
-  F0 = .SubjectMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
+  F0 = .DefaultMusPar.PCSAfactor*PCSA; //< Maximum force output at optimum fiber length
   Lf0 = MuscleParameters.OptimalFiberlength
   / cos(pi/180*MuscleParameters.Pennationangle);
   Vol0 = 1e-6*MuscleParameters.MuscleVolume/MuscleElemAmount; ///< Muscle volume in (m3)
