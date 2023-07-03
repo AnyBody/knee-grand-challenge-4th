@@ -80,29 +80,15 @@ AnyRefNode PatientRefNode =
     AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
   };
   
-  AnyRefNode Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node = 
+  AnySurfCylinderFit Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node = 
   {
-    sRel = Surf.sRel ;
-    ARel = Surf.ARel * RotMat(pi*(1-SEG_SIGN)*0.5, y) ;
     
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = {1, 1, 0};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };
-    
-    AnySurfCylinderFit Surf = 
-    {
-      Points = ..Implant_Femoral_Condyle_Anterior_Points_Picked.Points_Transformed ;
-      Length = 0.1;
-      FixedDirection = On;
-      Direction = {0.0, 0.0, SEG_SIGN};
-      AnyDrawParamSurf Drw = 
-      {
-        //RGB = {1, 1, 1};
-        //Opacity = 0.5;
-      };    
-    };
+    Points = .Implant_Femoral_Condyle_Anterior_Points_Picked.Points_Transformed * RotMat(pi*(1-SEG_SIGN)*0.5, y);
+    Length = 0.1;
+    FixedDirection = On;
+    Direction = {0.0, 0.0, SEG_SIGN};
+
+
   }; 
   
   AnyRefNode PatellaFemurJointNewBase = 
@@ -138,29 +124,15 @@ AnyRefNode PatientRefNode =
     AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
   };
   
-  AnyRefNode Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node = 
+  
+  AnySurfCylinderFit Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node = 
   {
-    sRel = Surf.sRel ;
-    ARel = Surf.ARel ;
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = {1, 1, 0};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };
-    
-    AnySurfCylinderFit Surf = 
-    {
-      Points = ..Implant_Femoral_Condyle_Posterior_Points_Picked.Points_Transformed ;
-      Length = 0.1;
-      FixedDirection = On;
-      Direction = {0.0, 0.0, 1};
-      AnyDrawParamSurf Drw = 
-      {
-        //RGB = {1, 1, 1};
-        //Opacity = 0.5;
-      };    
-    };
+    Points = .Implant_Femoral_Condyle_Posterior_Points_Picked.Points_Transformed ;
+    Length = 0.1;
+    FixedDirection = On;
+    Direction = {0.0, 0.0, 1};
   };   
+  
   
   //<--
   AnyFolder Implant_Femoral_Condyle_Lateral_Anterior_Points_Picked = 
@@ -188,30 +160,14 @@ AnyRefNode PatientRefNode =
 //    ShowNames = Off;
 //  };    
   
-  AnyRefNode Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node = 
+  AnySurfEllipsoidFit Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node = 
   {
-    sRel = Surf.sRel ;
-    ARel = Surf.ARel ;
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = {1, 1, 0};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };
-    
-    AnySurfEllipsoidFit Surf = 
-    {
-      Points = ..Implant_Femoral_Condyle_Lateral_Anterior_Points_Picked.Points_Transformed ;
-      Spherical = On;
-      AnyDrawParamSurf Drw = 
-      {
-        //RGB = {1, 1, 1};
-        //Opacity = 0.5;
-      };    
-    };
+    Points = .Implant_Femoral_Condyle_Lateral_Anterior_Points_Picked.Points_Transformed ;
+    Spherical = On;
     
     AnyRefNode RotNode = 
     {
-      sRel = {-.Surf.Radius[0]*0.3, -.Surf.Radius[0]*0.25, -.Surf.Radius[0]*0.1};
+      sRel = {-.Radius[0]*0.3, -.Radius[0]*0.25, -.Radius[0]*0.1};
       ARel = RotMat(40/180*pi, z) * RotMat(12/180*pi, x);
 //      AnyDrawRefFrame Drw = 
 //      {
@@ -221,7 +177,7 @@ AnyRefNode PatientRefNode =
       
       AnySurfEllipsoid Surf = 
       {
-        Radius = {..Surf.Radius[0]*0.6, ..Surf.Radius[0]*0.85, ..Surf.Radius[0]*0.45 };
+        Radius = {..Radius[0]*0.6, ..Radius[0]*0.85, ..Radius[0]*0.45 };
         AnyDrawParamSurf Drw = 
         {
           //RGB = {1, 0, 0};
@@ -257,30 +213,14 @@ AnyRefNode PatientRefNode =
 //    Points3D = On;
 //    ShowNames = Off;
 //  };    
-  AnyRefNode Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node = 
+  AnySurfEllipsoidFit Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node = 
   {
-    sRel = Surf.sRel ;
-    ARel = Surf.ARel ;
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = {1, 1, 0};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };
-    
-    AnySurfEllipsoidFit Surf = 
-    {
-      Points = ..Implant_Femoral_Condyle_Medial_Anterior_Points_Picked.Points_Transformed ;
-      Spherical = On;
-      AnyDrawParamSurf Drw = 
-      {
-        //RGB = {1, 1, 1};
-        //Opacity = 0.5;
-      };    
-    };
+    Points = .Implant_Femoral_Condyle_Medial_Anterior_Points_Picked.Points_Transformed ;
+    Spherical = On;
     
     AnyRefNode RotNode = 
     {
-      sRel = {-.Surf.Radius[0]*0.3, -.Surf.Radius[0]*0.25, .Surf.Radius[0]*0.02};
+      sRel = {-.Radius[0]*0.3, -.Radius[0]*0.25, .Radius[0]*0.02};
       ARel = RotMat(38/180*pi, z) * RotMat(-15/180*pi, x);
 //      AnyDrawRefFrame Drw = 
 //      {
@@ -290,7 +230,7 @@ AnyRefNode PatientRefNode =
       
       AnySurfEllipsoid Surf = 
       {
-        Radius = {..Surf.Radius[0]*0.6, ..Surf.Radius[0]*0.85, ..Surf.Radius[0]*0.45 };
+        Radius = {..Radius[0]*0.6, ..Radius[0]*0.85, ..Radius[0]*0.45 };
         AnyDrawParamSurf Drw = 
         {
           //RGB = {1, 0, 0};
@@ -315,26 +255,10 @@ AnyRefNode PatientRefNode =
     AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
   };
   
-  AnyRefNode Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node = 
+  AnySurfEllipsoidFit Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node = 
   {
-    sRel = Surf.sRel ;
-    ARel = Surf.ARel ;
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = {1, 1, 0};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };
-    
-    AnySurfEllipsoidFit Surf = 
-    {
-      Points = ..Implant_Femoral_Condyle_Lateral_Posterior_Points_Picked.Points_Transformed ;
-      Spherical = On;
-      AnyDrawParamSurf Drw = 
-      {
-        //RGB = {1, 0, 1};
-        //Opacity = 0.5;
-      };    
-    };
+    Points = .Implant_Femoral_Condyle_Lateral_Posterior_Points_Picked.Points_Transformed ;
+    Spherical = On;
   };   
   
   
@@ -352,38 +276,22 @@ AnyRefNode PatientRefNode =
     AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
     AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
   }; 
-  AnyRefNode Femoral_Condyle_Lateral_Fitting_Surf_Node = 
+  
+  AnySurfCylinderFit Femoral_Condyle_Lateral_Fitting_Surf_Node = 
   {
-    sRel = Surf.sRel ;
-    ARel = Surf.ARel ;
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = {1, 1, 0};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };
-    
-    AnySurfCylinderFit Surf = 
-    {
-      Points = ..Femoral_Condyle_Lateral_Points_Picked.Points_Transformed ;
-      Length = 0.025;
+    Points = .Femoral_Condyle_Lateral_Points_Picked.Points_Transformed ;
+    Length = 0.025;
 
-      CapRatio = 1;
-      CapRatio2 = 1;
-      
-//      AnyDrawParamSurf Drw = 
-//      {
-//        RGB = {1, 1, 1};
-//        Opacity = 0.5;
-//      };    
-    };
+    CapRatio = 1;
+    CapRatio2 = 1;
   };  
 
   //<--
-  AnyParamSurf& Surf_Wrapping_Cylinder_Lateral = Femoral_Condyle_Lateral_Fitting_Surf_Node.Surf;
-  AnyParamSurf& Surf_Wrapping_Cylinder_Posterior = Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node.Surf ;
+  AnyParamSurf& Surf_Wrapping_Cylinder_Lateral = Femoral_Condyle_Lateral_Fitting_Surf_Node;
+  AnyParamSurf& Surf_Wrapping_Cylinder_Posterior = Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node ;
   AnyParamSurf& Surf_Wrapping_Ellipsoid_Lateral_Anterior = Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.RotNode.Surf ;
   AnyParamSurf& Surf_Wrapping_Ellipsoid_Medial_Anterior = Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.RotNode.Surf ;
-  AnyParamSurf& Surf_Wrapping_Sphere_Lateral_Posterior = Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node.Surf ;
+  AnyParamSurf& Surf_Wrapping_Sphere_Lateral_Posterior = Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node ;
   #endif
 };
 
@@ -402,21 +310,11 @@ AnyFolder Implant_Femoral_Head_Points_Picked =
   AnyFloat Points_Transformed = .Mapping_Transform(Points_Original); 
 };
 
-AnyRefNode Implant_Femoral_Head_Fitting_Surf_Node  = 
+AnySurfEllipsoidFit Implant_Femoral_Head_Fitting_Surf_Node  = 
 {
-  sRel = Surf.sRel;
-  ARel = Surf.ARel;
-  //ARel = .HipJoint.ARel ;
-  AnySurfEllipsoidFit Surf = 
-  {
-    Points = ..Implant_Femoral_Head_Points_Picked.Points_Transformed ;
-    FixedAxes = On;
-    Spherical = On;
-    AnyDrawParamSurf Drw = 
-    {
-      //RGB = {1, 1, 1};
-    };
-  };
+  Points = .Implant_Femoral_Head_Points_Picked.Points_Transformed ;
+  FixedAxes = On;
+  Spherical = On;
 };
 
 AnyFolder Implant_Femoral_Head_Axial_Points_Picked = 
@@ -434,20 +332,10 @@ AnyFolder Implant_Femoral_Head_Axial_Points_Picked =
   AnyFloat Points_Transformed = .Mapping_Transform(Points_Original);   
 };
 
-AnyRefNode Implant_Femoral_Head_Axial_Fitting_Surf_Node  = 
+AnySurfCylinderFit Implant_Femoral_Head_Axial_Fitting_Surf_Node  = 
 {
-  sRel = Surf.sRel;
-  ARel = Surf.ARel;
-  //ARel = .HipJoint.ARel ;
-  AnySurfCylinderFit Surf = 
-  {
-    Points = ..Implant_Femoral_Head_Axial_Points_Picked.Points_Transformed ;
-    Length = 0.05;
-    AnyDrawParamSurf Drw = 
-    {
-      //RGB = {1, 1, 1};
-    };
-  };
+  Points = .Implant_Femoral_Head_Axial_Points_Picked.Points_Transformed ;
+  Length = 0.05;
 };
 
 AnyRefNode Implant_Femoral_Head_Wrapping_Surf_Node = 
@@ -467,8 +355,8 @@ AnyRefNode Implant_Femoral_Head_Wrapping_Surf_Node =
   
   AnySurfCylinder Surf = 
   {
-    Radius = ..Implant_Femoral_Head_Fitting_Surf_Node.Surf.Radius[0] * 1.5;
-    Length = ..Implant_Femoral_Head_Fitting_Surf_Node.Surf.Radius[0] * 4.0;
+    Radius = ..Implant_Femoral_Head_Fitting_Surf_Node.Radius[0] * 1.5;
+    Length = ..Implant_Femoral_Head_Fitting_Surf_Node.Radius[0] * 4.0;
     
     CapRatio = 1;
     CapRatio2 = 1;    

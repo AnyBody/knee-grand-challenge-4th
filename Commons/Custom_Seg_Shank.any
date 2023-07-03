@@ -94,33 +94,17 @@ AnyRefNode PatientRefNode =
     AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
   };  
   
-  AnyRefNode Talus_Trochlea_Fitting_Surf_Node = 
+  AnySurfCylinderFit Talus_Trochlea_Fitting_Surf_Node = 
   {
-    sRel = Surf.sRel ;
-    ARel = Surf.ARel ;
+    Points = .Talus_Trochlea_Points_Picked.Points_Transformed ;
+    Length = 0.025;
     
     AnyRefNode OffsetNode = 
     {
       sRel = {0, 0, 0.014};
       ARel = RotMat((1-SEG_SIGN)/2*pi, y);
-//      AnyDrawRefFrame Drw = 
-//      {
-//        RGB = {1, 1, 0};
-//        ScaleXYZ = 0.15*{1, 1, 1};
-//      };      
     };
     
-
-    AnySurfCylinderFit Surf = 
-    {
-      Points = ..Talus_Trochlea_Points_Picked.Points_Transformed ;
-      Length = 0.025;
-      AnyDrawParamSurf Drw = 
-      {
-        //RGB = {1, 1, 1};
-        //Opacity = 0.5;
-      }; 
-    };
   };
   
   #if SEG_SIGN == 1
@@ -158,32 +142,17 @@ AnyRefNode PatientRefNode =
     AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
   };
   
-  AnyRefNode Implant_Tibial_Insert_Central_Posterior_Fitting_Surf_Node = 
+  AnySurfCylinderFit Implant_Tibial_Insert_Central_Posterior_Fitting_Surf_Node = 
   {
-    sRel = Surf.sRel ;
-    ARel = Surf.ARel ;
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = {1, 1, 0};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };
-    
-    AnySurfCylinderFit Surf = 
-    {
-      Points = ..Implant_Tibial_Insert_Central_Posterior_Points_Picked.Points_Transformed ;
+      Points = .Implant_Tibial_Insert_Central_Posterior_Points_Picked.Points_Transformed ;
       Length = 0.1;
       FixedDirection = On;
       Direction = {0, 0, 1};
-//      AnyDrawParamSurf Drw = 
-//      {
-//        RGB = {1, 0, 1};
-//        Opacity = 0.5;
-//      };    
-    };
+
   };
 
   AnyParamSurf& Surf_Wrapping_Cylinder_Medial = Wrapping_Medial_Node.Surf ;  
-  AnyParamSurf& Surf_Wrapping_Plane_Central_Posterior = Implant_Tibial_Insert_Central_Posterior_Fitting_Surf_Node.Surf ;
+  AnyParamSurf& Surf_Wrapping_Plane_Central_Posterior = Implant_Tibial_Insert_Central_Posterior_Fitting_Surf_Node ;
   #endif
 };
 
