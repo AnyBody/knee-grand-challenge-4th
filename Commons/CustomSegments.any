@@ -33,7 +33,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
 };
 
 #if BM_LEG_RIGHT == ON
- #ifdef CUSTOM_SCALING_Right_Thigh
+ #ifdef _override_scaling_for_Right_Thigh
   HumanModel.BodyModel.Right.Leg = 
   {
     Seg.Thigh = 
@@ -87,7 +87,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
   };
  #endif //Right Thigh
  
- #ifdef CUSTOM_SCALING_Right_Shank
+ #ifdef _override_scaling_for_Right_Shank
   HumanModel.BodyModel.Right.Leg = 
   {
     Seg.Shank = 
@@ -110,7 +110,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
   };
  #endif //Right Shank
  
- #ifdef CUSTOM_SCALING_Right_Patella
+ #ifdef _override_scaling_for_Right_Patella
   HumanModel.BodyModel.Right.Leg =
   {  
     Seg.Patella = 
@@ -136,7 +136,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
 #endif
 
 #if BM_LEG_LEFT == ON
- #ifdef CUSTOM_SCALING_Left_Thigh
+ #ifdef _override_scaling_for_Left_Thigh
   HumanModel.BodyModel.Left.Leg = 
   {
     Seg.Thigh = 
@@ -156,7 +156,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
   };
  #endif // Left Thigh
  
- #ifdef CUSTOM_SCALING_Left_Shank
+ #ifdef _override_scaling_for_Left_Shank
   HumanModel.BodyModel.Left.Leg = 
   {
     Seg.Shank = 
@@ -175,7 +175,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
   };
  #endif // Left Shank
  
- #ifdef CUSTOM_SCALING_Left_Patella
+ #ifdef _override_scaling_for_Left_Patella
   HumanModel.BodyModel.Left.Leg =
   { 
     Seg.Patella = 

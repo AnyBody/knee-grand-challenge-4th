@@ -2,60 +2,60 @@
 HumanModel.Scaling.GeometricalScaling = 
 {
   #if BM_LEG_RIGHT == ON
-   #ifdef CUSTOM_SCALING_Right_Thigh
+   #ifdef _override_scaling_for_Right_Thigh
     Right.Thigh = 
     {
       #include "CustomScalingLaw_Femur_Right.any"
-      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+      ScaleFunction.Custom = &MyScalingLaw.Transform;
     };
    #endif
    
-   #ifdef CUSTOM_SCALING_Right_Shank
+   #ifdef _override_scaling_for_Right_Shank
     Right.Shank = 
     {
       #include "CustomScalingLaw_Tibia_Right.any"
-      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+      ScaleFunction.Custom = &MyScalingLaw.Transform;
     };
    #endif  
    
-   #ifdef CUSTOM_SCALING_Right_Patella
+   #ifdef _override_scaling_for_Right_Patella
     Right.Patella = 
     {
       #include "CustomScalingLaw_Patella_Right.any"
-      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+      ScaleFunction.Custom = &MyScalingLaw.Transform;
     };
    #endif  
   #endif
   
   #if BM_LEG_LEFT == ON
-   #ifdef CUSTOM_SCALING_Left_Thigh
+   #ifdef _override_scaling_for_Left_Thigh
     Left.Thigh = 
     {
       #include "CustomScalingLaw_Femur_Left.any"
-      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+      ScaleFunction.Custom = &MyScalingLaw.Transform;
     };
    #endif
    
-   #ifdef CUSTOM_SCALING_Left_Shank
+   #ifdef _override_scaling_for_Left_Shank
     Left.Shank = 
     {
       #include "CustomScalingLaw_Tibia_Left.any"
-      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+      ScaleFunction.Custom = &MyScalingLaw.Transform;
     };
    #endif
    
-   #ifdef CUSTOM_SCALING_Left_Patella
+   #ifdef _override_scaling_for_Left_Patella
     Left.Patella = 
     {
       #include "CustomScalingLaw_Patella_Left.any" 
-      AnyFunTransform3D &ScaleFunction = MyScalingLaw.Transform;
+      ScaleFunction.Custom = &MyScalingLaw.Transform;
     };
    #endif
   #endif
 };
 
 #if BM_LEG_RIGHT == ON
- #ifdef CUSTOM_SCALING_Right_Thigh
+ #ifdef _override_scaling_for_Right_Thigh
   HumanModel.BodyModel.Right.Leg.Seg.Thigh = 
   { 
     AnyFunTransform3D Align_Transform = 
@@ -95,7 +95,7 @@ HumanModel.Scaling.GeometricalScaling =
   };
  #endif
  
- #ifdef CUSTOM_SCALING_Right_Shank
+ #ifdef _override_scaling_for_Right_Shank
   HumanModel.BodyModel.Right.Leg.Seg.Shank = 
   {
     AnyFunTransform3D Align_Transform = 
@@ -135,7 +135,7 @@ HumanModel.Scaling.GeometricalScaling =
   };
  #endif
  
- #ifdef CUSTOM_SCALING_Right_Patella
+ #ifdef _override_scaling_for_Right_Patella
   HumanModel.BodyModel.Right.Leg.Seg.Patella = 
   {
     AnyFunTransform3D Align_Transform = 
@@ -177,7 +177,7 @@ HumanModel.Scaling.GeometricalScaling =
 #endif
 
 #if BM_LEG_LEFT == ON
- #ifdef CUSTOM_SCALING_Left_Thigh
+ #ifdef _override_scaling_for_Left_Thigh
   HumanModel.BodyModel.Left.Leg.Seg.Thigh = 
   {
     AnyFunTransform3D Align_Transform = 
@@ -217,7 +217,7 @@ HumanModel.Scaling.GeometricalScaling =
   };
  #endif
  
- #ifdef CUSTOM_SCALING_Left_Shank
+ #ifdef _override_scaling_for_Left_Shank
   HumanModel.BodyModel.Left.Leg.Seg.Shank = 
   {
     AnyFunTransform3D Align_Transform = 
@@ -257,7 +257,7 @@ HumanModel.Scaling.GeometricalScaling =
   };
  #endif
  
- #ifdef CUSTOM_SCALING_Left_Patella
+ #ifdef _override_scaling_for_Left_Patella
   HumanModel.BodyModel.Left.Leg.Seg.Patella = 
   {
     AnyFunTransform3D Align_Transform = 

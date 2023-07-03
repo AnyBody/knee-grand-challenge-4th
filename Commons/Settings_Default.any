@@ -146,28 +146,28 @@ Main =
 #endif
 
 //--> #define statements for custom scaling of AMMR lower body segments
-#ifndef CUSTOM_SCALING_Right_Thigh
-  #define CUSTOM_SCALING_Right_Thigh
+#ifndef _override_scaling_for_Right_Thigh
+  #define _override_scaling_for_Right_Thigh
 #endif
 
-#ifndef CUSTOM_SCALING_Left_Thigh
-  #define CUSTOM_SCALING_Left_Thigh
+#ifndef _override_scaling_for_Left_Thigh
+  #define _override_scaling_for_Left_Thigh
 #endif
 
-#ifndef CUSTOM_SCALING_Right_Shank
-  #define CUSTOM_SCALING_Right_Shank
+#ifndef _override_scaling_for_Right_Shank
+  #define _override_scaling_for_Right_Shank
 #endif
 
-#ifndef CUSTOM_SCALING_Left_Shank
-  #define CUSTOM_SCALING_Left_Shank
+#ifndef _override_scaling_for_Left_Shank
+  #define _override_scaling_for_Left_Shank
 #endif
 
-#ifndef CUSTOM_SCALING_Right_Patella
-  #define CUSTOM_SCALING_Right_Patella
+#ifndef _override_scaling_for_Right_Patella
+  #define _override_scaling_for_Right_Patella
 #endif
 
-#ifndef CUSTOM_SCALING_Left_Patella
-  #define CUSTOM_SCALING_Left_Patella
+#ifndef _override_scaling_for_Left_Patella
+  #define _override_scaling_for_Left_Patella
 #endif
 //<--
 
@@ -328,28 +328,28 @@ Main =
 //-->Extra
 #ifdef BM_LEG_RIGHT
   #if BM_LEG_RIGHT == OFF
-    #ifdef CUSTOM_SCALING_Right_Thigh
-      #undef CUSTOM_SCALING_Right_Thigh
+    #ifdef _override_scaling_for_Right_Thigh
+      #undef _override_scaling_for_Right_Thigh
     #endif
-    #ifdef CUSTOM_SCALING_Right_Shank
-      #undef CUSTOM_SCALING_Right_Shank
+    #ifdef _override_scaling_for_Right_Shank
+      #undef _override_scaling_for_Right_Shank
     #endif
-    #ifdef CUSTOM_SCALING_Right_Patella
-      #undef CUSTOM_SCALING_Right_Patella
+    #ifdef _override_scaling_for_Right_Patella
+      #undef _override_scaling_for_Right_Patella
     #endif
   #endif
 #endif
 
 #ifdef BM_LEG_LEFT
   #if BM_LEG_LEFT == OFF
-    #ifdef CUSTOM_SCALING_Left_Thigh
-      #undef CUSTOM_SCALING_Left_Thigh
+    #ifdef _override_scaling_for_Left_Thigh
+      #undef _override_scaling_for_Left_Thigh
     #endif
-    #ifdef CUSTOM_SCALING_Left_Shank
-      #undef CUSTOM_SCALING_Left_Shank
+    #ifdef _override_scaling_for_Left_Shank
+      #undef _override_scaling_for_Left_Shank
     #endif
-    #ifdef CUSTOM_SCALING_Left_Patella
-      #undef CUSTOM_SCALING_Left_Patella
+    #ifdef _override_scaling_for_Left_Patella
+      #undef _override_scaling_for_Left_Patella
     #endif 
   #endif
 #endif
