@@ -1,6 +1,5 @@
-> **Warning**
-> This repository is has not yet been updated to work with newer versions of AnyBody Modeling System and Body models (AMMR). This work is on going. 
-
+> **Note**
+> Use the [dev branch](https://github.com/AnyBody/knee-grand-challenge-4th/tree/dev) to use this repository with the beta version of AnyBody and AMMR (AMS 7.5-beta4, and AMMR 2.5)
 
 <img src="https://github.com/AnyBody/ammr/raw/master/Docs/_static/AMMR_Logo2.png" align="right" />
 
