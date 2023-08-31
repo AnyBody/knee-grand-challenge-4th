@@ -3,7 +3,8 @@ REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode =
   AnySurfSTL ContactSurf = 
   {
     FileName = PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT;
-    ScaleXYZ = {1, 1, 1};
+    ScaleXYZ = 0.001*{1, 1, 1};
+    
     //    AnyDrawSurf DrwSurf = 
     //    {
     //      FileName = .FileName;
@@ -19,7 +20,7 @@ REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode =
   AnySurfSTL ContactSurf_Lateral = 
   {
     FileName = PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL_CONTACT ;
-    ScaleXYZ = {1, 1, 1};
+    ScaleXYZ = 0.001*{1, 1, 1};
     //    AnyDrawSurf DrwSurf = 
     //    {
     //      FileName = .FileName;
@@ -32,7 +33,7 @@ REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode =
   AnySurfSTL ContactSurf_Medial = 
   {
     FileName = PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL_CONTACT ;
-    ScaleXYZ = {1, 1, 1};
+    ScaleXYZ = 0.001*{1, 1, 1};
     //    AnyDrawSurf DrwSurf = 
     //    {
     //      FileName = .FileName;

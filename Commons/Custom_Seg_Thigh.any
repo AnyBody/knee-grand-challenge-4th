@@ -39,7 +39,7 @@ AnyRefNode PatientRefNode =
   {
     //FileName = "..\Input\STL\Implant\Femoral Component.stl"  ;
     FileName = PATH_IMPLANT_FEMUR_RIGHT_STL;
-    ScaleXYZ = {1, 1, 1};
+    ScaleXYZ = 0.001*{1, 1, 1};
     RGB = 0.5*{1, 1, 1};
     Opacity = 0.5;
   };      

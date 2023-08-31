@@ -58,22 +58,23 @@ Main =
 // Path of the STL file for the Grand Challenge Knee 4th Competition implant femoral head 
 #path PATH_IMPLANT_HIP_FEMORAL_HEAD_RIGHT_STL "<USER_PATH_INPUTDATA>\STL\Implant\Hip Implant Femoral Component.stl"
 // Path of the STL file for the Grand Challenge Knee 4th Competition implant femoral femoral component
-#path PATH_IMPLANT_FEMUR_RIGHT_STL          "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_remeshed.stl"
+#path PATH_IMPLANT_FEMUR_RIGHT_STL          "T:\mel\CAMS_stls\geometry_contact.stl"
 // Path of the STL file for the Grand Challenge Knee 4th Competition implant tibial tray
 #path PATH_IMPLANT_TIBIA_BASE_STL           "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Tray_remeshed.stl"
 // Path of the STL file for the Grand Challenge Knee 4th Competition implant tibial insert lateral
-#path PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Insert_remeshed_lateral.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL "T:\mel\CAMS_stls\geometry_contact_lat.stl"
 // Path of the STL file for the Grand Challenge Knee 4th Competition implant tibial insert medial
-#path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL  "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Insert_remeshed_medial.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL  "T:\mel\CAMS_stls\geometry_contact_med.stl"
+
 // Path of the STL file for the Grand Challenge Knee 4th Competition implant patellar dome
 #path PATH_IMPLANT_PATELLA_DOME_STL         "<USER_PATH_INPUTDATA>\STL\Implant\Patellar Button_remeshed.stl"
 
 // Path of the STL file for the Grand Challenge Knee 4th Competition implant femoral component surface contact
-#path PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT          "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Femoral Component_Cut_Ver2_Meshmixer.stl"
+#path PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT          "T:\mel\CAMS_stls\geometry_contact.stl"
 // Path of the STL file for the Grand Challenge Knee 4th Competition implant tibial insert lateral surface contact
-#path PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL_CONTACT "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Tibial Insert_Lateral_Cut_Ver2_Meshmixer.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL_CONTACT "T:\mel\CAMS_stls\geometry_contact_lat.stl"
 // Path of the STL file for the Grand Challenge Knee 4th Competition implant tibial insert medial surface contact
-#path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL_CONTACT  "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Tibial Insert_Medial_Cut_Ver2_Meshmixer.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL_CONTACT  "T:\mel\CAMS_stls\geometry_contact_med.stl"
 // Path of the STL file for the Grand Challenge Knee 4th Competition implant patella dome surface contact
 #path PATH_IMPLANT_PATELLA_DOME_STL_CONTACT         "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Patellar Button_Cut_Ver2_Meshmixer.stl"
 

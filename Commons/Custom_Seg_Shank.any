@@ -52,6 +52,7 @@ AnyRefNode PatientRefNode =
     FileName = PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL;
     RGB = {1, 1, 1};
     Opacity = 0.5;
+    ScaleXYZ=0.001*{1,1,1};
   };
 
   AnyDrawSurf Drw_Implant_Tibia_Insert_Lateral = 
@@ -59,6 +60,7 @@ AnyRefNode PatientRefNode =
     FileName = PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL;
     RGB = {1, 1, 1};
     Opacity = 0.5;
+    ScaleXYZ=0.001*{1,1,1};
   };
  
   #endif
