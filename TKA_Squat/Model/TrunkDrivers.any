@@ -16,9 +16,9 @@
 
   AnyKinEqSimpleDriver NeckJntDriver = 
   {
-    AnyKinMeasureOrg& ref0 = ...HumanModel.Interface.Trunk.SkullThoraxFlexion;
-    AnyKinMeasureOrg& ref1 = ...HumanModel.Interface.Trunk.SkullThoraxLateralBending;
-    AnyKinMeasureOrg& ref2 = ...HumanModel.Interface.Trunk.SkullThoraxRotation;
+    AnyKinMeasure& ref0 = ...HumanModel.Interface.Trunk.SkullThoraxFlexion;
+    AnyKinMeasure& ref1 = ...HumanModel.Interface.Trunk.SkullThoraxLateralBending;
+    AnyKinMeasure& ref2 = ...HumanModel.Interface.Trunk.SkullThoraxRotation;
     DriverPos = pi/180*{0, 0, 0};
     DriverVel = pi/180*{0, 0, 0};
     Reaction.Type = {Off, Off, Off};
