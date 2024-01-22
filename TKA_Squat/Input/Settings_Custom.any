@@ -1,6 +1,10 @@
 //#path BM_DRAWSETTINGS_FILE "<ANYBODY_PATH_MAINFILEDIR>\Model\DrawSettings.any"  
-#path BM_MANNEQUIN_FILE "<ANYBODY_PATH_MAINFILEDIR>\Model\Mannequin.any"
 
+Main.HumanModel = {
+#include "<ANYBODY_PATH_MAINFILEDIR>\Model\Mannequin.any"
+
+
+};
 #ifndef BM_SCALING
 //#define BM_SCALING CONST_SCALING_STANDARD
 //#define BM_SCALING CONST_SCALING_LENGTHMASSFAT  
