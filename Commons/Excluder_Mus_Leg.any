@@ -70,22 +70,22 @@ AnyFolder ExcludedMuscles =
   AnyObjectPtr Objects = arrcat(pArrMuscles, pArrSPLines);
 };
 
-TensorFasciaeLatae1.DrwMus.Visible = Off;
-TensorFasciaeLatae2.DrwMus.Visible = Off;
-BicepsFemorisCaputLongum1.DrwMus.Visible = Off;
-BicepsFemorisCaputBreve1.DrwMus.Visible = Off;
-BicepsFemorisCaputBreve2.DrwMus.Visible = Off;
-BicepsFemorisCaputBreve3.DrwMus.Visible = Off;
-RectusFemoris1.DrwMus.Visible = Off;
-RectusFemoris2.DrwMus.Visible = Off;
-IliacusMid1.DrwMus.Visible = Off;
-IliacusMid2.DrwMus.Visible = Off;
-IliacusMedialis1.DrwMus.Visible = Off;
-IliacusMedialis2.DrwMus.Visible = Off;
-//Pectineus1.DrwMus.Visible = Off;
-//Pectineus2.DrwMus.Visible = Off;
-//Pectineus3.DrwMus.Visible = Off;
-//Pectineus4.DrwMus.Visible = Off;
+TensorFasciaeLatae1.viewMuscle.Visible = Off;
+TensorFasciaeLatae2.viewMuscle.Visible = Off;
+BicepsFemorisCaputLongum1.viewMuscle.Visible = Off;
+BicepsFemorisCaputBreve1.viewMuscle.Visible = Off;
+BicepsFemorisCaputBreve2.viewMuscle.Visible = Off;
+BicepsFemorisCaputBreve3.viewMuscle.Visible = Off;
+RectusFemoris1.viewMuscle.Visible = Off;
+RectusFemoris2.viewMuscle.Visible = Off;
+IliacusMid1.viewMuscle.Visible = Off;
+IliacusMid2.viewMuscle.Visible = Off;
+IliacusMedialis1.viewMuscle.Visible = Off;
+IliacusMedialis2.viewMuscle.Visible = Off;
+//Pectineus1.viewMuscle.Visible = Off;
+//Pectineus2.viewMuscle.Visible = Off;
+//Pectineus3.viewMuscle.Visible = Off;
+//Pectineus4.viewMuscle.Visible = Off;
 
 #undef RETURN_OBJ_MUSCLE
 #undef RETURN_OBJ_SPLINE
