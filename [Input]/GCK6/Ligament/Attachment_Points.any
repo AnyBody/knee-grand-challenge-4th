@@ -1,0 +1,70 @@
+Ligaments = 
+{  
+  AnyFolder Attachment_Points = 
+  {   
+    AnyFolder Femur = 
+    {
+      AnyInputXML XMLObject = 
+      {
+        FileName = PATH_TARGET_LIGAMENT_FEMUR_PICKED_POINTS ;
+      };
+      AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+      AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+      AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+      AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+      AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';
+    };
+    
+    AnyFolder Tibia = 
+    {
+      AnyInputXML XMLObject = 
+      {
+        FileName = PATH_TARGET_LIGAMENT_TIBIA_PICKED_POINTS ;
+      };
+      AnyInputXML XMLObject2 = 
+      {
+        FileName = PATH_TARGET_LIGAMENT_FIBULA_PICKED_POINTS ;
+      };  
+      AnyFloat xptr0 = arrcat(Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*")), Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".x_*"))) ;
+      AnyFloat yptr0 = arrcat(Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*")), Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".y_*"))) ;
+      AnyFloat zptr0 = arrcat(Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*")), Obj2Num(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".z_*"))) ;
+      AnyString PointNames = arrcat(Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")), Obj2Str(ObjSelect("XMLObject2.Contents.PickedPoints.point*.active", "==1", ".name"))) ;
+      AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
+    };    
+    
+    AnyFolder Patella = 
+    {
+      AnyInputXML XMLObject = 
+      {
+        FileName = PATH_TARGET_LIGAMENT_PATELLA_PICKED_POINTS ;
+      };
+      AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+      AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+      AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+      AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+      AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';   
+    };      
+  };
+  AnyFileVar File_Target_Ligament_Femur_Picked_Points = PATH_TARGET_LIGAMENT_FEMUR_PICKED_POINTS;
+  AnyFileVar File_Target_Ligament_Tibia_Picked_Points = PATH_TARGET_LIGAMENT_TIBIA_PICKED_POINTS;
+  AnyFileVar File_Target_Ligament_Fibula_Picked_Points = PATH_TARGET_LIGAMENT_FIBULA_PICKED_POINTS;
+  AnyFileVar File_Target_Ligament_Patella_Picked_Points = PATH_TARGET_LIGAMENT_PATELLA_PICKED_POINTS;
+  
+  AnyStringVar Str_Target_Ligament_Femur_Picked_Points = FilePathCompleteOf(File_Target_Ligament_Femur_Picked_Points);
+  AnyStringVar Str_Target_Ligament_Tibia_Picked_Points = FilePathCompleteOf(File_Target_Ligament_Tibia_Picked_Points);
+  AnyStringVar Str_Target_Ligament_Fibula_Picked_Points = FilePathCompleteOf(File_Target_Ligament_Fibula_Picked_Points);
+  AnyStringVar Str_Target_Ligament_Patella_Picked_Points = FilePathCompleteOf(File_Target_Ligament_Patella_Picked_Points);
+  
+//  AnyFunEx GetXMLPointCoordsByName=  
+//  {
+//    AnyVec3  Return = {0, 0, 0} ;
+//    AnyFunExMonoPy GetPointCoordsByName    =       
+//    {
+//      ModuleFile = "AnyFunExGetPointCoordsByName.py";
+//      ArgList = {
+//        AnyStringVar FileName = "";
+//        AnyStringVar PointName = "";
+//      };
+//    };
+//  };   
+};

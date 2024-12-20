@@ -1,0 +1,22 @@
+Main = 
+{
+  #path PATH_FEMUR_PP_FILE "GCK4_Femur_picked_points.pp"
+  
+  AnyFileVar file_femur_pp = PATH_FEMUR_PP_FILE ; 
+  AnyStringVar test_file_string = FilePathCompleteOf(file_femur_pp) ;
+  
+  AnyFunEx GetXMLPointCoordsByName=  
+  {
+    AnyVec3  Return = {0, 0, 0} ;
+    AnyFunExMonoPy GetPointCoordsByName    =       
+    {
+      ModuleFile = "AnyFunExGetPointCoordsByName.py";
+      ArgList = {
+        AnyStringVar FileName = "";
+        AnyStringVar PointName = "";
+      };
+    };
+  };
+  
+  AnyVec3 Test_Result = GetXMLPointCoordsByName(FilePathCompleteOf(file_femur_pp), "aMCL"); 
+};
