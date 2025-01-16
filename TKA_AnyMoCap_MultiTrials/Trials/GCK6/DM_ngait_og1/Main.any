@@ -26,7 +26,7 @@ Main =
   {
     TrialSpecificData =
     {
-      //#include "<USER_PATH_COMMONS>\eKneeData.any"
+      #include "<USER_PATH_COMMONS>\eKneeData.any"
     };
     SubjectSpecificData = 
     {
@@ -54,3 +54,5 @@ Main =
    #include "<USER_PATH_COMMONS>\Contacts.any"
   #endif
 };
+
+#include "..\..\..\Operations.any"

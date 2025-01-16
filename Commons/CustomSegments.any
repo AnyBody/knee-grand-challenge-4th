@@ -102,10 +102,11 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
       DrwSurfTibia.Visible = Off;
       DrwSurfFibula.Visible = Off;    
       
-      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewRefFrame.Visible = Off;
-      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewRefFrame.RGB = {1, 0, 0};
-      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewRefFrame.Opacity = 0.5;
-      
+//      #ifpathexists PATH_TARGET_TALUS_STL
+//      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewRefFrame.Visible = Off;
+//      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewRefFrame.RGB = {1, 0, 0};
+//      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewRefFrame.Opacity = 0.5;
+//      #endif
       PatientRefNode.Wrapping_Medial_Node.Surf.Drw.Visible = Off;
       PatientRefNode.Wrapping_Medial_Node.Surf.Drw.RGB = {0, 1, 0};
       PatientRefNode.Wrapping_Medial_Node.Surf.Drw.Opacity = 0.5;

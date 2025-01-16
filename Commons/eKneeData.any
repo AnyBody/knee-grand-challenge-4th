@@ -1,3 +1,5 @@
+#ifdef PATH_eKneeData
+#ifpathexists PATH_eKneeData
 AnyFolder eKneeData = 
 {
   AnyInputFile InputFile = 
@@ -36,3 +38,7 @@ AnyFolder eKneeData =
     BsplineOrder = 4;
   };
 };
+#endif
+#else 
+  AnyMessage MISSING_DATA = { TriggerPreProcess = On; Type = MSG_Warning; Message = "eKneeData file was not specified"; };
+#endif

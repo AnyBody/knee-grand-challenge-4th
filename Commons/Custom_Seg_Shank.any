@@ -17,7 +17,21 @@ AnyRefNode PatientRefNode =
   {
     ARel = RotMat((SEG_SIGN)*pi, y);
   };
-  
+  #if KNEE_MODEL_VERSION == "GCK6"
+  AnyRefNode KneeJointBase = 
+  {
+     sRel = ...Thigh.PatientRefNode.KneeJointNewBase.sRel;
+     ARel = ...Thigh.PatientRefNode.KneeJointNewBase.ARel;
+
+//    AnyDrawRefFrame Drw = 
+//    {
+//      RGB = 0*{1, 1, 1};
+//      ScaleXYZ = 0.1*{1, 1, 1};
+//    };       
+  };  
+  #endif
+
+  #if KNEE_MODEL_VERSION == "GCK4"
   AnyRefNode OffsetNode = 
   {
     //sRel = {0.01 - IMPLANT_AP_OFFSET, 0.029, 0.0};
@@ -30,7 +44,8 @@ AnyRefNode PatientRefNode =
     //        ScaleXYZ = 0.15*{1, 1, 1};
     //      };      
   };
-  
+  #endif
+
   #if SEG_SIGN == 1
   AnyDrawSurf Drw_Bone_PostOp = 
   {
@@ -79,6 +94,7 @@ AnyRefNode PatientRefNode =
     ScaleXYZ = {1, 1, SEG_SIGN };
   };
   
+  #if KNEE_MODEL_VERSION == "GCK4"
   AnyFolder Talus_Trochlea_Points_Picked = 
   {
     AnyInputXML XMLObject = 
@@ -106,11 +122,17 @@ AnyRefNode PatientRefNode =
     };
     
   };
+  #endif
   
   #if SEG_SIGN == 1
   AnyRefNode Wrapping_Medial_Node = 
   {
-    sRel = {-0.022, -0.017 + 0.005, 0.0345 + 0.0015} ;
+    #if KNEE_MODEL_VERSION == "GCK4"
+    sRel = {-0.022, -0.017 + 0.005, 0.0345 + 0.0015} ; // GCK4
+    #endif
+    #if KNEE_MODEL_VERSION == "GCK6"
+    sRel = {-0.022, -0.017 - 0.022, 0.0345 + 0.0015} ; // TODO: GCK6
+    #endif
     ARel = {{0.0, 0.0, 1.0}, {0.0, 1.0, 0.0}, {-1.0, 0.0, 0.0}};
     
     AnySurfCylinder Surf = 
@@ -158,10 +180,16 @@ AnyRefNode PatientRefNode =
 
 AnyRefNode KneeJointNew = 
 {
+  #if KNEE_MODEL_VERSION == "GCK4"
   sRel = .PatientRefNode.sRel + 
   .PatientRefNode.OffsetNode.sRel * .PatientRefNode.ARel';
   ARel = .PatientRefNode.ARel * .PatientRefNode.OffsetNode.ARel;
-  
+  #endif
+  #if KNEE_MODEL_VERSION == "GCK6"
+  sRel = .PatientRefNode.sRel + 
+  .PatientRefNode.KneeJointBase.sRel * .PatientRefNode.ARel';
+  ARel = .PatientRefNode.ARel * .PatientRefNode.KneeJointBase.ARel;
+  #endif
   AnyVec3 sRelUnscaled = sRel;
   AnyFloat ARelUnscaled = ARel;
   
@@ -174,13 +202,22 @@ AnyRefNode KneeJointNew =
 
 AnyRefNode AnkleJointNew = 
 {
+#if KNEE_MODEL_VERSION == "GCK4"
   sRel = .PatientRefNode.sRel + 
   (.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.sRel + 
    .PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.OffsetNode.sRel
   *.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.ARel')
   *.PatientRefNode.ARel';
   ARel = .PatientRefNode.ARel * .PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.ARel*.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.OffsetNode.ARel;
-  
+#endif
+#if KNEE_MODEL_VERSION == "GCK6"  
+  //AnyVec3 AnkleShankCenterNode = .Mapping_Transform(({0.0191,0.0028,(-0.4057)}+{(-0.0179),0.0283,(-0.4057)})/2.0); 
+  AnyVec3 AnkleShankCenterNode = .Mapping_Transform(({0.0054,-0.4267,0.0258}+{0.0458,-0.4420,-0.0276})/2.0); 
+  AnyVec3 AnkleShankAxisNode = .Mapping_Transform({0.0458,-0.4420,-0.0276});
+  AnyMat33 AnkleShankRotMat = RotMat(AnkleShankCenterNode,AnkleShankAxisNode,.KneeJointNew.sRel)*RotMat(SEG_SIGN*pi/2,y);
+  sRel = AnkleShankCenterNode;
+  ARel = AnkleShankRotMat;
+#endif  
   AnyVec3 sRelUnscaled = sRel;
   AnyFloat ARelUnscaled = ARel;
   
@@ -203,7 +240,12 @@ AnyRefNode& AnkleJoint = AnkleJointNew;
 AnyRefNode Insertion_patella_tendon =
 {
   //sRel = .Scale( .StdPar.Insertion_patella_tendon );
-  sRel = .Mapping_Transform({-0.0343431, -0.0346712, -0.0110248});
+  #if KNEE_MODEL_VERSION == "GCK4"  
+	sRel = .Mapping_Transform({-0.0343431, -0.0346712, -0.0110248}); // GCK4
+  #endif
+  #if KNEE_MODEL_VERSION == "GCK6"  
+	sRel = .Mapping_Transform({-0.0203,-0.0707,-0.0096});	//GCK6
+  #endif
 };
 #endif
 
