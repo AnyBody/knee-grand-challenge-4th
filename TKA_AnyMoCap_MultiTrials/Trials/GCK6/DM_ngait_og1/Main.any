@@ -12,9 +12,9 @@
 // Enter and edit Subject-Spcific Data in this file:
 #path MOCAP_SUBJECT_SPECIFIC_DATA "..\SubjectSpecificData.any"
 
-#path MOCAP_FORCE_PLATE_FILE "../../../ForcePlates.any"
+#path MOCAP_FORCE_PLATE_FILE "../../../ForcePlates.GC6.any"
 // Enter and edit Lab-Specific Data in this file:
-#path MOCAP_LAB_SPECIFIC_DATA "..\..\..\LabSpecificData.any"
+#path MOCAP_LAB_SPECIFIC_DATA "..\..\..\LabSpecificData.GC6.any"
 
 // Include the AnyMoCap Framwork
 #include "<ANYMOCAP_MODEL>"

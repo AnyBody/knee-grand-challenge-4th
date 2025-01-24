@@ -32,6 +32,10 @@ AnyRefNode PatientRefNode =
     FileName = PATH_IMPLANT_PATELLA_DOME_STL ;
     RGB = 0.5*{1, 1, 1};
     Opacity = 0.5;
+    #if KNEE_MODEL_VERSION == "GCK6"
+    ScaleXYZ = {1, 1, 1} * 0.001;
+    #endif
+    
   };     
   #endif
   
@@ -56,14 +60,21 @@ AnyRefNode PatientRefNode =
   
   AnyRefNode PatellaFemurJointBase = 
   {
+    #if KNEE_MODEL_VERSION == "GCK6"
+    sRel = ...Thigh.PatientRefNode.PatellaFemurJointNewBase.sRel;
+    ARel = ...Thigh.PatientRefNode.PatellaFemurJointNewBase.ARel;
+    #endif
+    
+    #if KNEE_MODEL_VERSION == "GCK6"
     sRel = {0.044, 0.0, 0};
     ARel = RotMat(pi, y);
+    #endif
     
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = 0*{1, 1, 1};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };       
+    //    AnyDrawRefFrame Drw = 
+    //    {
+    //      RGB = 0*{1, 1, 1};
+    //      ScaleXYZ = 0.15*{1, 1, 1};
+    //    };       
   };  
 };
 

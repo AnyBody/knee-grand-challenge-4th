@@ -46,7 +46,7 @@ AnyRefNode PatientRefNode =
   AnyDrawSurf Drw_Bone_PostOp = 
   {
     //FileName = "..\Input\STL\Bone\Target\GCK4_Femur" ;
-    FileName = PATH_TARGET_FEMUR_POSTOP_STL ;
+    FileName = PATH_TARGET_FEMUR_POSTOP_STL ;    
     RGB = Main.DrawSettings.Colors.Segments;
     Opacity = 1.0;
     ScaleXYZ = {1, 1, 1};
@@ -56,7 +56,9 @@ AnyRefNode PatientRefNode =
   {
     //FileName = "..\Input\STL\Implant\Femoral Component.stl"  ;
     FileName = PATH_IMPLANT_FEMUR_RIGHT_STL;
-    ScaleXYZ = {1, 1, 1};
+    #if KNEE_MODEL_VERSION == "GCK6"
+    ScaleXYZ = {1, 1, 1} * 0.001;
+    #endif
     RGB = 0.5*{1, 1, 1};
     Opacity = 1.0;
   };      
@@ -65,7 +67,9 @@ AnyRefNode PatientRefNode =
   {
     //FileName = "..\Input\STL\Implant\Hip Implant Femoral Component.stl"  ;
     FileName = PATH_IMPLANT_HIP_FEMORAL_HEAD_RIGHT_STL ;
-    ScaleXYZ = {1, 1, 1};
+    #if KNEE_MODEL_VERSION == "GCK6"
+    ScaleXYZ = {1, 1, 1} * 0.001;
+    #endif
     RGB = 0.5*{1, 1, 1};
     //Opacity = 0.5;
   };         
