@@ -65,7 +65,7 @@ AnyRefNode PatientRefNode =
     ARel = ...Thigh.PatientRefNode.PatellaFemurJointNewBase.ARel;
     #endif
     
-    #if KNEE_MODEL_VERSION == "GCK6"
+    #if KNEE_MODEL_VERSION == "GCK4"
     sRel = {0.044, 0.0, 0};
     ARel = RotMat(pi, y);
     #endif
