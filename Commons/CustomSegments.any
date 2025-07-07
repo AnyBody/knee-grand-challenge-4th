@@ -1,12 +1,12 @@
-HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg = 
+HumanModel.BodyModel.Trunk.Segments.PelvisSeg = 
 {
   #if BM_LEG_RIGHT == ON
   Right = 
   {
     #if (BM_JOINT_TYPE_HIP_RIGHT == _JOINT_TYPE_USERDEFINED_)
     AnyRefNode HipJoint = {
-      AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
-      sRel = ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
+      AnyVec3 sRelUnscaled = .Muscles.Data.HipJoint;
+      sRel = ..AnatomicalFrameTrunk.Scale_Leg_Pelvis(sRelUnscaled );
       #include "<ANYBODY_PATH_BODY>/DrawSettings/JointAxesProximal.any"
       ARel = ..AnatomicalFrame.ARel;
       AnyRefNode ISB = {
@@ -22,8 +22,8 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
   {
     #if (BM_JOINT_TYPE_HIP_LEFT == _JOINT_TYPE_USERDEFINED_)
     AnyRefNode HipJoint = {
-      AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
-      sRel = ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
+      AnyVec3 sRelUnscaled = .Muscles.Data.HipJoint;
+      sRel = ..AnatomicalFrameTrunk.Scale_Leg_Pelvis(sRelUnscaled );
       #include "<ANYBODY_PATH_BODY>/DrawSettings/JointAxesProximal.any"
       ARel = ..AnatomicalFrame.ARel;
       AnyRefNode ISB = {
@@ -267,8 +267,8 @@ HumanModel.BodyModel =
       {
         AnyKinPLine &Jnt = .KinematicMeasures.Patella;
         AnyVar lengthScale = vnorm(..Seg.Shank.KneeJoint.sRel - ..Seg.Shank.Insertion_patella_tendon.sRel)
-        / vnorm(..Seg.Shank.StdPar.Insertion_patella_tendon-..Seg.Shank.StdPar.KneeJoint);
-        AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.PatellarLigamentLength; 
+        / vnorm(..Seg.Shank.Data.Insertion_patella_tendon-..Seg.Shank.Data.KneeJoint);
+        AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.Patella.PatellarLigamentLength; 
         AnyVar TendonLength_Custom = DEF_CUSTOM_SCALING_PATELLA_TENDON_LENGTH;
         
         DriverPos = {TendonLength_Custom};
@@ -341,7 +341,7 @@ HumanModel.BodyModel =
       {
         AnyKinPLine &Jnt = .KinematicMeasures.Patella;
         AnyVar lengthScale = vnorm(..Seg.Shank.KneeJoint.sRel - ..Seg.Shank.Insertion_patella_tendon.sRel)
-        / vnorm(..Seg.Shank.StdPar.Insertion_patella_tendon-..Seg.Shank.StdPar.KneeJoint);
+        / vnorm(..Seg.Shank.Data.Insertion_patella_tendon-..Seg.Shank.Data.KneeJoint);
         AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.PatellarLigamentLength; 
         AnyVar TendonLength_Custom = DEF_CUSTOM_SCALING_PATELLA_TENDON_LENGTH;
         

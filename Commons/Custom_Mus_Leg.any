@@ -1,169 +1,181 @@
-AnyMuscleViaPoint TensorFasciaeLatae1New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.TensorFasciaeLatae1NewPar;
-  AnyRefFrame& Org = .TensorFasciaeLatae1.Org;
-  AnyRefFrame& Ins = ..Seg.Shank.TensorFasciaeLatae1NodeNew;
+TensorFasciaeLatae = {
+  AnyMuscleViaPoint TensorFasciaeLatae1New = 
+  {
+    AnyMuscleModel& MusMdl = ...MuscleModels.TensorFasciaeLatae1NewPar;
+    AnyRefFrame& Org = .TensorFasciaeLatae1.Org;
+    AnyRefFrame& Ins = ...Seg.Shank.TensorFasciaeLatae1NodeNew;
+    
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };
   
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  AnyMuscleViaPoint TensorFasciaeLatae2New = 
+  {
+    AnyMuscleModel& MusMdl = ...MuscleModels.TensorFasciaeLatae2NewPar;
+    AnyRefFrame& Org = .TensorFasciaeLatae2.Org;
+    AnyRefFrame& Ins = ...Seg.Shank.TensorFasciaeLatae2NodeNew;
+    
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };
 };
 
-AnyMuscleViaPoint TensorFasciaeLatae2New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.TensorFasciaeLatae2NewPar;
-  AnyRefFrame& Org = .TensorFasciaeLatae2.Org;
-  AnyRefFrame& Ins = ..Seg.Shank.TensorFasciaeLatae2NodeNew;
-  
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+BicepsFemorisCaputLongum = {
+  AnyMuscleViaPoint BicepsFemorisCaputLongum1New = 
+  {
+    AnyMuscleModel& MusMdl = ...MuscleModels.BicepsFemorisCaputLongum1NewPar;
+    AnyRefFrame& Org = .BicepsFemorisCaputLongum1.Org;
+    AnyRefFrame& Ins = ...Seg.Shank.BicepsFemorisCaputLongum1NodeNew;
+    
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };
 };
 
-AnyMuscleViaPoint BicepsFemorisCaputLongum1New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.BicepsFemorisCaputLongum1NewPar;
-  AnyRefFrame& Org = .BicepsFemorisCaputLongum1.Org;
-  AnyRefFrame& Ins = ..Seg.Shank.BicepsFemorisCaputLongum1NodeNew;
+BicepsFemorisCaputBreve = {
+  AnyMuscleShortestPath BicepsFemorisCaputBreve1New = 
+  {
+    AnyMuscleModel& MusMdl = ...MuscleModels.BicepsFemorisCaputBreve1NewPar ;
+    AnyRefFrame& Org = .BicepsFemorisCaputBreve1.Org;
+    AnyParamSurf& srf = .BicepsFemorisCaputBreve1.srf;
+    AnyRefFrame& Ins = ...Seg.Shank.BicepsFemorisCaputBreve1NodeNew;
+    
+    SPLine = 
+    {
+      StringMesh = ..BicepsFemorisCaputBreve1.SPLine.StringMesh;
+      InitWrapPosVecArr = ..BicepsFemorisCaputBreve1.SPLine.InitWrapPosVecArr;
+    };
+    
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };
   
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  AnyMuscleShortestPath BicepsFemorisCaputBreve2New = 
+  {
+    AnyMuscleModel& MusMdl = ...MuscleModels.BicepsFemorisCaputBreve2NewPar ;
+    AnyRefFrame& Org = .BicepsFemorisCaputBreve2.Org;
+    AnyParamSurf& srf = .BicepsFemorisCaputBreve2.srf;
+    AnyRefFrame& Ins = ...Seg.Shank.BicepsFemorisCaputBreve2NodeNew;
+    
+    SPLine = 
+    {
+      StringMesh = ..BicepsFemorisCaputBreve2.SPLine.StringMesh;
+      InitWrapPosVecArr = ..BicepsFemorisCaputBreve2.SPLine.InitWrapPosVecArr;
+    };  
+    
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };
+  
+  AnyMuscleShortestPath BicepsFemorisCaputBreve3New = 
+  {
+    AnyMuscleModel& MusMdl = ...MuscleModels.BicepsFemorisCaputBreve3NewPar ;
+    AnyRefFrame& Org = .BicepsFemorisCaputBreve3.Org;
+    AnyParamSurf& srf = .BicepsFemorisCaputBreve3.srf;
+    AnyRefFrame& Ins = ...Seg.Shank.BicepsFemorisCaputBreve3NodeNew;
+    
+    SPLine = 
+    {
+      StringMesh = ..BicepsFemorisCaputBreve3.SPLine.StringMesh;
+      InitWrapPosVecArr = ..BicepsFemorisCaputBreve3.SPLine.InitWrapPosVecArr;
+    };    
+    
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };
 };
 
-AnyMuscleShortestPath BicepsFemorisCaputBreve1New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.BicepsFemorisCaputBreve1NewPar ;
-  AnyRefFrame& Org = .BicepsFemorisCaputBreve1.Org;
-  AnyParamSurf& srf = .BicepsFemorisCaputBreve1.srf;
-  AnyRefFrame& Ins = ..Seg.Shank.BicepsFemorisCaputBreve1NodeNew;
-  
-  SPLine = 
+RectusFemoris = {
+  AnyMuscleShortestPath RectusFemoris1New = 
   {
-    StringMesh = ..BicepsFemorisCaputBreve1.SPLine.StringMesh;
-    InitWrapPosVecArr = ..BicepsFemorisCaputBreve1.SPLine.InitWrapPosVecArr;
-  };
+    AnyMuscleModel& MusMdl = ...MuscleModels.RectusFemoris1NewPar;
+    AnyRefFrame& Org = .RectusFemoris1.Org;
+    AnyRefFrame& Ins = .RectusFemoris1.Ins;
+    AnyParamSurf& srf1 =  ...Seg.Thigh.IliacusWrapSurfNew.Surf;
+    AnyParamSurf& srf2 = .RectusFemoris1.srf2;
+    
+    SPLine = 
+    {
+      StringMesh = ..RectusFemoris1.SPLine.StringMesh;
+      InitWrapPosVecArr = ..RectusFemoris1.SPLine.InitWrapPosVecArr;
+    };
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };//RectusFemoris1New
   
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  AnyMuscleShortestPath RectusFemoris2New = 
+  {
+    AnyMuscleModel& MusMdl = ...MuscleModels.RectusFemoris2NewPar;
+    AnyRefFrame& Org = .RectusFemoris2.Org;
+    AnyRefFrame& Ins = .RectusFemoris2.Ins;
+    AnyParamSurf& srf1 =  ...Seg.Thigh.IliacusWrapSurfNew.Surf;
+    AnyParamSurf& srf2 = .RectusFemoris2.srf2;
+    
+    SPLine = 
+    {
+      StringMesh = ..RectusFemoris2.SPLine.StringMesh;
+      InitWrapPosVecArr = ..RectusFemoris2.SPLine.InitWrapPosVecArr;
+    };
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };//RectusFemoris2New
 };
 
-AnyMuscleShortestPath BicepsFemorisCaputBreve2New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.BicepsFemorisCaputBreve2NewPar ;
-  AnyRefFrame& Org = .BicepsFemorisCaputBreve2.Org;
-  AnyParamSurf& srf = .BicepsFemorisCaputBreve2.srf;
-  AnyRefFrame& Ins = ..Seg.Shank.BicepsFemorisCaputBreve2NodeNew;
-  
-  SPLine = 
+IliacusMid = {
+  AnyMuscleShortestPath IliacusMid1New = 
   {
-    StringMesh = ..BicepsFemorisCaputBreve2.SPLine.StringMesh;
-    InitWrapPosVecArr = ..BicepsFemorisCaputBreve2.SPLine.InitWrapPosVecArr;
-  };  
+    AnyMuscleModel& MusMdl = ...MuscleModels.IliacusMid1NewPar;
+    AnyRefFrame& Org = .IliacusMid1.Org;
+    AnyRefFrame& Via1 = .IliacusMid1.Via1;
+    AnyRefFrame& Ins = .IliacusMid1.Ins;
+    AnyParamSurf& srf =  ...Seg.Thigh.IliacusWrapSurfNew.Surf;  
+    SPLine = 
+    {
+      StringMesh = ..IliacusMid1.SPLine.StringMesh;
+      InitWrapPosVecArr = ..IliacusMid1.SPLine.InitWrapPosVecArr;
+    };
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };//IliacusMid2New
   
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  AnyMuscleShortestPath IliacusMid2New = 
+  {
+    AnyMuscleModel& MusMdl = ...MuscleModels.IliacusMid2NewPar;
+    AnyRefFrame& Org = .IliacusMid2.Org;
+    AnyRefFrame& Via1 = .IliacusMid2.Via1;
+    AnyRefFrame& Ins = .IliacusMid2.Ins;
+    AnyParamSurf& srf =  ...Seg.Thigh.IliacusWrapSurfNew.Surf;  
+    SPLine = 
+    {
+      StringMesh = ..IliacusMid2.SPLine.StringMesh;
+      InitWrapPosVecArr = ..IliacusMid2.SPLine.InitWrapPosVecArr;
+    };
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };//IliacusMid2New
 };
 
-AnyMuscleShortestPath BicepsFemorisCaputBreve3New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.BicepsFemorisCaputBreve3NewPar ;
-  AnyRefFrame& Org = .BicepsFemorisCaputBreve3.Org;
-  AnyParamSurf& srf = .BicepsFemorisCaputBreve3.srf;
-  AnyRefFrame& Ins = ..Seg.Shank.BicepsFemorisCaputBreve3NodeNew;
-  
-  SPLine = 
+IliacusMedialis = {
+  AnyMuscleShortestPath IliacusMedialis1New = 
   {
-    StringMesh = ..BicepsFemorisCaputBreve3.SPLine.StringMesh;
-    InitWrapPosVecArr = ..BicepsFemorisCaputBreve3.SPLine.InitWrapPosVecArr;
-  };    
+    AnyMuscleModel& MusMdl = ...MuscleModels.IliacusMedialis1NewPar;
+    AnyRefFrame& Org = .IliacusMedialis1.Org;
+    AnyRefFrame& Via1 = .IliacusMedialis1.Via1;
+    AnyRefFrame& Ins = .IliacusMedialis1.Ins;
+    AnyParamSurf& srf =  ...Seg.Thigh.IliacusWrapSurfNew.Surf;  
+    SPLine = 
+    {
+      StringMesh = ..IliacusMedialis1.SPLine.StringMesh;
+      InitWrapPosVecArr = ..IliacusMedialis1.SPLine.InitWrapPosVecArr;
+    };
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };//IliacusMedialis1New
   
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  AnyMuscleShortestPath IliacusMedialis2New = 
+  {
+    AnyMuscleModel& MusMdl = ...MuscleModels.IliacusMedialis2NewPar;
+    AnyRefFrame& Org = .IliacusMedialis2.Org;
+    AnyRefFrame& Via1 = .IliacusMedialis2.Via1;
+    AnyRefFrame& Ins = .IliacusMedialis2.Ins;
+    AnyParamSurf& srf =  ...Seg.Thigh.IliacusWrapSurfNew.Surf;  
+    SPLine = 
+    {
+      StringMesh = ..IliacusMedialis2.SPLine.StringMesh;
+      InitWrapPosVecArr = ..IliacusMedialis2.SPLine.InitWrapPosVecArr;
+    };
+    AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
+  };//IliacusMedialis2New
 };
-
-AnyMuscleShortestPath RectusFemoris1New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.RectusFemoris1NewPar;
-  AnyRefFrame& Org = .RectusFemoris1.Org;
-  AnyRefFrame& Ins = .RectusFemoris1.Ins;
-  AnyParamSurf& srf1 =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;
-  AnyParamSurf& srf2 = .RectusFemoris1.srf2;
-  
-  SPLine = 
-  {
-    StringMesh = ..RectusFemoris1.SPLine.StringMesh;
-    InitWrapPosVecArr = ..RectusFemoris1.SPLine.InitWrapPosVecArr;
-  };
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
-};//RectusFemoris1New
-
-AnyMuscleShortestPath RectusFemoris2New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.RectusFemoris2NewPar;
-  AnyRefFrame& Org = .RectusFemoris2.Org;
-  AnyRefFrame& Ins = .RectusFemoris2.Ins;
-  AnyParamSurf& srf1 =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;
-  AnyParamSurf& srf2 = .RectusFemoris2.srf2;
-  
-  SPLine = 
-  {
-    StringMesh = ..RectusFemoris2.SPLine.StringMesh;
-    InitWrapPosVecArr = ..RectusFemoris2.SPLine.InitWrapPosVecArr;
-  };
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
-};//RectusFemoris2New
-
-AnyMuscleShortestPath IliacusMid1New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.IliacusMid1NewPar;
-  AnyRefFrame& Org = .IliacusMid1.Org;
-  AnyRefFrame& Via1 = .IliacusMid1.Via1;
-  AnyRefFrame& Ins = .IliacusMid1.Ins;
-  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
-  SPLine = 
-  {
-    StringMesh = ..IliacusMid1.SPLine.StringMesh;
-    InitWrapPosVecArr = ..IliacusMid1.SPLine.InitWrapPosVecArr;
-  };
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
-};//IliacusMid2New
-
-AnyMuscleShortestPath IliacusMid2New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.IliacusMid2NewPar;
-  AnyRefFrame& Org = .IliacusMid2.Org;
-  AnyRefFrame& Via1 = .IliacusMid2.Via1;
-  AnyRefFrame& Ins = .IliacusMid2.Ins;
-  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
-  SPLine = 
-  {
-    StringMesh = ..IliacusMid2.SPLine.StringMesh;
-    InitWrapPosVecArr = ..IliacusMid2.SPLine.InitWrapPosVecArr;
-  };
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
-};//IliacusMid2New
-
-AnyMuscleShortestPath IliacusMedialis1New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.IliacusMedialis1NewPar;
-  AnyRefFrame& Org = .IliacusMedialis1.Org;
-  AnyRefFrame& Via1 = .IliacusMedialis1.Via1;
-  AnyRefFrame& Ins = .IliacusMedialis1.Ins;
-  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
-  SPLine = 
-  {
-    StringMesh = ..IliacusMedialis1.SPLine.StringMesh;
-    InitWrapPosVecArr = ..IliacusMedialis1.SPLine.InitWrapPosVecArr;
-  };
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
-};//IliacusMedialis1New
-
-AnyMuscleShortestPath IliacusMedialis2New = 
-{
-  AnyMuscleModel& MusMdl = ..MuscleModels.IliacusMedialis2NewPar;
-  AnyRefFrame& Org = .IliacusMedialis2.Org;
-  AnyRefFrame& Via1 = .IliacusMedialis2.Via1;
-  AnyRefFrame& Ins = .IliacusMedialis2.Ins;
-  AnyParamSurf& srf =  ..Seg.Thigh.IliacusWrapSurfNew.Surf;  
-  SPLine = 
-  {
-    StringMesh = ..IliacusMedialis2.SPLine.StringMesh;
-    InitWrapPosVecArr = ..IliacusMedialis2.SPLine.InitWrapPosVecArr;
-  };
-  AnyDrawMuscle DrwMus = {#include "<PATH_DRAWSETTINGS_AMMR>/MusDrawSettings.any"};
-};//IliacusMedialis2New
 
 //AnyMuscleShortestPath Pectineus1New = 
 //{

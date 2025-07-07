@@ -2,7 +2,7 @@ Main =
 {
   DrawSettings.Colors =
   {
-    AnyVec3 Ligaments = {0, 1, 1};
+    Ligaments = {0, 1, 1};
     AnyVec3 Tendons = {1, 0, 1};      
   };
 };

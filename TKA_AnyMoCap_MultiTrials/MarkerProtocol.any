@@ -4,7 +4,7 @@
 // Marker on the Left Posterior Superior Iliac
 // CreateMarkerDriver LPSI (                         // A marker on the skeleton is created!
 // MarkerName= LPSI,                                 // Change the name here to the name of your Marker Protocol!:
-// MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,   // Marker is assigned to Pelvis Segment
+// MarkerPlacement=Trunk.Segments.PelvisSeg,   // Marker is assigned to Pelvis Segment
 // OptX=OFF, OptY=OFF, OptZ=ON,                // Is the position of the Marker good, or does it need to be optimised?
 //                                                   // Please be aware that having to many Markers optimised can lead to model failure
 // WeightX=1.0,WeightY=1.0,WeightZ=1.0,              // If you are convinced of the position of this Marker, you an increase the importance of it (weight)
@@ -22,7 +22,7 @@
 // Marker on the Left Posterior Superior Iliac
 CreateMarkerDriver LPsis ( 
 MarkerName= LPsis,
-MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+MarkerPlacement=Trunk.Segments.PelvisSeg,
 OptX=OFF, OptY=OFF, OptZ=ON,
 WeightX=10.0,WeightY=10.0,WeightZ=10.0,
 ScaleMarkerPosOnOff = 1
@@ -34,7 +34,7 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Right Posterior Superior Iliac
 CreateMarkerDriver RPsis (
 MarkerName= RPsis, 
-MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+MarkerPlacement=Trunk.Segments.PelvisSeg,
 OptX=OFF, OptY=OFF, OptZ=ON,
 WeightX=10.0,WeightY=10.0,WeightZ=10.0,
 ScaleMarkerPosOnOff = 1
@@ -46,7 +46,7 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Right Anterior Superior Iliac
 CreateMarkerDriver RAsis(
 MarkerName= RAsis, 
-MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+MarkerPlacement=Trunk.Segments.PelvisSeg,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0,
 ScaleMarkerPosOnOff = 1
@@ -58,7 +58,7 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Left Anterior Superior Iliac
 CreateMarkerDriver LAsis (
 MarkerName= LAsis ,
-MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+MarkerPlacement=Trunk.Segments.PelvisSeg,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0,
 ScaleMarkerPosOnOff = 1
@@ -72,7 +72,7 @@ ScaleMarkerPosOnOff = 1
 //// Marker on the Right Front Head
 //CreateMarkerDriver RFHD (
 //MarkerName= RFHD, 
-//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+//MarkerPlacement=Trunk.Segments.SkullSeg, 
 //OptX=OFF,OptY=OFF,OptZ=OFF,  
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0
 //) = {
@@ -83,7 +83,7 @@ ScaleMarkerPosOnOff = 1
 //// Marker on the Left Front Head
 //CreateMarkerDriver LFHD (
 //MarkerName= LFHD,  
-//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+//MarkerPlacement=Trunk.Segments.SkullSeg, 
 //OptX=OFF,OptY=OFF,OptZ=OFF,  
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0
 //) = {
@@ -94,7 +94,7 @@ ScaleMarkerPosOnOff = 1
 //// Marker on the Right Back Head
 //CreateMarkerDriver RBHD (
 //MarkerName= RBHD,  
-//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+//MarkerPlacement=Trunk.Segments.SkullSeg, 
 //OptX=OFF,OptY=OFF,OptZ=OFF,  
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0
 //) = {
@@ -104,7 +104,7 @@ ScaleMarkerPosOnOff = 1
 //// Marker on the Left Back Head
 //CreateMarkerDriver LBHD (
 //MarkerName= LBHD,  
-//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,   
+//MarkerPlacement=Trunk.Segments.SkullSeg,   
 //OptX=OFF,OptY=OFF,OptZ=OFF,
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0
 //) = {
@@ -116,7 +116,7 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Sternum
 CreateMarkerDriver Sternum (
 MarkerName= Sternum,  
-MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+MarkerPlacement=Trunk.Segments.ThoraxSeg, 
 OptX=OFF, OptY=OFF, OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
@@ -126,7 +126,7 @@ ScaleMarkerPosOnOff = 1
 
 CreateMarkerDriver Xiphoid (
 MarkerName= Xiphoid,  
-MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+MarkerPlacement=Trunk.Segments.ThoraxSeg, 
 OptX=OFF, OptY=OFF, OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
@@ -137,7 +137,7 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Thoracic Vertebra 10
 CreateMarkerDriver Thoracic (
 MarkerName= Thoracic,  
-MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+MarkerPlacement=Trunk.Segments.ThoraxSeg, 
 OptX=ON, OptY=ON, OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
