@@ -1,4 +1,4 @@
-AnyObjectPtrArray pArrMusList = ObjSearch("*", "AnyMuscle");
+AnyObjectPtrArray pArrMusList = ObjSearch("*.*", "AnyMuscle");
 
 PsoasMajor.PsoasMajor_PMT12I_TM= { #include "MusAdditions.any" };
 PsoasMajor.PsoasMajor_PML1I_TM= { #include "MusAdditions.any" };
