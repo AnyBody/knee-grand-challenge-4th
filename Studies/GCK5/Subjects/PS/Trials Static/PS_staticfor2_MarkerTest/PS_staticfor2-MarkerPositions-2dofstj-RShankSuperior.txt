@@ -1,0 +1,28 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Studies.MotionOptimization
+Operation: Main.Studies.MotionOptimization.Kinematics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.FileName = "..\Input\Subjects\PS\Static Trials\PS_staticfor2_MarkerTest\PS_staticfor2-MarkerPositions-2dofstj-RShankSuperior.txt"
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.NumberFormat.Digits = 15
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.NumberFormat.Width = 22
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.NumberFormat.Style = ScientificNumber
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.NumberFormat.FormatStr = "%22.15e"
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.Search = 
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.SepSign = " "
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.LineSepSign = ""
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.Header.TitleSectionOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.Header.ConstSectionOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.Header.VarSectionOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.Header.ColumnNamesOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.Header.LinePrefix = ""
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.ConstSectionSaveOptionsOnOff = On
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Studies.MotionOptimization.t
+col1  Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.RShankSuperior[0]
+col2  Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.RShankSuperior[1]
+col3  Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.RShankSuperior[2]
+----------------------------------------------------------
+Main.Studies.MotionOptimization.t Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.RShankSuperior[0] Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.RShankSuperior[1] Main.Studies.MotionOptimization.ComputeMarkerPositions.RShankSuperior.MarkerPlacementOutputFile.RShankSuperior[2]
+2.283333333333333e-001 -1.954455807102170e-002 3.528455095964743e-001 7.105496494908700e-002

@@ -1,0 +1,37 @@
+/*Tibial slope*/
+
+#define CUSTOM_TIBCOMP_POSE
+#define TIB_COMP_POS_X 0
+#define TIB_COMP_POS_Y 0
+#define TIB_COMP_ROT_POINT_X 24
+#define TIB_COMP_ROT_POINT_Y -8
+#define TIB_COMP_FLEXION 9
+#define TIB_COMP_VARUS_VALGUS 0
+
+TrialSpecificData={
+  #ifndef TRIAL_SPECIFIC_FDK_INITIAL_CONDITIONS
+   #define TRIAL_SPECIFIC_FDK_INITIAL_CONDITIONS
+  
+  AnyVector TibiaFemoralFDKInitPos = {-0.01,-0.005,-0.001}; // initial TF joint FDK position
+  AnyVector TibiaFemoralFDKInitRot = {0.006,0.015}; // initial TF joint FDK rotations
+  AnyVector PatellaFemurFDKInitPos = {-0.003,0,0.002,-0.025,0.067};
+  AnyVector PatellaTendonFDKInitPos = {0.058}; // initial patella tendon FDK length
+  AnyVector TibiaFemoralFDKInitRotX = {0}; // initial TF joint FDK rotations
+  #endif
+};
+
+#include "../PS_ngait_og_ss1/TrialSpecificData.any"
+
+#ifdef LABEL
+#undef LABEL
+#endif
+
+#ifdef INV_DYN_DRIVER_STRATEGY
+#undef INV_DYN_DRIVER_STRATEGY
+#endif
+
+#ifndef USE_2DOF_SUBTALAR_JOINT
+#define USE_2DOF_SUBTALAR_JOINT
+#endif
+
+#define INV_DYN_DRIVER_STRATEGY 5

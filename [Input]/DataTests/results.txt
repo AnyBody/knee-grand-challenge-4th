@@ -1,0 +1,4 @@
+.\GCK4_Femur.stl: Faces = 169532, Unique Vertices = 84768
+.\GCK6_preop_femur.stl: Faces = 37108, Unique Vertices = 18556
+.\morphed_mesh.stl: Faces = 169532, Unique Vertices = 9953
+.\TLEM2_Femur.stl: Faces = 75486, Unique Vertices = 37745

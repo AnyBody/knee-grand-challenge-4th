@@ -1,0 +1,28 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Studies.MotionOptimization
+Operation: Main.Studies.MotionOptimization.Kinematics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.FileName = "..\Input\Subjects\PS\Static Trials\PS_staticfor2\PS_staticfor2-MarkerPositions-2dofstj-LHindfoot.txt"
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.NumberFormat.Digits = 15
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.NumberFormat.Width = 22
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.NumberFormat.Style = ScientificNumber
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.NumberFormat.FormatStr = "%22.15e"
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.Search = 
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.SepSign = " "
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.LineSepSign = ""
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.Header.TitleSectionOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.Header.ConstSectionOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.Header.VarSectionOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.Header.ColumnNamesOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.Header.LinePrefix = ""
+Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.ConstSectionSaveOptionsOnOff = On
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Studies.MotionOptimization.t
+col1  Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.LHindfoot[0]
+col2  Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.LHindfoot[1]
+col3  Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.LHindfoot[2]
+----------------------------------------------------------
+Main.Studies.MotionOptimization.t Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.LHindfoot[0] Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.LHindfoot[1] Main.Studies.MotionOptimization.ComputeMarkerPositions.LHindfoot.MarkerPlacementOutputFile.LHindfoot[2]
+2.283333333333333e-001 7.565333005291788e-002 -3.935739704123532e-002 -6.101405190978715e-002

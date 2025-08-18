@@ -1,0 +1,35 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Studies.MotionOptimization
+Operation: Main.Studies.MotionOptimization.Kinematics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.FileName = "..\Input\Subjects\PS\Static Trials\PS_staticfor2\PS_staticfor2-output-euler-rightarm.txt"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.NumberFormat.Digits = 15
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.NumberFormat.Width = 22
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.NumberFormat.Style = ScientificNumber
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.NumberFormat.FormatStr = "%22.15e"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.Search = 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.SepSign = " "
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.LineSepSign = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.Header.TitleSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.Header.ConstSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.Header.VarSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.Header.ColumnNamesOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.Header.LinePrefix = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.ConstSectionSaveOptionsOnOff = On
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Studies.MotionOptimization.t
+col1  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.SternoClavicularProtraction
+col2  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.SternoClavicularElevation
+col3  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.SternoClavicularAxialRotation
+col4  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.GlenohumeralFlexion
+col5  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.GlenohumeralExternalRotation
+col6  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.GlenohumeralAbduction
+col7  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.ElbowFlexion
+col8  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.ElbowPronation
+col9  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.WristFlexion
+col10  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.WristAbduction
+----------------------------------------------------------
+Main.Studies.MotionOptimization.t Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.SternoClavicularProtraction Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.SternoClavicularElevation Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.SternoClavicularAxialRotation Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.GlenohumeralFlexion Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.GlenohumeralExternalRotation Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.GlenohumeralAbduction Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.ElbowFlexion Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.ElbowPronation Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.WristFlexion Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile7.WristAbduction
+2.083333333333333e-001 -6.012251266125396e-001 2.911662030886306e-001 -3.490658503166041e-001 5.205332747808718e-001 3.610374615659032e-001 7.087198901654472e-001 1.221746645811358e+000 0.000000000000000e+000 0.000000000000000e+000 0.000000000000000e+000

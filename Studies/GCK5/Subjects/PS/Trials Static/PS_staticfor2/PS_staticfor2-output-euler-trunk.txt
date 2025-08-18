@@ -1,0 +1,35 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Studies.MotionOptimization
+Operation: Main.Studies.MotionOptimization.Kinematics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.FileName = "..\Input\Subjects\PS\Static Trials\PS_staticfor2\PS_staticfor2-output-euler-trunk.txt"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.NumberFormat.Digits = 15
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.NumberFormat.Width = 22
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.NumberFormat.Style = ScientificNumber
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.NumberFormat.FormatStr = "%22.15e"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.Search = 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.SepSign = " "
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.LineSepSign = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.Header.TitleSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.Header.ConstSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.Header.VarSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.Header.ColumnNamesOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.Header.LinePrefix = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.ConstSectionSaveOptionsOnOff = On
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Studies.MotionOptimization.t
+col1  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisPosX
+col2  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisPosY
+col3  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisPosZ
+col4  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisRotX
+col5  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisRotY
+col6  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisRotZ
+col7  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisThoraxExtension
+col8  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisThoraxLateralBending
+col9  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisThoraxRotation
+col10  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.NeckExtension
+----------------------------------------------------------
+Main.Studies.MotionOptimization.t Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisPosX Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisPosY Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisPosZ Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisRotX Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisRotY Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisRotZ Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisThoraxExtension Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisThoraxLateralBending Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.PelvisThoraxRotation Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile1.NeckExtension
+2.083333333333333e-001 3.354947079889767e-001 4.641241293363688e-001 1.079741299042437e+000 1.583920108083595e+000 1.531193623519833e-003 -1.668267851592294e-002 -2.405151975449123e-001 5.809647804965639e-003 4.931862334196512e-002 0.000000000000000e+000

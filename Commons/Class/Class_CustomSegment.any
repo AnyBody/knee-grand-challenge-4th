@@ -1,0 +1,20 @@
+// Class template for creating a custom segment structure
+// This class interacts with the morphing class, and expects AlignTransform function
+#class_template CUSTOM_SEGMENT(__CLASS__= AnyRefNode)
+{
+    AnyVec3 O = {0, 0, 0};
+    AnyVec3 X = {1, 0, 0};
+    AnyVec3 Y = {0, 1, 0};
+    AnyVec3 Z  ={0, 0, 1};
+    
+    AnyVec3 O_New = .Align_Transform(O);
+    AnyVec3 X_New = .Align_Transform(X);
+    AnyVec3 Y_New = .Align_Transform(Y);
+    AnyVec3 Z_New = .Align_Transform(Z);    
+    
+    sRel = O_New;
+    ARel = {X_New-O_New, Y_New-O_New, Z_New-O_New}';
+    
+    #var AnyFloat SegmentSign = 1; // default right
+}; // custom segment
+

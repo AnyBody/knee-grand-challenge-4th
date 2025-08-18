@@ -1,3 +1,11 @@
 #include "..\libdef.any"
 
 #path USER_PATH_COMMONS   "Commons"
+#path TESTING   "Testing"
+#path GRANDCHALLENGE_MODEL "<USER_PATH_COMMONS>/SETUP.any"
+
+#include "<USER_PATH_COMMONS>\Class\Class_CreateLigament.any"
+#include "<USER_PATH_COMMONS>\Class\Class_MorphingPipeline.any"
+#include "<USER_PATH_COMMONS>\Class\Class_JointFittingData.any"
+#include "<USER_PATH_COMMONS>\Class\Class_CustomSegment.any"
+#include "<ANYBODY_PATH_TOOLBOX>\Mocap\ForcePlateType2.any"

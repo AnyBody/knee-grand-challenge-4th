@@ -1,0 +1,26 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Studies.MotionOptimization
+Operation: Main.Studies.MotionOptimization.Kinematics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.FileName = "..\Input\Subjects\PS\Static Trials\PS_staticfor2\PS_staticfor2-output-euler-leftlegtd-patellaflexion.txt"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.NumberFormat.Digits = 15
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.NumberFormat.Width = 22
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.NumberFormat.Style = ScientificNumber
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.NumberFormat.FormatStr = "%22.15e"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.Search = 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.SepSign = " "
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.LineSepSign = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.Header.TitleSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.Header.ConstSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.Header.VarSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.Header.ColumnNamesOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.Header.LinePrefix = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.ConstSectionSaveOptionsOnOff = On
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Studies.MotionOptimization.t
+col1  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.PatellaFlexion
+----------------------------------------------------------
+Main.Studies.MotionOptimization.t Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFilePatellaFlexion.PatellaFlexion
+2.083333333333333e-001 1.203590476626466e-001

@@ -1,0 +1,28 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Studies.MotionOptimization
+Operation: Main.Studies.MotionOptimization.Kinematics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.FileName = "..\Input\Subjects\PS\Static Trials\PS_staticfor2\PS_staticfor2-output-euler-leftleganklepostd-2dofstj.txt"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.NumberFormat.Digits = 15
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.NumberFormat.Width = 22
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.NumberFormat.Style = ScientificNumber
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.NumberFormat.FormatStr = "%22.15e"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.Search = 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.SepSign = " "
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.LineSepSign = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.Header.TitleSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.Header.ConstSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.Header.VarSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.Header.ColumnNamesOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.Header.LinePrefix = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.ConstSectionSaveOptionsOnOff = On
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Studies.MotionOptimization.t
+col1  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.LeftAnklePosX
+col2  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.LeftAnklePosY
+col3  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.LeftAnklePosZ
+----------------------------------------------------------
+Main.Studies.MotionOptimization.t Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.LeftAnklePosX Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.LeftAnklePosY Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile2c.LeftAnklePosZ
+2.283333333333333e-001 4.290158123438438e-001 5.951988343901562e-001 1.067962240532269e-001

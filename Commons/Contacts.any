@@ -6,13 +6,13 @@ REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientRefNode =
     #if KNEE_MODEL_VERSION == "GCK6"
     ScaleXYZ = {1, 1, 1} * 0.001;
     #endif
-    //    AnyDrawSurf DrwSurf = 
-    //    {
-    //      FileName = .FileName;
-    //      ScaleXYZ = .ScaleXYZ;
-    //      RGB = 0.5*{1, 1, 1};
-    //      Opacity = 0.5;
-    //    };      
+        AnyDrawSurf DrwSurf = 
+        {
+          FileName = .FileName;
+          ScaleXYZ = .ScaleXYZ;
+          RGB = 0.5*{1, 1, 1};
+          Opacity = 0.5;
+        };      
   };  
 };
 
@@ -24,13 +24,13 @@ REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode =
     #if KNEE_MODEL_VERSION == "GCK6"
     ScaleXYZ = {1, 1, 1} * 0.001;
     #endif
-    //    AnyDrawSurf DrwSurf = 
-    //    {
-    //      FileName = .FileName;
-    //      ScaleXYZ = .ScaleXYZ;
-    //      RGB = 0.5*{1, 1, 1};
-    //      Opacity = 0.5;
-    //    };      
+        AnyDrawSurf DrwSurf = 
+        {
+          FileName = .FileName;
+          ScaleXYZ = .ScaleXYZ;
+          RGB = 0.5*{1, 1, 1};
+          Opacity = 0.5;
+        };      
   };
   
   AnySurfSTL ContactSurf_Medial = 
@@ -39,13 +39,13 @@ REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientRefNode =
     #if KNEE_MODEL_VERSION == "GCK6"
     ScaleXYZ = {1, 1, 1} * 0.001;
     #endif
-    //    AnyDrawSurf DrwSurf = 
-    //    {
-    //      FileName = .FileName;
-    //      ScaleXYZ = .ScaleXYZ;
-    //      RGB = 0.5*{1, 1, 1};
-    //      Opacity = 0.5;
-    //    };      
+        AnyDrawSurf DrwSurf = 
+        {
+          FileName = .FileName;
+          ScaleXYZ = .ScaleXYZ;
+          RGB = 0.5*{1, 1, 1};
+          Opacity = 0.5;
+        };      
   };     
 };
 
@@ -57,13 +57,13 @@ REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientRefNode =
     #if KNEE_MODEL_VERSION == "GCK6"
     ScaleXYZ = {1, 1, 1} * 0.001;
     #endif
-    //    AnyDrawSurf DrwSurf = 
-    //    {
-    //      FileName = .FileName;
-    //      ScaleXYZ = .ScaleXYZ;
-    //      RGB = 0.5*{1, 1, 1};
-    //      Opacity = 0.5;
-    //    };      
+        AnyDrawSurf DrwSurf = 
+        {
+          FileName = .FileName;
+          ScaleXYZ = .ScaleXYZ;
+          RGB = 0.5*{1, 1, 1};
+          Opacity = 0.5;
+        };      
   };
 };
 

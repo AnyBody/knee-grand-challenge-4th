@@ -18,4 +18,13 @@ Main =
     AnyOperation& SaveHDF5= Main.ModelSetup.Macros.SaveOutputToHDF;
   };
   #endif
+  
+  
+  AnyOperationMacro DumpFileNames = {
+    MacroStr = {
+      "classoperation Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientRefNode.ContactSurf.FileName "+strquote("Dump"),
+      "classoperation Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientRefNode.ContactSurf.FileName "+strquote("Dump"),
+      "classoperation Main.HumanModel.BodyModel.Right.Leg.Seg.Patella.PatientRefNode.ContactSurf.FileName "+strquote("Dump")
+    };  
+  };
 };

@@ -1,0 +1,88 @@
+PatientNode = {
+  #if BM_LEG_RIGHT != OFF
+
+  AnyFunTransform3DLin ThighRToPelvisReg = {
+    ScaleMat ??= eye(3);
+    Offset ??= {0,0,0};
+  };
+  AnyRefNode HipJointR = {
+    sRel = .ThighRToPelvisReg(.....Right.Leg.Seg.Thigh.PatientNode.HipJointFit.sRel);
+    ARel = RotMat(
+      .ThighRToPelvisReg({0.0,0.0,0.0}),
+      .ThighRToPelvisReg({1.0,0.0,0.0}),
+      .ThighRToPelvisReg({0.0,1.0,0.0})
+      )*.....Right.Leg.Seg.Thigh.PatientNode.ARel'*.....Right.Leg.Seg.Thigh.HipJointNew.ARel; // fitted and aligned axes
+  };
+  #endif
+  #if BM_LEG_LEFT != OFF
+
+  AnyFunTransform3DLin ThighLToPelvisReg = {
+    ScaleMat ??= eye(3);
+    Offset ??= {0,0,0};
+  };
+  AnyRefNode HipJointL = {
+    sRel = .ThighLToPelvisReg(.....Left.Leg.Seg.Thigh.PatientNode.HipJointFit.sRel);
+    ARel = RotMat(
+      .ThighLToPelvisReg({0.0,0.0,0.0}),
+      .ThighLToPelvisReg({1.0,0.0,0.0}),
+      .ThighLToPelvisReg({0.0,1.0,0.0})
+      )*.....Left.Leg.Seg.Thigh.PatientNode.ARel'*.....Left.Leg.Seg.Thigh.HipJointNew.ARel; // fitted and aligned axes
+  };
+  #endif
+};// automatically created
+
+
+#if BM_LEG_RIGHT != OFF
+AnyRefNode HipJointRNew = {
+  sRel = .PatientNode.sRel + .PatientNode.HipJointR.sRel * .PatientNode.ARel';
+  ARel = .PatientNode.ARel * .PatientNode.HipJointR.ARel;
+  AnyDrawRefFrame DrawKneeJointTibia= {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
+};  
+#endif
+#if BM_LEG_LEFT != OFF
+AnyRefNode HipJointLNew = {
+  sRel = .PatientNode.sRel + .PatientNode.HipJointL.sRel * .PatientNode.ARel';
+  ARel = .PatientNode.ARel * .PatientNode.HipJointL.ARel;
+  AnyDrawRefFrame DrawKneeJointTibia= {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
+};  
+#endif
+
+#if (BM_JOINT_TYPE_HIP_RIGHT == _JOINT_TYPE_USERDEFINED_) | (BM_JOINT_TYPE_HIP_LEFT == _JOINT_TYPE_USERDEFINED_)
+Right = {
+  AnyRefNode HipJoint = {};
+};
+Left = {
+  AnyRefNode HipJoint = {};
+};
+#endif
+
+
+
+#if BM_LEG_RIGHT != OFF
+
+Right.HipJoint = {
+  AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
+  //sRel = ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
+  sRel = ..HipJointRNew.sRel;
+  #include "<ANYBODY_PATH_BODY>/DrawSettings/JointAxesProximal.any"
+  ARel = ..AnatomicalFrame.ARel;
+  AnyRefNode ISB = {
+    ARel = ...AnatomicalFrameISB.ARel;
+  };
+};
+
+#endif
+
+
+#if BM_LEG_LEFT != OFF
+Left.HipJoint = {
+  AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
+  //sRel = ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
+  sRel = ..HipJointLNew.sRel;
+  #include "<ANYBODY_PATH_BODY>/DrawSettings/JointAxesProximal.any"
+  ARel = ..AnatomicalFrame.ARel;
+  AnyRefNode ISB = {
+    ARel = ...AnatomicalFrameISB.ARel;
+  };
+};
+#endif

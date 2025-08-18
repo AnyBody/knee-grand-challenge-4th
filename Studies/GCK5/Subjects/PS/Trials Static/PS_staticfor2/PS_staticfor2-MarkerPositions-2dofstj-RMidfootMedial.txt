@@ -1,0 +1,28 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Studies.MotionOptimization
+Operation: Main.Studies.MotionOptimization.Kinematics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.FileName = "..\Input\Subjects\PS\Static Trials\PS_staticfor2\PS_staticfor2-MarkerPositions-2dofstj-RMidfootMedial.txt"
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.NumberFormat.Digits = 15
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.NumberFormat.Width = 22
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.NumberFormat.Style = ScientificNumber
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.NumberFormat.FormatStr = "%22.15e"
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.Search = 
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.SepSign = " "
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.LineSepSign = ""
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.Header.TitleSectionOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.Header.ConstSectionOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.Header.VarSectionOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.Header.ColumnNamesOnOff = On
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.Header.LinePrefix = ""
+Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.ConstSectionSaveOptionsOnOff = On
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Studies.MotionOptimization.t
+col1  Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.RMidfootMedial[0]
+col2  Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.RMidfootMedial[1]
+col3  Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.RMidfootMedial[2]
+----------------------------------------------------------
+Main.Studies.MotionOptimization.t Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.RMidfootMedial[0] Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.RMidfootMedial[1] Main.Studies.MotionOptimization.ComputeMarkerPositions.RMidfootMedial.MarkerPlacementOutputFile.RMidfootMedial[2]
+2.283333333333333e-001 1.359639183026675e-001 -3.222273098257587e-002 -4.637739375371013e-002

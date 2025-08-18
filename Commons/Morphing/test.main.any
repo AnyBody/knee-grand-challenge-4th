@@ -1,0 +1,8 @@
+Main =  {
+  
+  AnyFixedRefFrame fr = {
+    
+    AnyDrawSurf srf = {FileName="Pelvis";ScaleXYZ={1,1,1}*1000;};
+  };
+  
+};

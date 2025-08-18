@@ -1,0 +1,227 @@
+#define DRAW_SURF(NAME, FILENAME, SCALE) AnyDrawSurf NAME = {FileName = FILENAME; ScaleXYZ=SCALE*{1,1,1};}
+#define DRAW_LANDMARKS(NAME, FILENAME, SCALE) AnyDrawPointCloud NAME = {\
+   PointStyle = {\
+     Style = PointStyleSphere;// Marker style.\
+     Size = 0.005;// Size of markers.\
+   };\
+   Points3D = On;\
+  AnyFile FileName = FILENAME; \
+  AnyInputXML XML = {FileName = .FileName;};\
+  AnyFloat xptr0 = Obj2Num(ObjSelect("XML.Contents.PickedPoints.point*.active", "==1", ".x_*"));\
+  AnyFloat yptr0 = Obj2Num(ObjSelect("XML.Contents.PickedPoints.point*.active", "==1", ".y_*"));\
+  AnyFloat zptr0 = Obj2Num(ObjSelect("XML.Contents.PickedPoints.point*.active", "==1", ".z_*"));\
+  Points = {xptr0',yptr0',zptr0'}';//, yptr0, zptr0};    \
+  ScaleXYZ=SCALE*{1,1,1};}
+
+
+
+Main = {
+
+  #define SHOW_GEOMETRY 1
+  #define SHOW_IMPLANTS 1
+  #define SHOW_LANDMARKS 1
+
+  AnyFloat Spacing = 0.5;
+  AnyFloat Opacity = 0.2;
+  AnyFixedRefFrame GCK4 = {Origin ={0, 0, -1} * .Spacing;};
+  AnyFixedRefFrame GCK5 = {Origin ={0, 0, 0} * .Spacing;};
+  AnyFixedRefFrame GCK6 = {Origin ={0, 0, 1} * .Spacing;};
+
+  
+  #if SHOW_GEOMETRY == 1
+  GCK4 = {    
+    DRAW_SURF(Pelvis4, "..\GCK4\STL\Bone\Target\GCK4_Pelvis.stl", 1);Pelvis4={RGB={0,1,0};Opacity=..Opacity;};
+    DRAW_SURF(Fem4, "..\GCK4\STL\Bone\Target\GCK4_Femur.stl", 1);Fem4={RGB={0,1,0};Opacity=..Opacity;};
+    DRAW_SURF(Tib4, "..\GCK4\STL\Bone\Target\GCK4_Tibia.stl", 1);Tib4={RGB={0,1,0};};
+    DRAW_SURF(Pat4, "..\GCK4\STL\Bone\Target\GCK4_Patella.stl", 1);Pat4={RGB={0,1,0};};
+
+    DRAW_SURF(MidFoot4, "..\GCK4\STL\Bone\Target\GCK4_MidFoot.stl", 1);MidFoot4={RGB={0,1,0};};
+    DRAW_SURF(Talus4, "..\GCK4\STL\Bone\Target\GCK4_Talus.stl", 1);Talus4={RGB={0,1,0};};
+    DRAW_SURF(Calc4, "..\GCK4\STL\Bone\Target\GCK4_Calcaneus.stl", 1);Calc4={RGB={0,1,0};};
+    DRAW_SURF(Met4, "..\GCK4\STL\Bone\Target\GCK4_Metatarsals.stl", 1);Met4={RGB={0,1,0};};
+    DRAW_SURF(Phal4, "..\GCK4\STL\Bone\Target\GCK4_Phalanges.stl", 1);Phal4={RGB={0,1,0};};
+  };
+  GCK5= {
+    DRAW_SURF(Fem5, "..\GCK5\STL\Bone\Target\Femur_target.stl", 0.001);Fem5={RGB={1,1,0};Opacity=..Opacity;};
+    DRAW_SURF(Tib5, "..\GCK5\STL\Bone\Target\Tibia_target.stl", 0.001);Tib5={RGB={1,1,0};};
+    DRAW_SURF(TibFib5, "..\GCK5\STL\Bone\Target\Tibiafibula_target.stl", 0.001);TibFib5={RGB={1,1,0};Opacity=..Opacity;};
+    DRAW_SURF(Pat5, "..\GCK5\STL\Bone\Target\Patella_target.stl", 0.001);Pat5={RGB={1,1,0};};
+  };
+
+  GCK6 ={
+    DRAW_SURF(Fem6, "..\GCK6\STL\Bone\Target\GCK6_preop_Femur.stl", 1);Fem6={RGB={0,1,1};Opacity=..Opacity;};
+    DRAW_SURF(Tib6, "..\GCK6\STL\Bone\Target\GCK6_preop_tibia.stl", 1);Tib6={RGB={0,1,1};};
+    DRAW_SURF(Pat6, "..\GCK6\STL\Bone\Target\GCK6_preop_patella.stl", 1);Pat6={RGB={0,1,1};};
+  };
+  #endif
+
+
+
+  
+  
+  
+  #if SHOW_IMPLANTS == 1
+  GCK4 = {
+//    DRAW_SURF(FemComp4, "..\GCK4\STL\Implant\Femoral Component.stl", 1);FemComp4={RGB={0,0,1};Opacity=..Opacity;};
+//    DRAW_SURF(TibIns4, "..\GCK4\STL\Implant\Tibial Insert.stl", 1);TibIns4={RGB={0,1,1};Opacity=..Opacity;};
+//    DRAW_SURF(TibTray4, "..\GCK4\STL\Implant\Tibial Tray.stl", 1);TibTray4={RGB={0,1,1};Opacity=..Opacity;};
+
+    DRAW_SURF(FemCompRemeshed4, "..\GCK4\STL\Implant\Femoral Component_remeshed.stl", 1);FemCompRemeshed4={RGB={0,0,1};Opacity=..Opacity;};
+    DRAW_SURF(TibInsRemeshed4, "..\GCK4\STL\Implant\Tibial Insert_remeshed.stl", 1);TibInsRemeshed4={RGB={0,1,1};Opacity=..Opacity;};
+    DRAW_SURF(TibTrayRemeshed4, "..\GCK4\STL\Implant\Tibial Tray_remeshed.stl", 1);TibTrayRemeshed4={RGB={0,1,1};Opacity=..Opacity;};
+//    DRAW_SURF(Fem4, "..\GCK4\STL\Bone\Target\GCK4_Femur.stl", 1);Fem4={RGB={0,1,0};Opacity=..Opacity;};
+//    DRAW_SURF(Tib4, "..\GCK4\STL\Bone\Target\GCK4_Tibia.stl", 1);Tib4={RGB={0,1,0};};
+//    DRAW_SURF(Pat4, "..\GCK4\STL\Bone\Target\GCK4_Patella.stl", 1);Pat4={RGB={0,1,0};};
+//
+//    DRAW_SURF(MidFoot4, "..\GCK4\STL\Bone\Target\GCK4_MidFoot.stl", 1);MidFoot4={RGB={0,1,0};};
+//    DRAW_SURF(Talus4, "..\GCK4\STL\Bone\Target\GCK4_Talus.stl", 1);Talus4={RGB={0,1,0};};
+//    DRAW_SURF(Calc4, "..\GCK4\STL\Bone\Target\GCK4_Calcaneus.stl", 1);Calc4={RGB={0,1,0};};
+//    DRAW_SURF(Met4, "..\GCK4\STL\Bone\Target\GCK4_Metatarsals.stl", 1);Met4={RGB={0,1,0};};
+//    DRAW_SURF(Phal4, "..\GCK4\STL\Bone\Target\GCK4_Phalanges.stl", 1);Phal4={RGB={0,1,0};};
+  };
+  GCK5= {
+    //C:\DEV\grand-knee-challenge5\STLs\ all_tissue.stl Calcaneus.stl "Fem 3L.stl" "Fem 4L.stl" "Fem 5L.stl" "Fem 5L_3.stl" "Fem 5L_0.stl" "Fem 5L_3.stl" "Fem 5L_6.stl" "Fem 5L_9.stl" 
+    //"Femoral Component.stl" "Femur preop.stl" "Femur preop - orig.stl" "Femur preop.stl" Femur.stl Fibula.stl MuscleTissueUpperLeg.stl "Patella preop.stl" Patella.stl "Patellar Button.stl" Pelvis.stl Qceps_tendon.stl Talus.stl "Tibia preop - orig.stl" "Tibia preop.stl" Tibia.stl "Tibial Insert.stl" "Tibial Tray.stl"     
+    DRAW_SURF(FemComp5, "C:\DEV\grand-knee-challenge5\STLs\femoral component.stl", 0.001);FemComp5={RGB={1,0,0};};
+    DRAW_SURF(PatButton5, "C:\DEV\grand-knee-challenge5\STLs\patellar button.stl", 0.001);PatButton5={RGB={1,0,0};};
+    DRAW_SURF(TibIns5, "C:\DEV\grand-knee-challenge5\STLs\Tibial Insert.stl", 0.001);TibIns5={RGB={1,0,0};};
+    //DRAW_SURF(TibInsLat5, "C:\DEV\grand-knee-challenge5\STLs\tibial_insert_lateral.stl", 1);TibInsLat5={RGB={1,0,0};};
+    //DRAW_SURF(TibInsMed5, "C:\DEV\grand-knee-challenge5\STLs\tibial_insert_medial.stl", 1);TibInsMed5={RGB={1,0,0};};
+    DRAW_SURF(TibTray5, "C:\DEV\grand-knee-challenge5\STLs\tibial tray.stl", 0.001);TibTray5={RGB={1,0,0};};
+  };
+  GCK6 ={
+//    femoral_component.stl patellar_button.stl "Tibial Insert postop position.stl" tibial_insert_lateral.stl tibial_insert_medial.stl tibial_tray.stl 
+    DRAW_SURF(FemComp6, "..\GCK6\STL\Implant\femoral_component.stl", 1);FemComp6={RGB={1,1,0};};
+    DRAW_SURF(PatButton6, "..\GCK6\STL\Implant\patellar_button.stl", 1);PatButton6={RGB={1,1,0};};
+    DRAW_SURF(TibIns6, "..\GCK6\STL\Implant\Tibial Insert postop position.stl", 1);TibIns6={RGB={1,1,0};};
+    DRAW_SURF(TibInsLat6, "..\GCK6\STL\Implant\tibial_insert_lateral.stl", 1);TibInsLat6={RGB={1,1,0};};
+    DRAW_SURF(TibInsMed6, "..\GCK6\STL\Implant\tibial_insert_medial.stl", 1);TibInsMed6={RGB={1,1,0};};
+    DRAW_SURF(TibTray6, "..\GCK6\STL\Implant\tibial_tray.stl", 1);TibTray6={RGB={1,0,0};};
+    
+    //femur_implant_surf.stl patella_implant_surf.stl tibia_implant_surf_lat.stl tibia_implant_surf_med.stl 
+    DRAW_SURF(FemCont6, "..\GCK6\STL\Implant\Contact\femur_implant_surf.stl", 0.001);FemCont6={RGB={0,0.5,1};Opacity=..Opacity;};
+    DRAW_SURF(TibContL6, "..\GCK6\STL\Implant\Contact\tibia_implant_surf_lat.stl", 0.001);TibContL6={RGB={0,0.5,1};};
+    DRAW_SURF(TibContM6, "..\GCK6\STL\Implant\Contact\tibia_implant_surf_med.stl", 0.001);TibContM6={RGB={0,0.5,1};};
+    DRAW_SURF(PatCont6, "..\GCK6\STL\Implant\Contact\patella_implant_surf.stl", 0.001);PatCont6={RGB={0,0.5,1};};
+    
+  };
+  #endif
+
+  #if SHOW_LANDMARKS == 1
+  
+   #path USER_PATH_INPUTDATA "..\GCK4\"
+  
+   // Path of the picked landmarks for the target Grand Challenge Knee 4th Competition femur bone
+   #path PATH_TARGET_FEMUR_LANDMARKS  "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged femur_picked_points.pp"
+   // Path of the STL file for the target Grand Challenge Knee 4th Competition femur PreOP bone
+   #path PATH_TARGET_FEMUR_PREOP_STL  "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged femur.stl"
+   // Path of the STL file for the target Grand Challenge Knee 4th Competition femur PostOP bone
+   #path PATH_TARGET_FEMUR_POSTOP_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Femur.stl"
+   // Path of the picked landmarks for the target Grand Challenge Knee 4th Competition femur bone lateral wrapping surface
+   #path PATH_TARGET_FEMUR_POSTOP_WRAPPING_LANDMARKS "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Femur_Wrapping_Lateral_picked_points.pp"
+   // Path of the picked landmarks for the target Grand Challenge Knee 4th Competition tibia bone
+   #path PATH_TARGET_TIBIA_LANDMARKS  "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged tibia_picked_points.pp"
+   // Path of the STL file for the target Grand Challenge Knee 4th Competition tibia PreOP bone
+   #path PATH_TARGET_TIBIA_PREOP_STL  "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged tibia.stl"
+   // Path of the STL file for the target Grand Challenge Knee 4th Competition tibia PostOP bone
+   #path PATH_TARGET_TIBIA_POSTOP_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Tibia.stl"
+   // Path of the STL file for the target Grand Challenge Knee 4th Competition fibula bone
+   #path PATH_TARGET_FIBULA_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Fibula.stl"
+   // Path of the picked landmarks for the target Grand Challenge Knee 4th Competition patella bone
+   #path PATH_TARGET_PATELLA_LANDMARKS "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged patella_remeshed_picked_points.pp"
+   // Path of the STL file for the target Grand Challenge Knee 4th Competition patella PreOP bone
+   #path PATH_TARGET_PATELLA_PREOP_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_merged patella_remeshed.stl"
+   // Path of the STL file for the target Grand Challenge Knee 4th Competition patella PostOP bone
+   #path PATH_TARGET_PATELLA_POSTOP_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Patella.stl"
+   // Path of the STL file for the target Grand Challenge Knee 4th Competition talus bone 
+   #path PATH_TARGET_TALUS_STL "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Talus.stl"
+   // Path of the picked landmarks for the target Grand Challenge Knee 4th Competition talus bone
+   #path PATH_TARGET_TALUS_LANDMARKS "<USER_PATH_INPUTDATA>\STL\Bone\Target\GCK4_Talus_picked_points.pp"
+   
+   // Path of the STL file for the Grand Challenge Knee 4th Competition implant femoral head 
+   #path PATH_IMPLANT_HIP_FEMORAL_HEAD_RIGHT_STL "<USER_PATH_INPUTDATA>\STL\Implant\Hip Implant Femoral Component.stl"
+   // Path of the STL file for the Grand Challenge Knee 4th Competition implant femoral femoral component
+   #path PATH_IMPLANT_FEMUR_RIGHT_STL          "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_remeshed.stl"
+   // Path of the STL file for the Grand Challenge Knee 4th Competition implant tibial tray
+   #path PATH_IMPLANT_TIBIA_BASE_STL           "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Tray_remeshed.stl"
+   // Path of the STL file for the Grand Challenge Knee 4th Competition implant tibial insert lateral
+   #path PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Insert_remeshed_lateral.stl"
+   // Path of the STL file for the Grand Challenge Knee 4th Competition implant tibial insert medial
+   #path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL  "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Insert_remeshed_medial.stl"
+   // Path of the STL file for the Grand Challenge Knee 4th Competition implant patellar dome
+   #path PATH_IMPLANT_PATELLA_DOME_STL         "<USER_PATH_INPUTDATA>\STL\Implant\Patellar Button_remeshed.stl"
+   // Path of the STL file for the Grand Challenge Knee 4th Competition implant femoral component surface contact
+   #path PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT4          "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Femoral Component_Cut_Ver2_Meshmixer.stl"
+   // Path of the STL file for the Grand Challenge Knee 4th Competition implant tibial insert lateral surface contact
+   #path PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL_CONTACT4 "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Tibial Insert_Lateral_Cut_Ver2_Meshmixer.stl"
+   // Path of the STL file for the Grand Challenge Knee 4th Competition implant tibial insert medial surface contact
+   #path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL_CONTACT4  "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Tibial Insert_Medial_Cut_Ver2_Meshmixer.stl"
+   // Path of the STL file for the Grand Challenge Knee 4th Competition implant patella dome surface contact
+   #path PATH_IMPLANT_PATELLA_DOME_STL_CONTACT4         "<USER_PATH_INPUTDATA>\STL\Implant\Contact\Patellar Button_Cut_Ver2_Meshmixer.stl"
+   
+   // Path of the picked landmarks for the ligament attachments on the femur bone
+   #path PATH_TARGET_LIGAMENT_FEMUR_PICKED_POINTS4 "<USER_PATH_INPUTDATA>\Ligament\GCK4_Femur_Ligament_picked_points.pp"
+   // Path of the picked landmarks for the ligament attachments on the tibia bone
+   #path PATH_TARGET_LIGAMENT_TIBIA_PICKED_POINTS4 "<USER_PATH_INPUTDATA>\Ligament\GCK4_Tibia_Ligament_picked_points.pp"
+   // Path of the picked landmarks for the ligament attachments on the fibular bone
+   #path PATH_TARGET_LIGAMENT_FIBULA_PICKED_POINTS4 "<USER_PATH_INPUTDATA>\Ligament\GCK4_Fibula_Ligament_picked_points.pp"
+   // Path of the picked landmarks for the ligament attachments on the patella bone
+   #path PATH_TARGET_LIGAMENT_PATELLA_PICKED_POINTS4 "<USER_PATH_INPUTDATA>\Ligament\GCK4_Patella_Ligament_picked_points.pp"
+   
+   // Path of the picked landmarks for the implant hip femoral component
+   #path PATH_TARGET_IMPLANT_HIP_PICKED_POINTS4 "<USER_PATH_INPUTDATA>\STL\Implant\Hip Implant Femoral Component_picked_points.pp"
+   // Path of the picked landmarks for the implant hip femoral component axial direction
+   #path PATH_TARGET_IMPLANT_HIP_PICKED_POINTS_AXIAL4 "<USER_PATH_INPUTDATA>\STL\Implant\Hip Implant Femoral Component_picked_points_axial.pp"
+   // Path of the picked landmarks for the implant femoral component anterior
+   #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_ANTERIOR4 "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_anterior.pp"
+   // Path of the picked landmarks for the implant femoral component posterior
+   #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_POSTERIOR4 "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_posterior.pp"
+   // Path of the picked landmarks for the implant femoral component lateral anterior
+   #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_ANTERIOR4 "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_lateral_anterior.pp"
+   // Path of the picked landmarks for the implant femoral component medial anterior
+   #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_MEDIAL_ANTERIOR4 "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_medial_anterior.pp"
+   // Path of the picked landmarks for the implant femoral component lateral posterior
+   #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_POSTERIOR4 "<USER_PATH_INPUTDATA>\STL\Implant\Femoral Component_picked_points_lateral_posterior.pp"
+   // Path of the picked landmarks for the implant tibial centeral posterior
+   #path PATH_TARGET_IMPLANT_TIBIA_INSERT_PICKED_POINTS_CENTRAL_POSTERIOR4 "<USER_PATH_INPUTDATA>\STL\Implant\Tibial Insert_picked_points_central_posterior.pp"
+  
+  
+   #path USER_PATH_INPUTDATA6 "..\GCK6\"
+   #path PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT          "<USER_PATH_INPUTDATA6>\STL\Implant\Contact\femur_implant_surf.stl"
+   #path PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL_CONTACT "<USER_PATH_INPUTDATA6>\STL\Implant\Contact\tibia_implant_surf_lat.stl"
+   #path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL_CONTACT  "<USER_PATH_INPUTDATA6>\STL\Implant\Contact\tibia_implant_surf_med.stl"
+   #path PATH_IMPLANT_PATELLA_DOME_STL_CONTACT         "<USER_PATH_INPUTDATA6>\STL\Implant\Contact\patella_implant_surf.stl"
+   
+
+   #path PATH_TARGET_LIGAMENT_FEMUR_PICKED_POINTS "<USER_PATH_INPUTDATA6>\Ligament\GCK6_Femur_Ligament_picked_points.pp"
+   #path PATH_TARGET_LIGAMENT_TIBIA_PICKED_POINTS "<USER_PATH_INPUTDATA6>\Ligament\GCK6_Tibia_Ligament_picked_points.pp"
+   #path PATH_TARGET_LIGAMENT_FIBULA_PICKED_POINTS "<USER_PATH_INPUTDATA6>\Ligament\GCK6_Fibula_Ligament_picked_points.pp"
+   #path PATH_TARGET_LIGAMENT_PATELLA_PICKED_POINTS "<USER_PATH_INPUTDATA6>\Ligament\GCK6_Patella_Ligament_picked_points.pp"
+   
+   #path PATH_TARGET_IMPLANT_HIP_PICKED_POINTS "<USER_PATH_INPUTDATA6>\STL\Bone\Target\Hip Femoral Component_picked_points.pp"   
+   #path PATH_TARGET_IMPLANT_HIP_PICKED_POINTS_AXIAL "<USER_PATH_INPUTDATA6>\STL\Bone\Target\Hip Femoral Component_picked_points_axial.pp"
+   #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_ANTERIOR "<USER_PATH_INPUTDATA6>\STL\Implant\femoral_component_anterior_picked_points.pp"
+   #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_POSTERIOR "<USER_PATH_INPUTDATA6>\STL\Implant\femoral_component_posterior_picked_points.pp"
+   #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_ANTERIOR "<USER_PATH_INPUTDATA6>\STL\Implant\femoral_component_anterior_lateral_picked_points.pp"
+   #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_MEDIAL_ANTERIOR "<USER_PATH_INPUTDATA6>\STL\Implant\femoral_component_anterior_medial_picked_points.pp"
+   #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_POSTERIOR "<USER_PATH_INPUTDATA6>\STL\Implant\femoral_component_posterior_lateral_picked_points.pp"
+   #path PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_KNEE_AXIS "<USER_PATH_INPUTDATA6>\STL\Implant\femoral_component_knee_axes_picked_points.pp"
+   
+   
+   #path PATH_TARGET_IMPLANT_TIBIA_INSERT_PICKED_POINTS_CENTRAL_POSTERIOR "<USER_PATH_INPUTDATA6>\STL\Implant\tibial_insert_central_posterior_picked_points.pp"   
+  GCK4 = {};
+   
+  GCK6 = {
+   DRAW_LANDMARKS(ImplHipPts6, PATH_TARGET_IMPLANT_HIP_PICKED_POINTS, 1);ImplHipPts6={RGB={0,0.5,1};};  
+   DRAW_LANDMARKS(ImplHipAxPts6, PATH_TARGET_IMPLANT_HIP_PICKED_POINTS_AXIAL, 1);ImplHipAxPts6={RGB={1,0.0,1};};  
+   DRAW_LANDMARKS(FemAntPts6,  PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_ANTERIOR, 1);FemAntPts6={RGB={1,0.5,0.5};};  
+   DRAW_LANDMARKS(FemPostPts6,  PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_POSTERIOR, 1);FemPostPts6={RGB={1,0.5,0};};  
+   DRAW_LANDMARKS(FemLatAntPts6,  PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_ANTERIOR, 1);FemLatAntPts6={RGB={1,0,0};};  
+   DRAW_LANDMARKS(FemMedAntPts6,  PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_MEDIAL_ANTERIOR, 1);FemMedAntPts6={RGB={1,0,1};};  
+//   DRAW_LANDMARKS(FemLatPostPts6,  PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_POSTERIOR, 1);FemLatPostPts6={RGB={1,0.5,0};};  
+//   DRAW_LANDMARKS(FemMedPostPts6,  PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_MEDIAL_POSTERIOR, 1);FemMedPostPts6={RGB={0.5,0,1};};  
+   DRAW_LANDMARKS(FemKneeAxis6, PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_KNEE_AXIS, 1);FemKneeAxis6={RGB={0,0.0,0.0};};  
+  };
+  #endif
+
+};

@@ -1,532 +1,93 @@
-AnyRefNode PatientRefNode = 
-{
-  AnyVec3 O = {0, 0, 0};
-  AnyVec3 X = {1, 0, 0};
-  AnyVec3 Y = {0, 1, 0};
-  AnyVec3 Z  ={0, 0, 1};
+PatientNode = {
   
-  AnyVec3 O_New = .Align_Transform(O);
-  AnyVec3 X_New = .Align_Transform(X);
-  AnyVec3 Y_New = .Align_Transform(Y);
-  AnyVec3 Z_New = .Align_Transform(Z);    
+  //AnyDrawRefFrame PatientNode = {ScaleXYZ={1,1,1}*0.1;RGB={1,1,0.2};};
   
-  sRel = O_New;
-  ARel = {X_New-O_New, Y_New-O_New, Z_New-O_New}';
+  JOINT_FITTING_DATA_THIGH FittingData() = {};
   
-  #if KNEE_MODEL_VERSION == "GCK4"  
-  AnyRefNode RotNode = 
-  {
-    ARel = RotMat((SEG_SIGN)*pi, y);
-  };
-  AnyRefNode OffsetNode = 
-  {
-    //sRel = {0.0, 0.0105 + IMPLANT_AP_OFFSET, 0.012};
-    sRel = {0, 0, (SEG_SIGN)*0};
-    ARel = .RotNode.ARel;      
-  };
-  #endif
-
-  #if KNEE_MODEL_VERSION == "GCK6"  
-  AnyRefNode KneeJointNewBase = {
-    sRel = .Implant_Femoral_KneeAxis_Fitting_Surf_Node.sRel+{0.0,0.0,.Implant_Femoral_KneeAxis_Fitting_Surf_Node.Length/2.0}*.Implant_Femoral_KneeAxis_Fitting_Surf_Node.ARel'; 
-
-    ARel = .Implant_Femoral_KneeAxis_Fitting_Surf_Node.ARel;
-    
-//    AnyDrawRefFrame Drw = 
-//    {
-//      RGB = {1, 0, 1};
-//      ScaleXYZ = 0.15*{1, 1, 1};
-//    };    
-    
-  };
-  #endif
-  
-    
-  #if SEG_SIGN == 1
-  AnyDrawSurf Drw_Bone_PostOp = 
-  {
-    //FileName = "..\Input\STL\Bone\Target\GCK4_Femur" ;
-    FileName = PATH_TARGET_FEMUR_POSTOP_STL ;    
-    RGB = Main.DrawSettings.Colors.Segments;
-    Opacity = 1.0;
-    ScaleXYZ = {1, 1, 1};
-  };
-
-  AnyDrawSurf Drw_Implant_Femur = 
-  {
-    //FileName = "..\Input\STL\Implant\Femoral Component.stl"  ;
-    FileName = PATH_IMPLANT_FEMUR_RIGHT_STL;
-    #if KNEE_MODEL_VERSION == "GCK6"
-    ScaleXYZ = {1, 1, 1} * 0.001;
-    #endif
-    RGB = 0.5*{1, 1, 1};
-    Opacity = 1.0;
-  };      
-  #if KNEE_MODEL_VERSION == "GCK4"    
-  AnyDrawSurf Drw_Implant_Femoral_Head = 
-  {
-    //FileName = "..\Input\STL\Implant\Hip Implant Femoral Component.stl"  ;
-    FileName = PATH_IMPLANT_HIP_FEMORAL_HEAD_RIGHT_STL ;
-    #if KNEE_MODEL_VERSION == "GCK6"
-    ScaleXYZ = {1, 1, 1} * 0.001;
-    #endif
-    RGB = 0.5*{1, 1, 1};
-    //Opacity = 0.5;
-  };         
-  #endif
-
-  #endif
-  
-  #if SEG_SIGN == -1
-  AnyDrawSurf Drw_Bone_PreOp = 
-  {
-    FileName = ....GeoScaling.Thigh.MyScalingLaw.Surfaces.Target;
-    RGB = Main.DrawSettings.Colors.Segments;
-    Opacity = 1.0;
-    ScaleXYZ = {1, 1, -1};
-  };  
-   
-  #endif
-   #if KNEE_MODEL_VERSION == "GCK6"  
-  AnyFolder Implant_Knee_Axis_Points_Picked = {
-    
-    AnyInputXML XMLObject = 
-    {
-      
-      FileName = PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_KNEE_AXIS;
-    };
-    
-    AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
-    AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
-    AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
-    AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
-    AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
-    AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
+  //fit cylinders to find a knee joint node
+  AnySurfCylinderFit KneeJointFit = {    
+    Length = 0.0;
+    Points = .FittingData.KneeJointPoints;//will use morphed condyles by default?!
+    CenterOrigin=On;
+    //AnyDrawParamSurf draw={};
+    //AnyDrawRefFrame DrawKneeJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
   };
   
-   AnySurfCylinderFit Implant_Femoral_KneeAxis_Fitting_Surf_Node = 
-    {
-
-      Points = .Implant_Knee_Axis_Points_Picked.Points_Transformed;
-      Length = 0.1;
-      AnyDrawParamSurf Drw = 
-      {
-        //RGB = {1, 1, 1};
-        //Opacity = 0.5;
-      };    
-  
-  };    
-  #endif
-
-  AnyFolder Implant_Femoral_Condyle_Anterior_Points_Picked = 
-  {
-    AnyInputXML XMLObject = 
-    {
-      FileName = PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_ANTERIOR ;
-    };
-    
-    AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
-    AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
-    AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
-    AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
-    AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
-    AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
-  };
-
-  AnyDrawPointCloud Drw_Implant_Femoral_Condyle_Anterior_Points_Picked = 
-  {
-    Points = .Implant_Femoral_Condyle_Anterior_Points_Picked.Points_Transformed ;
-    //PointNames = .Implant_Femoral_Condyle_Lateral_Points_Picked.PointNames;
-    RGB = {1, 1, 1};
-    Opacity = 0.5;
-    PointStyle.Size = 0.0025;
-    Points3D = On;
-    ShowNames = Off;
-  };    
-  
-  AnySurfCylinderFit Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node = 
-  {
-    
-    #if KNEE_MODEL_VERSION == "GCK4"
-    Points = .Implant_Femoral_Condyle_Anterior_Points_Picked.Points_Transformed * RotMat(pi*(1-SEG_SIGN)*0.5, y);
-    #endif
-    #if KNEE_MODEL_VERSION == "GCK6"
-    Points = .Implant_Femoral_Condyle_Anterior_Points_Picked.Points_Transformed ;
-    #endif
-    Length = 0.1;
+  //fit cylinders to find a PF joint node
+  AnySurfCylinderFit PatellaFemoralJointFit = {    
+    Length = 0.0;
+    Points = .FittingData.PFJointPoints;//will use morphed condyles by default?!
+    //AnyDrawParamSurf draw={};
+    Direction = {1,0,0};
     FixedDirection = On;
-    Direction = {0.0, 0.0, SEG_SIGN};
-
-
-    AnyDrawRefFrame Drw = 
-    {
-      RGB = {1, 1, 0};
-      ScaleXYZ = 0.15*{1, 1, 1};
-    };
-  }; 
-  AnyRefNode PatellaFemurJointNewBase = 
-  {
-
-    #if KNEE_MODEL_VERSION == "GCK4"
-    sRel = 
-    {
-      .Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.sRel[0], 
-      .Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.sRel[1],
-      0.0
-    };
-    ARel = RotMat(pi, y);
-    #endif
-
-    #if KNEE_MODEL_VERSION == "GCK6"
-    sRel = .Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.sRel +{0.0,0.0,.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.Length/2.0}*.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.ARel'; 
-    ARel = .Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.ARel;
-    #endif
-    
-    AnyDrawRefFrame Drw = 
-    {
-      RGB = {1, 0, 1};
-      ScaleXYZ = 0.15*{1, 1, 1};
-    };    
-  };  
-  #if SEG_SIGN == 1
-  AnyFolder Implant_Femoral_Condyle_Posterior_Points_Picked = 
-  {
-    AnyInputXML XMLObject = 
-    {
-      FileName = PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_POSTERIOR ;
-    };
-    
-    AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
-    AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
-    AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
-    AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
-    AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
-    AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
+    CenterOrigin=On;
   };
-  
-  
-  AnySurfCylinderFit Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node = 
-  {
-    Points = .Implant_Femoral_Condyle_Posterior_Points_Picked.Points_Transformed ;
-    Length = 0.1;
-    FixedDirection = On;
-    Direction = {0.0, 0.0, 1};
-  };   
-  
-  
-  //<--
-  AnyFolder Implant_Femoral_Condyle_Lateral_Anterior_Points_Picked = 
-  {
-    AnyInputXML XMLObject = 
-    {
-      FileName = PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_ANTERIOR ;
-    };
     
-    AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
-    AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
-    AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
-    AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
-    AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
-    AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
-  };  
-//  AnyDrawPointCloud Drw_Implant_Femoral_Condyle_Lateral_Points_Picked = 
-//  {
-//    Points = .Implant_Femoral_Condyle_Lateral_Points_Picked.Points_Transformed ;
-//    //PointNames = .Implant_Femoral_Condyle_Lateral_Points_Picked.PointNames;
-//    RGB = {1, 1, 1};
-//    Opacity = 0.5;
-//    PointStyle.Size = 0.0025;
-//    Points3D = On;
-//    ShowNames = Off;
-//  };    
-  
-  AnySurfEllipsoidFit Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node = 
-  {
-    Points = .Implant_Femoral_Condyle_Lateral_Anterior_Points_Picked.Points_Transformed ;
+  //fit sphere to find a hip joint node, orientation
+  AnySurfEllipsoidFit HipJointFit = {    
     Spherical = On;
-    
-    AnyRefNode RotNode = 
-    {
-      sRel = {-.Radius[0]*0.3, -.Radius[0]*0.25, -.Radius[0]*0.1};
-      ARel = RotMat(40/180*pi, z) * RotMat(12/180*pi, x);
-//      AnyDrawRefFrame Drw = 
-//      {
-//        RGB = {1, 0, 1};
-//        ScaleXYZ = 0.15*{1, 1, 1};
-//      }; 
-      
-      AnySurfEllipsoid Surf = 
-      {
-        Radius = {..Radius[0]*0.6, ..Radius[0]*0.85, ..Radius[0]*0.45 };
-        AnyDrawParamSurf Drw = 
-        {
-          //RGB = {1, 0, 0};
-          //Opacity = 0.5;
-        };          
-      };
-    };
+    Points = .FittingData.HipJointPoints;//will use morphed femoral head as input
+    //AnyDrawRefFrame DrawHipJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
   };
-  //<--
-  
-  //-->
-  AnyFolder Implant_Femoral_Condyle_Medial_Anterior_Points_Picked = 
-  {
-    AnyInputXML XMLObject = 
-    {
-      FileName = PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_MEDIAL_ANTERIOR ;
-    };
-    
-    AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
-    AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
-    AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
-    AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
-    AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
-    AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
-  };  
-//  AnyDrawPointCloud Drw_Implant_Femoral_Condyle_Medial_Points_Picked = 
-//  {
-//    Points = .Implant_Femoral_Condyle_Medial_Points_Picked.Points_Transformed ;
-//    //PointNames = .Implant_Femoral_Condyle_Lateral_Points_Picked.PointNames;
-//    RGB = {1, 1, 1};
-//    Opacity = 0.5;
-//    PointStyle.Size = 0.0025;
-//    Points3D = On;
-//    ShowNames = Off;
-//  };    
-  AnySurfEllipsoidFit Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node = 
-  {
-    Points = .Implant_Femoral_Condyle_Medial_Anterior_Points_Picked.Points_Transformed ;
-    Spherical = On;
-    
-    AnyRefNode RotNode = 
-    {
-      sRel = {-.Radius[0]*0.3, -.Radius[0]*0.25, .Radius[0]*0.02};
-      ARel = RotMat(38/180*pi, z) * RotMat(-15/180*pi, x);
-//      AnyDrawRefFrame Drw = 
-//      {
-//        RGB = {1, 0, 1};
-//        ScaleXYZ = 0.15*{1, 1, 1};
-//      }; 
-      
-      AnySurfEllipsoid Surf = 
-      {
-        Radius = {..Radius[0]*0.6, ..Radius[0]*0.85, ..Radius[0]*0.45 };
-        AnyDrawParamSurf Drw = 
-        {
-          //RGB = {1, 0, 0};
-          //Opacity = 0.5;
-        };          
-      };
-    };
-  }; 
-  
-  AnyFolder Implant_Femoral_Condyle_Lateral_Posterior_Points_Picked = 
-  {
-    AnyInputXML XMLObject = 
-    {
-      FileName = PATH_TARGET_IMPLANT_FEMORAL_PICKED_POINTS_LATERAL_POSTERIOR ;
-    };
-    
-    AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
-    AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
-    AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
-    AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
-    AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
-    AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
-  };
-  
-  AnySurfEllipsoidFit Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node = 
-  {
-    Points = .Implant_Femoral_Condyle_Lateral_Posterior_Points_Picked.Points_Transformed ;
-    Spherical = On;
-  };   
-  
-  
-  AnyFolder Femoral_Condyle_Lateral_Points_Picked = 
-  {
-    AnyInputXML XMLObject = 
-    {
-      FileName = PATH_TARGET_FEMUR_POSTOP_WRAPPING_LANDMARKS ;
-    };
-    
-    AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
-    AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
-    AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
-    AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
-    AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
-    AnyFloat Points_Transformed = ..Mirror_Transform(Points_Original);   
-  }; 
-  
-  AnySurfCylinderFit Femoral_Condyle_Lateral_Fitting_Surf_Node = 
-  {
-    Points = .Femoral_Condyle_Lateral_Points_Picked.Points_Transformed ;
-    Length = 0.025;
-
-    CapRatio = 1;
-    CapRatio2 = 1;
-  };  
-
-  //<--
-  AnyParamSurf& Surf_Wrapping_Cylinder_Lateral = Femoral_Condyle_Lateral_Fitting_Surf_Node;
-  AnyParamSurf& Surf_Wrapping_Cylinder_Posterior = Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node ;
-  AnyParamSurf& Surf_Wrapping_Ellipsoid_Lateral_Anterior = Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.RotNode.Surf ;
-  AnyParamSurf& Surf_Wrapping_Ellipsoid_Medial_Anterior = Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.RotNode.Surf ;
-  AnyParamSurf& Surf_Wrapping_Sphere_Lateral_Posterior = Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node ;
-  #endif
-};
-AnyFolder &Implant_Femoral_Head_Points_Picked = Femoral_Head_Points_Picked;
-AnyFolder Femoral_Head_Points_Picked = 
-{  
-  AnyInputXML XMLObject = 
-  {
-    FileName = PATH_TARGET_IMPLANT_HIP_PICKED_POINTS ;
-//    #if KNEE_MODEL_VERSION == "GCK4"    
-//    #endif
-//    #if KNEE_MODEL_VERSION == "GCK6"    
-//    FileName = PATH_TARGET_HIP_PICKED_POINTS ;
-//    #endif
-  };
-  
-  AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
-  AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
-  AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
-  AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
-  AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
-  AnyFloat Points_Transformed = .Mapping_Transform(Points_Original); 
-};
-
-
-AnySurfEllipsoidFit &Femoral_Head_Fitting_Surf_Node  = Implant_Femoral_Head_Fitting_Surf_Node;
-AnySurfEllipsoidFit Implant_Femoral_Head_Fitting_Surf_Node  = 
-{
-  Points = .Implant_Femoral_Head_Points_Picked.Points_Transformed ;
-  FixedAxes = On;
-  Spherical = On;
-};
-
-AnyFolder &Implant_Femoral_Head_Axial_Points_Picked = Femoral_Head_Axial_Points_Picked;
-AnyFolder Femoral_Head_Axial_Points_Picked = 
-{
-  AnyInputXML XMLObject = 
-  {
-    FileName = PATH_TARGET_IMPLANT_HIP_PICKED_POINTS_AXIAL ;
-//    #if KNEE_MODEL_VERSION == "GCK4"
-//    #endif
-//    #if KNEE_MODEL_VERSION == "GCK6"
-//    FileName = PATH_TARGET_HIP_PICKED_POINTS_AXIAL ;
-//    #endif
-  };
-  
-  AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
-  AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
-  AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
-  AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
-  AnyFloat Points_Original = {xptr0',yptr0',zptr0'}';    
-  AnyFloat Points_Transformed = .Mapping_Transform(Points_Original);   
-};
-
-AnySurfCylinderFit &Femoral_Head_Axial_Fitting_Surf_Node  = Implant_Femoral_Head_Axial_Fitting_Surf_Node;
-AnySurfCylinderFit Implant_Femoral_Head_Axial_Fitting_Surf_Node  = 
-{
-  Points = .Femoral_Head_Axial_Points_Picked.Points_Transformed ;
-  Length = 0.05;
-  #if KNEE_MODEL_VERSION == "GCK6"
-  FixedDirection = On;
-  Direction = {0.1,0.5,-SEG_SIGN*0.5};
-  #endif
-  AnyDrawParamSurf Drw = 
-  {
-    //RGB = {1, 1, 1};
-  };
-};
-
-AnyRefNode &Implant_Femoral_Head_Wrapping_Surf_Node = Femoral_Head_Wrapping_Surf_Node;
-AnyRefNode Femoral_Head_Wrapping_Surf_Node = 
-{
-  sRel = .Femoral_Head_Fitting_Surf_Node.sRel ;
-  ARel = .Femoral_Head_Axial_Fitting_Surf_Node.ARel
-          * RotMat(pi, x) 
-          * RotMat((SEG_SIGN)*(-30)/180*pi, y)
-          * RotMat((-5)/180*pi, x)
-          ;
-  
-//  AnyDrawRefFrame Drw = 
-//  {
-//    ScaleXYZ = 0.15*{1, 1, 1};
-//    RGB = {1, 0, 0};
-//  };
-  
-  AnySurfCylinder Surf = 
-  {
-    Radius = ..Femoral_Head_Fitting_Surf_Node.Radius[0] * 1.5;
-    Length = ..Femoral_Head_Fitting_Surf_Node.Radius[0] * 4.0;
-    
-    CapRatio = 1;
-    CapRatio2 = 1;    
-    AnyDrawParamSurf Drw = 
-    {
-      //RGB = {1, 1, 1};
-      //Opacity = 0.5;
-    };   
-  };
-};
-
-AnyRefNode& IliacusWrapSurfNew = Femoral_Head_Wrapping_Surf_Node;
+};// automatically created
 
 AnyRefNode HipJointNew = 
 {
-  sRel = .Femoral_Head_Fitting_Surf_Node.sRel ;
-  //ARel = .Implant_Femoral_Head_Fitting_Ellipsoid_Node.ARel ;
-  ARel = RotMat(sRel, .PatientRefNode.sRel, .EpicondylusFemorisLateralis.sRel) * RotMat(pi/2, z) * RotMat( (SEG_SIGN)*pi/2, y );
+  sRel = .PatientNode.sRel + .PatientNode.HipJointFit.sRel * .PatientNode.ARel';
     
-  AnyVec3 sRelUnscaled = sRel ;
-  AnyFloat ARelUnscaled = ARel ;
-  
-//  AnyDrawRefFrame DrwFrame = 
-//  {
-//    RGB = {0, 1, 0};
-//    ScaleXYZ = 0.15*{1, 1, 1};
-//  };     
+  //  Y-axis: Along the femoral shaft, from knee joint center to hip joint center
+  //  X-axis: Perpendicular to the plane formed by the hip joint center and the medial and lateral epicondyles
+  //  Z-axis: Orthogonal to X and Y  
+
+  ARel = RotMat(  
+    {0.0, 0.0, 0.0}, 
+    cross(sRel-.EpicondylusFemorisMedialis.sRel, sRel-.EpicondylusFemorisLateralis.sRel), 
+    sRel - .KneeJointNew.sRel
+    );
+  AnyDrawRefFrame DrawHipJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
 };
 
 AnyRefNode KneeJointNew = 
 {
-  #if KNEE_MODEL_VERSION == "GCK4"
-  sRel = .PatientRefNode.sRel + 
-  .PatientRefNode.OffsetNode.sRel * .PatientRefNode.ARel';
-  ARel = .PatientRefNode.ARel * .PatientRefNode.OffsetNode.ARel;
-  #endif
-  #if KNEE_MODEL_VERSION == "GCK6"
-  sRel = .PatientRefNode.sRel + 
-  .PatientRefNode.KneeJointNewBase.sRel * .PatientRefNode.ARel';
-  ARel = .PatientRefNode.ARel * .PatientRefNode.KneeJointNewBase.ARel;
-  #endif
-  AnyVec3 sRelUnscaled = sRel;
-  AnyFloat ARelUnscaled = ARel;
+  sRel = .PatientNode.sRel + .PatientNode.KneeJointFit.sRel * .PatientNode.ARel';
   
+  // Following this logic, but using the fitted axis
+  
+  //1. X-axis (medial-lateral axis)
+  //Points from the medial epicondyle to the lateral epicondyle.
+  //This axis defines the flexion-extension axis of the knee.
+  //2. Y-axis (proximal-distal axis)
+  //Points from the knee joint center to the hip joint center (femoral shaft direction).
+  //This axis is often called the long axis of the femur and points proximally.
+  //3. Z-axis (anterior-posterior axis)
+  //Computed as the cross product of X and Y (Z = X × Y).
+  //Points anteriorly, completing a right-handed coordinate system.
+  
+  ARel = RotMat(
+    {0.0, 0.0, 0.0}, 
+    {0,0, 1} *.PatientNode.KneeJointFit.ARel'*.PatientNode.ARel',
+    .HipJointNew.sRel - sRel
+    ) 
+    * RotMat(pi/2, y)                 // for better consistency with ABT's implementation
+    * RotMat(VarusValgusRotation, x)  // custom varus-valgus angle
+  ;
+  //AnyDrawRefFrame DrawKneeJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
   AnyVar VarusValgusRotation = DesignVar(0);
-  
-//  AnyDrawRefFrame Drw = 
-//  {
-//    RGB = {1, 1, 0};
-//    ScaleXYZ = 0.2*{1, 1, 1};
-//  };
 };
 
 AnyRefNode PatellaFemurJointNew = 
 {
-  sRel = .PatientRefNode.sRel +
-  .PatientRefNode.PatellaFemurJointNewBase.sRel * .PatientRefNode.ARel';
-  ARel = .PatientRefNode.ARel * .PatientRefNode.PatellaFemurJointNewBase.ARel;
-  
-  AnyVec3 sRelUnscaled = sRel;
-  AnyFloat ARelUnscaled = ARel;
-  
-//  AnyDrawRefFrame Drw = 
-//  {
-//    RGB = {1, 1, 0};
-//    ScaleXYZ = 0.15*{1, 1, 1};
-//  };  
+  sRel = .PatientNode.sRel + .PatientNode.PatellaFemoralJointFit.sRel * .PatientNode.ARel';
+  ARel = RotMat(
+    {0.0, 0.0, 0.0}, 
+    {0,0, 1} *.PatientNode.PatellaFemoralJointFit.ARel'*.PatientNode.ARel',
+    .HipJointNew.sRel - .KneeJointNew.sRel
+    ) 
+    * RotMat(-pi/2, y)
+    ;                 // for better consistency with ABT's implementation
+    
+  AnyDrawRefFrame DrawPFJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={0,0,1};};
+    
 };
 
 #if (BM_JOINT_TYPE_HIP_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_HIP_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
@@ -538,21 +99,6 @@ AnyRefNode& KneeJoint = KneeJointNew;
 #endif
 
 #if (BM_JOINT_TYPE_PATELLOFEMORAL_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_PATELLOFEMORAL_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
-AnyRefNode& PatellaFemurJoint = PatellaFemurJointNew; 
+AnyRefNode &PatellaFemurJoint = PatellaFemurJointNew; 
 #endif
 
-#if SEG_SIGN == 1
-PatientRefNode = 
-{
-//  AnyDrawPointCloud Drw_Ligament_Points = 
-//  {
-//    Points = INPUT_REF_PARAM_FOLDER.Attachment_Points.Femur.Points_Original ;
-//    PointNames = INPUT_REF_PARAM_FOLDER.Attachment_Points.Femur.PointNames;
-//    RGB = {1, 1, 1};
-//    Opacity = 0.5;
-//    PointStyle.Size = 0.0025;
-//    Points3D = On;
-//    ShowNames = Off;
-//  };  
-};
-#endif

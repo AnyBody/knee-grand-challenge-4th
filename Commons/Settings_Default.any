@@ -7,31 +7,37 @@ Main =
   };
 };
 
-#path USER_PATH_INPUTDATA "../[Input]/"+KNEE_MODEL_VERSION
+//#path USER_PATH_INPUTDATA "../[Input]/"+KNEE_MODEL_VERSION
 
 #path PATH_DRAWSETTINGS_AMMR "<ANYBODY_PATH_BODY>\DrawSettings\"
 
 // AnyBody generic boney landmarks and surfaces - currently specific to a generation (might have used different procotocol).
 // TODO: check if can be unified?
 
-#path PATH_SOURCE_FEMUR_LANDMARKS   "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Femur_picked_points.pp"
-#path PATH_SOURCE_FEMUR_STL         "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Femur.stl"
-#path PATH_SOURCE_TIBIA_LANDMARKS   "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Tibia_picked_points.pp"
-#path PATH_SOURCE_TIBIA_STL         "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Tibia.stl"
-#path PATH_SOURCE_FIBULA_STL        "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Fibula.stl"
-#path PATH_SOURCE_PATELLA_LANDMARKS "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Patella_picked_points.pp"
-#path PATH_SOURCE_PATELLA_STL       "<USER_PATH_INPUTDATA>\STL\Bone\Source\TLEM2_Patella.stl"
+//#path PATH_SOURCE_FEMUR_LANDMARKS   "<USER_PATH_COMMONS>\Morphing\TLEM2_Femur_picked_points.pp"
+#path PATH_SOURCE_FEMUR_STL         "<USER_PATH_COMMONS>\Morphing\femur.stl"
+//#path PATH_SOURCE_TIBIA_LANDMARKS   "<USER_PATH_COMMONS>\Morphing\TLEM2_Tibia_picked_points.pp"
+#path PATH_SOURCE_TIBIA_STL         "<USER_PATH_COMMONS>\Morphing\tibia.stl"
+#path PATH_SOURCE_FIBULA_STL        "<USER_PATH_COMMONS>\Morphing\fibula.stl"
+#path PATH_SOURCE_TIBIAFIBULA_STL   "<USER_PATH_COMMONS>\Morphing\tibiafibula.stl"
+#path PATH_SOURCE_PATELLA_LANDMARKS "<USER_PATH_COMMONS>\Morphing\TLEM2_Patella_picked_points.pp"
+#path PATH_SOURCE_PATELLA_STL       "<USER_PATH_COMMONS>\Morphing\patella.stl"
 
-// GCK generation specific file configuration
-#if KNEE_MODEL_VERSION == "GCK4"
-  #include "Settings_Default.GCK4.any"
-#endif
-
-#if KNEE_MODEL_VERSION == "GCK6"
-  #include "Settings_Default.GCK6.any"
-#endif
+//// GCK generation specific file configuration
+//#if KNEE_MODEL_VERSION == "GCK4"
+//  #include "Settings_Default.GCK4.any"
+//#endif
+//
+//#if KNEE_MODEL_VERSION == "GCK6"
+//  #include "Settings_Default.GCK6.any"
+//#endif
 
 //--> #define statements for custom scaling of AMMR lower body segments
+#ifndef _override_scaling_for_Pelvis
+  #define _override_scaling_for_Pelvis
+#endif
+
+
 #ifndef _override_scaling_for_Right_Thigh
   #define _override_scaling_for_Right_Thigh
 #endif
@@ -104,18 +110,18 @@ Main =
 #ifndef BM_JOINT_TYPE_PATELLOFEMORAL_LEFT
   #define BM_JOINT_TYPE_PATELLOFEMORAL_LEFT _JOINT_TYPE_USERDEFINED_
 #endif
-#ifndef BM_JOINT_TYPE_ANKLE_RIGHT
-  #define BM_JOINT_TYPE_ANKLE_RIGHT _JOINT_TYPE_USERDEFINED_
-#endif
-#ifndef BM_JOINT_TYPE_ANKLE_LEFT
-  #define BM_JOINT_TYPE_ANKLE_LEFT _JOINT_TYPE_USERDEFINED_
-#endif
-#ifndef BM_JOINT_TYPE_PATELLATENDON_RIGHT
-  #define BM_JOINT_TYPE_PATELLATENDON_RIGHT _JOINT_TYPE_USERDEFINED_
-#endif
-#ifndef BM_JOINT_TYPE_PATELLATENDON_LEFT
-  #define BM_JOINT_TYPE_PATELLATENDON_LEFT _JOINT_TYPE_USERDEFINED_
-#endif
+//#ifndef BM_JOINT_TYPE_ANKLE_RIGHT
+//  #define BM_JOINT_TYPE_ANKLE_RIGHT _JOINT_TYPE_USERDEFINED_
+//#endif
+//#ifndef BM_JOINT_TYPE_ANKLE_LEFT
+//  #define BM_JOINT_TYPE_ANKLE_LEFT _JOINT_TYPE_USERDEFINED_
+//#endif
+//#ifndef BM_JOINT_TYPE_PATELLATENDON_RIGHT
+//  #define BM_JOINT_TYPE_PATELLATENDON_RIGHT _JOINT_TYPE_USERDEFINED_
+//#endif
+//#ifndef BM_JOINT_TYPE_PATELLATENDON_LEFT
+//  #define BM_JOINT_TYPE_PATELLATENDON_LEFT _JOINT_TYPE_USERDEFINED_
+//#endif
 //<--
 
 

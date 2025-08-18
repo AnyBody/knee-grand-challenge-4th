@@ -1,0 +1,102 @@
+
+Main = {
+  AnyFixedRefFrame global_test = {
+    AnyDrawSurf srfPelvisL = {FileName=Main.ModelSetup.SubjectSpecificData.SurfPelvisLFileName;RGB={1,0,1};ScaleXYZ={1,1,1}*0.001;};
+    AnyDrawSurf srfPelvisR = {FileName=Main.ModelSetup.SubjectSpecificData.SurfPelvisRFileName;RGB={1,0,1};ScaleXYZ={1,1,1}*0.001;};
+    AnyDrawSurf srfFemurL = {FileName=Main.ModelSetup.SubjectSpecificData.SurfFemurLFileName;RGB={1,0,1};ScaleXYZ={1,1,1}*0.001;};
+    AnyDrawSurf srfFemurR = {FileName=Main.ModelSetup.SubjectSpecificData.SurfFemurRFileName;RGB={1,0,1};ScaleXYZ={1,1,1}*0.001;};
+    AnyDrawSurf srfTibiaL = {FileName=Main.ModelSetup.SubjectSpecificData.SurfTibiaLFileName;RGB={1,0,1};ScaleXYZ={1,1,1}*0.001;};
+    AnyDrawSurf srfTibiaR = {FileName=Main.ModelSetup.SubjectSpecificData.SurfTibiaRFileName;RGB={1,0,1};ScaleXYZ={1,1,1}*0.001;};
+    AnyDrawSurf srfPatellaL = {FileName=Main.ModelSetup.SubjectSpecificData.SurfPatellaLFileName;RGB={1,0,1};ScaleXYZ={1,1,1}*0.001;};
+    AnyDrawSurf srfPatellaR = {FileName=Main.ModelSetup.SubjectSpecificData.SurfPatellaRFileName;RGB={1,0,1};ScaleXYZ={1,1,1}*0.001;};
+  };
+  
+  AnyBodyStudy OverlayMorphedAndTargetBones = {
+    Gravity = {0, 0, 0};
+    nStep = 1;
+    AnySeg  &seg_pelvis=Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    #if BM_LEG_LEFT== ON
+    AnySeg  &seg_fem_l =Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh;
+    AnySeg  &seg_tib_l =Main.HumanModel.BodyModel.Left.Leg.Seg.Shank;
+    AnySeg  &seg_pat_l =Main.HumanModel.BodyModel.Left.Leg.Seg.Patella;
+    #endif
+    #if BM_LEG_RIGHT== ON
+    AnySeg  &seg_fem_r =Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh;
+    AnySeg  &seg_tib_r =Main.HumanModel.BodyModel.Right.Leg.Seg.Shank;
+    AnySeg  &seg_pat_r =Main.HumanModel.BodyModel.Right.Leg.Seg.Patella;
+    #endif
+    
+    
+    AnyKinEq fix_bones_in_CT = {
+      AnyKinLinear pelvis_lin = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.PatientNode;
+        Ref=0;
+      };
+
+      #if BM_LEG_LEFT== ON
+      AnyKinLinear femur_lin = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode;
+        Ref=0;
+      };
+      AnyKinLinear tibia_lin = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.PatientNode;
+        Ref=0;
+      };
+      AnyKinLinear patella_lin = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Left.Leg.Seg.Patella.PatientNode;
+        Ref=0;
+      };
+      #endif
+      
+      #if BM_LEG_RIGHT== ON
+      AnyKinLinear femur_lin_r = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode;
+        Ref=0;
+      };
+      AnyKinLinear tibia_lin_r = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode;
+        Ref=0;
+      };
+      AnyKinLinear patella_lin_r = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Right.Leg.Seg.Patella.PatientNode;
+        Ref=0;
+      };
+      #endif
+      
+      AnyKinRotational pelvis_rot = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.PatientNode;
+        Type=RotAxesAngles;
+      };
+    
+      #if BM_LEG_LEFT== ON
+      AnyKinRotational femur_rot = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode;
+        Type=RotAxesAngles;
+      };
+      AnyKinRotational tibia_rot = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.PatientNode;
+        Type=RotAxesAngles;
+      };
+      AnyKinRotational patella_rot = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Left.Leg.Seg.Patella.PatientNode;
+        Type=RotAxesAngles;
+      };
+      #endif
+      
+      #if BM_LEG_RIGHT== ON
+      AnyKinRotational femur_rot_r = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode;
+        Type=RotAxesAngles;
+      };
+      AnyKinRotational tibia_rot_r = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode;
+        Type=RotAxesAngles;
+      };
+      AnyKinRotational patella_rot_r = {
+        AnyRefFrame &rf=Main.HumanModel.BodyModel.Right.Leg.Seg.Patella.PatientNode;
+        Type=RotAxesAngles;
+      };
+      #endif
+    };
+  };
+};

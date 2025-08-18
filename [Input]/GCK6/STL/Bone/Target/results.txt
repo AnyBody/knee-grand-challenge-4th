@@ -1,0 +1,7 @@
+.\GCK6_fibula.stl: Faces = 8138, Unique Vertices = 4071
+.\GCK6_postop_femur.stl: Faces = 22856, Unique Vertices = 11430
+.\GCK6_postop_patella.stl: Faces = 2502, Unique Vertices = 1253
+.\GCK6_postop_tibia.stl: Faces = 19784, Unique Vertices = 9894
+.\GCK6_preop_femur.stl: Faces = 37108, Unique Vertices = 18556
+.\GCK6_preop_patella.stl: Faces = 21312, Unique Vertices = 10658
+.\GCK6_preop_tibia.stl: Faces = 27458, Unique Vertices = 13731

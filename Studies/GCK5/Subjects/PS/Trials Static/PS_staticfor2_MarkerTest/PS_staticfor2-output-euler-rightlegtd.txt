@@ -1,0 +1,31 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Studies.MotionOptimization
+Operation: Main.Studies.MotionOptimization.Kinematics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.FileName = "..\Input\Subjects\PS\Static Trials\PS_staticfor2_MarkerTest\PS_staticfor2-output-euler-rightlegtd.txt"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.NumberFormat.Digits = 15
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.NumberFormat.Width = 22
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.NumberFormat.Style = ScientificNumber
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.NumberFormat.FormatStr = "%22.15e"
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.Search = 
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.SepSign = " "
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.LineSepSign = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.Header.TitleSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.Header.ConstSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.Header.VarSectionOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.Header.ColumnNamesOnOff = On
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.Header.LinePrefix = ""
+Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.ConstSectionSaveOptionsOnOff = On
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Studies.MotionOptimization.t
+col1  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.HipFlexion
+col2  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.HipAbduction
+col3  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.HipExternalRotation
+col4  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.KneeFlexion
+col5  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.AnklePlantarFlexion
+col6  Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.SubTalarEversion
+----------------------------------------------------------
+Main.Studies.MotionOptimization.t Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.HipFlexion Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.HipAbduction Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.HipExternalRotation Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.KneeFlexion Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.AnklePlantarFlexion Main.Studies.KinematicStudyForParameterIdentification.JointAngleOutputs.OutputFile3.SubTalarEversion
+2.283333333333333e-001 7.818184232981823e-002 5.407376825945942e-002 2.438189533679254e-001 4.766888624651344e-002 6.705268154312019e-002 1.654289012362641e-002

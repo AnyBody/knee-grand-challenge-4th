@@ -1,39 +1,10 @@
+#ifdef _override_scaling_for_Pelvis
 HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg = 
 {
-  #if BM_LEG_RIGHT == ON
-  Right = 
-  {
-    #if (BM_JOINT_TYPE_HIP_RIGHT == _JOINT_TYPE_USERDEFINED_)
-    AnyRefNode HipJoint = {
-      AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
-      sRel = ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
-      #include "<ANYBODY_PATH_BODY>/DrawSettings/JointAxesProximal.any"
-      ARel = ..AnatomicalFrame.ARel;
-      AnyRefNode ISB = {
-         ARel = ...AnatomicalFrameISB.ARel;
-      };
-    };
-    #endif    
-  };
-  #endif
-  
-  #if BM_LEG_LEFT == ON
-  Left =
-  {
-    #if (BM_JOINT_TYPE_HIP_LEFT == _JOINT_TYPE_USERDEFINED_)
-    AnyRefNode HipJoint = {
-      AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
-      sRel = ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
-      #include "<ANYBODY_PATH_BODY>/DrawSettings/JointAxesProximal.any"
-      ARel = ..AnatomicalFrame.ARel;
-      AnyRefNode ISB = {
-         ARel = ...AnatomicalFrameISB.ARel;
-      };
-    };
-    #endif    
-  };
-  #endif
+  #include "Custom_Seg_Pelvis.any"
 };
+#endif //Right Thigh
+
 
 #if BM_LEG_RIGHT == ON
  #ifdef _override_scaling_for_Right_Thigh
@@ -44,48 +15,6 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
       #define SEG_SIGN 1
       #include "Custom_Seg_Thigh.any"
       #undef SEG_SIGN
-      
-      Drw3.Visible = Off;
-      
-      Implant_Femoral_Head_Fitting_Surf_Node.viewSurface.Visible = Off;
-      Implant_Femoral_Head_Fitting_Surf_Node.viewSurface.RGB = {1, 0, 0};
-      Implant_Femoral_Head_Fitting_Surf_Node.viewSurface.Opacity = 0.5;
-      
-      Implant_Femoral_Head_Axial_Fitting_Surf_Node.viewSurface.Visible = Off;
-      Implant_Femoral_Head_Axial_Fitting_Surf_Node.viewSurface.RGB = {0, 1, 0};
-      Implant_Femoral_Head_Axial_Fitting_Surf_Node.viewSurface.Opacity = 0.5;
-      
-      Implant_Femoral_Head_Wrapping_Surf_Node.Surf.Drw.Visible = Off;
-      Implant_Femoral_Head_Wrapping_Surf_Node.Surf.Drw.RGB = {0, 0, 1};
-      Implant_Femoral_Head_Wrapping_Surf_Node.Surf.Drw.Opacity = 0.5;
-      
-      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.viewSurface.Visible = Off;
-      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.viewSurface.RGB = {1, 1, 0};
-      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.viewSurface.Opacity = 0.2;
-      
-      PatientRefNode.Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node.viewSurface.Visible = Off;
-      PatientRefNode.Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node.viewSurface.RGB = {0, 1, 1};
-      PatientRefNode.Implant_Femoral_Condyle_Posterior_Fitting_Surf_Node.viewSurface.Opacity = 0.5;
-      
-      PatientRefNode.Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node.viewSurface.Visible = Off;
-      PatientRefNode.Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node.viewSurface.RGB = {1, 0, 1};
-      PatientRefNode.Implant_Femoral_Condyle_Lateral_Posterior_Fitting_Surf_Node.viewSurface.Opacity = 0.5;
-      
-      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.viewSurface.Visible = Off;
-      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.viewSurface.RGB = {1, 1, 0.5};
-      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.viewSurface.Opacity = 0.5;
-      
-      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Visible = Off;
-      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.RGB = {1, 0.5, 1};
-      PatientRefNode.Implant_Femoral_Condyle_Lateral_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Opacity = 0.5;
-      
-      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.viewSurface.Visible = Off;
-      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.viewSurface.RGB = {0.5, 1, 1};
-      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.viewSurface.Opacity = 0.5;
-      
-      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Visible = Off;
-      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.RGB = {1, 0, 0.5};
-      PatientRefNode.Implant_Femoral_Condyle_Medial_Anterior_Fitting_Surf_Node.RotNode.Surf.Drw.Opacity = 0.5;
     };  
   };
  #endif //Right Thigh
@@ -98,18 +27,6 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
       #define SEG_SIGN 1
       #include "Custom_Seg_Shank.any"
       #undef SEG_SIGN  
-      
-      DrwSurfTibia.Visible = Off;
-      DrwSurfFibula.Visible = Off;    
-      
-//      #ifpathexists PATH_TARGET_TALUS_STL
-//      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewRefFrame.Visible = Off;
-//      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewRefFrame.RGB = {1, 0, 0};
-//      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewRefFrame.Opacity = 0.5;
-//      #endif
-      PatientRefNode.Wrapping_Medial_Node.Surf.Drw.Visible = Off;
-      PatientRefNode.Wrapping_Medial_Node.Surf.Drw.RGB = {0, 1, 0};
-      PatientRefNode.Wrapping_Medial_Node.Surf.Drw.Opacity = 0.5;
     };
   };
  #endif //Right Shank
@@ -127,17 +44,20 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
     };
   };
  #endif // Right Patella
- 
- HumanModel.BodyModel.Right.Leg =
- {  
-   Seg.Talus = 
-   {
-     #define SEG_SIGN 1
-     #include "Custom_Seg_Talus.any"
-     #undef SEG_SIGN
-   };
- };
-#endif
+// 
+// #ifdef _override_scaling_for_Right_Talus
+// HumanModel.BodyModel.Right.Leg =
+// {  
+//   Seg.Talus = 
+//   {
+//     #define SEG_SIGN 1
+//     #include "Custom_Seg_Talus.any"
+//     #undef SEG_SIGN
+//   };
+// };
+//#endif
+#endif //Right LEG
+
 
 #if BM_LEG_LEFT == ON
  #ifdef _override_scaling_for_Left_Thigh
@@ -148,18 +68,13 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
       #define SEG_SIGN -1
       #include "Custom_Seg_Thigh.any"
       #undef SEG_SIGN
-      
-      Drw3.Visible = Off;
-      
-      Implant_Femoral_Head_Fitting_Surf_Node.viewSurface.Visible = Off;
-      Implant_Femoral_Head_Axial_Fitting_Surf_Node.viewSurface.Visible = Off;
-      Implant_Femoral_Head_Wrapping_Surf_Node.Surf.Drw.Visible = Off;
-      
-      PatientRefNode.Implant_Femoral_Condyle_Anterior_Fitting_Surf_Node.viewSurface.Visible = Off;
     };
   };
  #endif // Left Thigh
- 
+#endif
+
+
+
  #ifdef _override_scaling_for_Left_Shank
   HumanModel.BodyModel.Left.Leg = 
   {
@@ -168,17 +83,10 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
       #define SEG_SIGN -1
       #include "Custom_Seg_Shank.any"
       #undef SEG_SIGN 
-      
-      DrwSurfTibia.Visible = Off;
-      DrwSurfFibula.Visible = Off; 
-      
-//      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewSurface.Visible = Off;
-//      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewSurface.RGB = {1, 0, 0};
-//      PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.viewSurface.Opacity = 0.5;      
     };  
   };
  #endif // Left Shank
- 
+
  #ifdef _override_scaling_for_Left_Patella
   HumanModel.BodyModel.Left.Leg =
   { 
@@ -192,7 +100,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
     };
   };
  #endif //Left Patella
- 
+/* 
  HumanModel.BodyModel.Left.Leg =
  {  
    Seg.Talus = 
@@ -203,6 +111,8 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
    };
  };
 #endif
+
+*/
 
 HumanModel.BodyModel =
 {

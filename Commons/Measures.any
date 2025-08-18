@@ -2,15 +2,15 @@ REF_HUMAN_BODYMODEL =
 {
   Interface =
   {
-    Right = 
+    Left = 
     {
       AnyKinLinear GlobalFootPos = 
       {
-        AnyRefFrame& ref = ...Right.Leg.Seg.Foot;
+        AnyRefFrame& ref = ...Left.Leg.Seg.Foot;
       };
       AnyKinRotational GlobalFootRot = 
       {
-        AnyRefFrame& ref = ...Right.Leg.Seg.Foot;
+        AnyRefFrame& ref = ...Left.Leg.Seg.Foot;
         Type = RotAxesAngles;
       };      
       AnyKinMeasureOrg GlobalFootPosX = 
@@ -45,7 +45,7 @@ REF_HUMAN_BODYMODEL =
       }; 
       AnyKinLinear GlobalToeLateralContactNodePos = 
       {
-        AnyRefFrame& ref = ...Right.Leg.Seg.Foot.ToeLateralContactNode;
+        AnyRefFrame& ref = ...Left.Leg.Seg.Foot.ToeLateralContactNode;
       };
       AnyKinMeasureOrg GlobalToeLateralContactNodePosX = 
       {
@@ -64,7 +64,7 @@ REF_HUMAN_BODYMODEL =
       };
       AnyKinLinear GlobalToeMedialContactNodePos = 
       {
-        AnyRefFrame& ref = ...Right.Leg.Seg.Foot.ToeMedialContactNode;
+        AnyRefFrame& ref = ...Left.Leg.Seg.Foot.ToeMedialContactNode;
       };
       AnyKinMeasureOrg GlobalToeMedialContactNodePosX = 
       {
@@ -84,8 +84,8 @@ REF_HUMAN_BODYMODEL =
       
       AnyKinLinear AnkleJointPos = 
       {
-        AnyRefFrame& ref0 = ...Right.Leg.Seg.Thigh.KneeJoint;
-        AnyRefFrame& ref1 = ...Right.Leg.Seg.Shank.AnkleJoint;
+        AnyRefFrame& ref0 = ...Left.Leg.Seg.Thigh.KneeJoint;
+        AnyRefFrame& ref1 = ...Left.Leg.Seg.Shank.AnkleJoint;
         Ref = 0;
       };
       AnyKinMeasureOrg AnkleJointPosX = 

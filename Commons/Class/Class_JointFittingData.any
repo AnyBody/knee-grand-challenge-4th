@@ -1,0 +1,49 @@
+// Class template for joint fitting data
+#class_template JOINT_FITTING_DATA_THIGH(__CLASS__=AnyRefNode)
+{
+  // README: 
+  // this block is supposed to contain AMMR-native point clouds for joint fitting, 
+  // either a reference to a morphed pointcloud or looking up in model parameters and applying scaling
+  
+  AnyFloat LandmarkPlaceHolder = {{1.0, 0.0, 0.0},{0.0, 1.0, 0.0},{0.0, 0.0, 1.0},{0.0, 0.0, 0.0}}; // 
+  #var AnyFloat KneeJointPoints = LandmarkPlaceHolder;                          // the intention here is to allow a different set of unscaled landmarks if default do not suffice
+  #var AnyFloat HipJointPoints = LandmarkPlaceHolder;                          // placeholder
+  #var AnyFloat PFJointPoints = LandmarkPlaceHolder;                          // placeholder
+
+  //AnyFolder &refBodyPart = REF_BODY_PART;
+  
+}; // JOINT_FITTING_DATA_THIGH
+
+
+
+
+#class_template JOINT_FITTING_DATA_SHANK(__CLASS__=AnyRefNode)
+{
+  // README: 
+  // this block is supposed to contain AMMR-native point clouds for joint fitting, 
+  // either a reference to a morphed pointcloud or looking up in model parameters and applying scaling
+  
+  AnyFloat LandmarkPlaceHolder = {{1.0, 0.0, 0.0},{0.0, 1.0, 0.0},{0.0, 0.0, 1.0},{0.0, 0.0, 0.0}}; // 
+  #var AnyFloat KneeJointPoints = LandmarkPlaceHolder;                          // the intention here is to allow a different set of unscaled landmarks if default do not suffice
+  #var AnyFloat AnkleJointPoints = LandmarkPlaceHolder;                          // placeholder
+
+  //AnyFolder &refBodyPart = REF_BODY_PART;
+  
+}; // JOINT_FITTING_DATA_THIGH
+
+
+
+#class_template JOINT_FITTING_DATA_PATELLA(__CLASS__=AnyRefNode)
+{
+  // README: 
+  // this block is supposed to contain AMMR-native point clouds for joint fitting, 
+  // either a reference to a morphed pointcloud or looking up in model parameters and applying scaling
+  
+  AnyFloat LandmarkPlaceHolder = {{1.0, 0.0, 0.0},{0.0, 1.0, 0.0},{0.0, 0.0, 1.0},{0.0, 0.0, 0.0}}; // 
+  #var AnyFloat KneeJointPoints = LandmarkPlaceHolder;                          // the intention here is to allow a different set of unscaled landmarks if default do not suffice
+  #var AnyFloat AnkleJointPoints = LandmarkPlaceHolder;                          // placeholder
+  #var AnyFloat PFJointPoints = LandmarkPlaceHolder;                          // placeholder
+
+  //AnyFolder &refBodyPart = REF_BODY_PART;
+  
+}; // JOINT_FITTING_DATA_THIGH

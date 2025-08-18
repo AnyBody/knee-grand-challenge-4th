@@ -1,0 +1,7 @@
+// Class template for creating a ligament
+#class_template MORPHING_DATA(REF_BODY_PARTY)
+{
+  #var AnyFloat UnscaledLandmarks = REF_BODY_PARTY.MorphingLandmarks;                          // the intention here is to allow a different set of unscaled landmarks if default do not suffice
+  #var AnyFloat Landmarks = REF_BODY_PARTY.ScalingFunction(REF_BODY_PARTY.MorphingLandmarks);  // morph unscaled landmarks with a s
+}; // MORPHING_DATA
+

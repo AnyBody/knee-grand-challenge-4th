@@ -1,0 +1,7 @@
+AnyFile SurfFemurFileName = "femur.stl";
+AnyFile SurfTibiaFileName = "tibia.stl";
+AnyFile SurfPatellaFileName = "patella.stl";
+AnyFile SurfTibiaFibulaFileName = "tibiafibula.stl";
+
+AnyFile SurfPelvisRFileName = "Pelvis_tlem_right.stl";
+AnyFile SurfPelvisLFileName = "Pelvis_tlem_left.stl";

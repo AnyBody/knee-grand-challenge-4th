@@ -1,0 +1,77 @@
+// Filenames of boney surfaces used for scaling 
+AnyFile SurfFemurFileName = "femur.stl";
+AnyFile SurfTibiaFileName = "tibia.stl";
+AnyFile SurfPatellaFileName = "patella.stl";
+AnyFile SurfTibiaFibulaFileName = "tibiafibula.stl";
+
+
+
+#define _EXTRACT_LANDMARKS(LANDMARK_OBJECT, SURF_HANDLE, SURF_FILE_OBJECT, LANDMARK_NUMBER, MIRROR)\
+    AnyIntVar LandmarkNumber##_##SURF_HANDLE = LANDMARK_NUMBER;\
+    AnyFileVar SURF_HANDLE = SURF_FILE_OBJECT;\
+    AnyInt NumPoints_##SURF_HANDLE = STL_Size(SURF_HANDLE, 1)[0];\
+    LANDMARK_OBJECT = STL_Vertices(SURF_HANDLE, iarr(0, floor((NumPoints_##SURF_HANDLE)/LandmarkNumber##_##SURF_HANDLE), (NumPoints_##SURF_HANDLE) - 1), 1)*0.001 * {{1,0,0},{0,1,0},{0,0,MIRROR}}
+    
+    
+// This section is for configuring landmarks or surfaces used for scaling. We open morphing function objects and overwrite landmarks of the class template
+Main.Morphing = {    
+  
+      //RightThigh = {
+      //  _EXTRACT_LANDMARKS(SourceLandmarks, SourceSTL, Main.Morphing.SourceData.SurfFemurFileName, Main.Morphing.Settings.LandmarkNumber);
+      //  _EXTRACT_LANDMARKS(TargetLandmarks, TargetSTL, Main.ModelSetup.SubjectSpecificData.SurfFemurFileName, Main.Morphing.Settings.LandmarkNumber);
+      //};
+      //
+      //RightShank = {
+      //  _EXTRACT_LANDMARKS(SourceLandmarks, SourceSTL, Main.Morphing.SourceData.SurfTibiaFibulaFileName, Main.Morphing.Settings.LandmarkNumber);
+      //  _EXTRACT_LANDMARKS(TargetLandmarks, TargetSTL, Main.ModelSetup.SubjectSpecificData.SurfTibiaFibulaFileName, Main.Morphing.Settings.LandmarkNumber);
+      //};
+      //
+      //RightPatella = {
+      //  _EXTRACT_LANDMARKS(SourceLandmarks, SourceSTL, Main.Morphing.SourceData.SurfPatellaFileName, Main.Morphing.Settings.LandmarkNumber);
+      //  _EXTRACT_LANDMARKS(TargetLandmarks, TargetSTL, Main.ModelSetup.SubjectSpecificData.SurfPatellaFileName, Main.Morphing.Settings.LandmarkNumber);
+      //};
+      
+      
+      LeftThigh = {
+        _EXTRACT_LANDMARKS(SourceLandmarks, SourceSTL, Main.Morphing.SourceData.SurfFemurFileName, Main.Morphing.Settings.LandmarkNumber, -1);
+        _EXTRACT_LANDMARKS(TargetLandmarks, TargetSTL, Main.ModelSetup.SubjectSpecificData.SurfFemurFileName, Main.Morphing.Settings.LandmarkNumber, -1);
+      };
+      
+      LeftShank = {
+        _EXTRACT_LANDMARKS(SourceLandmarks, SourceSTL, Main.Morphing.SourceData.SurfTibiaFileName, Main.Morphing.Settings.LandmarkNumber, -1);
+        _EXTRACT_LANDMARKS(TargetLandmarks, TargetSTL, Main.ModelSetup.SubjectSpecificData.SurfTibiaFileName, Main.Morphing.Settings.LandmarkNumber, -1);
+      };
+//      LeftShank = {
+//        _EXTRACT_LANDMARKS(SourceLandmarks, SourceSTL, Main.Morphing.SourceData.SurfTibiaFibulaFileName, Main.Morphing.Settings.LandmarkNumber, -1);
+//        _EXTRACT_LANDMARKS(TargetLandmarks, TargetSTL, Main.ModelSetup.SubjectSpecificData.SurfTibiaFibulaFileName, Main.Morphing.Settings.LandmarkNumber, -1);
+//      };
+      
+      LeftPatella = {
+        _EXTRACT_LANDMARKS(SourceLandmarks, SourceSTL, Main.Morphing.SourceData.SurfPatellaFileName, Main.Morphing.Settings.LandmarkNumber, -1);
+        _EXTRACT_LANDMARKS(TargetLandmarks, TargetSTL, Main.ModelSetup.SubjectSpecificData.SurfPatellaFileName, Main.Morphing.Settings.LandmarkNumber, -1);
+      };
+};
+
+AnyFolder &LeftThigh = Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode;
+AnyFolder &LeftShank = Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.PatientNode;
+LeftShank = {
+  AnyDrawSurf PatientShank = {
+    FileName = ..SurfTibiaFileName;
+    ScaleXYZ={1,1,-1}*0.001;
+  };
+};
+LeftThigh = {
+  AnyDrawSurf PatientFemur = {
+    FileName = ..SurfFemurFileName;
+    ScaleXYZ={1,1,-1}*0.001;
+  };
+  
+//  AnyDrawPointCloud VisualizeLandmarks = {
+//    Points = Main.Morphing.LeftThigh.TargetLandmarks;
+//    RGB = {1, 0, 0};
+//    Opacity = 0.5;
+//    PointStyle.Size = 0.005;
+//    Points3D = On;
+//    ShowNames = Off;
+//  };
+};
