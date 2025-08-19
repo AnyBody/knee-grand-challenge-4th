@@ -1,1 +1,1 @@
-#include "<LAB_CONFIG_PATH>/DataConfig.any"
+#include "<LAB_CONFIG_PATH>/JointFit/DataConfig.any"

@@ -133,10 +133,12 @@ Main.Morphing = {
       };
       #endif
 };
+#if BM_LEG_LEFT != OFF
 
 AnyFolder &LeftThigh = Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode;
 AnyFolder &LeftShank = Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.PatientNode;
 AnyFolder &LeftPatella = Main.HumanModel.BodyModel.Left.Leg.Seg.Patella.PatientNode;
+#endif
 
 #if BM_LEG_RIGHT != OFF
 AnyFolder &RightThigh = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode;

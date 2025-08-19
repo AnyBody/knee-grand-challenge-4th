@@ -2,6 +2,8 @@ REF_HUMAN_BODYMODEL =
 {
   Interface =
   {
+    
+    #if BM_LEG_LEFT != OFF
     Left = 
     {
       AnyKinLinear GlobalFootPos = 
@@ -104,6 +106,7 @@ REF_HUMAN_BODYMODEL =
         MeasureOrganizer = {2};
       };      
     };
+    #endif
   };//Interface
 };
 

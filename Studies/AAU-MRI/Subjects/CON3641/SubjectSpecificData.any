@@ -1,6 +1,9 @@
 #define KNEE_MODEL_VERSION "GCK5"
 #path USER_PATH_INPUTDATA "./"
-  
+
+#define BM_LEG_RIGHT ON
+#define BM_LEG_LEFT OFF
+
 
 //Main.ModelSetup.SubjectSpecificData = 
 //{

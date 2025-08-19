@@ -5,13 +5,19 @@ Main.EnvironmentModel.ForcePlates =
   // are available for the ForcePlateAutoDetection class:
   // #include "<ANYMOCAP_PATH>/ForcePlates/ForcePlateAutoDetection.any"
   
+    #if BM_LEG_RIGHT == ON
+    AnySeg &Foot = Main.HumanModel.BodyModel.Right.Leg.Seg.Foot;
+    #else
+    AnySeg &Foot = Main.HumanModel.BodyModel.Left.Leg.Seg.Foot;
+    #endif
+    
   ForcePlateAutoDetection Plate1(
     PLATE_NO=1,
     HeightTolerance = 0.07,
     VelThreshold = 2.2,
     FORCEPLATE_TYPE = 2,
-    LIMB1 = Main.HumanModel.BodyModel.Left.Leg.Seg.Foot,
-    LIMB2 = Main.HumanModel.BodyModel.Left.Leg.Seg.Foot
+    LIMB1 = .Foot,
+    LIMB2 = .Foot
   ) = { };
   
 //  ForcePlateAutoDetection Plate2(

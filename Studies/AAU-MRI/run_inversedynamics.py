@@ -38,7 +38,7 @@ def run_inversedynamics(mainfiles: list[Path], create_video: bool, **kwargs) -> 
         macro = [
             Load(mainfile),
             OperationRun("Main.RunParameterIdentification"),
-            OperationRun("Main.RunAnalysis<<<<<<<<<<<<<<"),
+            #OperationRun("Main.RunAnalysis"),
             #OperationRun("Main.RunAnalysis.<LoadParameters"),
             #OperationRun("Main.Studies.InverseDynamicStudy.InverseDynamics"),
             #Dump("Main.Studies.InverseDynamicStudy.Output.MaxMuscleActivity"),
@@ -125,7 +125,7 @@ if __name__ == "__main__":
     # Parse and print subdirectories (2 levels)
     subdirs = [p for p in Path.cwd().glob("*/Trials Dynamic/*") if p.is_dir()]
     print("Subdirectories (2 levels):")
-    models = [str(d)+"/main.dev.any" for d in subdirs]
+    models = [str(d)+"/main.any" for d in subdirs]
     run_inversedynamics(mainfiles=models, create_video=False)
 
     # Return to the original working directory
