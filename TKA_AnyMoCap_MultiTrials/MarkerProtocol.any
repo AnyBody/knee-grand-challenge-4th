@@ -218,7 +218,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Right Lateral Ankle
 CreateMarkerDriver RHindfoot ( 
 MarkerName= RHindfoot ,
-MarkerPlacement=Right.Leg.Seg.Foot,
+MarkerPlacement=Right.Leg.Seg.Foot.Metatarsal5,
 OptX=ON,OptY=ON,OptZ=ON,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
@@ -230,7 +230,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Right Toe
 CreateMarkerDriver RToe (
 MarkerName= RToe,  
-MarkerPlacement=Right.Leg.Seg.Foot,
+MarkerPlacement=Right.Leg.Seg.Foot.DistalPhalange2,
 OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
@@ -240,7 +240,7 @@ ScaleMarkerPosOnOff = 1
 
 CreateMarkerDriver RToeLateral (
 MarkerName= RToeLateral,  
-MarkerPlacement=Right.Leg.Seg.Foot,
+MarkerPlacement=Right.Leg.Seg.Foot.Metatarsal5,
 OptX=ON, OptY=OFF, OptZ=ON,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
@@ -251,7 +251,7 @@ ScaleMarkerPosOnOff = 1
 
 CreateMarkerDriver RToeMedial (
 MarkerName= RToeMedial ,  
-MarkerPlacement=Right.Leg.Seg.Foot,
+MarkerPlacement=Right.Leg.Seg.Foot.Metatarsal1,
 OptX=ON, OptY=OFF, OptZ=ON,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
@@ -262,7 +262,7 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Right Heel
 CreateMarkerDriver RHeel (
 MarkerName= RHeel,
-MarkerPlacement=Right.Leg.Seg.Foot,
+MarkerPlacement=Right.Leg.Seg.Foot.Calcaneus,
 OptX=OFF, OptY=ON, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
@@ -342,7 +342,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Ankle
 CreateMarkerDriver LHindfoot (
 MarkerName= LHindfoot,
-MarkerPlacement=Left.Leg.Seg.Foot,
+MarkerPlacement=Left.Leg.Seg.Foot.Metatarsal5,
 OptX=ON,OptY=ON,OptZ=ON,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
@@ -354,7 +354,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Toe
 CreateMarkerDriver LToe (
 MarkerName= LToe, 
-MarkerPlacement=Left.Leg.Seg.Foot,
+MarkerPlacement=Left.Leg.Seg.Foot.DistalPhalange2,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
@@ -365,7 +365,7 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Left Toe
 CreateMarkerDriver LToeLateral (
 MarkerName= LToeLateral, 
-MarkerPlacement=Left.Leg.Seg.Foot,
+MarkerPlacement=Left.Leg.Seg.Foot.Metatarsal5,
 OptX=ON,OptY=OFF,OptZ=ON,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
@@ -375,7 +375,7 @@ ScaleMarkerPosOnOff = 1
 
 CreateMarkerDriver LToeMedial (
 MarkerName= LToeMedial , 
-MarkerPlacement=Left.Leg.Seg.Foot,
+MarkerPlacement=Left.Leg.Seg.Foot.Metatarsal1,
 OptX=ON,OptY=OFF,OptZ=ON,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
@@ -386,7 +386,7 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Left Heel
 CreateMarkerDriver LHeel(
 MarkerName= LHeel, 
-MarkerPlacement=Left.Leg.Seg.Foot,
+MarkerPlacement=Left.Leg.Seg.Foot.Calcaneus,
 OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1

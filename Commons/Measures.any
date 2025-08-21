@@ -6,11 +6,11 @@ REF_HUMAN_BODYMODEL =
     {
       AnyKinLinear GlobalFootPos = 
       {
-        AnyRefFrame& ref = ...Right.Leg.Seg.Foot;
+        AnyRefFrame& ref = ...Right.Leg.Seg.Foot.Calcaneus;
       };
       AnyKinRotational GlobalFootRot = 
       {
-        AnyRefFrame& ref = ...Right.Leg.Seg.Foot;
+        AnyRefFrame& ref = ...Right.Leg.Seg.Foot.Calcaneus;
         Type = RotAxesAngles;
       };      
       AnyKinMeasureOrg GlobalFootPosX = 
@@ -45,7 +45,7 @@ REF_HUMAN_BODYMODEL =
       }; 
       AnyKinLinear GlobalToeLateralContactNodePos = 
       {
-        AnyRefFrame& ref = ...Right.Leg.Seg.Foot.ToeLateralContactNode;
+        AnyRefFrame& ref = ...Right.Leg.Seg.Foot.Metatarsal5.ToeLateralContactNode;
       };
       AnyKinMeasureOrg GlobalToeLateralContactNodePosX = 
       {
@@ -64,7 +64,7 @@ REF_HUMAN_BODYMODEL =
       };
       AnyKinLinear GlobalToeMedialContactNodePos = 
       {
-        AnyRefFrame& ref = ...Right.Leg.Seg.Foot.ToeMedialContactNode;
+        AnyRefFrame& ref = ...Right.Leg.Seg.Foot.Metatarsal1.ToeMedialContactNode;
       };
       AnyKinMeasureOrg GlobalToeMedialContactNodePosX = 
       {
