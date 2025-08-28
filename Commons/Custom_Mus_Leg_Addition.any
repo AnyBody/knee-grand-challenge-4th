@@ -1,16 +1,16 @@
 AnyObjectPtrArray pArrMusList = ObjSearch("*.*", "AnyMuscle");
 
-PsoasMajor.PsoasMajor_PMT12I_TM= { #include "MusAdditions.any" };
-PsoasMajor.PsoasMajor_PML1I_TM= { #include "MusAdditions.any" };
-PsoasMajor.PsoasMajor_PML1T_TM= { #include "MusAdditions.any" };
-PsoasMajor.PsoasMajor_PML2I_TM= { #include "MusAdditions.any" };
-PsoasMajor.PsoasMajor_PML2T_TM= { #include "MusAdditions.any" };
-PsoasMajor.PsoasMajor_PML3I_TM= { #include "MusAdditions.any" };
-PsoasMajor.PsoasMajor_PML3T_TM= { #include "MusAdditions.any" };
-PsoasMajor.PsoasMajor_PML4I_TM= { #include "MusAdditions.any" };
-PsoasMajor.PsoasMajor_PML4T_TM= { #include "MusAdditions.any" };
-PsoasMajor.PsoasMajor_PML5_TM= { #include "MusAdditions.any" };
-PsoasMajor.PsoasMajor_PML5T_TM= { #include "MusAdditions.any" };
+PsoasMajor.PsoasMajorT12= { #include "MusAdditions.any" };
+PsoasMajor.PsoasMajorL1_1= { #include "MusAdditions.any" };
+PsoasMajor.PsoasMajorL1_2= { #include "MusAdditions.any" };
+PsoasMajor.PsoasMajorL2_1= { #include "MusAdditions.any" };
+PsoasMajor.PsoasMajorL2_2= { #include "MusAdditions.any" };
+PsoasMajor.PsoasMajorL3_1= { #include "MusAdditions.any" };
+PsoasMajor.PsoasMajorL3_2= { #include "MusAdditions.any" };
+PsoasMajor.PsoasMajorL4_1= { #include "MusAdditions.any" };
+PsoasMajor.PsoasMajorL4_2= { #include "MusAdditions.any" };
+PsoasMajor.PsoasMajorL5_1= { #include "MusAdditions.any" };
+PsoasMajor.PsoasMajorL5_2= { #include "MusAdditions.any" };
 SoleusMedialis.SoleusMedialis1= { #include "MusAdditions.any" }; 
 SoleusMedialis.SoleusMedialis2= { #include "MusAdditions.any" }; 
 SoleusMedialis.SoleusMedialis3= { #include "MusAdditions.any" }; 
