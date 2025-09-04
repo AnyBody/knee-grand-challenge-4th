@@ -38,10 +38,14 @@ AnyRefNode HipJointNew =
   //  Y-axis: Along the femoral shaft, from knee joint center to hip joint center
   //  X-axis: Perpendicular to the plane formed by the hip joint center and the medial and lateral epicondyles
   //  Z-axis: Orthogonal to X and Y  
-
+  
   ARel = RotMat(  
     {0.0, 0.0, 0.0}, 
+    #if SEG_SIGN != 1
     cross(sRel-.EpicondylusFemorisMedialis.sRel, sRel-.EpicondylusFemorisLateralis.sRel), 
+    #else
+    cross(sRel-.EpicondylusFemorisLateralis.sRel, sRel-.EpicondylusFemorisMedialis.sRel), 
+    #endif
     sRel - .KneeJointNew.sRel
     );
   AnyDrawRefFrame DrawHipJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
