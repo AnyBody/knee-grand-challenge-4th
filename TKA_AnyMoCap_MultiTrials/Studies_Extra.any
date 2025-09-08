@@ -194,7 +194,6 @@ InverseDynamicStudy =
   #endif        
 };
 
-#endif
 
 AnyOperationSequence LigamentCalibrationSequence = 
 {
@@ -207,6 +206,9 @@ AnyOperationSequence LigamentCalibrationSequence =
       "classoperation Main" + strquote("Update Values")
     };
   };  
-};//LigamentCalibrationSequence    
+};//LigamentCalibrationSequence   
+
+#endif
+ 
 
 
