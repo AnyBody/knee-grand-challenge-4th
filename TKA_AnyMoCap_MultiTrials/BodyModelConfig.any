@@ -5,7 +5,9 @@
 // ----------------------------------------------------------
 Main = {
   
-  #define BM_SCALING CONST_SCALING_LENGTHMASSFAT 
+  #define BM_SCALING _SCALING_XYZ_
+  
+//  #define BM_SCALING CONST_SCALING_LENGTHMASSFAT 
   #define BM_MANNEQUIN_DRIVER_DEFAULT OFF
   
   #ifndef BM_LEG_MODEL
