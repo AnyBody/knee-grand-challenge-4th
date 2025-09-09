@@ -210,5 +210,14 @@ AnyOperationSequence LigamentCalibrationSequence =
 
 #endif
  
-
-
+#if USE_FDK == 0
+InverseDynamicStudy = {
+  
+  AnyFolder Results = {};
+  #ifdef PATH_eKneeData
+  AnyFolder& eKneeData = Main.ModelSetup.TrialSpecificData.eKneeData;
+  #include "Results_SimpleKnee.any"
+  #endif
+  
+};
+#endif
