@@ -60,7 +60,7 @@ Main = {
       #define BM_LEG_MUSCLES_LEFT ON
     #endif
     #ifndef BM_LEG_MUSCLES_RIGHT
-     #define BM_LEG_MUSCLES_RIGHT OFF
+     #define BM_LEG_MUSCLES_RIGHT ON
     #endif
     #ifndef BM_LEG_LEFT
       #define BM_LEG_LEFT ON
