@@ -33,27 +33,22 @@ Main = {
   AnyFixedRefFrame global = {
     
 //    
-    AnyDrawSurf abt_pe_R = {FileName = "ABT/PelvisR";};
-//    AnyDrawSurf abt_pe_L = {FileName = "ABT/PelvisL";};
-//    AnyDrawSurf abt_fe_R = {FileName = "ABT/femur";};
-//    AnyDrawSurf abt_ti_R = {FileName = "ABT/tibia";};
+    AnyDrawSurf target_pe_R = {FileName = "Target/PelvisR";};
+    AnyDrawSurf target_pe_L = {FileName = "Target/PelvisL";};
+    AnyDrawSurf target_fe_R = {FileName = "Target/femurR";};
+    AnyDrawSurf target_ti_R = {FileName = "Target/tibiaR";};
     
-    AnyDrawSurf src_pe_R = {FileName = "Source/PelvisR";};  
-    AnyDrawSurf src_pe_L = {FileName = "Source/PelvisL";};
-    AnyDrawSurf src_fe_R = {FileName = "Source/femurR";};
-    AnyDrawSurf src_ti_R = {FileName = "Source/TibiaR";};
+    AnyDrawSurf src_pe_R = {FileName = "Source/Pelvis_R";};  
+    AnyDrawSurf src_pe_L = {FileName = "Source/Pelvis_L";};
+    AnyDrawSurf src_fe_R = {FileName = "Source/femur_R";};
+    AnyDrawSurf src_ti_R = {FileName = "Source/Tibia_R";};
     
-//    AnyDrawSurf trg_pe_R = {FileName = "Target/PelvisR_target";};
-//    AnyDrawSurf trg_pe_L = {FileName = "Target/PelvisL_target";};
-//    AnyDrawSurf trg_fe_R = {FileName = "Target/femurR_target";};
-//    AnyDrawSurf trg_ti_R = {FileName = "Target/TibiaR_target";};
+    CHECK_VERTEX_NUMBER(PelvisR, "Target/PelvisR.stl","Source/Pelvis_R.stl");
+    CHECK_VERTEX_NUMBER(PelvisL, "Target/PelvisL.stl","Source/Pelvis_L.stl");
+    CHECK_VERTEX_NUMBER(FemurR, "Target/FemurR.stl","Source/Femur_R.stl");
+    CHECK_VERTEX_NUMBER(TibiaR, "Target/TibiaR.stl","Source/Tibia_R.stl");
     
-    CHECK_VERTEX_NUMBER(PelvisR, "ABT/PelvisR.stl","Source/PelvisR.stl");
-    CHECK_VERTEX_NUMBER(PelvisL, "ABT/PelvisL.stl","Source/PelvisL.stl");
-    CHECK_VERTEX_NUMBER(FemurR, "ABT/Femur.stl","Source/FemurR.stl");
-    CHECK_VERTEX_NUMBER(TibiaR, "ABT/Tibia.stl","Source/TibiaR.stl");
-    
-    CHECK_VERTEX_LOCATION(PelvisRloc, "ABT/PelvisR.stl","Source/PelvisR.stl");
+    CHECK_VERTEX_LOCATION(PelvisRloc, "Target/PelvisR.stl","Source/Pelvis_R.stl");
     AnyIntArray indices = {1, 300, 500, 1000, 2000};
     SHOW_POINTCLOUD(ptcl, PelvisRloc.pts, 1, 0, 0);
   };
