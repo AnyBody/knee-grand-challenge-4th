@@ -11,7 +11,8 @@ Main.ModelSetup.TrialSpecificData =
   // loaded from the standing reference trial.
 
   //TODO: comment in and update to ..\..\Trials Static\PS_staticfor1
-  //LoadParametersFrom = {"..\..\Trials Static\PS_staticfor1"};
+  LoadParametersFrom = {"..\PAT2668_ref\PAT2668_ref"};
+//  LoadParametersFrom = {"..\..\Trials Static\PAT2668_ref"};
   
   // This is the name of the trial c3d file without extension. 
   // Here we assume the c3d file has the same name as the mainfile directory.
