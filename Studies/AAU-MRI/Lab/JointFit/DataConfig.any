@@ -1,0 +1,139 @@
+#define READ_AND_SHOW_XYZ(OBJECT, FILE, SCALE) \
+  AnyInputFile OBJECT##_Reader = {\
+    TOnOff = Off;\
+    FileName = FILE;\
+  };\
+  AnyDrawPointCloud OBJECT##_Visualizer = {\
+    Points = .OBJECT##_Reader.Data' * SCALE * .Mirror;\
+    RGB = {1, 0, 0};\
+    Opacity = 0.5;\
+    PointStyle.Size = 0.005;\
+    Points3D = On;\
+    ShowNames = Off;\
+  }   
+  
+#define SHOW_POINTCLOUD(name, points, r, g, b)  \
+  AnyDrawPointCloud name = {\
+    Points = .points;\
+    RGB = {r, g, b};\
+    Opacity = 0.5;\
+    PointStyle.Size = 0.005;\
+    Points3D = On;\
+    ShowNames = Off;\
+  }   
+  
+//
+//Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode.FittingData = {
+//  AnyFloat Mirror = {{1,0,0},{0,1,0},{0,0,-1}};
+//  READ_AND_SHOW_XYZ(HJPoints, "FemoralHead.xyz", 0.001);
+//  HipJointPoints = HJPoints_Reader.Data'*0.001*Mirror;
+//  
+//  READ_AND_SHOW_XYZ(KJPoints, "FemoralComponentCylFitPoints.xyz", 0.001);
+//  KneeJointPoints = KJPoints_Reader.Data'*0.001;
+//
+//  READ_AND_SHOW_XYZ(PFJPoints, "FemoralComponentPatellaJointPoints.xyz", 0.001);
+//  PFJointPoints = PFJPoints_Reader.Data'*0.001;
+//};
+
+//Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh = {
+//  AnySurfSTL test_femur = {
+//    FileName = Main.Morphing.SourceData.SurfFemurFileName;
+//    ScaleXYZ={1,1,-1}*0.001;
+//    AnyFunTransform3D &Scale = .Scale;
+//    AnyDrawSurf srf= {
+//      FileName = .FileName;
+//      ScaleXYZ=.ScaleXYZ;
+//      AnyFunTransform3D &Scale = .Scale;      
+//    };
+//  };
+//  
+//  //Issues:
+//  //Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.test_femur.NumVertices = 37746;
+//  //Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode.FittingData.target_femur_size = 37745;
+//  //
+//  
+//  //AnyInt source_femur_size = STL_Size(test_femur, 1)[0];
+//  
+//  AnyFloat HipJointPoints  = test_femur.GetVertices(PatientNode.FittingData.femoral_head_vertices)*{{1,0,0}, {0,1,0},{0,0,1}};
+//  AnyFloat KneeJointPoints = test_femur.GetVertices(PatientNode.FittingData.femoral_comp_vertices)*{{1,0,0}, {0,1,0},{0,0,1}}; // this might actually need the implant points instead
+//  AnyFloat PFJointPoints   = test_femur.GetVertices(PatientNode.FittingData.femoral_pf_vertices)*{{1,0,0}, {0,1,0},{0,0,1}};
+//
+//
+//  SHOW_POINTCLOUD(hipjoint_ptcl, HipJointPoints, 1, 1, 0);
+//  SHOW_POINTCLOUD(kneejoint_ptcl, KneeJointPoints, 1, 1, 0);
+//  SHOW_POINTCLOUD(pfjoint_ptcl, PFJointPoints, 1, 1, 0);
+//  
+//  
+//  AnyInt source_femur_size = STL_Size(Main.Morphing.SourceData.SurfFemurFileName, 1)[0];
+//  AnyFloat HipJointPoints2  = Scale(STL_Vertices(Main.Morphing.SourceData.SurfFemurFileName,Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode.FittingData.femoral_head_vertices, 1) * {{1,0,0},{0,1,0},{0,0,-1}}*0.001);
+//  SHOW_POINTCLOUD(hipjoint_ptcl2, HipJointPoints2, 1, 0, 1);
+//
+//};
+#if BM_LEG_LEFT != OFF
+
+Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode.FittingData = {
+  
+  AnySurfSTL target_femur = {FileName = Main.ModelSetup.SubjectSpecificData.SurfFemurLFileName;};
+  // these indices should be okay for TLEMSafe geometry and can be moved to AMMR, the surface object can also be in AMMR
+  // something like:
+  // HipJointPoints = femur.GetVertices(femoral_head_vertices)*0.001*{{1,0,0}, {0,1,0},{0,0,-1}};
+
+  #include "FemoralHead.any"
+  #include "FemoralComponentCylFitPoints.any"
+  #include "FemoralComponentPatellaJointPoints.any"
+  
+  HipJointPoints  = target_femur.GetVertices(femoral_head_vertices)*0.001*{{1,0,0}, {0,1,0},{0,0,1}};
+  KneeJointPoints = target_femur.GetVertices(femoral_comp_vertices)*0.001*{{1,0,0}, {0,1,0},{0,0,1}}; // this might actually need the implant points instead
+  PFJointPoints   = target_femur.GetVertices(femoral_pf_vertices)*0.001*{{1,0,0}, {0,1,0},{0,0,1}};
+
+
+  SHOW_POINTCLOUD(hipjoint_ptcl, HipJointPoints, 1, 0, 0);
+  SHOW_POINTCLOUD(kneejoint_ptcl, KneeJointPoints, 1, 0, 0);
+  SHOW_POINTCLOUD(pfjoint_ptcl, PFJointPoints, 1, 0, 1);
+};
+Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.PatientNode = {
+  ThighToShankReg.ScaleMat = eye(3);
+  ThighToShankReg.Offset = zeros(3);    
+};
+#endif
+#if BM_LEG_RIGHT != OFF
+
+Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode.FittingData = {
+  
+  AnySurfSTL target_femur = {FileName = Main.ModelSetup.SubjectSpecificData.SurfFemurRFileName;};
+  // these indices should be okay for TLEMSafe geometry and can be moved to AMMR, the surface object can also be in AMMR
+  // something like:
+  // HipJointPoints = femur.GetVertices(femoral_head_vertices)*0.001*{{1,0,0}, {0,1,0},{0,0,-1}};
+
+  #include "FemoralHead.any"
+  #include "FemoralComponentCylFitPoints.any"
+  #include "FemoralComponentPatellaJointPoints.any"
+  
+  HipJointPoints  = target_femur.GetVertices(femoral_head_vertices)*0.001*{{1,0,0}, {0,1,0},{0,0,1}};
+  KneeJointPoints = target_femur.GetVertices(femoral_comp_vertices)*0.001*{{1,0,0}, {0,1,0},{0,0,1}}; // this might actually need the implant points instead
+  PFJointPoints   = target_femur.GetVertices(femoral_pf_vertices)*0.001*{{1,0,0}, {0,1,0},{0,0,1}};
+
+
+  SHOW_POINTCLOUD(hipjoint_ptcl, HipJointPoints, 1, 0, 0);
+  SHOW_POINTCLOUD(kneejoint_ptcl, KneeJointPoints, 1, 0, 0);
+  SHOW_POINTCLOUD(pfjoint_ptcl, PFJointPoints, 1, 0, 1);
+};
+Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode = {
+  ThighToShankReg.ScaleMat = eye(3);
+  ThighToShankReg.Offset = zeros(3);    
+};
+#endif
+
+
+//Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode.FittingData = {
+//  READ_AND_SHOW_XYZ(HJPoints, "FemoralHead.xyz", 0.001);
+//  HipJointPoints = HJPoints_Reader.Data'*0.001;
+//  
+//  READ_AND_SHOW_XYZ(KJPoints, "FemoralComponentCylFitPoints.xyz", 0.001);
+//  KneeJointPoints = KJPoints_Reader.Data'*0.001;
+
+//  READ_AND_SHOW_XYZ(PFJPoints, "FemoralComponentPatellaJointPoints.xyz", 0.001);
+//  PFJointPoints = PFJPoints_Reader.Data'*0.001;
+//};
+
+
