@@ -1,0 +1,55 @@
+Main = {
+
+#define SHOW_POINTCLOUD(name, points, r, g, b)  \
+  AnyDrawPointCloud name = {\
+    Points = .points;\
+    RGB = {r, g, b};\
+    Opacity = 0.5;\
+    PointStyle.Size = 5;\
+    Points3D = On;\
+    ShowNames = Off;\
+    PointToPointVectors = On;\
+  }   
+    
+  
+  #define CHECK_VERTEX_NUMBER(OBJ_NAME, FILE1, FILE2)AnyFolder OBJ_NAME = {\
+         AnyFile file1 = FILE1;\
+         AnyFile file2 = FILE2;\
+         AnyInt test = assert(\
+          eqfun(\
+          STL_Size(file1, 1)[0],\
+            STL_Size(file2, 1)[0]),\
+            "Source and target files do not have the same number of vertices");}
+
+  #define CHECK_VERTEX_LOCATION(OBJ_NAME, FILE1, FILE2)AnyFolder OBJ_NAME = {\
+         AnyFile file1 = FILE1;\
+         AnyFile file2 = FILE2;\
+         AnyFloat pts = {\
+           STL_Vertices(file1, .indices, 1),\
+           STL_Vertices(file2, .indices, 1)};}
+
+  
+  
+  AnyFixedRefFrame global = {
+    
+//    
+    AnyDrawSurf target_pe_R = {FileName = "Target/PelvisR";};
+    AnyDrawSurf target_pe_L = {FileName = "Target/PelvisL";};
+    AnyDrawSurf target_fe_R = {FileName = "Target/femurR";};
+    AnyDrawSurf target_ti_R = {FileName = "Target/tibiaR";};
+    
+    AnyDrawSurf src_pe_R = {FileName = "Source/Pelvis_R";};  
+    AnyDrawSurf src_pe_L = {FileName = "Source/Pelvis_L";};
+    AnyDrawSurf src_fe_R = {FileName = "Source/femur_R";};
+    AnyDrawSurf src_ti_R = {FileName = "Source/Tibia_R";};
+    
+    CHECK_VERTEX_NUMBER(PelvisR, "Target/PelvisR.stl","Source/Pelvis_R.stl");
+    CHECK_VERTEX_NUMBER(PelvisL, "Target/PelvisL.stl","Source/Pelvis_L.stl");
+    CHECK_VERTEX_NUMBER(FemurR, "Target/FemurR.stl","Source/Femur_R.stl");
+    CHECK_VERTEX_NUMBER(TibiaR, "Target/TibiaR.stl","Source/Tibia_R.stl");
+    
+    CHECK_VERTEX_LOCATION(PelvisRloc, "Target/PelvisR.stl","Source/Pelvis_R.stl");
+    AnyIntArray indices = {1, 300, 500, 1000, 2000};
+    SHOW_POINTCLOUD(ptcl, PelvisRloc.pts, 1, 0, 0);
+  };
+};
