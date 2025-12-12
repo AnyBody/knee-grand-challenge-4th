@@ -160,24 +160,24 @@ AnyRefNode KneeJointNew =
 {
   sRel = .PatientRefNode.sRel + 
   .PatientRefNode.OffsetNode.sRel * .PatientRefNode.ARel';
-  ARel = .PatientRefNode.ARel * .PatientRefNode.OffsetNode.ARel;
+  ARel = .PatientRefNode.ARel * .PatientRefNode.OffsetNode.ARel * RotMat(-pi/15, y);
   
   AnyVec3 sRelUnscaled = sRel;
   AnyFloat ARelUnscaled = ARel;
   
-//  AnyDrawRefFrame Drw = 
-//  {
-//    RGB = {0, 1, 1};
-//    ScaleXYZ = 0.2*{1, 1, 1};
-//  };
-};    
-
+  AnyDrawRefFrame Drw = 
+  {
+    RGB = {1, 0, 0};
+    ScaleXYZ = 0.2*{1, 1, 1};
+  };
+};  
 AnyRefNode AnkleJointNew = 
 {
   sRel = .PatientRefNode.sRel + 
-  (.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.sRel + 
-   .PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.OffsetNode.sRel
-  *.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.ARel')
+  (.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.sRel //+ 
+  // .PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.OffsetNode.sRel
+  //*.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.ARel'
+  )
   *.PatientRefNode.ARel';
   ARel = .PatientRefNode.ARel * .PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.ARel*.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.OffsetNode.ARel;
   
@@ -186,7 +186,7 @@ AnyRefNode AnkleJointNew =
   
 //  AnyDrawRefFrame Drw = 
 //  {
-//    RGB = {0, 1, 1};
+//    RGB = {0, 1, 0};
 //    ScaleXYZ = 0.2*{1, 1, 1};
 //  };
 };  
