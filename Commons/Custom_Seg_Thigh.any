@@ -6,21 +6,20 @@ PatientNode = {
   
   //fit cylinders to find a knee joint node
   AnySurfCylinderFit KneeJointFit = {    
-    Length = 0.0;
+    Length = 0.1;
     Points = .FittingData.KneeJointPoints;//will use morphed condyles by default?!
-    CenterOrigin=On;
-    //AnyDrawParamSurf draw={};
-    //AnyDrawRefFrame DrawKneeJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
+    //CenterOrigin=On;
+    AnyDrawParamSurf draw={};
+    AnyDrawRefFrame DrawKneeJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
   };
   
   //fit cylinders to find a PF joint node
   AnySurfCylinderFit PatellaFemoralJointFit = {    
-    Length = 0.0;
-    Points = .FittingData.PFJointPoints;//will use morphed condyles by default?!
+    Length = 0.1;
+    Points = .FittingData.PFJointPoints;
     //AnyDrawParamSurf draw={};
-    Direction = {1,0,0};
+    Direction = (..EpicondylusFemorisMedialis.sRel - ..EpicondylusFemorisLateralis.sRel) * .ARel;
     FixedDirection = On;
-    CenterOrigin=On;
   };
     
   //fit sphere to find a hip joint node, orientation
@@ -75,7 +74,7 @@ AnyRefNode KneeJointNew =
     * RotMat(pi/2, y)                 // for better consistency with ABT's implementation
     * RotMat(VarusValgusRotation, x)  // custom varus-valgus angle
   ;
-  //AnyDrawRefFrame DrawKneeJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
+  AnyDrawRefFrame DrawKneeJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
   AnyVar VarusValgusRotation = DesignVar(0);
 };
 

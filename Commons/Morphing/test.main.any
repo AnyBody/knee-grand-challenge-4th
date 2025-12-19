@@ -2,7 +2,17 @@ Main =  {
   
   AnyFixedRefFrame fr = {
     
-    AnyDrawSurf srf = {FileName="Pelvis";ScaleXYZ={1,1,1}*1000;};
+    AnyDrawSurf srfPelvis = {FileName="Pelvis";ScaleXYZ={1,1,1}*1000;};
+    AnyDrawSurf srfFemur = {FileName="Femur";ScaleXYZ={1,1,1};};
+    AnyDrawSurf srfTibia = {FileName="Tibia";ScaleXYZ={1,1,1};};
+    //AnyDrawSurf srfFoot = {FileName="Pelvis";ScaleXYZ={1,1,1};};
+    
+    AnyDrawSurf srfPelvisTLEM = {FileName="TLEM/Pelvis";ScaleXYZ={1,1,1}*1000;RGB={1,0,0};};
+    AnyDrawSurf srfFemurTLEM = {FileName="TLEM/Femur";ScaleXYZ={1,1,1}*1000;RGB={1,0,0};};
+    AnyDrawSurf srfTibiaTLEM = {FileName="TLEM/Tibia";ScaleXYZ={1,1,1}*1000;RGB={1,0,0};};
+    AnyDrawSurf srfFootTLEM = {FileName="TLEM/Foot";ScaleXYZ={1,1,1};RGB={1,0,0};};
+    AnyDrawSurf srfTalusTLEM = {FileName="TLEM/Talus";ScaleXYZ={1,1,1};RGB={1,0,0};};
+    
   };
   
 };

@@ -9,6 +9,9 @@
 // Enter and edit Lab-Specific Data in this file:
 #path MOCAP_LAB_SPECIFIC_DATA "..\..\..\..\Lab\LabSpecificData.any"
 
+#define BM_JOINT_TYPE_ANKLE_RIGHT  _JOINT_TYPE_DEFAULT_
+#define BM_JOINT_TYPE_ANKLE_LEFT  _JOINT_TYPE_DEFAULT_
+
 // Include the AnyMoCap Framwork
 #include "<ANYMOCAP_MODEL>"
 
