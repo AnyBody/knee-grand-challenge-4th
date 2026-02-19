@@ -152,7 +152,9 @@ ScaleMarkerPosOnOff = 1
 CreateMarkerDriver RKneeLateral (
 MarkerName= RKNEELATERAL,
 MarkerPlacement=Right.Leg.Seg.Shank,
-OptX=OFF,OptY=OFF,OptZ=OFF,  
+//OptX=OFF,OptY=OFF,OptZ=OFF,  
+
+OptX=ON,OptY=ON,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 PlaceMarkerAt = LateralTibialEpicondyle,
 //PlaceMarkerAt = EpicondylusFemorisLateralis,
@@ -315,7 +317,7 @@ OptX=ON,OptY=ON,OptZ=ON,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
 ) = {
-   sRelOpt = {0.041, -0.38, -0.035};
+   sRelOpt = {0.041, -0.38, -0.038};
 };
 
 CreateMarkerDriver LKneeLateral (
@@ -340,25 +342,25 @@ OptX=ON,OptY=ON,OptZ=ON,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
 ) = {
-  sRelOpt = {0.0, -0.16, -0.05};
+  sRelOpt = {0.0, -0.21, -0.05};
   sRelOptDelta = {5.374450635614104e-002, -1.594930751166518e-002, 3.799114338593220e-002};
 };
 
 CreateMarkerDriver LShankSuperior (
 MarkerName= LSHANKSUPERIOR,
 MarkerPlacement=Left.Leg.Seg.Shank,
-OptX=ON,OptY=OFF,OptZ=ON,  
+OptX=ON,OptY=ON,OptZ=ON,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
 ) = {
-  sRelOpt = {0.05, -0.09, 0.03};
+  sRelOpt = {0.0, -0.05, -0.05};
   sRelOptDelta = {2.868835123236436e-002, 1.084341702085235e-002, -2.935142561827216e-002};
 };
 
 CreateMarkerDriver LShankInferior (
 MarkerName= LSHANKINFERIOR,
 MarkerPlacement=Left.Leg.Seg.Shank,
-OptX=ON,OptY=OFF,OptZ=ON,  
+OptX=ON,OptY=ON,OptZ=ON,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
 ) = {
@@ -386,28 +388,28 @@ OptX=OFF,OptY=OFF,OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt = {0.19, -0.06, -0.02};
+  sRelOpt = {0.13, -0.04, -0.015};
 };
 
 // Marker on the Left Toe
 CreateMarkerDriver LToeLateral (
 MarkerName= LTOELATERAL, 
 MarkerPlacement=Left.Leg.Seg.Foot,
-OptX=ON,OptY=OFF,OptZ=OFF,  
+OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt =  {0.16, -0.06, -0.05};
+  sRelOpt =  {0.12, -0.04, -0.04};
 };
 
 CreateMarkerDriver LToeMedial (
 MarkerName= LTOEMEDIAL , 
 MarkerPlacement=Left.Leg.Seg.Foot,
-OptX=ON,OptY=OFF,OptZ=ON,  
+OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt =  {0.17, -0.06, 0.03};
+  sRelOpt =  {0.13, -0.035, 0.02};
 };
 
 // Marker on the Left Heel
@@ -418,7 +420,7 @@ OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt =  {-0.07 + 0.02, -0.04, 0.001512914};
+  sRelOpt =  {-0.07 + 0.02, -0.04, -0.01};
 };
 #endif
 

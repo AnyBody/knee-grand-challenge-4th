@@ -40,13 +40,13 @@ AnyFolder Morphing = {
    ) = {};
    #endif
   
-   #ifdef _override_scaling_for_Right_Patella
-   MORPHING_FUNC RightPatella(
-     REF_BODY_PART= Main.HumanModel.BodyModel.Right.Leg.Seg.Patella,
-     REF_BODY_PART_SCALING = Main.HumanModel.Scaling.GeometricalScaling.Right.Patella,
-     CUSTOM_NODE = PatientNode
-   ) = {};
-   #endif
+//   #ifdef _override_scaling_for_Right_Patella
+//   MORPHING_FUNC RightPatella(
+//     REF_BODY_PART= Main.HumanModel.BodyModel.Right.Leg.Seg.Patella,
+//     REF_BODY_PART_SCALING = Main.HumanModel.Scaling.GeometricalScaling.Right.Patella,
+//     CUSTOM_NODE = PatientNode
+//   ) = {};
+//   #endif
      
 #endif
 
@@ -71,13 +71,13 @@ AnyFolder Morphing = {
    ) = {};
    #endif
   
-   #ifdef _override_scaling_for_Left_Patella
-   MORPHING_FUNC LeftPatella(
-     REF_BODY_PART= Main.HumanModel.BodyModel.Left.Leg.Seg.Patella,
-     REF_BODY_PART_SCALING = Main.HumanModel.Scaling.GeometricalScaling.Left.Patella,
-     CUSTOM_NODE = PatientNode
-   ) = {};
-   #endif
+//   #ifdef _override_scaling_for_Left_Patella
+//   MORPHING_FUNC LeftPatella(
+//     REF_BODY_PART= Main.HumanModel.BodyModel.Left.Leg.Seg.Patella,
+//     REF_BODY_PART_SCALING = Main.HumanModel.Scaling.GeometricalScaling.Left.Patella,
+//     CUSTOM_NODE = PatientNode
+//   ) = {};
+//   #endif
      
 #endif
 };

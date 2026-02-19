@@ -3,7 +3,12 @@ Main.Studies.InverseDynamicStudy = {
     
     AnyFolder Right = {
           // Some references for convenience and less typing. 
+          #if BM_LEG_RIGHT == ON
         AnyFolder& LegRef = Main.HumanModel.BodyModel.Right.Leg;
+        #else
+        AnyFolder& LegRef = Main.HumanModel.BodyModel.Left.Leg;
+        #endif
+        
         AnyFolder& GlobalRef = Main.EnvironmentModel.GlobalRef;
       
         // We can get the forces/moments in the knee joint by finding the Contraints.Reactions object in the joint.

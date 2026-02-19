@@ -11,6 +11,9 @@ PatientNode = {
       .ThighToPatellaReg({1.0,0.0,0.0}),
       .ThighToPatellaReg({0.0,1.0,0.0})
       ) * ...Thigh.PatientNode.ARel'* ...Thigh.PatellaFemurJointNew.ARel ;
+      
+      AnyDrawRefFrame DrawPFJointPatella= {ScaleXYZ={1,1,1}*0.1;RGB={1,0,1};};
+
   };
   
   
@@ -22,18 +25,18 @@ AnyRefNode PatellaFemurJointNew = {
   ARel = .PatientNode.ARel * .PatientNode.PatellaFemoralJoint.ARel;
   AnyDrawRefFrame DrawPFJointPatella= {ScaleXYZ={1,1,1}*0.1;RGB={1,0,1};};
 }; 
-
-PatientNode = {
-AnyRefNode Patella_Tendon_Node = 
-{
-  sRel = ..Mirror_Transform({-0.01000434, -0.024022, -0.00385535}) ;  
-  AnyDrawNode DrwNode = 
-  {
-    RGB = {1, 0, 0};
-    ScaleXYZ = 0.001*{1, 1, 1};
-  };
-}; 
-}; 
+//
+//PatientNode = {
+//AnyRefNode Patella_Tendon_Node = 
+//{
+//  sRel = ..Mirror_Transform({-0.01000434, -0.024022, -0.00385535}) ;  
+//  AnyDrawNode DrwNode = 
+//  {
+//    RGB = {1, 0, 0};
+//    ScaleXYZ = 0.001*{1, 1, 1};
+//  };
+//}; 
+//}; 
 
 #if (BM_JOINT_TYPE_PATELLATENDON_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_PATELLATENDON_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
 AnyRefNode& Origin_patella_tendon = PatientNode.Patella_Tendon_Node;

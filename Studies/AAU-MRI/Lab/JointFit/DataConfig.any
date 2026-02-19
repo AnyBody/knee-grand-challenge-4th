@@ -118,10 +118,10 @@ Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode.FittingData = {
   SHOW_POINTCLOUD(kneejoint_ptcl, KneeJointPoints, 1, 0, 0);
   SHOW_POINTCLOUD(pfjoint_ptcl, PFJointPoints, 1, 0, 1);
 };
-Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode = {
-  ThighToShankReg.ScaleMat = eye(3);
-  ThighToShankReg.Offset = zeros(3);    
-};
+//Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode = {
+//  ThighToShankReg.ScaleMat = eye(3);
+//  ThighToShankReg.Offset = zeros(3);    
+//};
 #endif
 
 

@@ -49,16 +49,16 @@ AnyRefNode& KneeJoint = KneeJointNew;
 //#if (BM_JOINT_TYPE_ANKLE_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_ANKLE_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
 //AnyRefNode& AnkleJoint = AnkleJointNew;
 //#endif
-
-#if (BM_JOINT_TYPE_PATELLATENDON_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_PATELLATENDON_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
-AnyRefNode Insertion_patella_tendon =
-{
-  //sRel = .Scale( .StdPar.Insertion_patella_tendon );
-  #if KNEE_MODEL_VERSION == "GCK4"  
-	sRel = .Mapping_Transform({-0.0343431, -0.0346712, -0.0110248}); // GCK4
-  #endif
-  #if KNEE_MODEL_VERSION == "GCK6"  
-	sRel = .Mapping_Transform({-0.0203,-0.0707,-0.0096});	//GCK6
-  #endif
-};
-#endif
+//
+//#if (BM_JOINT_TYPE_PATELLATENDON_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_PATELLATENDON_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
+//AnyRefNode Insertion_patella_tendon =
+//{
+//  //sRel = .Scale( .StdPar.Insertion_patella_tendon );
+//  #if KNEE_MODEL_VERSION == "GCK4"  
+//	sRel = .Mapping_Transform({-0.0343431, -0.0346712, -0.0110248}); // GCK4
+//  #endif
+//  #if KNEE_MODEL_VERSION == "GCK6"  
+//	sRel = .Mapping_Transform({-0.0203,-0.0707,-0.0096});	//GCK6
+//  #endif
+//};
+//#endif

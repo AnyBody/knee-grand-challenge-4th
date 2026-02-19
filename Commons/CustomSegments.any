@@ -36,11 +36,11 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
   {  
     Seg.Patella = 
     {
-      #define SEG_SIGN 1
-      #include "Custom_Seg_Patella.any"
-      #undef SEG_SIGN
-      
-      DrwSurf.Visible = Off;    
+//      #define SEG_SIGN 1
+//      #include "Custom_Seg_Patella.any"
+//      #undef SEG_SIGN
+//      
+//      DrwSurf.Visible = Off;    
     };
   };
  #endif // Right Patella
@@ -92,11 +92,11 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
   { 
     Seg.Patella = 
     {
-      #define SEG_SIGN -1
-      #include "Custom_Seg_Patella.any"
-      #undef SEG_SIGN
-    
-      DrwSurf.Visible = Off;    
+//      #define SEG_SIGN -1
+//      #include "Custom_Seg_Patella.any"
+//      #undef SEG_SIGN
+//    
+//      DrwSurf.Visible = Off;    
     };
   };
  #endif //Left Patella
@@ -130,6 +130,10 @@ HumanModel.BodyModel =
       #endif
       
       #if (BM_JOINT_TYPE_KNEE_RIGHT == _JOINT_TYPE_USERDEFINED_)
+//      AnySphericalJoint Knee = {
+//        AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
+//        AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+//      };
       AnyRevoluteJoint Knee = 
       {
         Axis = z;
@@ -157,35 +161,35 @@ HumanModel.BodyModel =
       };//Ankle
       #endif
       
-      #if (BM_JOINT_TYPE_PATELLATENDON_RIGHT == _JOINT_TYPE_USERDEFINED_)
-      AnyFolder KinematicMeasures = 
-      {
-        AnyKinPLine Patella = 
-        {
-          AnyRefNode &Origin_patella_tendon = ...Seg.Patella.Origin_patella_tendon;
-          AnyRefNode &Insertion_patella_tendon = ...Seg.Shank.Insertion_patella_tendon;
-          
-          AnyDrawPLine Patella_tendon = 
-          {
-            Thickness = 0.001;
-            RGB = {1,0,0};
-            Opacity = ....BonesOpacity.Patella;
-          };
-        };
-      };  
-      AnyKinEqSimpleDriver PatellaMovement = 
-      {
-        AnyKinPLine &Jnt = .KinematicMeasures.Patella;
-        AnyVar lengthScale = vnorm(..Seg.Shank.KneeJoint.sRel - ..Seg.Shank.Insertion_patella_tendon.sRel)
-        / vnorm(..Seg.Shank.StdPar.Insertion_patella_tendon-..Seg.Shank.StdPar.KneeJoint);
-        AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.PatellarLigamentLength; 
-        AnyVar TendonLength_Custom = DEF_CUSTOM_SCALING_PATELLA_TENDON_LENGTH;
-        
-        DriverPos = {TendonLength_Custom};
-        DriverVel = {0.0};
-        Reaction.Type = {On};  // The muscles must do the work
-      };
-      #endif
+//      #if (BM_JOINT_TYPE_PATELLATENDON_RIGHT == _JOINT_TYPE_USERDEFINED_)
+//      AnyFolder KinematicMeasures = 
+//      {
+//        AnyKinPLine Patella = 
+//        {
+//          AnyRefNode &Origin_patella_tendon = ...Seg.Patella.Origin_patella_tendon;
+//          AnyRefNode &Insertion_patella_tendon = ...Seg.Shank.Insertion_patella_tendon;
+//          
+//          AnyDrawPLine Patella_tendon = 
+//          {
+//            Thickness = 0.001;
+//            RGB = {1,0,0};
+//            Opacity = ....BonesOpacity.Patella;
+//          };
+//        };
+//      };  
+//      AnyKinEqSimpleDriver PatellaMovement = 
+//      {
+//        AnyKinPLine &Jnt = .KinematicMeasures.Patella;
+//        AnyVar lengthScale = vnorm(..Seg.Shank.KneeJoint.sRel - ..Seg.Shank.Insertion_patella_tendon.sRel)
+//        / vnorm(..Seg.Shank.StdPar.Insertion_patella_tendon-..Seg.Shank.StdPar.KneeJoint);
+//        AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.PatellarLigamentLength; 
+//        AnyVar TendonLength_Custom = DEF_CUSTOM_SCALING_PATELLA_TENDON_LENGTH;
+//        
+//        DriverPos = {TendonLength_Custom};
+//        DriverVel = {0.0};
+//        Reaction.Type = {On};  // The muscles must do the work
+//      };
+//      #endif
     };//Jnt
   };
   #endif
@@ -204,6 +208,11 @@ HumanModel.BodyModel =
       #endif
       
       #if (BM_JOINT_TYPE_KNEE_LEFT == _JOINT_TYPE_USERDEFINED_)
+//      AnySphericalJoint Knee = {
+//        AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
+//        AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+//      };
+      
       AnyRevoluteJoint Knee = 
       {
         Axis = z;
@@ -231,35 +240,35 @@ HumanModel.BodyModel =
       };//Ankle
       #endif
       
-      #if (BM_JOINT_TYPE_PATELLATENDON_LEFT == _JOINT_TYPE_USERDEFINED_)
-      AnyFolder KinematicMeasures = 
-      {
-        AnyKinPLine Patella = 
-        {
-          AnyRefNode &Origin_patella_tendon = ...Seg.Patella.Origin_patella_tendon;
-          AnyRefNode &Insertion_patella_tendon = ...Seg.Shank.Insertion_patella_tendon;
-          
-          AnyDrawPLine Patella_tendon = 
-          {
-            Thickness = 0.001;
-            RGB = {1,0,0};
-            Opacity = ....BonesOpacity.Patella;
-          };
-        };
-      };  
-      AnyKinEqSimpleDriver PatellaMovement = 
-      {
-        AnyKinPLine &Jnt = .KinematicMeasures.Patella;
-        AnyVar lengthScale = vnorm(..Seg.Shank.KneeJoint.sRel - ..Seg.Shank.Insertion_patella_tendon.sRel)
-        / vnorm(..Seg.Shank.StdPar.Insertion_patella_tendon-..Seg.Shank.StdPar.KneeJoint);
-        AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.PatellarLigamentLength; 
-        AnyVar TendonLength_Custom = DEF_CUSTOM_SCALING_PATELLA_TENDON_LENGTH;
-        
-        DriverPos = {TendonLength_Custom};
-        DriverVel = {0.0};
-        Reaction.Type = {On};  // The muscles must do the work
-      }; 
-      #endif
+//      #if (BM_JOINT_TYPE_PATELLATENDON_LEFT == _JOINT_TYPE_USERDEFINED_)
+//      AnyFolder KinematicMeasures = 
+//      {
+//        AnyKinPLine Patella = 
+//        {
+//          AnyRefNode &Origin_patella_tendon = ...Seg.Patella.Origin_patella_tendon;
+//          AnyRefNode &Insertion_patella_tendon = ...Seg.Shank.Insertion_patella_tendon;
+//          
+//          AnyDrawPLine Patella_tendon = 
+//          {
+//            Thickness = 0.001;
+//            RGB = {1,0,0};
+//            Opacity = ....BonesOpacity.Patella;
+//          };
+//        };
+//      };  
+//      AnyKinEqSimpleDriver PatellaMovement = 
+//      {
+//        AnyKinPLine &Jnt = .KinematicMeasures.Patella;
+//        AnyVar lengthScale = vnorm(..Seg.Shank.KneeJoint.sRel - ..Seg.Shank.Insertion_patella_tendon.sRel)
+//        / vnorm(..Seg.Shank.StdPar.Insertion_patella_tendon-..Seg.Shank.StdPar.KneeJoint);
+//        AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.PatellarLigamentLength; 
+//        AnyVar TendonLength_Custom = DEF_CUSTOM_SCALING_PATELLA_TENDON_LENGTH;
+//        
+//        DriverPos = {TendonLength_Custom};
+//        DriverVel = {0.0};
+//        Reaction.Type = {On};  // The muscles must do the work
+//      }; 
+//      #endif
     };//Jnt
   };
   #endif
