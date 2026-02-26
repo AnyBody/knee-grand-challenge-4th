@@ -38,6 +38,16 @@ Main.Studies.InverseDynamicStudy = {
       AnyFloat F_lateral = (F_total * L_medial - M_total) / (L_lateral + L_medial);
       AnyFloat F_medial = F_total - F_lateral;
         
+      // check:
+      // System of equations:
+      // a) Fr + Fl=F0
+      // b) Fr*Lr + FL*Ll = M0
+      //
+      // c) (Fr+Fl)*Lr=F0*Lr 
+      // d) c)-b) => (Fr*Lr) + Fl*Lr + (- Fr*Lr) - Fl*Ll = F0*Lr - M0
+      // e) Fl*Lr - Fl*Ll = F0*Lr - M0
+      // Fl =( F0 * Lr - M0) / (Lr - Ll) 
+
       // Finally let us visualize the forces and the knee axis:
       // First we create the nodes at some medial/lateral distance 
       // along the knee axis. Inside the nodes we create small
@@ -66,13 +76,13 @@ Main.Studies.InverseDynamicStudy = {
           };
         }; 
         KneeJoint = {
-          AnyDrawLine DrawKneeJointAxis = {
-            p0 = {0,0,-0.06};
-            p1 = {0,0, 0.06};
-            Line.RGB = 0.1*{1,1,1};
-            Opacity = 0.3;
-            GlobalCoord = Off;
-          };
+//          AnyDrawLine DrawKneeJointAxis = {
+//            p0 = {0,0,-0.06};
+//            p1 = {0,0, 0.06};
+//            Line.RGB = 0.1*{1,1,1};
+//            Opacity = 0.3;
+//            GlobalCoord = Off;
+//          };
         };
       };
         
