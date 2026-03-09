@@ -22,6 +22,15 @@ PatientNode = {
       .ThighToShankReg({0.0,1.0,0.0})
       )*...Thigh.PatientNode.ARel'*...Thigh.KneeJointNew.ARel; // fitted and aligned axes
   };
+
+  AnyRefNode KneeJointConstructed = {
+    sRel = .ThighToShankReg(...Thigh.PatientNode.KneeJointConstructed.sRel);
+    ARel = RotMat(
+      .ThighToShankReg({0.0,0.0,0.0}),
+      .ThighToShankReg({1.0,0.0,0.0}),
+      .ThighToShankReg({0.0,1.0,0.0})
+      )*...Thigh.PatientNode.KneeJointConstructed.ARel; // fitted and aligned axes
+  };
   
 };// automatically created
 

@@ -1,4 +1,5 @@
-
+//#define __SPHERICAL__ 1
+//#define __REVOLUTE__ 0
 Main = {
   #include "<USER_PATH_COMMONS>\eKneeData.any"
   ModelSetup = 
@@ -36,5 +37,8 @@ Main = {
 //   
 //   #include "<USER_PATH_COMMONS>\Contacts.any"
 //  #endif
-  
+  //#if KNEE_JOINT_TYPE == __SPHERICAL__
+    #include "<USER_PATH_COMMONS>\SphericalKneeJointCode.any"
+        
+  //#endif
 };

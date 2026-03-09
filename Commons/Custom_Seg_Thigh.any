@@ -13,6 +13,30 @@ PatientNode = {
     AnyDrawRefFrame DrawKneeJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
   };
   
+  // Following this logic, but using the fitted axis
+  
+  //1. X-axis (medial-lateral axis)
+  //Points from the medial epicondyle to the lateral epicondyle.
+  //This axis defines the flexion-extension axis of the knee.
+  //2. Y-axis (proximal-distal axis)
+  //Points from the knee joint center to the hip joint center (femoral shaft direction).
+  //This axis is often called the long axis of the femur and points proximally.
+  //3. Z-axis (anterior-posterior axis)
+  //Computed as the cross product of X and Y (Z = X × Y).
+  //Points anteriorly, completing a right-handed coordinate system.
+  
+  AnyRefNode KneeJointConstructed = {
+    sRel = .KneeJointFit.sRel;
+    //ARel = .KneeJointFit.ARel * 
+    ARel = RotMat(
+      {0.0, 0.0, 0.0}, 
+      {0,0, 1} *.KneeJointFit.ARel',
+      .HipJointFit.sRel - sRel
+      ) 
+      * RotMat(pi/2, y)                 // for better consistency with ABT's implementation
+    ;
+    AnyDrawRefFrame DRAW_TEST = {ScaleXYZ={1,1,1}*0.1;RGB={1,1,0};};
+  };
   //fit cylinders to find a PF joint node
   AnySurfCylinderFit PatellaFemoralJointFit = {    
     Length = 0.1;
@@ -50,33 +74,39 @@ AnyRefNode HipJointNew =
   AnyDrawRefFrame DrawHipJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
 };
 
-AnyRefNode KneeJointNew = 
-{
-  sRel = .PatientNode.sRel + .PatientNode.KneeJointFit.sRel * .PatientNode.ARel';
-  
-  // Following this logic, but using the fitted axis
-  
-  //1. X-axis (medial-lateral axis)
-  //Points from the medial epicondyle to the lateral epicondyle.
-  //This axis defines the flexion-extension axis of the knee.
-  //2. Y-axis (proximal-distal axis)
-  //Points from the knee joint center to the hip joint center (femoral shaft direction).
-  //This axis is often called the long axis of the femur and points proximally.
-  //3. Z-axis (anterior-posterior axis)
-  //Computed as the cross product of X and Y (Z = X × Y).
-  //Points anteriorly, completing a right-handed coordinate system.
-  
-  ARel = RotMat(
-    {0.0, 0.0, 0.0}, 
-    {0,0, 1} *.PatientNode.KneeJointFit.ARel'*.PatientNode.ARel',
-    .HipJointNew.sRel - sRel
-    ) 
-    * RotMat(pi/2, y)                 // for better consistency with ABT's implementation
-    * RotMat(VarusValgusRotation, x)  // custom varus-valgus angle
-  ;
-  AnyDrawRefFrame DrawKneeJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
-  AnyVar VarusValgusRotation = DesignVar(0);
-};
+AnyRefNode KneeJointNew = {
+  sRel = .PatientNode.sRel + .PatientNode.KneeJointConstructed.sRel * .PatientNode.ARel';
+  ARel = .PatientNode.ARel * .PatientNode.KneeJointConstructed.ARel;
+  //AnyDrawRefFrame DrawKneeJointTibia= {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
+};  
+
+//AnyRefNode KneeJointNew = 
+//{
+//  sRel = .PatientNode.sRel + .PatientNode.KneeJointFit.sRel * .PatientNode.ARel';
+//  
+//  // Following this logic, but using the fitted axis
+//  
+//  //1. X-axis (medial-lateral axis)
+//  //Points from the medial epicondyle to the lateral epicondyle.
+//  //This axis defines the flexion-extension axis of the knee.
+//  //2. Y-axis (proximal-distal axis)
+//  //Points from the knee joint center to the hip joint center (femoral shaft direction).
+//  //This axis is often called the long axis of the femur and points proximally.
+//  //3. Z-axis (anterior-posterior axis)
+//  //Computed as the cross product of X and Y (Z = X × Y).
+//  //Points anteriorly, completing a right-handed coordinate system.
+//  
+//  ARel = RotMat(
+//    {0.0, 0.0, 0.0}, 
+//    {0,0, 1} *.PatientNode.KneeJointFit.ARel'*.PatientNode.ARel',
+//    .HipJointNew.sRel - sRel
+//    ) 
+//    * RotMat(pi/2, y)                 // for better consistency with ABT's implementation
+//    * RotMat(VarusValgusRotation, x)  // custom varus-valgus angle
+//  ;
+//  AnyDrawRefFrame DrawKneeJointFem = {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
+//  AnyVar VarusValgusRotation = DesignVar(0);
+//};
 
 AnyRefNode PatellaFemurJointNew = 
 {

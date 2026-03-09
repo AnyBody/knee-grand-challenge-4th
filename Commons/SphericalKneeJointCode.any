@@ -1,0 +1,105 @@
+Main = {
+  
+  Studies.MarkerTracking.JointAngleOutputs = {
+    #if BM_LEG_LEFT & BM_LEG_MODEL_IS_TLEM
+    AnyOutputFile OutputFile_LeftLegCustom = {
+      FileName = TEMP_PATH+"/"+ MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-left_leg_tlem_custom.txt";
+      SepSign = ",";
+      SepSpaceAutoOnOff = Off;
+      Header.TitleSectionOnOff = Off;
+      Header.ConstSectionOnOff = Off;
+      Header.ConstSectionSaveOptionsOnOff = Off;
+      Header.VarSectionOnOff = Off;
+      
+      
+      AnyVector HipFlexion = ..BodyModel.Interface.Left.HipFlexion.Pos;
+      AnyVector HipAbduction = ..BodyModel.Interface.Left.HipAbduction.Pos;
+      AnyVector HipExternalRotation = ..BodyModel.Interface.Left.HipExternalRotation.Pos;
+      AnyVector KneeFlexion = ..BodyModel.Interface.Left.KneeFlexion.KneeRot.Pos;
+      AnyVector AnklePlantarFlexion = ..BodyModel.Interface.Left.AnklePlantarFlexion.Pos;
+      AnyVector SubTalarEversion = ..BodyModel.Interface.Left.SubTalarEversion.Pos;
+    };
+    #endif
+    
+    
+    
+    #if BM_LEG_RIGHT & BM_LEG_MODEL_IS_TLEM
+    AnyOutputFile OutputFile_RightLegCustom = {
+      FileName = TEMP_PATH+"/"+ MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-right_leg_tlem_custom.txt";
+      SepSign = ",";
+      SepSpaceAutoOnOff = Off;
+      Header.TitleSectionOnOff = Off;
+      Header.ConstSectionOnOff = Off;
+      Header.ConstSectionSaveOptionsOnOff = Off;
+      Header.VarSectionOnOff = Off;
+      
+      AnyVector HipFlexion = ..BodyModel.Interface.Right.HipFlexion.Pos;
+      AnyVector HipAbduction = ..BodyModel.Interface.Right.HipAbduction.Pos;
+      AnyVector HipExternalRotation = ..BodyModel.Interface.Right.HipExternalRotation.Pos;
+      AnyVector KneeFlexion = ..BodyModel.Interface.Right.KneeFlexion.KneeRot.Pos;
+      AnyVector AnklePlantarFlexion = ..BodyModel.Interface.Right.AnklePlantarFlexion.Pos;
+      AnyVector SubTalarEversion = ..BodyModel.Interface.Right.SubTalarEversion.Pos;
+    };
+    #endif
+    
+  };
+  Studies.InverseDynamicStudy = {
+    
+    AnyMechObjectExcluder removeDefaultLegDrivers = {
+      Objects = {
+    #if BM_LEG_LEFT & BM_LEG_MODEL_IS_TLEM
+        &Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.JointsAndDrivers.JntDriverLeftLegTD,
+        &Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.JointsAndDrivers.JntDriverLeftLegTD.Reaction,
+        &Main.HumanModel.BodyModel.Left.Leg.Jnt.KneeRotations,
+        &Main.HumanModel.BodyModel.Left.Leg.Jnt.KneeRotations.Reaction,
+    #endif        
+    #if BM_LEG_RIGHT & BM_LEG_MODEL_IS_TLEM
+        &Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.JointsAndDrivers.JntDriverRightLegTD,
+        &Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.JointsAndDrivers.JntDriverRightLegTD.Reaction,
+        &Main.HumanModel.BodyModel.Right.Leg.Jnt.KneeRotations,
+        &Main.HumanModel.BodyModel.Right.Leg.Jnt.KneeRotations.Reaction,        
+    #endif        
+      };
+    };
+    
+    
+    
+    #if BM_LEG_LEFT & BM_LEG_MODEL_IS_TLEM
+    AnyKinDriver JntDriverLeftLegTD = {
+      
+      #include "<ANYMOCAP_PATH>/InterpolateJointAngleData.any"
+      FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-left_leg_tlem_custom.txt";
+      FileReader.Data0 = zeros(nDim, FileReader.Length0 );
+      
+      AnyKinMeasure& HipFlexion = Main.HumanModel.BodyModel.Interface.Left.HipFlexion;
+      AnyKinMeasure& HipAbduction = Main.HumanModel.BodyModel.Interface.Left.HipAbduction;
+      AnyKinMeasure& HipExternalRotation = Main.HumanModel.BodyModel.Interface.Left.HipExternalRotation;
+      AnyKinMeasure& KneeFlexion = Main.HumanModel.BodyModel.Interface.Left.KneeFlexion.KneeRot;
+      AnyKinMeasure& AnklePlantarFlexion = Main.HumanModel.BodyModel.Interface.Left.AnklePlantarFlexion;
+      AnyKinMeasure& SubTalarEversion = Main.HumanModel.BodyModel.Interface.Left.SubTalarEversion;
+      Reaction.Type = repmat(nDim, Off);
+    };
+    #endif
+    
+    
+    #if BM_LEG_RIGHT & BM_LEG_MODEL_IS_TLEM
+    AnyKinDriver JntDriverRightLegTD = {
+      #include "<ANYMOCAP_PATH>/InterpolateJointAngleData.any"
+      FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX +  MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-right_leg_tlem_custom.txt";
+      FileReader.Data0 = zeros(nDim, FileReader.Length0 );
+      
+      AnyKinMeasure& HipFlexion = Main.HumanModel.BodyModel.Interface.Right.HipFlexion;
+      AnyKinMeasure& HipAbduction = Main.HumanModel.BodyModel.Interface.Right.HipAbduction;
+      AnyKinMeasure& HipExternalRotation = Main.HumanModel.BodyModel.Interface.Right.HipExternalRotation;
+      AnyKinMeasure& KneeFlexion = Main.HumanModel.BodyModel.Interface.Right.KneeFlexion.KneeRot;
+      AnyKinMeasure& AnklePlantarFlexion = Main.HumanModel.BodyModel.Interface.Right.AnklePlantarFlexion;
+      AnyKinMeasure& SubTalarEversion = Main.HumanModel.BodyModel.Interface.Right.SubTalarEversion;
+      Reaction.Type = repmat(nDim, Off);
+    };
+    #endif
+    
+    
+  };
+  
+  
+};

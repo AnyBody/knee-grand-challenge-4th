@@ -129,18 +129,44 @@ HumanModel.BodyModel =
       };//Hip
       #endif
       
+            
       #if (BM_JOINT_TYPE_KNEE_RIGHT == _JOINT_TYPE_USERDEFINED_)
-//      AnySphericalJoint Knee = {
-//        AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
-//        AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
-//      };
-      AnyRevoluteJoint Knee = 
-      {
-        Axis = z;
-        AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
-        AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
-        //AnyDrawStdJoint Knee = {  };
-      };//Knee
+//       #if KNEE_JOINT_TYPE == __SPHERICAL__
+       
+        AnySphericalJoint Knee = {
+          AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
+          AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+        };
+        AnyKinRotational KneeRot = {
+          AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
+          AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+          Type = PlanarAngles;
+        };
+        AnyKinEqSimpleDriver KneeRotations = {
+          DriverPos = {0,0};
+          DriverVel = {0,0};
+          AnyKinMeasure &Measure = .KneeMoments.org;
+          CType = {Soft, Soft};
+          Reaction.Type = {Off, Off};
+          WeightFun = {&wFun, &wFun};
+          AnyFunConst wFun = {Value = {1e-3};};
+        };
+        AnyReacForce KneeMoments = {
+          AnyKinMeasureOrg org = {
+            AnyKinMeasure &KneeRot = ..KneeRot;
+            MeasureOrganizer = {1,2};
+          };
+        };
+//     #else   
+//       
+//       AnyRevoluteJoint Knee = 
+//       {
+//         Axis = z;
+//         AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
+//         AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+//         AnyDrawStdJoint Knee = {  };
+//       };//Knee
+//       #endif
       #endif
       
       #if (BM_JOINT_TYPE_PATELLOFEMORAL_RIGHT == _JOINT_TYPE_USERDEFINED_)
@@ -208,18 +234,43 @@ HumanModel.BodyModel =
       #endif
       
       #if (BM_JOINT_TYPE_KNEE_LEFT == _JOINT_TYPE_USERDEFINED_)
-//      AnySphericalJoint Knee = {
-//        AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
-//        AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
-//      };
-      
-      AnyRevoluteJoint Knee = 
-      {
-        Axis = z;
-        AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
-        AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
-        //AnyDrawStdJoint Knee = {  };
-      };//Knee
+       
+       //#if KNEE_JOINT_TYPE == __SPHERICAL__
+       
+        AnySphericalJoint Knee = {
+          AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
+          AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+        };
+        AnyKinRotational KneeRot = {
+          AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
+          AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+          Type = PlanarAngles;
+        };
+        AnyKinEqSimpleDriver KneeRotations = {
+          DriverPos = {0,0};
+          DriverVel = {0,0};
+          AnyKinMeasure &Measure = .KneeMoments.org;
+          CType = {Soft, Soft};
+          Reaction.Type = {Off, Off};
+          WeightFun = {&wFun, &wFun};
+          AnyFunConst wFun = {Value = {1};};
+        };
+        AnyReacForce KneeMoments = {
+          AnyKinMeasureOrg org = {
+            AnyKinMeasure &KneeRot = ..KneeRot;
+            MeasureOrganizer = {1,2};
+          };
+        };
+//     #else   
+//       
+//       AnyRevoluteJoint Knee = 
+//       {
+//         Axis = z;
+//         AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
+//         AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+//         AnyDrawStdJoint Knee = {  };
+//       };//Knee
+//       #endif
       #endif
       
       #if (BM_JOINT_TYPE_PATELLOFEMORAL_LEFT == _JOINT_TYPE_USERDEFINED_)

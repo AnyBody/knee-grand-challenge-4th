@@ -452,7 +452,7 @@ if __name__ == "__main__":
     C3Ds = "C3D_New"  # Base folder for C3D files
     name_dict = {
         "PAT2668": [C3Ds+"/PAT2668_postop_stepup.c3d", "1_18_PAT2668_right", 1100, 1778, 1370-205, 1420+205, 154, 66],
-        "PAT3041": [C3Ds+"/PAT3041_preop_stepup.c3d", "2_38_PAT3041_left", 1499, 2192, 1805-205, 1855+205, 184, 90],
+        "PAT3041": [C3Ds+"/PAT3041_preop_stepup.c3d", "3_39_PAT3041_left", 1499, 2192, 1805-205, 1855+205, 184, 90],
         "PAT3112": [C3Ds+"/PAT3112_preop_stepup.c3d", "4_41_PAT3112_left", 1289, 2187, 1690-205, 1740+205, 169, 71],
         "PAT3405": [C3Ds+"/PAT3405_preop_stepup.c3d", "6_46_PAT3405_left", 1257, 1936, 1526-205, 1576+205, 177, 80],
         "PAT3477": [C3Ds+"/PAT3477_preop_stepup.c3d", "8_48_PAT3477_left", 1249, 2028, 1348-205, 1798+205, 170, 85],
