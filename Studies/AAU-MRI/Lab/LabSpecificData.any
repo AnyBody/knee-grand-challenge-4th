@@ -21,15 +21,13 @@ Main.ModelSetup.LabSpecificData = {
  #ifndef MOCAP_FORCE_PLATE_FILE
  #path MOCAP_FORCE_PLATE_FILE "ForcePlates.any"
  #endif
- 
+  
  // This changes the Human-Ground residuals (hand of god) to be from trunk 
  // instead of pelvis which is normally default. 
 // #ifndef MOCAP_HUMAN_GROUND_RESIDUALS
 // #define MOCAP_HUMAN_GROUND_RESIDUALS "Trunk"
 // #endif
  
-#include "KneeContactForces.any"
-
  Gravity = -9.81*{0,1,0};
 
    // This adds different segment length as design variables to 
@@ -54,6 +52,12 @@ Main.ModelSetup.LabSpecificData = {
     LEFT_RIGHT_SYMMETRY = ON
   ) ={};
 };
+
+// Study-specific outputs
+Main = {
+ #include "<LAB_CONFIG_PATH>/Output/JointAnglesAndMoments.any" 
+};
+
 
 //Main.DrawSettings.Colors = 
 //{

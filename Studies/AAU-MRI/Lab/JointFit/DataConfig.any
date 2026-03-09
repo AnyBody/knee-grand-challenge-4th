@@ -70,6 +70,13 @@
 //
 //};
 #if BM_LEG_LEFT != OFF
+Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.PatientNode = {
+    
+  AnyFolder TFReg = {#include "<USER_PATH_INPUTDATA>/Morphing/Target/tf_reg.any"};
+  
+  ThighToShankReg.ScaleMat = TFReg.final_Rot_inv;
+  ThighToShankReg.Offset = 0.001*TFReg.final_trans_inv * TFReg.final_Rot_inv;
+}; 
 
 Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode.FittingData = {
   
@@ -91,12 +98,16 @@ Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode.FittingData = {
   SHOW_POINTCLOUD(kneejoint_ptcl, KneeJointPoints, 1, 0, 0);
   SHOW_POINTCLOUD(pfjoint_ptcl, PFJointPoints, 1, 0, 1);
 };
-Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.PatientNode = {
-  ThighToShankReg.ScaleMat = eye(3);
-  ThighToShankReg.Offset = zeros(3);    
-};
 #endif
+
 #if BM_LEG_RIGHT != OFF
+Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode = {
+    
+  AnyFolder TFReg = {#include "<USER_PATH_INPUTDATA>/Morphing/Target/tf_reg.any"};
+  
+  ThighToShankReg.ScaleMat = TFReg.final_Rot_inv;
+  ThighToShankReg.Offset = 0.001*TFReg.final_trans_inv * TFReg.final_Rot_inv;
+}; 
 
 Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode.FittingData = {
   
@@ -113,10 +124,10 @@ Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode.FittingData = {
   KneeJointPoints = target_femur.GetVertices(femoral_comp_vertices)*0.001*{{1,0,0}, {0,1,0},{0,0,1}}; // this might actually need the implant points instead
   PFJointPoints   = target_femur.GetVertices(femoral_pf_vertices)*0.001*{{1,0,0}, {0,1,0},{0,0,1}};
 
-
   SHOW_POINTCLOUD(hipjoint_ptcl, HipJointPoints, 1, 0, 0);
   SHOW_POINTCLOUD(kneejoint_ptcl, KneeJointPoints, 1, 0, 0);
   SHOW_POINTCLOUD(pfjoint_ptcl, PFJointPoints, 1, 0, 1);
+  
 };
 //Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode = {
 //  ThighToShankReg.ScaleMat = eye(3);

@@ -1,0 +1,148 @@
+#include "AnatomicalJointAnglesTemplate.any"
+//AnyFolder JointAnglesAndMoments = {
+//
+//  AnyFolder &LegModelRef = Main.JntParameterOptModel.LegModel;
+//  AnyFolder &BodyModelRef = .HumanModel.BodyModel;
+//
+//
+//    CreateJointAnglesAndMomentMeasures Right (
+//    PELVIS_FRAME= LegModelRef.Trunk.Seg.Pelvis.StaticMarkerFrame,
+//    THIGH_HIP_FRAME = LegModelRef.Right.Seg.Thigh.HipStaticMarkerFrame,
+//    THIGH_KNEE_FRAME = LegModelRef.Right.Seg.Thigh.KneeStaticMarkerFrame,
+//    SHANK_KNEE_FRAME = LegModelRef.Right.Seg.Shank.KneeStaticMarkerFrame,
+//    SHANK_ANKLE_FRAME = LegModelRef.Right.Seg.Shank.AnkleStaticMarkerFrame,
+//    FOOT_ANKLE_FRAME = LegModelRef.Right.Seg.Foot.AnkleStaticMarkerFrame,
+//    HIPMOMENT = BodyModelRef.Right.Leg.MomentMeasure.HipNetMoment.M,
+//    KNEEMOMENT = BodyModelRef.Right.Leg.MomentMeasure.KneeNetMoment.M,
+//    ANKLEMOMENT = BodyModelRef.Right.Leg.MomentMeasure.AnklePlantarFlexionNetMoment.M
+//    ) = { Sign = 1;};
+//  
+//    CreateJointAnglesAndMomentMeasures Left (
+//    PELVIS_FRAME= LegModelRef.Trunk.Seg.Pelvis.StaticMarkerFrame,
+//    THIGH_HIP_FRAME = LegModelRef.Left.Seg.Thigh.HipStaticMarkerFrame,
+//    THIGH_KNEE_FRAME = LegModelRef.Left.Seg.Thigh.KneeStaticMarkerFrame,
+//    SHANK_KNEE_FRAME = LegModelRef.Left.Seg.Shank.KneeStaticMarkerFrame,
+//    SHANK_ANKLE_FRAME = LegModelRef.Left.Seg.Shank.AnkleStaticMarkerFrame,
+//    FOOT_ANKLE_FRAME = LegModelRef.Left.Seg.Foot.AnkleStaticMarkerFrame,
+//    HIPMOMENT = BodyModelRef.Left.Leg.MomentMeasure.HipNetMoment.M,
+//    KNEEMOMENT = BodyModelRef.Left.Leg.MomentMeasure.KneeNetMoment.M,
+//    ANKLEMOMENT = BodyModelRef.Left.Leg.MomentMeasure.AnklePlantarFlexionNetMoment.M
+//    ) = { Sign = -1;};
+//
+//    
+//    CreateJointAnglesAndMomentMeasures Right2 (
+//    PELVIS_FRAME= LegModelRef.Trunk.Seg.Pelvis.StaticMarkerFrame,
+//    THIGH_HIP_FRAME = LegModelRef.Right.Seg.Thigh.HipStaticMarkerFrame,
+//    THIGH_KNEE_FRAME = LegModelRef.Right.Seg.Thigh.KneeJointCoordinateSystemMechanicalAxis,
+//    SHANK_KNEE_FRAME = LegModelRef.Right.Seg.Shank.KneeJointCoordinateSystemMechanicalAxis,
+//    SHANK_ANKLE_FRAME = LegModelRef.Right.Seg.Shank.AnkleStaticMarkerFrame,
+//    FOOT_ANKLE_FRAME = LegModelRef.Right.Seg.Foot.AnkleStaticMarkerFrame,
+//    HIPMOMENT = BodyModelRef.Right.Leg.MomentMeasure.HipNetMoment.M,
+//    KNEEMOMENT = BodyModelRef.Right.Leg.MomentMeasure.KneeNetMoment.M,
+//    ANKLEMOMENT = BodyModelRef.Right.Leg.MomentMeasure.AnklePlantarFlexionNetMoment.M
+//    ) = { Sign = 1;};    
+//    
+//    CreateJointAnglesAndMomentMeasures Left2 (
+//    PELVIS_FRAME= LegModelRef.Trunk.Seg.Pelvis.StaticMarkerFrame,
+//    THIGH_HIP_FRAME = LegModelRef.Left.Seg.Thigh.HipStaticMarkerFrame,
+//    THIGH_KNEE_FRAME = LegModelRef.Left.Seg.Thigh.KneeJointCoordinateSystemMechanicalAxis,
+//    SHANK_KNEE_FRAME = LegModelRef.Left.Seg.Shank.KneeJointCoordinateSystemMechanicalAxis,
+//    SHANK_ANKLE_FRAME = LegModelRef.Left.Seg.Shank.AnkleStaticMarkerFrame,
+//    FOOT_ANKLE_FRAME = LegModelRef.Left.Seg.Foot.AnkleStaticMarkerFrame,
+//    HIPMOMENT = BodyModelRef.Left.Leg.MomentMeasure.HipNetMoment.M,
+//    KNEEMOMENT = BodyModelRef.Left.Leg.MomentMeasure.KneeNetMoment.M,
+//    ANKLEMOMENT = BodyModelRef.Left.Leg.MomentMeasure.AnklePlantarFlexionNetMoment.M
+//    ) = { Sign = -1;};
+//};
+
+
+Studies.InverseDynamicStudy = {
+
+  AnyFolder AAU_MRI_Output = {
+
+    #include "KneeContactForces.any"
+
+    AnyFolder &BodyModelRef = Main.HumanModel.BodyModel;
+    
+    #if BM_LEG_LEFT == ON
+    
+    // move to relevant location
+    AnyReacForce EversionInversionReacForce = {
+      AnyKinMeasureOrg org = {
+        AnyKinMeasure &measure = Main.HumanModel.BodyModel.Left.Leg.Jnt.SubTalar.Orientation;
+        MeasureOrganizer = {0};
+      };
+    };
+    
+    
+    BodyModelRef.Left.Leg.Seg.Thigh = {
+      AnyRefNode KneeJointISBFrame = 
+      {
+        sRel = 0.5*(.EpicondylusFemorisMedialis.sRel+.EpicondylusFemorisLateralis.sRel);
+        ARel = RotMat(  
+        sRel,                 //midway from epicondyles
+        .HipJoint.sRel,       //hip joint center
+        sRel + cross(         //a point constructed using a normal of the sagittal plane of the femur  
+            .EpicondylusFemorisLateralis.sRel-.HipJoint.sRel,
+            .EpicondylusFemorisMedialis.sRel-.HipJoint.sRel 
+            )
+        ) * RotMat(-pi/2, z); // correction for RotMat axis choice specifics 
+      };
+    };
+
+    CreateJointAnglesAndMomentMeasures Left (
+    PELVIS_FRAME = BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.AnatomicalFrame,
+    THIGH_HIP_FRAME = BodyModelRef.Left.Leg.Seg.Thigh.HipJointAnatomicalFrame,
+    THIGH_KNEE_FRAME = BodyModelRef.Left.Leg.Seg.Thigh.KneeJointISBFrame, // explicitly defined this frame
+    SHANK_KNEE_FRAME = BodyModelRef.Left.Leg.Seg.Shank.KneeJointAnatomicalFrame,
+    SHANK_ANKLE_FRAME = BodyModelRef.Left.Leg.Seg.Shank.AnkleJointComplexAnatomicalFrame,
+    FOOT_ANKLE_FRAME = BodyModelRef.Left.Leg.Seg.Foot.AnkleJointComplexAnatomicalFrame,
+    HIPMOMENT = BodyModelRef.Left.Leg.MomentMeasure.HipNetMoment.M,
+    KNEEMOMENT = BodyModelRef.Left.Leg.MomentMeasure.KneeNetMoment.M,
+    ANKLEMOMENT = BodyModelRef.Left.Leg.MomentMeasure.AnklePlantarFlexionNetMoment.M
+    ) = { Sign = -1;};
+    #endif
+    
+    
+    
+    #if BM_LEG_RIGHT == ON
+    
+    // move to relevant location
+    AnyReacForce EversionInversionReacForce = {
+      AnyKinMeasureOrg org = {
+        AnyKinMeasure &measure = Main.HumanModel.BodyModel.Right.Leg.Jnt.SubTalar.Orientation;
+        MeasureOrganizer = {0};
+      };
+    };
+    
+    
+    BodyModelRef.Right.Leg.Seg.Thigh = {
+      AnyRefNode KneeJointISBFrame = 
+      {
+        sRel = 0.5*(.EpicondylusFemorisMedialis.sRel+.EpicondylusFemorisLateralis.sRel);
+        ARel = RotMat(  
+        sRel,                 //midway from epicondyles
+        .HipJoint.sRel,       //hip joint center
+        sRel + cross(         //a point constructed using a normal of the sagittal plane of the femur  
+            .EpicondylusFemorisMedialis.sRel-.HipJoint.sRel, 
+            .EpicondylusFemorisLateralis.sRel-.HipJoint.sRel
+            )
+        ) * RotMat(-pi/2, z); // correction for RotMat axis choice specifics 
+      };
+    };
+    
+    CreateJointAnglesAndMomentMeasures Right (
+    PELVIS_FRAME = BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.AnatomicalFrame,
+    THIGH_HIP_FRAME = BodyModelRef.Right.Leg.Seg.Thigh.HipJointAnatomicalFrame,
+    THIGH_KNEE_FRAME = BodyModelRef.Right.Leg.Seg.Thigh.KneeJointISBFrame, // explicitly defined this frame
+    SHANK_KNEE_FRAME = BodyModelRef.Right.Leg.Seg.Shank.KneeJointAnatomicalFrame,
+    SHANK_ANKLE_FRAME = BodyModelRef.Right.Leg.Seg.Shank.AnkleJointComplexAnatomicalFrame,
+    FOOT_ANKLE_FRAME = BodyModelRef.Right.Leg.Seg.Foot.AnkleJointComplexAnatomicalFrame,
+    HIPMOMENT = BodyModelRef.Right.Leg.MomentMeasure.HipNetMoment.M,
+    KNEEMOMENT = BodyModelRef.Right.Leg.MomentMeasure.KneeNetMoment.M,
+    ANKLEMOMENT = BodyModelRef.Right.Leg.MomentMeasure.AnklePlantarFlexionNetMoment.M
+    ) = { Sign = 1;};
+    #endif
+    
+  };
+};

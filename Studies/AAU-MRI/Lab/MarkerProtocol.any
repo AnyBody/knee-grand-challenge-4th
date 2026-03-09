@@ -61,6 +61,7 @@ MarkerName= LASIS ,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0,
+//WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 1
 ) = {
   //sRelOpt = {0.04,0.005, -0.125};
@@ -152,7 +153,8 @@ CreateMarkerDriver RKneeLateralThigh (
 MarkerName= RKNEELATERAL,
 MarkerPlacement=Right.Leg.Seg.Thigh,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+//WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+WeightX=5.0,WeightY=5.0,WeightZ=5.0, 
 //PlaceMarkerAt = LateralTibialEpicondyle,
 PlaceMarkerAt = EpicondylusFemorisLateralis,
 ScaleMarkerPosOnOff = 0
@@ -245,7 +247,7 @@ MarkerName= RANKLELATERAL ,
 MarkerPlacement=Right.Leg.Seg.Shank,
 PlaceMarkerAt=LateralMalleolus,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+WeightX=5.0,WeightY=5.0,WeightZ=5.0, 
 ScaleMarkerPosOnOff = 0
 ) = {
  sRelOpt =  {-0.0, 0.0, 0.01};
@@ -281,10 +283,10 @@ MarkerName= RTOELATERAL,
 MarkerPlacement=Right.Leg.Seg.Foot,
 //OptX=OFF, OptY=OFF, OptZ=OFF,
 OptX=ON, OptY=OFF, OptZ=ON,
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+WeightX=5.0,WeightY=5.0,WeightZ=5.0,
 ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt =  {0.12, -0.04, 0.04};
+  sRelOpt =  {0.12, -0.04, 0.05};
 
 };
 
@@ -293,10 +295,10 @@ MarkerName= RTOEMEDIAL ,
 MarkerPlacement=Right.Leg.Seg.Foot,
 //OptX=OFF, OptY=OFF, OptZ=OFF,
 OptX=ON, OptY=OFF, OptZ=ON,
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+WeightX=5.0,WeightY=5.0,WeightZ=5.0,
 ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt =  {0.13, -0.035, -0.02};
+  sRelOpt =  {0.13, -0.035, -0.03};
 };
 
 // Marker on the Right Heel
@@ -349,7 +351,7 @@ CreateMarkerDriver LKneeLateralThigh (
 MarkerName= LKNEELATERAL,
 MarkerPlacement=Left.Leg.Seg.Thigh,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
-WeightX=3.0,WeightY=1.0,WeightZ=1.0, 
+WeightX=5.0,WeightY=5.0,WeightZ=5.0, 
 //PlaceMarkerAt = LateralTibialEpicondyle,
 PlaceMarkerAt = EpicondylusFemorisLateralis,
 ScaleMarkerPosOnOff = 0
@@ -425,7 +427,7 @@ MarkerName= LANKLELATERAL ,
 MarkerPlacement=Left.Leg.Seg.Shank,
 PlaceMarkerAt=LateralMalleolus,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
-WeightX=5.0,WeightY=1.0,WeightZ=1.0, 
+WeightX=5.0,WeightY=5.0,WeightZ=5.0, 
 ScaleMarkerPosOnOff = 0
 ) = {
  sRelOpt =  {-0.0, 0.0, -0.01};
@@ -447,23 +449,23 @@ ScaleMarkerPosOnOff = 1
 CreateMarkerDriver LToeLateral (
 MarkerName= LTOELATERAL, 
 MarkerPlacement=Left.Leg.Seg.Foot,
-//OptX=OFF,OptY=OFF,OptZ=OFF,  
-OptX=ON,OptY=OFF,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+//OptX=ON,OptY=OFF,OptZ=ON,  
+WeightX=5.0,WeightY=5.0,WeightZ=5.0,
 ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt =  {0.12, -0.04, -0.04};
+  sRelOpt =  {0.12, -0.04, -0.05};
 };
 
 CreateMarkerDriver LToeMedial (
 MarkerName= LTOEMEDIAL , 
 MarkerPlacement=Left.Leg.Seg.Foot,
-//OptX=OFF,OptY=OFF,OptZ=OFF,  
-OptX=ON,OptY=OFF,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+//OptX=ON,OptY=OFF,OptZ=ON,  
+WeightX=5.0,WeightY=5.0,WeightZ=5.0,
 ScaleMarkerPosOnOff = 1
 ) = {
-  sRelOpt =  {0.13, -0.035, 0.02};
+  sRelOpt =  {0.13, -0.035, 0.03};
 };
 
 // Marker on the Left Heel

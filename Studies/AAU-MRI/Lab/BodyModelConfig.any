@@ -72,6 +72,8 @@ Main = {
   #endif
 
   
+  #define BM_JOINT_TYPE_ANKLE_RIGHT  _JOINT_TYPE_DEFAULT_
+  #define BM_JOINT_TYPE_ANKLE_LEFT  _JOINT_TYPE_DEFAULT_
   // Default Settings
 #include "<USER_PATH_COMMONS>\Settings_Default.any"   
 

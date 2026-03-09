@@ -1,0 +1,1 @@
+python visualize_tf_overlay.py --femur=../1_18_PAT2668_right/FemurR.stl --shank=../1_18_PAT2668_right/TibiaR.stl --tf=../1_18_PAT2668_right/tf_reg.txt --interactive

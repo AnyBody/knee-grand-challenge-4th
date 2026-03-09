@@ -1,0 +1,2 @@
+// Morphing configuration file
+#include "<LAB_CONFIG_PATH>/Morphing/DataConfig.any"

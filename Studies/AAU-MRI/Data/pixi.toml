@@ -1,0 +1,14 @@
+[workspace]
+authors = ["peg <peg@anybodytech.com>"]
+channels = ["conda-forge"]
+name = "Data"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+ezc3d = ">=1.6.3,<2"
+scipy = ">=1.17.0,<2"
+matplotlib = ">=3.10.8,<4"
+vtk = "*"
