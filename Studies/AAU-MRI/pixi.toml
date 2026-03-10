@@ -6,9 +6,13 @@ platforms = ["win-64"]
 version = "0.1.0"
 
 [tasks]
+configure-study = {cmd = "python setup_trials.py", cwd = "Data"}
+study = {cmd = "python run_study.py", cwd = "./", depends-on = ["configure-study"]}
 
 [dependencies]
 ezc3d = ">=1.6.3,<2"
 scipy = ">=1.17.0,<2"
 matplotlib = ">=3.10.8,<4"
 vtk = "*"
+anypytools = ">=1.20.5,<2"
+rich = ">=14.3.3,<15"
