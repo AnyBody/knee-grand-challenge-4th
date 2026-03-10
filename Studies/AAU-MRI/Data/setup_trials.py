@@ -180,13 +180,13 @@ def setup_subject_folder(patient_id, info):
         content = re.sub(r'#define\s+BM_LEG_RIGHT\s+(ON|OFF)', f'#define BM_LEG_RIGHT {right_on}', content)
         content = re.sub(r'#define\s+BM_LEG_LEFT\s+(ON|OFF)', f'#define BM_LEG_LEFT {left_on}', content)
         content = content.replace('//nStep = ;', 'nStep = 5;')
-        content = re.sub(r'FirstFrame = \d+;', 'FirstFrame = .C3DFileData.Header.FirstFrameNo+5;', content)
-        content = re.sub(r'LastFrame = \d+;', 'LastFrame = .C3DFileData.Header.LastFrameNo-5;', content)
+        content = re.sub(r'FirstFrame = \d+;', 'FirstFrame = .C3DFileData.Header.FirstFrameNo+10;', content)
+        content = re.sub(r'LastFrame = \d+;', 'LastFrame = .C3DFileData.Header.LastFrameNo-10;', content)
         (trials_static_folder / 'TrialSpecificData.any').write_text(content)
         print(f"Created {trials_static_folder / 'TrialSpecificData.any'} with:")
         print(f"  - Leg: {leg_side.upper()}")
-        print(f"  - FirstFrame: .C3DFileData.Header.FirstFrameNo+5")
-        print(f"  - LastFrame: .C3DFileData.Header.LastFrameNo-5")
+        print(f"  - FirstFrame: .C3DFileData.Header.FirstFrameNo+10")
+        print(f"  - LastFrame: .C3DFileData.Header.LastFrameNo-10")
     else:
         print('Warning: TrialSpecificData.any not found; skipping')
 
@@ -451,11 +451,11 @@ if __name__ == "__main__":
 
     C3Ds = "C3D_New"  # Base folder for C3D files
     name_dict = {
-        "PAT2668": [C3Ds+"/PAT2668_postop_stepup.c3d", "1_18_PAT2668_right", 1100, 1778, 1370-205, 1420+205, 154, 66],
-        "PAT3041": [C3Ds+"/PAT3041_preop_stepup.c3d", "3_39_PAT3041_left", 1499, 2192, 1805-205, 1855+205, 184, 90],
-        "PAT3112": [C3Ds+"/PAT3112_preop_stepup.c3d", "4_41_PAT3112_left", 1289, 2187, 1690-205, 1740+205, 169, 71],
-        "PAT3405": [C3Ds+"/PAT3405_preop_stepup.c3d", "6_46_PAT3405_left", 1257, 1936, 1526-205, 1576+205, 177, 80],
-        "PAT3477": [C3Ds+"/PAT3477_preop_stepup.c3d", "8_48_PAT3477_left", 1249, 2028, 1348-205, 1798+205, 170, 85],
+        "PAT2668": [C3Ds+"/PAT2668_postop_stepup.c3d", "1_18_PAT2668_right", 1100, 1778, 1370-210, 1420+210, 154, 66],
+        "PAT3041": [C3Ds+"/PAT3041_preop_stepup.c3d", "3_39_PAT3041_left", 1499, 2192, 1805-210, 1855+210, 184, 90],
+        "PAT3112": [C3Ds+"/PAT3112_preop_stepup.c3d", "4_41_PAT3112_left", 1289, 2187, 1690-210, 1740+210, 169, 71],
+        "PAT3405": [C3Ds+"/PAT3405_preop_stepup.c3d", "6_46_PAT3405_left", 1257, 1936, 1526-210, 1576+210, 177, 80],
+        "PAT3477": [C3Ds+"/PAT3477_preop_stepup.c3d", "8_48_PAT3477_left", 1249, 2028, 1348-210, 1798+210, 170, 85],
     }
 
     # Run ICP on each subject prior to other processing (uses subject folder from info[1])
