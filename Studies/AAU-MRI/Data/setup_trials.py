@@ -302,8 +302,8 @@ def run_icp_for_subject(patient_id, info, data_root='.'):
             print(f'No subject folder found for {patient_id} at "{candidate}" — skipping ICP')
             return
 
-    fem_csv = cand_path / 'femur_articulation.csv'
-    tib_csv = cand_path / 'tibia_articulation.csv'
+    fem_csv = Path(data_root) / 'ICP/femur_articulation.csv'
+    tib_csv = Path(data_root) / 'ICP/tibia_articulation.csv'
     if not fem_csv.exists() or not tib_csv.exists():
         print(f'Missing femur/tibia CSV for {patient_id} in {cand_path} — skipping ICP')
         return
@@ -462,7 +462,7 @@ if __name__ == "__main__":
     print('\nRunning ICP pre-processing on subjects (this runs icp_register.py)...')
     for k, v in name_dict.items():
         try:
-            run_icp_for_subject(k, v, data_root='./ICP/')
+            run_icp_for_subject(k, v, data_root='.')
 
             # After ICP run, try to locate the produced tf_reg file and copy it
             # into ../Subjects/<PAT>/Morphing/Target/tf_reg.any so Subjects contains it.

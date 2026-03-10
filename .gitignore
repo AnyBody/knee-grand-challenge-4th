@@ -292,3 +292,26 @@
 /\[Input\]/gck6src.txt
 /\[Input\]/gck6trg.txt
 /\[Input\]/report_stl_size.py
+\[Input]/GCK4/Morphing/Target/GCK4_Calcaneus.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_Femur.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_Fibula.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_merged femur.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_merged patella_remeshed.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_merged tibia.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_Metatarsals.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_MidFoot.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_Patella.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_Pelvis.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_Phalanges.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_Talus.anysurf3
+\[Input]/GCK4/Morphing/Target/GCK4_Tibia.anysurf3
+\[Input]/GCK4/STL/Bone/Target/GCK4_Calcaneus.anysurf3
+\[Input]/GCK4/STL/Bone/Target/GCK4_merged patella_remeshed.anysurf3
+\[Input]/GCK4/STL/Bone/Target/GCK4_Metatarsals.anysurf3
+\[Input]/GCK4/STL/Bone/Target/GCK4_MidFoot.anysurf3
+\[Input]/GCK4/STL/Bone/Target/GCK4_Patella.anysurf3
+\[Input]/GCK4/STL/Bone/Target/GCK4_Pelvis.anysurf3
+\[Input]/GCK4/STL/Bone/Target/GCK4_Phalanges.anysurf3
+\[Input]/GCK4/STL/Bone/Target/GCK4_Talus.anysurf3
+Commons/Morphing/Pelvis_tlem_left.anysurf3
+Commons/Morphing/Pelvis_tlem_right.anysurf3
