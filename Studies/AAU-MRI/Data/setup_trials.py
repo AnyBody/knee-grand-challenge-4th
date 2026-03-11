@@ -157,8 +157,8 @@ def setup_subject_folder(patient_id, info):
     print(f"Created/verified folder: {trials_static_folder}")
 
     if Path('REF_PATIENT/main.any').exists():
-        shutil.copy2('main.any', trials_static_folder / 'main.any')
-        print(f"Copied main.any to {trials_static_folder}")
+        shutil.copy2('./REF_PATIENT/main.any', trials_static_folder / 'main.any')
+        print(f"Copied ./REF_PATIENT/main.any to {trials_static_folder}")
     else:
         print('Warning: main.any not found; skipping')
 
@@ -236,8 +236,8 @@ def setup_dynamic_trial_folder(patient_id, info):
     print(f"Created/verified folder: {trials_dynamic_folder}")
 
     if Path('REF_PATIENT/main.any').exists():
-        shutil.copy2('main.any', trials_dynamic_folder / 'main.any')
-        print(f"Copied main.any to {trials_dynamic_folder}")
+        shutil.copy2('./REF_PATIENT/main.any', trials_dynamic_folder / 'main.any')
+        print(f"Copied ./REF_PATIENT/main.any to {trials_dynamic_folder}")
     else:
         print('Warning: main.any not found; skipping')
 

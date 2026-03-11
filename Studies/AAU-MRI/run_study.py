@@ -24,6 +24,13 @@ def run_anybody_code(mainfiles: list[Path], operation: str, logfile: str, **kwar
     app = AnyPyProcess(**kwargs)
 
     logfile = Path(logfile).absolute()
+    # Ensure the directory for the logfile exists so workers can open log files
+    try:
+        logfile.parent.mkdir(parents=True, exist_ok=True)
+    except Exception:
+        # If we cannot create the log directory, continue and let AnyPyProcess
+        # raise an error when trying to write the logfile (keeps behavior visible)
+        pass
     
     print(f"Running {len(mainfiles)} trial(s) with: '{operation}'...")
     results = app.start_macro(macros, logfile=logfile)
@@ -34,7 +41,11 @@ def run_anybody_code(mainfiles: list[Path], operation: str, logfile: str, **kwar
             continue
         if 'ERROR' in result:
             if log:=result.get("task_logfile"):
-              print(f"Failed: {mainfiles[i].relative_to(Path.cwd())} ( [blue]{log}[/blue] )")
+                try:
+                    rel = mainfiles[i].relative_to(Path.cwd())
+                except Exception:
+                    rel = mainfiles[i]
+                print(f"Failed: {rel} ( [blue]{log}[/blue] )")
             continue
         
         completed_trials.append(mainfiles[i])
