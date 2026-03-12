@@ -7,7 +7,7 @@ from anypytools.macro_commands import Load, OperationRun
 from rich import print
 
 
-def run_anybody_code(mainfiles: list[Path], operation: str, logfile: str, **kwargs) -> list[Path]:
+def run_anybody_code(mainfiles: list[Path], operation: str, keep_logfiles: bool, logfile: str, **kwargs) -> list[Path]:
 
     if not mainfiles: 
         print("No trials found.")
@@ -21,7 +21,7 @@ def run_anybody_code(mainfiles: list[Path], operation: str, logfile: str, **kwar
                 OperationRun(operation),
             ]
         )
-    app = AnyPyProcess(**kwargs)
+    app = AnyPyProcess(keep_logfiles=keep_logfiles, **kwargs)
 
     logfile = Path(logfile).absolute()
     # Ensure the directory for the logfile exists so workers can open log files
@@ -73,6 +73,8 @@ def find_files(pattern: str, root='.') -> list[Path]:
 
 if __name__ == "__main__":
 
+    keeplogfiles = False    
+
     pattern: str = "Subjects/*/Trials Static/*_ref/main.any"
     mainfiles = find_files(pattern)
     if mainfiles:
@@ -82,7 +84,7 @@ if __name__ == "__main__":
     else:
         print("No trials found.")
     
-    run_anybody_code(mainfiles, operation = "Main.RunParameterIdentification", logfile = "logs/staticref.txt")
+    run_anybody_code(mainfiles, operation = "Main.RunParameterIdentification", keep_logfiles=keeplogfiles, logfile = "logs/staticref.txt")
     
     pattern: str = "Subjects/*/Trials Dynamic/*/main.any"
     mainfiles = find_files(pattern)
@@ -93,7 +95,7 @@ if __name__ == "__main__":
     else:
         print("No trials found.")
 
-    run_anybody_code(mainfiles, operation = "Main.RunAnalysis", logfile = "logs/dynamic.txt")
+    run_anybody_code(mainfiles, operation = "Main.RunAnalysis", keep_logfiles=keeplogfiles, logfile = "logs/dynamic.txt")
 
     pattern: str = "Subjects/*/Trials Dynamic/*/*InverseDynamicStudy.anydata.h5"
     datafiles = find_files(pattern)
