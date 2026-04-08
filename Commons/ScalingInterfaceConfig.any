@@ -1,0 +1,96 @@
+#define __SCALING_INTERFACE_TYPE_DEFAULT__ 0
+#define __SCALING_INTERFACE_TYPE_MIXED__ 1
+#define __SCALING_INTERFACE_TYPE_CONSISTENT__ 2
+
+
+#ifdef _override_scaling_for_Pelvis
+   #define __PelvisScaling 1
+  #else
+   #define __PelvisScaling 0
+#endif
+
+
+//#if BM_LEG_RIGHT == ON
+
+   #ifdef _override_scaling_for_Right_Thigh
+    #define __RThighScaling 1
+   #else
+    #define __RThighScaling 0
+   #endif
+     
+   #ifdef _override_scaling_for_Right_Shank
+    #define __RShankScaling 1
+   #else
+    #define __RShankScaling 0
+   #endif
+   
+   #ifdef _override_scaling_for_Right_Patella
+    #define __RPatellaScaling 1
+   #else
+    #define __RPatellaScaling 0
+   #endif
+   
+   #ifdef _override_scaling_for_Right_Talus
+    #define __RTalusScaling 1
+   #else
+    #define __RTalusScaling 0
+   #endif
+
+   #ifdef _override_scaling_for_Right_Foot
+    #define __RFootScaling 1
+   #else
+    #define __RFootScaling 0
+   #endif
+   
+//#endif
+
+
+//#if BM_LEG_LEFT == ON
+
+   #ifdef _override_scaling_for_Left_Thigh
+    #define __LThighScaling 1
+   #else
+    #define __LThighScaling 0
+   #endif
+     
+   #ifdef _override_scaling_for_Left_Shank
+    #define __LShankScaling 1
+   #else
+    #define __LShankScaling 0
+   #endif
+   
+   #ifdef _override_scaling_for_Left_Patella
+    #define __LPatellaScaling 1
+   #else
+    #define __LPatellaScaling 0
+   #endif
+   
+   #ifdef _override_scaling_for_Left_Talus
+    #define __LTalusScaling 1
+   #else
+    #define __LTalusScaling 0
+   #endif
+
+   #ifdef _override_scaling_for_Left_Foot
+    #define __LFootScaling 1
+   #else
+    #define __LFootScaling 0
+   #endif
+   
+//#endif
+
+// check interface type - subject-specific = 2, mixed = 1, default = 0
+
+#define RightHipJointInterface              __PelvisScaling   + __RThighScaling
+#define RightTibioFemoralJointInterface     __RShankScaling   + __RThighScaling
+#define RightPatelloFemoralJointInterface   __RPatellaScaling + __RThighScaling
+#define RightTaloCruralJointInterface       __RTalusScaling   + __RShankScaling
+#define RightTaloNavicularJointInterface    __RTalusScaling   + __RShankScaling
+
+
+#define LeftHipJointInterface              __PelvisScaling   + __LThighScaling
+#define LeftTibioFemoralJointInterface     __LShankScaling   + __LThighScaling
+#define LeftPatelloFemoralJointInterface   __LPatellaScaling + __LThighScaling
+#define LeftTaloCruralJointInterface       __LTalusScaling   + __LShankScaling
+#define LeftTaloNavicularJointInterface    __LTalusScaling   + __LShankScaling
+

@@ -1,3 +1,6 @@
+#ifndef _override_scaling_for_Pelvis
+AnyRefNode PatientNode = {};
+#endif
 PatientNode = {
   #if BM_LEG_RIGHT != OFF
 
@@ -58,12 +61,18 @@ Left = {
 
 
 
-#if BM_LEG_RIGHT != OFF
+#if BM_LEG_RIGHT != OFF 
 
 Right.HipJoint = {
   AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
-  //sRel = ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
-  sRel = ..HipJointRNew.sRel;
+  
+  // will use default scaling if either femur or pelvis are not subject-specific
+  #if RightHipJointInterface != __SCALING_INTERFACE_TYPE_CONSISTENT__
+    sRel ??= ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
+  #else
+    sRel ??= ..HipJointRNew.sRel;
+  #endif
+  
   #include "<ANYBODY_PATH_BODY>/DrawSettings/JointAxesProximal.any"
   ARel = ..AnatomicalFrame.ARel;
   AnyRefNode ISB = {
@@ -75,10 +84,17 @@ Right.HipJoint = {
 
 
 #if BM_LEG_LEFT != OFF
+
 Left.HipJoint = {
   AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
-  //sRel = ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
-  sRel = ..HipJointLNew.sRel;
+  
+  // will use default scaling if either femur or pelvis are not subject-specific
+  #if LeftHipJointInterface != __SCALING_INTERFACE_TYPE_CONSISTENT__
+    sRel ??= ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
+  #else
+    sRel ??= ..HipJointLNew.sRel;
+  #endif
+  
   #include "<ANYBODY_PATH_BODY>/DrawSettings/JointAxesProximal.any"
   ARel = ..AnatomicalFrame.ARel;
   AnyRefNode ISB = {
