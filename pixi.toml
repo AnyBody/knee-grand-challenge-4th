@@ -1,0 +1,17 @@
+[workspace]
+name = "knee-grand-challenge-model"
+version = "0.1.0"
+description = "Add a short description here"
+authors = ["peg <peg@anybodytech.com>"]
+channels = ["conda-forge", "anybody"]
+platforms = ["win-64"]
+
+[tasks]
+testall = {cmd = "pytest -n auto --dist worksteal --runslow", cwd = "tests", description = "Run all tests"}
+
+[dependencies]
+anybodycon = "*"
+anypytools = "*"
+pytest = "*"
+
+
