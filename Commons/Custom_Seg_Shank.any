@@ -6,8 +6,7 @@ PatientNode = {
   AnySurfEllipsoidFit AnkleJointFit = {    
     Spherical = On;
     Points = .FittingData.AnkleJointPoints;//will use morphed femoral head as input
-    AnyDrawRefFrame DrawAnkleJointTibia= {ScaleXYZ={1,1,1}*0.1;RGB={1,1,0};};
-    
+    //AnyDrawRefFrame DrawAnkleJointTibia= {ScaleXYZ={1,1,1}*0.1;RGB={1,1,0};};    
   };
   
   AnyFunTransform3DLin ThighToShankReg = {
@@ -32,32 +31,47 @@ PatientNode = {
       )*...Thigh.PatientNode.KneeJointConstructed.ARel; // fitted and aligned axes
   };
   
+  AnyRefNode AnkleJoint = {}; //placeholder
 };// automatically created
 
 
 AnyRefNode KneeJointNew = {
-  sRel = .PatientNode.sRel + .PatientNode.KneeJoint.sRel * .PatientNode.ARel';
-  ARel = .PatientNode.ARel * .PatientNode.KneeJoint.ARel;
-  //AnyDrawRefFrame DrawKneeJointTibia= {ScaleXYZ={1,1,1}*0.1;RGB={1,0,0};};
+  #if (RightTibioFemoralJointInterface != __SCALING_INTERFACE_TYPE_CONSISTENT__ & SEG_SIGN == 1) | (LeftTibioFemoralJointInterface != __SCALING_INTERFACE_TYPE_CONSISTENT__ & SEG_SIGN == -1)
+    sRel ??= .KneeJointAnatomicalFrame.sRel;
+    ARel ??= .KneeJointAnatomicalFrame.ARel;
+  #else
+   sRel ??= .PatientNode.sRel + .PatientNode.KneeJoint.sRel * .PatientNode.ARel';
+   ARel ??= .PatientNode.ARel * .PatientNode.KneeJoint.ARel;
+  #endif
 };  
 
-//AnyRefNode AnkleJointNew = 
-//{
+AnyRefNode AnkleJointNew = 
+{
+  #if (RightTaloCruralJointInterface != __SCALING_INTERFACE_TYPE_CONSISTENT__ & SEG_SIGN == 1) | (LeftTaloCruralJointInterface != __SCALING_INTERFACE_TYPE_CONSISTENT__ & SEG_SIGN == -1)
+    sRel ??= .AnkleJointComplexAnatomicalFrame.sRel;
+    ARel ??= .AnkleJointComplexAnatomicalFrame.ARel;
+  #else
+   AnyInt error_ankle_joint_fitting = assert(1, "Ankle joint fitting is not implemented yet.");
+   sRel ??= .PatientNode.sRel + .PatientNode.AnkleJoint.sRel * .PatientNode.ARel';
+   ARel ??= .PatientNode.ARel * .PatientNode.AnkleJoint.ARel;
+  #endif
+  
 //  sRel = .PatientRefNode.sRel + 
 //  (.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.sRel + 
 //   .PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.OffsetNode.sRel
 //  *.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.ARel')
 //  *.PatientRefNode.ARel';
 //  ARel = .PatientRefNode.ARel * .PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.ARel*.PatientRefNode.Talus_Trochlea_Fitting_Surf_Node.OffsetNode.ARel;
-//};  
+};  
+
 
 #if (BM_JOINT_TYPE_KNEE_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_KNEE_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
 AnyRefNode& KneeJoint = KneeJointNew;
 #endif
 
-//#if (BM_JOINT_TYPE_ANKLE_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_ANKLE_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
-//AnyRefNode& AnkleJoint = AnkleJointNew;
-//#endif
+#if (BM_JOINT_TYPE_ANKLE_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_ANKLE_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
+AnyRefNode& AnkleJoint = AnkleJointNew;
+#endif
 //
 //#if (BM_JOINT_TYPE_PATELLATENDON_RIGHT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == 1) | (BM_JOINT_TYPE_PATELLATENDON_LEFT == _JOINT_TYPE_USERDEFINED_ & SEG_SIGN == -1)
 //AnyRefNode Insertion_patella_tendon =

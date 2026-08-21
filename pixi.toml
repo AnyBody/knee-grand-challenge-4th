@@ -8,6 +8,9 @@ platforms = ["win-64"]
 
 [tasks]
 testall = {cmd = "pytest -n auto --dist worksteal --runslow", cwd = "tests", description = "Run all tests"}
+test_study = { cmd = "python Studies/GCK/run_study.py", cwd = ".", description = "Run all scripts or use a relevant flag" }
+test_static = { cmd = "python Studies/GCK/run_study.py --static", cwd = ".", description = "Run static trials" }
+test_dynamic = { cmd = "python Studies/GCK/run_study.py --dynamic", cwd = ".", description = "Run dynamic trials" }
 
 [dependencies]
 anybodycon = "*"

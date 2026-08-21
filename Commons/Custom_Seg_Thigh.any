@@ -114,7 +114,7 @@ AnyRefNode PatellaFemurJointNew =
   ARel = RotMat(
     {0.0, 0.0, 0.0}, 
     {0,0, 1} *.PatientNode.PatellaFemoralJointFit.ARel'*.PatientNode.ARel',
-    .HipJointNew.sRel - .KneeJointNew.sRel
+    (.HipJointNew.sRel - .KneeJointNew.sRel) * SEG_SIGN
     ) 
     * RotMat(-pi/2, y)
     ;                 // for better consistency with ABT's implementation

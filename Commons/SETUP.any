@@ -13,11 +13,11 @@ Main = {
       //#include "<USER_PATH_INPUTDATA>\Ligament\Attachment_Points.any"
       #include "<USER_PATH_INPUTDATA>\JointFit\DataConfig.any"
       #include "<USER_PATH_INPUTDATA>\Morphing\DataConfig.any"
-      //#include "<USER_PATH_INPUTDATA>\JointContact\DataConfig.any"
+      #include "<USER_PATH_INPUTDATA>\JointContact\DataConfig.any"
       //#include "<USER_PATH_COMMONS>\Parameters_Ligaments.any"        
     };
   };
-
+  
   #include "<USER_PATH_COMMONS>\CustomScaling.any"  
   #include "<USER_PATH_COMMONS>\CustomSegments.any"
   //#include "<USER_PATH_COMMONS>\CustomMuscles.any"  
@@ -35,10 +35,16 @@ Main = {
 //   #undef INPUT_REF_INIT_STUDY
 //   #undef INPUT_REF_EVAL_STUDY
 //   
-//   #include "<USER_PATH_COMMONS>\Contacts.any"
+   #ifndef GC_KNEE_CONTACT_DEFITION
+     #path GC_KNEE_CONTACT_DEFITION "<USER_PATH_COMMONS>\Contacts.any"
+   #endif
+   
+   #include "<GC_KNEE_CONTACT_DEFITION>"   
+   
 //  #endif
   //#if KNEE_JOINT_TYPE == __SPHERICAL__
-    #include "<USER_PATH_COMMONS>\SphericalKneeJointCode.any"
-        
+    #if BM_JOINT_TYPE_KNEE_RIGHT == _JOINT_TYPE_USERDEFINED_ | BM_JOINT_TYPE_KNEE_LEFT == _JOINT_TYPE_USERDEFINED_ 
+      #include "<USER_PATH_COMMONS>\SphericalKneeJointCode.any"
+    #endif
   //#endif
 };

@@ -1,50 +1,39 @@
-#ifdef _override_scaling_for_Pelvis
+//#ifdef _override_scaling_for_Pelvis
 HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg = 
 {
   #include "Custom_Seg_Pelvis.any"
 };
-#endif //Right Thigh
+//#endif //Right Thigh
 
 
 #if BM_LEG_RIGHT == ON
- #ifdef _override_scaling_for_Right_Thigh
-  HumanModel.BodyModel.Right.Leg = 
+  #define SEG_SIGN 1
+  HumanModel.BodyModel.Right.Leg.Seg = 
   {
-    Seg.Thigh = 
+    Thigh = 
     {
-      #define SEG_SIGN 1
+     #ifdef _override_scaling_for_Right_Thigh
       #include "Custom_Seg_Thigh.any"
-      #undef SEG_SIGN
+     #endif //Right Thigh
     };  
-  };
- #endif //Right Thigh
  
- #ifdef _override_scaling_for_Right_Shank
-  HumanModel.BodyModel.Right.Leg = 
-  {
-    Seg.Shank = 
+    Shank = 
     {
-      #define SEG_SIGN 1
+     #ifdef _override_scaling_for_Right_Shank
       #include "Custom_Seg_Shank.any"
-      #undef SEG_SIGN  
+     #endif //Right Shank
     };
-  };
- #endif //Right Shank
  
- #ifdef _override_scaling_for_Right_Patella
-  HumanModel.BodyModel.Right.Leg =
-  {  
-    Seg.Patella = 
+    Patella = 
     {
-//      #define SEG_SIGN 1
-//      #include "Custom_Seg_Patella.any"
-//      #undef SEG_SIGN
-//      
-//      DrwSurf.Visible = Off;    
+      #ifdef _override_scaling_for_Right_Patella
+       #include "Custom_Seg_Patella.any"
+      #endif // Right Patella
+     
+      //DrwSurf.Visible = Off;    
     };
-  };
- #endif // Right Patella
-// 
+    
+// To be added later
 // #ifdef _override_scaling_for_Right_Talus
 // HumanModel.BodyModel.Right.Leg =
 // {  
@@ -54,65 +43,52 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
 //     #include "Custom_Seg_Talus.any"
 //     #undef SEG_SIGN
 //   };
-// };
-//#endif
+//  #endif
+  };
+  #undef SEG_SIGN
 #endif //Right LEG
 
 
 #if BM_LEG_LEFT == ON
- #ifdef _override_scaling_for_Left_Thigh
-  HumanModel.BodyModel.Left.Leg = 
+ #define SEG_SIGN -1
+  HumanModel.BodyModel.Left.Leg.Seg = 
   {
-    Seg.Thigh = 
+    Thigh = 
     {
-      #define SEG_SIGN -1
+     #ifdef _override_scaling_for_Left_Thigh
       #include "Custom_Seg_Thigh.any"
-      #undef SEG_SIGN
+     #endif // Left Thigh
     };
-  };
- #endif // Left Thigh
-#endif
 
-
-
- #ifdef _override_scaling_for_Left_Shank
-  HumanModel.BodyModel.Left.Leg = 
-  {
-    Seg.Shank = 
+    Shank = 
     {
-      #define SEG_SIGN -1
+     #ifdef _override_scaling_for_Left_Shank
       #include "Custom_Seg_Shank.any"
-      #undef SEG_SIGN 
+     #endif // Left Shank
     };  
-  };
- #endif // Left Shank
 
- #ifdef _override_scaling_for_Left_Patella
-  HumanModel.BodyModel.Left.Leg =
-  { 
-    Seg.Patella = 
+    Patella = 
     {
-//      #define SEG_SIGN -1
-//      #include "Custom_Seg_Patella.any"
-//      #undef SEG_SIGN
-//    
-//      DrwSurf.Visible = Off;    
+     #ifdef _override_scaling_for_Left_Patella
+      #include "Custom_Seg_Patella.any"
+     #endif // Right Patella
+    
+      //DrwSurf.Visible = Off;    
     };
-  };
- #endif //Left Patella
-/* 
- HumanModel.BodyModel.Left.Leg =
- {  
-   Seg.Talus = 
-   {
-     #define SEG_SIGN -1
-     #include "Custom_Seg_Talus.any"
-     #undef SEG_SIGN
-   };
- };
-#endif
 
-*/
+// To be added later
+// HumanModel.BodyModel.Left.Leg =
+// {  
+//   Seg.Talus = 
+//   {
+//     #define SEG_SIGN -1
+//     #include "Custom_Seg_Talus.any"
+//     #undef SEG_SIGN
+//   };
+// };
+  };
+   #undef SEG_SIGN
+#endif
 
 HumanModel.BodyModel =
 {

@@ -1,3 +1,7 @@
+#ifndef _override_scaling_for_Left_Patella
+AnyRefNode PatientNode = {};
+#endif
+
 PatientNode = {
 
   AnyFunTransform3DLin ThighToPatellaReg = {
@@ -21,8 +25,25 @@ PatientNode = {
 
 
 AnyRefNode PatellaFemurJointNew = {
-  sRel = .PatientNode.sRel + .PatientNode.PatellaFemoralJoint.sRel * .PatientNode.ARel';
-  ARel = .PatientNode.ARel * .PatientNode.PatellaFemoralJoint.ARel;
+
+  #if (RightPatelloFemoralJointInterface != __SCALING_INTERFACE_TYPE_CONSISTENT__ & SEG_SIGN == 1) | (LeftPatelloFemoralJointInterface != __SCALING_INTERFACE_TYPE_CONSISTENT__ & SEG_SIGN == -1)
+    AnyVec3 sRelUnscaled = .StdPar.PatellaFemurJoint;
+
+    /// Control point for the PatellaFemurJoint. Found by projecting the EpicondylusFemoris bony landmarks onto the
+    /// PatellaFemurJoint axis from the cadaver data set. Thus, scaling which moves the control points will also scale the PatellaFemurJointjoint axis
+    AnyVec3 PFLateralControlPoint = .Scale(.StdPar.PatellaFemurJoint + (.StdPar.EpicondylusFemorisLateralis - .StdPar.PatellaFemurJoint)*.StdPar.PatellaFemurJointAxis'*.StdPar.PatellaFemurJointAxis);
+    /// Control point for the PatellaFemurJoint. Found by projecting the EpicondylusFemoris bony landmarks onto the
+    /// PatellaFemurJoint axis from the cadaver data set. Thus, scaling which moves the control points will also scale the PatellaFemurJointjoint axis
+    AnyVec3 PFMedialControlPoint = .Scale(.StdPar.PatellaFemurJoint + (.StdPar.EpicondylusFemorisMedialis - .StdPar.PatellaFemurJoint)*.StdPar.PatellaFemurJointAxis'*.StdPar.PatellaFemurJointAxis);
+    sRel = .Scale(.StdPar.PatellaFemurJoint);
+    // / PatellaFemurJoint Joint orientation is calculated based on the direction between the two control points.
+    ARel = RotMat({0.0,0,0},
+            (0.5*(.RectusFemoris1Node.sRel+.RectusFemoris2Node.sRel) - .Origin_patella_tendon.sRel), .Sign*(PFLateralControlPoint-PFMedialControlPoint))*RotMat(pi/2,z);
+  #else
+   sRel = .PatientNode.sRel + .PatientNode.PatellaFemoralJoint.sRel * .PatientNode.ARel';
+   ARel = .PatientNode.ARel * .PatientNode.PatellaFemoralJoint.ARel;
+  #endif
+  
   AnyDrawRefFrame DrawPFJointPatella= {ScaleXYZ={1,1,1}*0.1;RGB={1,0,1};};
 }; 
 //
