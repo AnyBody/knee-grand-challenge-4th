@@ -4,9 +4,9 @@ on:
   schedule:
     - cron: '0 0 * * 0'
   push:
-    branches: [ master ]
+    branches: [ GC456 ]
   pull_request:
-    branches: [ master ]
+    branches: [ GC456 ]
   workflow_dispatch:
 
 concurrency: 
