@@ -1,0 +1,59 @@
+TrialSpecificData = {
+  #define TRIAL_SPECIFIC_FDK_INITIAL_CONDITIONS
+  
+  AnyVector TibiaFemoralFDKInitPos = {-0.0050075409534847065, 0.002177847706402353, -0.006853937072064616};
+  AnyVector TibiaFemoralFDKInitRot = {-0.02015703999626133, -0.04886871407788102};
+  AnyVector TibiaFemoralFDKInitRotX = {0.0};
+  AnyVector PatellaFemurFDKInitPos = {-4.552844307602977E-4, -0.002261727620958353, 0.002596527834159129, 0.011881195422110774, -0.03058721330623128};
+  #if !PATIENT_SPECIFIC_PATELLATENDON
+  AnyVector PatellaTendonFDKInitPos = {0.080};
+  #else
+  AnyVector PatellaTendonFDKInitPos = {0.06538229009515817};
+  #endif
+};
+#include "../PS_chairrise1/TrialSpecificData.any"
+
+//#path TRIAL_PATH "."
+
+#ifdef LABEL
+#undef LABEL
+#endif
+
+#ifdef INV_DYN_DRIVER_STRATEGY
+#undef INV_DYN_DRIVER_STRATEGY
+#endif
+
+#ifdef USE_2DOF_SUBTALAR_JOINT
+#undef USE_2DOF_SUBTALAR_JOINT
+#endif
+
+#define USE_2DOF_SUBTALAR_JOINT
+#define INV_DYN_DRIVER_STRATEGY 4
+#define LABEL "_PreOp_PCL2_InvDyn4_QuadsWrap+"
+
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusLateralisInferior1.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusLateralisInferior2.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusLateralisInferior3.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusLateralisInferior4.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusLateralisInferior5.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusLateralisInferior6.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusLateralisSuperior1.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusLateralisSuperior2.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusMedialisInferior1.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusMedialisInferior2.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusMedialisMid1.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusMedialisMid2.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusMedialisSuperior1.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusMedialisSuperior2.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusMedialisSuperior3.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusMedialisSuperior4.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusIntermedius1.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusIntermedius2.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusIntermedius3.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusIntermedius4.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusIntermedius5.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.VastusIntermedius6.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.RectusFemoris1.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.RectusFemoris2.SPLine.Analytical_Solution = 1;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.GastrocnemiusMedialis1.SPLine.Analytical_Solution = 0;
+//Main.Studies.HumanModel.BodyModel.Left.Leg.Mus.Plantaris1.SPLine.Analytical_Solution = 0;

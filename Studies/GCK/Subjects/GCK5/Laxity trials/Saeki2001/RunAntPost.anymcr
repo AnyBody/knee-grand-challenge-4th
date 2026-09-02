@@ -1,0 +1,14 @@
+load "PS_AntPost_laxity\InverseDynamics.main.any" /def KNEE_FLEXION_ANGLE=0
+operation Main.InverseDynamicAnalysisSequence 
+run
+load "PS_AntPost_laxity\InverseDynamics.main.any" /def KNEE_FLEXION_ANGLE=30
+operation Main.InverseDynamicAnalysisSequence 
+run
+load "PS_AntPost_laxity\InverseDynamics.main.any" /def KNEE_FLEXION_ANGLE=60
+operation Main.InverseDynamicAnalysisSequence 
+run
+load "PS_AntPost_laxity\InverseDynamics.main.any" /def KNEE_FLEXION_ANGLE=90
+operation Main.InverseDynamicAnalysisSequence 
+run
+
+exit  

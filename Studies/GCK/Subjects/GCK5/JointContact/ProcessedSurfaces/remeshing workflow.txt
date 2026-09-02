@@ -1,0 +1,22 @@
+-the original STL is opened in MeshLab
+-a new fitted pointset is generated through:
+Filters -> Sampling -> Poisson-disk Sampling
+a reasonable vertices number is chosen (~10000 for femoral component parts, ~3000 for tibial insert parts)
+-the new pointset is meshed through:
+Filters -> Remeshing, Simplification and Reconstruction -> Surface Reconstruction: Ball Pivoting
+(default settings are chosen)
+
+WARNING! Always check for correct faces normals in the new mesh, otherwise there will be no contacts in the model!
+
+==Update 02-07-2014==
+The tibial insert and femoral component STL meshes were re-meshed with Geomagic Studio. The full shape (closed surface) is preserved this time, to overcome the issue of "penetration holes" in the contact algorithm.
+In Geomagic Studio:
+-the tibial insert mesh is duplicated
+-a x-y plane is set for cutting the mesh, to produce the medial and lateral sides
+-each side is re-meshed automatically
+In MeshLab
+-vertices closer than 0.1 mm are merged
+
+==Update 09-12-2015==
+The Fem 3L, 4L, 5L STLs were remeshed in 3-Matic, using Auto remesh with default settings and "Preserve edges" on.
+For Fem 4L.stl a maximum edge length of 2.0 mm was used.

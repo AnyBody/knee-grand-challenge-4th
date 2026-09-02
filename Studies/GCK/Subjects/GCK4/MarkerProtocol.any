@@ -1,0 +1,553 @@
+
+// How it works:
+//
+// Marker on the Left Posterior Superior Iliac
+// CreateMarkerDriver LPSI (                         // A marker on the skeleton is created!
+// MarkerName= LPSI,                                 // Change the name here to the name of your Marker Protocol!:
+// MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,   // Marker is assigned to Pelvis Segment
+// OptX=OFF, OptY=OFF, OptZ=ON,                // Is the position of the Marker good, or does it need to be optimised?
+//                                                   // Please be aware that having to many Markers optimised can lead to model failure
+// WeightX=1.0,WeightY=1.0,WeightZ=1.0,              // If you are convinced of the position of this Marker, you an increase the importance of it (weight)
+// Model1=MotionAndParameterOptimizationModel,
+// Model2= InverseDynamicModel,
+// sRelOptScalingOnOff="On"                          // Determine whether sRelOpt value will be scaled by the geometrical scaling funciton or not
+// ) = {
+//   sRelOpt ={-0.06727544, -0.03, -0.045};          // Position of the Marker on the skeleton, relativ to the segment. Please adjust! 
+//   sRelOptDelta = {0, 0, 0}                        // This value is optional. This value will be optimized and you can set the initial guess if you want.
+// };
+
+
+// Hip/Pelvis
+
+// Marker on the Left Posterior Superior Iliac
+CreateMarkerDriver LPsis ( 
+MarkerName= LPsis,
+MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+OptX=OFF, OptY=OFF, OptZ=ON,
+WeightX=10.0,WeightY=10.0,WeightZ=10.0,
+ScaleMarkerPosOnOff = 1
+) = {
+  //sRelOpt = {-0.14,0.02, -0.04};
+  sRelOpt = {-0.145,0.02, -0.04};
+};
+
+// Marker on the Right Posterior Superior Iliac
+CreateMarkerDriver RPsis (
+MarkerName= RPsis, 
+MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+OptX=OFF, OptY=OFF, OptZ=ON,
+WeightX=10.0,WeightY=10.0,WeightZ=10.0,
+ScaleMarkerPosOnOff = 1
+) = {
+ //sRelOpt = {-0.14,0.02, 0.04};
+ sRelOpt = {-0.145,0.02, 0.04};
+};
+
+// Marker on the Right Anterior Superior Iliac
+CreateMarkerDriver RAsis(
+MarkerName= RAsis, 
+MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=10.0,WeightY=10.0,WeightZ=10.0,
+ScaleMarkerPosOnOff = 1
+) = {
+ //sRelOpt = {0.04, 0.005, 0.125};
+ sRelOpt = {0.035, 0.005, 0.125};
+};
+
+// Marker on the Left Anterior Superior Iliac
+CreateMarkerDriver LAsis (
+MarkerName= LAsis ,
+MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=10.0,WeightY=10.0,WeightZ=10.0,
+ScaleMarkerPosOnOff = 1
+) = {
+  //sRelOpt = {0.04,0.005, -0.125};
+  sRelOpt = {0.035,0.005, -0.125};
+};
+
+//// Head
+
+//// Marker on the Right Front Head
+//CreateMarkerDriver RFHD (
+//MarkerName= RFHD, 
+//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+//OptX=OFF,OptY=OFF,OptZ=OFF,  
+//WeightX=1.0,WeightY=1.0,WeightZ=1.0
+//) = {
+//  sRelOpt = {0.08,0.06,0.07} + {0.02, -0.02, 0}; 
+////  sRelOpt = {0.08,0.06,0.07};
+//};
+//
+//// Marker on the Left Front Head
+//CreateMarkerDriver LFHD (
+//MarkerName= LFHD,  
+//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+//OptX=OFF,OptY=OFF,OptZ=OFF,  
+//WeightX=1.0,WeightY=1.0,WeightZ=1.0
+//) = {
+//  sRelOpt = {0.08,0.06,-0.07} + {0.02, -0.02, 0};
+////  sRelOpt = {0.08,0.06,-0.07};
+//};
+//
+//// Marker on the Right Back Head
+//CreateMarkerDriver RBHD (
+//MarkerName= RBHD,  
+//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+//OptX=OFF,OptY=OFF,OptZ=OFF,  
+//WeightX=1.0,WeightY=1.0,WeightZ=1.0
+//) = {
+//  sRelOpt = {-0.07,0.05,0.08};
+//};
+//
+//// Marker on the Left Back Head
+//CreateMarkerDriver LBHD (
+//MarkerName= LBHD,  
+//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,   
+//OptX=OFF,OptY=OFF,OptZ=OFF,
+//WeightX=1.0,WeightY=1.0,WeightZ=1.0
+//) = {
+//  sRelOpt = {-0.07,0.05,-0.08};
+//};
+
+//// Thorax
+
+// Marker on the Sternum
+CreateMarkerDriver Sternum (
+MarkerName= Sternum,  
+MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+OptX=OFF, OptY=OFF, OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
+) = {
+ sRelOpt = {0.12,0.42,0.0};
+};
+
+CreateMarkerDriver Xiphoid (
+MarkerName= Xiphoid,  
+MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+OptX=OFF, OptY=OFF, OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
+) = {
+  sRelOpt = {0.18,0.24,0.0};
+};
+
+// Marker on the Thoracic Vertebra 10
+CreateMarkerDriver Thoracic (
+MarkerName= Thoracic,  
+MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+OptX=ON, OptY=ON, OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
+) = {
+  sRelOpt = {-0.052,0.187,0};
+};
+
+// Lower Extremity Markers
+
+#if BM_LEG_RIGHT != OFF
+CreateMarkerDriver RThighLateral ( 
+MarkerName=  RThighLateral,
+MarkerPlacement =Right.Leg.Seg.Thigh, 
+OptX=ON,OptY=ON,OptZ=ON,
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+)= {
+  sRelOpt = {0.08, -0.25, 0.05};
+  sRelOptDelta = {3.710242575183716e-002, -2.382772641892982e-002, -2.740605025901430e-002};
+};
+
+CreateMarkerDriver RThighSuperior ( 
+MarkerName=  RThighSuperior,
+MarkerPlacement =Right.Leg.Seg.Thigh, 
+OptX=ON,OptY=ON,OptZ=ON,
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+)= {
+  sRelOpt = {0.0, -0.1, 0.1};
+  sRelOptDelta = {3.728481808195790e-002, -3.255583942745915e-002, -5.862821320407746e-003};
+};
+
+CreateMarkerDriver RThighInferior ( 
+MarkerName=  RThighInferior,
+MarkerPlacement =Right.Leg.Seg.Thigh, 
+OptX=OFF,OptY=ON,OptZ=OFF,
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+)= {
+  sRelOpt = {0.041, -0.38, 0.038};
+  sRelOptDelta = {0, 0, 0};
+};
+
+// Marker on the Right Tibia
+CreateMarkerDriver RShankLateral (
+MarkerName= RShankLateral, 
+MarkerPlacement=Right.Leg.Seg.Shank,
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+) = {
+  sRelOpt = {0.0, -0.21, 0.05};
+  sRelOptDelta = {5.539990738901292e-002, 4.076080214897407e-003, -4.342266343416248e-002};
+};
+
+CreateMarkerDriver RShankSuperior (
+MarkerName= RShankSuperior, 
+MarkerPlacement=Right.Leg.Seg.Shank,
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+) = {
+   sRelOpt = {0.0, -0.05, 0.05};
+   sRelOptDelta = {9.108936469205478e-003, -2.997729452680681e-002, 3.219312642356894e-002};
+};
+
+CreateMarkerDriver RShankInferior (
+MarkerName= RShankInferior, 
+MarkerPlacement=Right.Leg.Seg.Shank,
+OptX=ON,OptY=ON,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+) = {
+    sRelOpt = {0.0, -0.28, 0.05};
+    sRelOptDelta = {1.147059634176613e-002, -2.699140262551636e-002, -1.460903582796406e-003};
+};
+
+// Marker on the Right Lateral Ankle
+CreateMarkerDriver RHindfoot ( 
+MarkerName= RHindfoot ,
+MarkerPlacement=Right.Leg.Seg.Foot,
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+) = {
+ sRelOpt =  {-0.07 + 0.07, -0.04, -0.001512914 + 0.05};
+ sRelOptDelta = {5.283303983585375e-002, -6.541685627869250e-002, 7.322103609461393e-003};
+};
+                   
+// Marker on the Right Toe
+CreateMarkerDriver RToe (
+MarkerName= RToe,  
+MarkerPlacement=Right.Leg.Seg.Foot,
+OptX=OFF, OptY=OFF, OptZ=OFF,
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
+) = {
+   sRelOpt = {0.19, -0.06, 0.02};
+};
+
+CreateMarkerDriver RToeLateral (
+MarkerName= RToeLateral,  
+MarkerPlacement=Right.Leg.Seg.Foot,
+OptX=ON, OptY=OFF, OptZ=ON,
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
+) = {
+  sRelOpt =  {0.18, -0.06, 0.05};
+
+};
+
+CreateMarkerDriver RToeMedial (
+MarkerName= RToeMedial ,  
+MarkerPlacement=Right.Leg.Seg.Foot,
+OptX=ON, OptY=OFF, OptZ=ON,
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
+) = {
+  sRelOpt =  {0.17, -0.06, -0.03};
+};
+
+// Marker on the Right Heel
+CreateMarkerDriver RHeel (
+MarkerName= RHeel,
+MarkerPlacement=Right.Leg.Seg.Foot,
+OptX=OFF, OptY=ON, OptZ=OFF,
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
+) = {
+ //sRelOpt =  {-0.07, -0.04, -0.001512914};
+ sRelOpt =  {-0.07 + 0.02, -0.04, -0.001512914};
+};
+#endif
+
+#if BM_LEG_LEFT != OFF
+CreateMarkerDriver LThighLateral ( 
+MarkerName= LThighLateral ,
+MarkerPlacement=Left.Leg.Seg.Thigh,
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+) = {
+    sRelOpt = {0.08, -0.25, -0.05};
+    sRelOptDelta = {2.468222008645767e-002, 9.264820683019570e-003, 4.951772112609798e-003};
+};
+
+CreateMarkerDriver LThighSuperior ( 
+MarkerName= LThighSuperior,
+MarkerPlacement=Left.Leg.Seg.Thigh,
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+) = {
+   sRelOpt = {0.0, -0.10, -0.1}; 
+   sRelOptDelta = {3.821732031813194e-002, -8.854168997953195e-003, -5.340414759915583e-003};
+};
+
+CreateMarkerDriver LThighInferior ( 
+MarkerName= LThighInferior,
+MarkerPlacement=Left.Leg.Seg.Thigh,
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+) = {
+   sRelOpt = {0.041, -0.38, -0.035};
+};
+
+// Marker on the Left Tibia
+CreateMarkerDriver LShankLateral (
+MarkerName= LShankLateral,
+MarkerPlacement=Left.Leg.Seg.Shank,
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+) = {
+  sRelOpt = {0.0, -0.16, -0.05};
+  sRelOptDelta = {5.374450635614104e-002, -1.594930751166518e-002, 3.799114338593220e-002};
+};
+
+CreateMarkerDriver LShankSuperior (
+MarkerName= LShankSuperior,
+MarkerPlacement=Left.Leg.Seg.Shank,
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+) = {
+  sRelOpt = {0.0, -0.05, -0.05};
+  sRelOptDelta = {2.868835123236436e-002, 1.084341702085235e-002, -2.935142561827216e-002};
+};
+
+CreateMarkerDriver LShankInferior (
+MarkerName= LShankInferior,
+MarkerPlacement=Left.Leg.Seg.Shank,
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+) = {
+  sRelOpt = {0.0, -0.28, -0.05};
+  sRelOptDelta = {1.892990727255045e-002, -1.545168516386526e-002, -6.504704902749914e-004};
+};
+
+// Marker on the Left Ankle
+CreateMarkerDriver LHindfoot (
+MarkerName= LHindfoot,
+MarkerPlacement=Left.Leg.Seg.Foot,
+OptX=ON,OptY=ON,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+ScaleMarkerPosOnOff = 0
+) = {
+  sRelOpt =  {-0.07 + 0.07, -0.04, 0.001512914 - 0.05};
+  sRelOptDelta = {3.127341898753362e-002, -4.599760650812604e-002, -2.081487528189753e-002};
+};
+                    
+// Marker on the Left Toe
+CreateMarkerDriver LToe (
+MarkerName= LToe, 
+MarkerPlacement=Left.Leg.Seg.Foot,
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
+) = {
+  sRelOpt = {0.19, -0.06, -0.02};
+};
+
+// Marker on the Left Toe
+CreateMarkerDriver LToeLateral (
+MarkerName= LToeLateral, 
+MarkerPlacement=Left.Leg.Seg.Foot,
+OptX=ON,OptY=OFF,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
+) = {
+  sRelOpt =  {0.16, -0.06, -0.05};
+};
+
+CreateMarkerDriver LToeMedial (
+MarkerName= LToeMedial , 
+MarkerPlacement=Left.Leg.Seg.Foot,
+OptX=ON,OptY=OFF,OptZ=ON,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
+) = {
+  sRelOpt =  {0.17, -0.06, 0.03};
+};
+
+// Marker on the Left Heel
+CreateMarkerDriver LHeel(
+MarkerName= LHeel, 
+MarkerPlacement=Left.Leg.Seg.Foot,
+OptX=OFF, OptY=OFF, OptZ=OFF,
+WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+ScaleMarkerPosOnOff = 1
+) = {
+  sRelOpt =  {-0.07 + 0.02, -0.04, 0.001512914};
+};
+#endif
+
+#if BM_ARM_RIGHT != OFF
+// Marker on the Right Acromio-clavicular joint
+CreateMarkerDriver RShoulder (
+MarkerName= RShoulder,  
+MarkerPlacement=Right.ShoulderArm.Seg.Scapula, 
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.03,-0.0,-0.04};
+//sRelOpt = {0.035, 0.005,-0.04};  
+//sRelOpt = {0.02,-0.015,0.02};
+};
+
+// Marker on the Right Elbow
+CreateMarkerDriver RElbow (
+MarkerName= RElbow ,  
+MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.0 - 0.01,-0.34,-0.01 + 0.04};
+  //sRelOpt = {0.0,-0.34,-0.01};
+};
+
+// Marker on the Right Wrist A
+CreateMarkerDriver RRadius (
+MarkerName= RRadius,  
+MarkerPlacement=Right.ShoulderArm.Seg.Hand, 
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.0,-0.07,0.01} + {0.0,0.03,0.0};
+};
+
+// Marker on the Right Wrist B
+CreateMarkerDriver RUlna (
+MarkerName= RUlna,  
+MarkerPlacement=Right.ShoulderArm.Seg.Hand, 
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.0,0.07,0.01} + {0.0,-0.04,0.0};
+};
+
+CreateMarkerDriver RWrist (
+MarkerName= RWrist,  
+MarkerPlacement=Right.ShoulderArm.Seg.Hand, 
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {-0.01,0.00,0.01} ;
+};
+#endif
+
+#if BM_ARM_LEFT != OFF
+// Marker on the Left Acromio-clavicular joint
+CreateMarkerDriver LShoulder (
+MarkerName= LShoulder,  
+MarkerPlacement=Left.ShoulderArm.Seg.Scapula, 
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.03,0.0,-0.04};
+//sRelOpt = {0.035,-0.005,-0.04};
+};
+
+// Marker on the Left Elbow
+CreateMarkerDriver LElbow (
+MarkerName= LElbow ,  
+MarkerPlacement=Left.ShoulderArm.Seg.Humerus, 
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.0 + 0.01,-0.34,-0.01 + 0.04};
+ //sRelOpt = {0.0,-0.34,-0.01};
+};
+
+// Marker on the Left Wrist A
+CreateMarkerDriver LRadius (
+MarkerName= LRadius,  
+MarkerPlacement=Left.ShoulderArm.Seg.Hand,
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.0,-0.07,0.01} + {0.0,0.03,0.0};
+};
+
+// Marker on the Left Wrist B
+CreateMarkerDriver LUlna (
+MarkerName= LUlna,  
+MarkerPlacement=Left.ShoulderArm.Seg.Hand, 
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.0,0.07,0.01} + {0.0,-0.04,0.0};
+};
+
+CreateMarkerDriver LWrist (
+MarkerName= LWrist,  
+MarkerPlacement=Left.ShoulderArm.Seg.Hand, 
+OptX=OFF,OptY=OFF,OptZ=OFF,  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {-0.01,0.00,0.01} ;
+};
+#endif
+
+//#endif
+//// EXAMPLE of MarkerProcol file for the plug-in-gait protocol. 
+//
+//#define _LPSI
+//#define _RPSI
+//#define _RASI 
+//#define _LASI 
+//#define _RFHD 
+//#define _LFHD 
+//#define _RBHD 
+//#define _LBHD 
+//#define _STRN 
+//#define _CLAV 
+//#define _T10 
+//#define _C7 
+//#define _RTHI 
+//#define _RKNE 
+//#define _RTIB
+//#define _RANK
+//#define _RTOE
+//#define _RHEE
+//#define _RMT5
+//#define _LTHI
+//#define _LKNE
+//#define _LTIB
+//#define _LANK
+//#define _LTOE
+//#define _LHEE
+//#define _LMT5
+// 
+//#if INCLUDE_UPPERBODY == ON
+//  #define _RSHO
+//  #define _LSHO
+//  #define _RUPA
+//  #define _LUPA
+//  #define _RELB
+//  #define _LELB
+//  #define _LFRA
+//  #define _RFRA
+//  #define _RWRA
+//  #define _RWRB
+//  #define _LWRA
+//  #define _LWRB
+//  #define _RFIN
+//  #define _LFIN
+//#endif
+
+
+

@@ -1,0 +1,8 @@
+AnyRefNode LatEpicondyleNodeBL = {
+  AnyVec3 sRel_us = {-6.62741,-0.32052,-40.6968}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+};
+AnyRefNode MedEpicondyleNodeBL = {
+  AnyVec3 sRel_us = {-13.3127,-0.102752,46.0024}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+};

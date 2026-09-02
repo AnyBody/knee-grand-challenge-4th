@@ -1,5 +1,0 @@
-GCK5 data:
-Femur_target.stl 
-Patella_target.stl 
-Tibia_target.stl 
-Tibiafibula_target.stl

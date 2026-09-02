@@ -1,0 +1,107 @@
+Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Thigh = {
+};
+
+Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank = {
+};
+
+Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Patella = {
+  AnatomicalFrameBL = {
+    AnyRefNode FluoroFrame = {
+      sRel= {-0.002,0,0};
+      AnyDrawRefFrame drw2={ScaleXYZ=0.025*{1,1,1}; RGB={102,204,51}/255;};
+    };
+  };
+};
+
+AnyFolder JointsAndDrivers = {
+  AnyFolder LeftKneeDrv = {
+    AnyKinEqSimpleDriver KneeFlexion = {
+//      DriverVel = pi/180*{Main.TrialSpecificData.DrvInitVel.KneeFlexion};
+      DriverVel = pi/180*{0};
+
+      DriverPos = pi/180*{Main.TrialSpecificData.DrvInitPos.KneeFlexion};
+      
+      AnyKinMeasureOrg &meas = ....BodyModel.Interface.Left.KneeFlexion;
+      Reaction.Type = {On};
+    };
+  };
+  
+  
+  AnyFolder LeftHipDrv = {
+    AnyKinEqSimpleDriver HipFlexionDrv = {
+//      DriverVel = pi/180*{Main.TrialSpecificData.DrvInitVel.KneeFlexion/2};
+      DriverVel = pi/180*{0};
+
+
+      DriverPos = pi/180*{Main.TrialSpecificData.DrvInitPos.HipFlexion};
+      
+      AnyKinMeasureOrg &meas = ....BodyModel.Interface.Left.HipFlexion;
+      Reaction.Type = {On};
+    };
+    
+    AnyKinEqSimpleDriver HipAbduction = {
+      DriverVel = pi/180*{0};
+      DriverPos = pi/180*{Main.TrialSpecificData.DrvInitPos.HipAbduction};
+      
+      AnyKinMeasureOrg &meas = ....BodyModel.Interface.Left.HipAbduction;
+      Reaction.Type = {On};
+    };
+    
+    AnyKinEqSimpleDriver HipExternalRotation = {
+      DriverVel = pi/180*{0};
+      DriverPos = pi/180*{Main.TrialSpecificData.DrvInitPos.HipExternalRotation};
+      
+      AnyKinMeasureOrg &meas = ....BodyModel.Interface.Left.HipExternalRotation;
+      Reaction.Type = {On};
+    };
+    
+  };
+  
+  
+  AnyFolder LeftAnkleDrv = {
+    
+    AnyKinEqSimpleDriver AnklePlantarFlexion = {
+//      DriverVel = pi/180*{-Main.TrialSpecificData.DrvInitVel.KneeFlexion/4};
+      DriverVel = pi/180*{0};
+      DriverPos = pi/180*{Main.TrialSpecificData.DrvInitPos.AnklePlantarFlexion};
+      
+      AnyKinMeasureOrg &AnklePlantarFlexion = ....BodyModel.Interface.Left.AnklePlantarFlexion;
+      Reaction.Type = {On};
+    };
+    
+    AnyKinEqSimpleDriver SubTalarEversion = {
+      DriverVel = pi/180*{0};
+      DriverPos = {0}*pi/180;
+      
+      AnyKinMeasureOrg &SubTalarEversion = ....BodyModel.Interface.Left.SubTalarEversion;
+      
+      Reaction.Type = {On};
+    };
+    
+  };
+  
+  
+  AnyKinEqSimpleDriver TrunkDrv = {
+    DriverPos = pi/180*{
+      0,0,0,
+      Main.TrialSpecificData.DrvInitPos.PelvisRotX,
+      Main.TrialSpecificData.DrvInitPos.PelvisRotY,
+      Main.TrialSpecificData.DrvInitPos.PelvisRotZ,
+      0,0,0,0};
+    DriverVel = pi/180*{0,0,0,0,0,0,0,0,0,0};
+    
+    AnyKinMeasureOrg &PelvisPosX = ...BodyModel.Interface.Trunk.PelvisPosX;
+    AnyKinMeasureOrg &PelvisPosY = ...BodyModel.Interface.Trunk.PelvisPosY;
+    AnyKinMeasureOrg &PelvisPosZ = ...BodyModel.Interface.Trunk.PelvisPosZ;
+    AnyKinMeasureOrg &PelvisRotX = ...BodyModel.Interface.Trunk.PelvisRotX;
+    AnyKinMeasureOrg &PelvisRotY = ...BodyModel.Interface.Trunk.PelvisRotY;
+    AnyKinMeasureOrg &PelvisRotZ = ...BodyModel.Interface.Trunk.PelvisRotZ;
+    AnyKinMeasureOrg &PelvisThoraxExtension = ...BodyModel.Interface.Trunk.PelvisThoraxExtension;
+    AnyKinMeasureOrg &PelvisThoraxLateralBending = ...BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
+    AnyKinMeasureOrg &PelvisThoraxRotation = ...BodyModel.Interface.Trunk.PelvisThoraxRotation;
+    AnyKinMeasureOrg &NeckExtension = ...BodyModel.Interface.Trunk.NeckJoint;
+    
+    Reaction.Type = {On,On,On,On,On,On,Off,Off,Off,Off};
+  };
+  
+};

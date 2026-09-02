@@ -1,0 +1,41 @@
+AnyRefNode LatMalleolusNodeBL = {
+  AnyVec3 sRel_us = {-24.5356,-412.981,-28.1365}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+//  AnyDrawRefFrame drw = {};
+};
+AnyRefNode MedMalleolusNodeBL = {
+  AnyVec3 sRel_us = {9.94213,-396.403,22.2048}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+//  AnyDrawRefFrame drw = {};
+};
+AnyRefNode MostLatNodeBL = {
+  AnyVec3 sRel_us = {-4.92907,4.04086,-36.723}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+//  AnyDrawRefFrame drw = {};
+};
+AnyRefNode MostMedNodeBL = {
+  AnyVec3 sRel_us = {-13.142,-1.54715,44.8734}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+//  AnyDrawRefFrame drw = {};
+};
+AnyRefNode FibulaHeadNodeBL = {
+  AnyVec3 sRel_us = {-28.6734,-13.4835,-38.0726}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+//  AnyDrawRefFrame drw = {};
+};
+AnyRefNode TibialTuberosityNodeBL = {
+  AnyVec3 sRel_us = {32.64,-36.2242,-8.78893}*0.001; //old
+//  AnyVec3 sRel_us = {29.8151,-42.6441,-13.3126}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+//  AnyDrawRefFrame drw = {};
+};
+AnyRefNode TibialInsertMostPosteriorMedial = {
+  AnyVec3 sRel_us = {-33.1445, 7.26689, 13.7058}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+//  AnyDrawRefFrame drw = {};
+};
+AnyRefNode TibialInsertMostPosteriorLateral = {
+  AnyVec3 sRel_us = {-29.9635, 7.26358, -16.6106}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+//  AnyDrawRefFrame drw = {};
+};

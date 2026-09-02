@@ -1,0 +1,36 @@
+#define UseCustomFemCompSTL
+#define FEM_COMP_FLEXION 0
+#define FEM_COMP_SIZE "3L"
+
+TrialSpecificData = {
+  #include "../../FemComp3LSpecificData.any"
+  
+  AnyVec3 FemCompPos = {-1.810537,-1.924245,0}/1000;
+  AnyMat33 FemCompRot = {{1,0,0},{0,1,0},{0,0,1}};
+  
+  #define TRIAL_SPECIFIC_FDK_INITIAL_CONDITIONS
+  
+  // hard-coded initial values from step zero using InvDyn4 and 2-dof subtalar joint
+  AnyVector TibiaFemoralFDKInitPos = {-0.002165526, -0.002546014, -0.002361652};
+  AnyVector TibiaFemoralFDKInitRot = {0.08394701, 0.06058267};
+  AnyVector PatellaFemurFDKInitPos = {0.002347014+0.002, 0.002322174, -0.002494888-0.001, 0.01204218, -0.0136504};
+  AnyVector PatellaTendonFDKInitPos = {0.06552461};
+};
+
+#include "../PS_chairrise1/TrialSpecificData.any"
+
+#ifdef LABEL
+#undef LABEL
+#endif
+
+#ifdef INV_DYN_DRIVER_STRATEGY
+#undef INV_DYN_DRIVER_STRATEGY
+#endif
+
+#ifdef USE_2DOF_SUBTALAR_JOINT
+#undef USE_2DOF_SUBTALAR_JOINT
+#endif
+
+#define USE_2DOF_SUBTALAR_JOINT
+#define INV_DYN_DRIVER_STRATEGY 4
+#define LABEL "_InvDyn4"

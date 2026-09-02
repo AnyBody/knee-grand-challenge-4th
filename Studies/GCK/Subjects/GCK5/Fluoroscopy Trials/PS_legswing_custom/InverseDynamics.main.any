@@ -1,0 +1,16 @@
+#ifndef MotionAndParameterOptimizationModel
+#define MotionAndParameterOptimizationModel 0
+#endif
+//Set this to 1 if you want to run the inverse dynamic analysis
+#ifndef InverseDynamicModel
+#define InverseDynamicModel 1
+#endif
+
+#include "../../../../../Model/PreMainIncludes.any"
+
+Main = {
+ #include "TrialSpecificData.any"
+ #include "../../SubjectSpecificData.any"
+ #include "../InverseDynamicModel.main.any"
+ 
+};

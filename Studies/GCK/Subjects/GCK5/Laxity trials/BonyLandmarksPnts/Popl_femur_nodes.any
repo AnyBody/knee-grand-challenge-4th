@@ -1,0 +1,12 @@
+AnyRefNode Popl_attach1 = {
+  AnyVec3 sRel_us = {-14.3428, -18.2126, -36.9077}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+};
+AnyRefNode Popl_attach2 = {
+  AnyVec3 sRel_us = {-10.793, -21.5735, -35.7998}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+};
+AnyRefNode Popl_attach3 = {
+  AnyVec3 sRel_us = {-7.56281, -23.552, -36.3848}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+};

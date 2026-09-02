@@ -1,0 +1,80 @@
+#include "..\..\..\..\..\..\libdef.any"
+
+// Enter and edit Trial Specific Data in this file:
+#path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
+
+// Enter and edit Subject-Spcific Data in this file:
+#path MOCAP_SUBJECT_SPECIFIC_DATA "..\..\SubjectSpecificData.any"
+
+// Enter and edit Lab-Specific Data in this file:
+#path MOCAP_LAB_SPECIFIC_DATA "..\..\..\..\Lab\LabSpecificData.any"
+
+// Include the AnyMoCap Framwork
+#include "<ANYMOCAP_MODEL>"
+
+
+#include "<GRANDCHALLENGE_MODEL>"
+
+// access to the morphing data
+//#include "<LAB_CONFIG_PATH>/Morphing/DataConfig.any"
+
+/*
+
+Main = {
+  AnyFolder TestModel = {
+    AnyFixedRefFrame Global = {
+      AnyDrawSurf srfFemur  = {
+        FileName = Main.Morphing.RightThigh.TargetSTL;
+        ScaleXYZ={1,1,1}*0.001;RGB={0,1,0};
+      };
+      AnyDrawSurf srfTibia  = {
+        FileName = Main.Morphing.RightShank.TargetSTL;
+        ScaleXYZ={1,1,1}*0.001;RGB={0,1,0};
+      };
+//      AnyDrawSurf srfPatella  = {
+//        FileName = Main.Morphing.RightPatella.TargetSTL;
+//        ScaleXYZ={1,1,1}*0.001;RGB={0,1,0};
+//      };
+    };
+    AnyKinEq FixFemurTibiaPatella = {
+      AnyKinLinear femlin = {
+        AnyRefFrame &rf0 = ..Global;
+        AnyRefFrame &rf1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode;
+        Ref = 0;
+      };
+      AnyKinRotational femrot = {
+        AnyRefFrame &rf0 = ..Global;
+        AnyRefFrame &rf1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode;
+        Type = RotAxesAngles;
+      };
+      AnyKinLinear tibline = {
+        AnyRefFrame &rf0 = ..Global;
+        AnyRefFrame &rf1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode;
+        Ref = 0;
+      };
+      AnyKinRotational tibrot = {
+        AnyRefFrame &rf0 = ..Global;
+        AnyRefFrame &rf1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode;
+        Type = RotAxesAngles;
+      };
+      AnyKinLinear patline = {
+        AnyRefFrame &rf0 = ..Global;
+        AnyRefFrame &rf1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Patella.PatientNode;
+        Ref = 0;
+      };
+      AnyKinRotational patrot = {
+        AnyRefFrame &rf0 = ..Global;
+        AnyRefFrame &rf1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Patella.PatientNode;
+        Type = RotAxesAngles;
+      };
+    };
+
+  };
+  AnyKinStudy TestMorphing = {
+    AnySeg &Thigh = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh;
+    AnySeg &Shank = Main.HumanModel.BodyModel.Right.Leg.Seg.Shank;
+    AnySeg &Patella = Main.HumanModel.BodyModel.Right.Leg.Seg.Patella;
+    AnyFolder &Test = .TestModel;    
+  };
+};
+*/

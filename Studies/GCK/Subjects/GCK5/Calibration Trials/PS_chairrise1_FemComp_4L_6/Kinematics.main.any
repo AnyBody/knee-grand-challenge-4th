@@ -1,0 +1,26 @@
+//Set this to 1 if you want to run the motion and Parameter Optimization identification
+//**************************************************
+#ifndef MotionAndParameterOptimizationModel
+#define MotionAndParameterOptimizationModel 1
+#endif
+
+#ifdef FDK_KNEE_MODEL
+#undef FDK_KNEE_MODEL
+#endif
+
+#define FDK_KNEE_MODEL 0
+
+#ifndef InverseDynamicModel
+#define InverseDynamicModel 0
+#endif
+
+#include "../../../../../Model/PreMainIncludes.any"
+
+Main = {
+ #include "TrialSpecificData.any" 
+ #include "../../SubjectSpecificData.any"
+ #include "../../../../../Model/KinematicModel.main.any"
+  
+};
+
+

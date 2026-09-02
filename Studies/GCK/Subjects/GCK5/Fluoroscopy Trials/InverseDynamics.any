@@ -1,0 +1,151 @@
+//** Creates the RunApplication **//
+Main = {
+  AnyOperationMacro InverseDynamicAnalysisSequence =
+  {
+    MacroStr =
+    ({
+      "classoperation Main.Studies.LoadParametersOptimizationResults" + " " + strquote("Load design") + " --file=" + strquote(FilePathCompleteOf(Main.ModelSetup.FileNames.OptimizedParameters )), 
+      "classoperation Main" + strformat("\x22")+ "Update Values" + strformat("\x22"),
+      "operation Main.Studies.InverseDynamicStudy.InitialConditions",
+      "run",
+      "operation Main.Studies.HumanModel.Calibration.CalibrationSequence",
+      "run",
+      "operation Main.Studies.InverseDynamicStudy.InverseDynamics",
+      "run"
+      #if AutoSaveOption
+        ,"classoperation Main.Studies.InverseDynamicStudy.Output" + " " + strquote("Save data") + " --file=" + strquote(FilePathCompleteOf(Main.ModelSetup.FileNames.Results )) + " --type=Deep"
+      #endif
+    });
+  };
+
+  AnyOperationMacro InitialConditionsSequence =
+  {
+    MacroStr =
+    ({
+      "classoperation Main.Studies.LoadParametersOptimizationResults" + " " + strquote("Load design") + " --file=" + strquote(FilePathCompleteOf(Main.ModelSetup.FileNames.OptimizedParameters )), 
+      "classoperation Main" + strformat("\x22")+ "Update Values" + strformat("\x22"),
+      "operation Main.Studies.InverseDynamicStudy.InitialConditions",
+      "run",
+      "operation Main.Studies.HumanModel.Calibration.CalibrationSequence",
+      "run",
+      "operation Main.Studies.InverseDynamicStudy.InitialConditions",
+      "run"
+    });
+  };  
+  
+  #ifdef REFERENCE_CONFIGURATION
+  AnyOperationMacro ComputeLigsRefLengthSequence =
+  {
+    MacroStr =
+    ({
+      "classoperation Main.Studies.LoadParametersOptimizationResults" + " " + strquote("Load design") + " --file=" + strquote(FilePathCompleteOf(Main.ModelSetup.FileNames.OptimizedParameters )), 
+      "classoperation Main" + strformat("\x22")+ "Update Values" + strformat("\x22"),
+      "operation Main.Studies.InverseDynamicStudy.InitialConditions",
+      "run",
+      "operation Main.Studies.InverseDynamicStudy.Kinematics",
+      "run",
+      "reset"
+    });
+  };
+  #endif
+  
+  AnyOperationMacro SaveResults = { 
+    MacroStr={
+    "classoperation Main.Studies.InverseDynamicStudy.Output" + " " + strquote("Save data") + " --file=" + strquote(FilePathCompleteOf(Main.ModelSetup.FileNames.Results )) + " --type=Deep"
+    };
+  };
+  AnyOperationMacro LoadResults = { 
+    MacroStr={
+     "classoperation Main.Studies.LoadParametersOptimizationResults" + strformat("\x22")+ "Load design" + strformat("\x22")+ " --file="+ strquote(FilePathCompleteOf(Main.ModelSetup.FileNames.OptimizedParameters) ),
+     "classoperation Main" + strformat("\x22")+ "Update Values" + strformat("\x22"),
+     "classoperation Main.Studies.InverseDynamicStudy.Output" + " " + strquote("Load data") + " --file=" + strquote(FilePathCompleteOf(Main.ModelSetup.FileNames.Results )) 
+   };
+  };
+  
+};
+
+
+//** Includes the human body model **// Usually no need to make changes
+#include "../../../../Model/HumanModel.any"
+
+
+// Main Study to run Inverse Dynamics and compute muscle and joint forces**// Usually no need to make changes
+AnyBodyStudy InverseDynamicStudy = {
+  AnyFolder &BodyModel = .HumanModel.BodyModel;
+  #include "../../../../Model/Mannequin.any"          //**// Usually no need to make changes
+  
+  AnyFolder &EnvironmentModel = Main.EnvironmentModel;
+  AnyFolder ModelEnvironmentConnection = {
+   #ifndef REFERENCE_CONFIGURATION
+   #include "<ANYBODY_PATH_MAINFILEDIR>Drivers.any"
+   #else
+   #include "../../../../Model/JointsAndDriversReference.any"
+   #endif
+  };
+  
+  // this folder contains the output knee kinematics measures
+  AnyFolder JointsTracking = {
+    AnyFolder &refThigh = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Thigh;
+    AnyFolder &refShank = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank;
+    AnyFolder &refPatella = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Patella;
+    
+    #include "../../../../Model/JointsTracking.any"
+    #include "../../../../Model/InstantCentreOfRotation.any"
+   #ifndef REFERENCE_CONFIGURATION
+    #include "FluoroTracking.any"
+   #endif
+  };
+  
+  Gravity = Main.TrialSpecificData.Gravity;
+  tStart = Main.ModelSetup.tStart;
+  tEnd = Main.ModelSetup.tEnd;
+ #ifndef REFERENCE_CONFIGURATION
+  nStep = Main.TrialSpecificData.nStep;
+ #else
+ #ifdef REFERENCE_CONFIGURATION_DEBUG
+  nStep = 100;
+ #else
+  nStep = 1;
+ #endif
+ #endif
+  
+  InverseDynamics.Criterion.UpperBoundOnOff = Off;
+  #ifndef Strengthtrial
+    InverseDynamics.Criterion.Power = MR_POLYNOMIAL_CRITERION_POWER;
+  #else
+    InverseDynamics.Criterion = {
+      Type = MR_MinMaxStrict;
+    };
+  #endif
+  
+  #if INCLUDE_MUSCLE_WEIGHT_FACTOR == 1
+    InverseDynamics.Criterion.PrimaryTerm.Weight_SearchName = "WeightFactor";
+  #endif
+  
+  //InitialConditions.MaxIteration = 20000;
+  //Kinematics.MaxIteration = 20000;
+  
+  #include "../../../../Model/ReactionForces.any"
+  
+  #if FDK_KNEE_MODEL == 1
+   #include "../../../../Model/FDKKneeModel.any"
+  #endif
+
+  #include "../../../../Model/LeftAnklePassiveStiffnessMuscle.any"
+  
+  #ifdef PENALIZE_KNEE_JOINT_FORCES
+    #include "../../../../Model/PenalizeKneeJointForces.any"
+  #endif
+  
+};
+
+
+//This study is only used for loading the optimized parameters **// Usually no need to make changes   
+AnyOptKinStudy LoadParametersOptimizationResults = {
+  AnyFolder &Study = .InverseDynamicStudy;
+  AnyFolder &HumanModel = .HumanModel;
+  ParameterOptimization.ConvergenceTol = 1e-3;
+  Analysis = {
+    AnyOperation &ref = .Study.Kinematics;
+  };
+};

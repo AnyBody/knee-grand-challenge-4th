@@ -1,0 +1,109 @@
+#define READ_AND_SHOW_XYZ(OBJECT, FILE, SCALE) \
+  AnyInputFile OBJECT##_Reader = {\
+    TOnOff = Off;\
+    FileName = FILE;\
+  };\
+  AnyDrawPointCloud OBJECT##_Visualizer = {\
+    Points = .OBJECT##_Reader.Data' * SCALE * .Mirror;\
+    RGB = {1, 0, 0};\
+    Opacity = 0.5;\
+    PointStyle.Size = 0.005;\
+    Points3D = On;\
+    ShowNames = Off;\
+  }   
+  
+#define SHOW_POINTCLOUD(name, points, r, g, b)  \
+  AnyDrawPointCloud name = {\
+    Points = .points;\
+    RGB = {r, g, b};\
+    Opacity = 0.5;\
+    PointStyle.Size = 0.005;\
+    Points3D = On;\
+    ShowNames = Off;\
+  }   
+  
+#if BM_LEG_LEFT != OFF
+Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.PatientNode = {
+    
+  AnyFolder TFReg = {#include "<USER_PATH_INPUTDATA>/Morphing/Target/tf_reg.any"};
+  
+  ThighToShankReg.ScaleMat = TFReg.rotation;
+  ThighToShankReg.Offset = TFReg.displacement * {{1,0,0},{0,1,0},{0,0,-1}};
+}; 
+Main.HumanModel.BodyModel.Left.Leg.Seg.Patella.PatientNode = {
+    
+  AnyFolder PFReg = {#include "<USER_PATH_INPUTDATA>/Morphing/Target/pf_reg.any"};
+  
+  ThighToPatellaReg.ScaleMat = PFReg.rotation;
+  ThighToPatellaReg.Offset = PFReg.displacement * {{1,0,0},{0,1,0},{0,0,-1}};
+}; 
+
+Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode.FittingData = {
+
+  #include "FemoralHead.any"
+  #include "FemoralComponentCylFitPoints.any"
+  #include "FemoralComponentPatellaJointPoints.any"
+  
+  AnyInt femheadsize = SizesOf(femoral_head_vertices)[0];
+  AnyInt kneesurfsize = SizesOf(femoral_comp_vertices)[0];
+  AnyInt pfsurfsize = SizesOf(femoral_pf_vertices)[0];
+  HipJointPoints  = (Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.Drw3.GetVertices(femoral_head_vertices)-repmat(1, femheadsize, .sRel')')*.ARel;
+  KneeJointPoints = (Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.Drw3.GetVertices(femoral_comp_vertices)-repmat(1, kneesurfsize, .sRel')')*.ARel;
+  PFJointPoints   = (Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.Drw3.GetVertices(femoral_pf_vertices)-repmat(1, pfsurfsize, .sRel')')*.ARel;
+
+  SHOW_POINTCLOUD(hipjoint_ptcl, HipJointPoints, 1, 0, 0);
+  SHOW_POINTCLOUD(kneejoint_ptcl, KneeJointPoints, 1, 0, 0);
+  SHOW_POINTCLOUD(pfjoint_ptcl, PFJointPoints, 1, 0, 1);
+  
+};
+#endif
+
+#if BM_LEG_RIGHT != OFF
+Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode = {
+    
+  AnyFolder TFReg = {#include "<USER_PATH_INPUTDATA>/Morphing/Target/tf_reg.any"};
+  
+  ThighToShankReg.ScaleMat = TFReg.rotation;
+  ThighToShankReg.Offset = TFReg.displacement;
+}; 
+Main.HumanModel.BodyModel.Right.Leg.Seg.Patella.PatientNode = {
+    
+  AnyFolder PFReg = {#include "<USER_PATH_INPUTDATA>/Morphing/Target/pf_reg.any"};
+  
+  ThighToPatellaReg.ScaleMat = PFReg.rotation;
+  ThighToPatellaReg.Offset = PFReg.displacement;
+}; 
+
+Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode.FittingData = {
+
+  #include "FemoralHead.any"
+  #include "FemoralComponentCylFitPoints.any"
+  #include "FemoralComponentPatellaJointPoints.any"
+  
+  AnyInt femheadsize = SizesOf(femoral_head_vertices)[0];
+  AnyInt kneesurfsize = SizesOf(femoral_comp_vertices)[0];
+  AnyInt pfsurfsize = SizesOf(femoral_pf_vertices)[0];
+  HipJointPoints  = (Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.Drw3.GetVertices(femoral_head_vertices)-repmat(1, femheadsize, .sRel')')*.ARel;
+  KneeJointPoints = (Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.Drw3.GetVertices(femoral_comp_vertices)-repmat(1, kneesurfsize, .sRel')')*.ARel;
+  PFJointPoints   = (Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.Drw3.GetVertices(femoral_pf_vertices)-repmat(1, pfsurfsize, .sRel')')*.ARel;
+
+  SHOW_POINTCLOUD(hipjoint_ptcl, HipJointPoints, 1, 0, 0);
+  SHOW_POINTCLOUD(kneejoint_ptcl, KneeJointPoints, 1, 0, 0);
+  SHOW_POINTCLOUD(pfjoint_ptcl, PFJointPoints, 1, 0, 1);
+  
+};
+#endif
+
+
+//Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode.FittingData = {
+//  READ_AND_SHOW_XYZ(HJPoints, "FemoralHead.xyz", 0.001);
+//  HipJointPoints = HJPoints_Reader.Data'*0.001;
+//  
+//  READ_AND_SHOW_XYZ(KJPoints, "FemoralComponentCylFitPoints.xyz", 0.001);
+//  KneeJointPoints = KJPoints_Reader.Data'*0.001;
+
+//  READ_AND_SHOW_XYZ(PFJPoints, "FemoralComponentPatellaJointPoints.xyz", 0.001);
+//  PFJointPoints = PFJPoints_Reader.Data'*0.001;
+//};
+
+

@@ -1,0 +1,78 @@
+***Fail 67
+AugLagCoef = 5e2
+MaxNewtonStep = 5e-3
+ForceTol = 1e-3
+Perturbation = 1e-6
+UseAdaptiveForceTolOnOff = On
+
+***Fail 67
+AugLagCoef = 1e3
+MaxNewtonStep = 5e-3
+ForceTol = 0.1
+Perturbation = 1e-6
+
+***Fail 67
+AugLagCoef = 1e3
+MaxNewtonStep = 1e-3
+ForceTol = 0.1
+Perturbation = 1e-6
+
+***Fail 67
+AugLagCoef = 1e3
+MaxNewtonStep = 5e-3
+ForceTol = 1e-3
+Perturbation = 1e-6
+
+***Fail 67
+AugLagCoef = 1e3
+MaxNewtonStep = 5e-3
+ForceTol = 1e-3
+Perturbation = 5e-6
+
+***Fail 67
+AugLagCoef = 1e3
+MaxNewtonStep = 5e-3
+ForceTol = 1e-3
+Perturbation = 1e-5
+
+***Fail 27
+AugLagCoef = 1e3
+MaxNewtonStep = 5e-3
+ForceTol = 1e-3
+Perturbation = 5e-5
+
+***Fail 67
+AugLagCoef = 1e3
+MaxNewtonStep = 5e-3
+ForceTol = 1e-3
+Perturbation = 1e-4
+
+***Fail 42
+AugLagCoef = 1e3
+MaxNewtonStep = 1e-3
+ForceTol = 1e-3
+Perturbation = 5e-5
+
+***Fail 67
+AugLagCoef = 1e3
+MaxNewtonStep = 1e-3
+ForceTol = 1e-3
+Perturbation = 1e-5
+
+***Completed
+AugLagCoef = 1e3
+MaxNewtonStep = 1e-3
+ForceTol = 1e-3
+Perturbation = 1e-4
+
+***Fail 67
+AugLagCoef = 1e3
+MaxNewtonStep = 3e-3
+ForceTol = 1e-3
+Perturbation = 1e-4
+
+***Fail 44
+AugLagCoef = 1e3
+MaxNewtonStep = 2e-3
+ForceTol = 1e-3
+Perturbation = 1e-4

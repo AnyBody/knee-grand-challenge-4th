@@ -1,0 +1,12 @@
+#include "DataConfig.Landmarks.any"
+
+AnyFile SurfPelvisRFileName  = TARGET_DATA + "GCK6_preop_Pelvis.stl"; //not available
+AnyFile SurfFemurRFileName   = TARGET_DATA + "GCK6_preop_femur.stl";
+AnyFile SurfTibiaRFileName   = TARGET_DATA + "GCK6_preop_tibia.stl";
+AnyFile SurfPatellaRFileName = TARGET_DATA + "GCK6_preop_patella.stl";
+
+AnyFile TargetLandmarkPelvisRFileName = TARGET_DATA + "GCK6_preop_Pelvis_picked_points.pp";
+AnyFile TargetLandmarkFemurRFileName = TARGET_DATA + "GCK6_preop_femur_picked_points.pp";
+AnyFile TargetLandmarkTibiaRFileName = TARGET_DATA + "GCK6_preop_tibia_picked_points.pp";
+AnyFile TargetLandmarkPatellaRFileName = TARGET_DATA + "GCK6_preop_patella_picked_points.pp";
+

@@ -1,0 +1,10 @@
+#include "../../../../../Model/PreMainIncludes.any"
+
+Main = {
+ #include "TrialSpecificData.any" 
+ #include "../../SubjectSpecificData.any"
+ #include "../../../../../Model/KinematicModel.main.any"
+  
+};
+
+

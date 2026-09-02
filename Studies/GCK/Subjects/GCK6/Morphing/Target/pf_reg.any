@@ -1,0 +1,3 @@
+AnyFloat displacement = -1*{-39, 0, -3} * 0.001*0; // moving thigh to patella, not the other way around
+AnyFloat rotation = eye(3);
+

@@ -1,0 +1,30 @@
+AnyFolder &RefShank =Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank;
+RefShank={
+  AnyRefNode InternalLoadNode = {
+    sRel = .AnatomicalFrameBL.sRel;
+    ARel = .AnatomicalFrameBL.ARel;
+    AnyDrawRefFrame dDraw ={}; 
+    // DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_pippo)
+  };
+};
+
+AnyFolder LaxityLoads = {
+  
+  AnyFloatVar LaxityLoad = 1.5; //Nm
+  
+  #ifdef APPLY_COMPRESSIVE_LOAD
+  AnyForce3D CompressiveLoad = {
+    AnyRefFrame &CompPoint =..RefShank.AnatomicalFrameBL;
+    //  AnyRefFrame &AnteriorPoint =Main.Studies.InverseDinamicStudy.ModelEnvironmentConnection.InternalLoadNode;
+    Flocal={0,APPLY_COMPRESSIVE_LOAD,0}; //N
+    AnyDrawForce draw={AppliedForceColor  = {1,0,0};};
+  };
+  #endif
+  
+  AnyMoment3D InternalLoad = {
+    AnyRefFrame &Point =..RefShank.InternalLoadNode;
+    //  AnyRefFrame &AnteriorPoint =Main.Studies.InverseDinamicStudy.ModelEnvironmentConnection.InternalLoadNode;
+    Mlocal={0,.LaxityLoad/Main.Studies.InverseDynamicStudy.tEnd*t,0}; //N*m
+    AnyDrawForce draw={AppliedForceColor  = {0,0,1};};
+  };
+};

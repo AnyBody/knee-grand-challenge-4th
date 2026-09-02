@@ -1,0 +1,32 @@
+// Morphing configuration file
+#include "<LAB_CONFIG_PATH>/Morphing/DataConfig.GCK4.any"
+
+
+#ifndef _override_scaling_for_Pelvis
+//  #define _override_scaling_for_Pelvis
+#endif
+//
+//
+#ifndef _override_scaling_for_Right_Thigh
+  #define _override_scaling_for_Right_Thigh
+#endif
+
+#ifndef _override_scaling_for_Left_Thigh
+  #define _override_scaling_for_Left_Thigh
+#endif
+
+#ifndef _override_scaling_for_Right_Shank
+  #define _override_scaling_for_Right_Shank
+#endif
+
+#ifndef _override_scaling_for_Left_Shank
+  #define _override_scaling_for_Left_Shank
+#endif
+
+#ifndef _override_scaling_for_Right_Patella
+  #define _override_scaling_for_Right_Patella
+#endif
+
+#ifndef _override_scaling_for_Left_Patella
+  #define _override_scaling_for_Left_Patella
+#endif

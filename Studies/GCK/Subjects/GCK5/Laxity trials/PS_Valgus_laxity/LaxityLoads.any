@@ -1,0 +1,43 @@
+AnyFolder &RefShank =Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank;
+RefShank={
+  AnyRefNode VarusValgusLoadNode = {
+    AnyVec3  sRel_pippo = {-9.75447, -250.975, -9.96598}*0.001;
+    ARel = .AnatomicalFrameBL.ARel;
+    AnyDrawRefFrame dDraw ={};
+    DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_pippo)
+  };
+};
+
+Main.Studies.InverseDynamicStudy.JointsTracking = {
+  AnyFolder &VargusValusForceDistance = Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.LaxityLoads.VargusValusForceDistance;
+};
+
+AnyFolder LaxityLoads = {   
+
+  AnyFloatVar LaxityLoad = 15.0; //Nm
+   
+  #ifdef APPLY_COMPRESSIVE_LOAD
+  AnyForce3D CompressiveLoad = {
+    AnyRefFrame &CompPoint =..RefShank.AnatomicalFrameBL;
+    //  AnyRefFrame &AnteriorPoint =Main.Studies.InverseDinamicStudy.ModelEnvironmentConnection.InternalLoadNode;
+    Flocal={0,APPLY_COMPRESSIVE_LOAD,0}; //N
+    AnyDrawForce draw={AppliedForceColor  = {1,0,0};};
+  };
+  #endif
+  
+  AnyKinLinear VargusValusForceDistance = {
+    Ref = 0;
+    AnyRefFrame &VarusValgusNode = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.VarusValgusLoadNode;
+    AnyRefFrame &Shank = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.KneeJoint;
+  };
+  
+  AnyForce3D VarusValgusLoad = {
+    AnyRefFrame &Point =..RefShank.VarusValgusLoadNode;
+    AnyFloatVar d_raw = .VargusValusForceDistance.Pos[1];
+//    AnyFloatVar d_raw = .VargusValusForceDistance.Pos[1];
+    AnyFloatVar d = iffun(eqfun(d_raw, 0.0), 1.0, d_raw); //m
+    AnyFloatVar Force = .LaxityLoad/d; //N
+    Flocal={0,0,-Force/Main.Studies.InverseDynamicStudy.tEnd*t}; // Newton
+    AnyDrawForce FDraw ={};
+  };
+};

@@ -1,0 +1,12 @@
+AnyRefNode AnteriorForceLaxityTestPoint1 = {
+  AnyVec3 sRel_us = {22.468, -82.0459, -10.8359}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+};
+AnyRefNode AnteriorForceLaxityTestPoint2 = {
+  AnyVec3 sRel_us = {22.8233, -86.8062, -9.30231}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+};
+AnyRefNode AnteriorForceLaxityTestPoint3 = {
+  AnyVec3 sRel_us = {24.0724, -82.688, -6.83837}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+};

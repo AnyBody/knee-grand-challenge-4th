@@ -1,0 +1,12 @@
+AnyRefNode InfNodeBL = {
+  AnyVec3 sRel_us = {2.02051,15.3968,-14.5062}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+};
+AnyRefNode SupNodeBL = {
+  AnyVec3 sRel_us = {2.07486,-14.4136,9.46809}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+};
+AnyRefNode LatNodeBL = {
+  AnyVec3 sRel_us = {1.93199,11.7092,16.3913}*0.001;
+  DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_us)
+};

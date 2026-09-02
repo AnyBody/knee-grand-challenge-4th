@@ -1,0 +1,41 @@
+/*Tibial slope*/
+
+#define CUSTOM_TIBCOMP_POSE
+#define TIB_COMP_POS_X 0
+#define TIB_COMP_POS_Y 0
+#define TIB_COMP_ROT_POINT_X 24
+#define TIB_COMP_ROT_POINT_Y -8
+#define TIB_COMP_FLEXION -3
+#define TIB_COMP_VARUS_VALGUS 0
+
+TrialSpecificData={
+ #define TRIAL_SPECIFIC_FDK_INITIAL_CONDITIONS
+ 
+  // initial position of knee joint measures
+  AnyVector TibiaFemoralFDKInitPos = {-0.001684268, -0.001358715, -0.002021712};
+  AnyVector TibiaFemoralFDKInitRot = {0.08562718, 0.05970184};
+  AnyVector TibiaFemoralFDKInitRotX = {0.0};
+  AnyVector PatellaFemurFDKInitPos = {0.002347014, 0.002322174, -0.002494888, 0.01204218, -0.0136504};
+ #if !PATIENT_SPECIFIC_PATELLATENDON
+   AnyVector PatellaTendonFDKInitPos = {0.080};
+ #else
+   AnyVector PatellaTendonFDKInitPos = {0.06552461};
+ #endif
+
+};
+
+#include "../PS_chairrise1/TrialSpecificData.any"
+
+#ifdef LABEL
+#undef LABEL
+#endif
+
+#ifdef INV_DYN_DRIVER_STRATEGY
+#undef INV_DYN_DRIVER_STRATEGY
+#endif
+
+#ifndef USE_2DOF_SUBTALAR_JOINT
+#define USE_2DOF_SUBTALAR_JOINT
+#endif
+
+#define INV_DYN_DRIVER_STRATEGY 5

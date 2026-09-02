@@ -1,0 +1,2 @@
+AnyFloat displacement = -1*{0, -43, 0} * 0.001;
+AnyFloat rotation = eye(3);

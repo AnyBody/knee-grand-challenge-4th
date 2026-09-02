@@ -1,0 +1,775 @@
+{
+  "version": "3.0",
+  "name": "Untitled session",
+  "units": "mm",
+  "GCK4_MORPHING_Femur": {
+    "type": "assembly",
+    "id": "assembly-1",
+    "visible": true,
+    "locked": false,
+    "srf_GCK4_Femur": {
+      "type": "surface",
+      "id": "surface-1784641284827",
+      "parent": "assembly-1",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Femur.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Femur.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#cccccc",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "srf_GCK4_Pelvis": {
+      "type": "surface",
+      "id": "surface-1784641289617",
+      "parent": "assembly-1",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Pelvis.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Pelvis.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#cccccc",
+      "opacity": 1,
+      "visible": false,
+      "locked": false
+    },
+    "srf_GCK4_merged femur": {
+      "type": "surface",
+      "id": "surface-1784643214204",
+      "parent": "assembly-1",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_merged femur.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_merged femur.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#f47171",
+      "opacity": 1,
+      "visible": false,
+      "locked": false
+    },
+    "landmarks": {
+      "type": "landmarks",
+      "id": "set-2",
+      "parent": "assembly-1",
+      "purpose": "registration-pairs",
+      "color": "#f08a5d",
+      "visible": true,
+      "locked": false,
+      "active": true,
+      "owner": {
+        "kind": "assembly",
+        "id": "assembly-1"
+      },
+      "P1": {
+        "type": "landmark",
+        "id": "landmark-6",
+        "position": [
+          34.249308403367365,
+          390.96920208761367,
+          -61.86446989025342
+        ]
+      },
+      "P2": {
+        "type": "landmark",
+        "id": "landmark-7",
+        "position": [
+          33.82571601389009,
+          369.0252931146843,
+          -53.334913217870024
+        ]
+      },
+      "P3": {
+        "type": "landmark",
+        "id": "landmark-8",
+        "position": [
+          -5.542408138186076,
+          372.2513783347563,
+          -24.90040687863916
+        ]
+      },
+      "P4": {
+        "type": "landmark",
+        "id": "landmark-9",
+        "position": [
+          1.2876813449155584,
+          -8.52023941500163,
+          42.99021795089709
+        ]
+      },
+      "P5": {
+        "type": "landmark",
+        "id": "landmark-10",
+        "position": [
+          10.774264116046144,
+          4.882965468902789,
+          -39.583807359511866
+        ]
+      }
+    }
+  },
+  "GCK4_MORPHING_Tibia": {
+    "type": "assembly",
+    "id": "assembly-2",
+    "visible": false,
+    "locked": false,
+    "srf_GCK4_Calcaneus": {
+      "type": "surface",
+      "id": "surface-1784641329523",
+      "parent": "assembly-2",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Calcaneus.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Calcaneus.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#cccccc",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "srf_GCK4_Fibula": {
+      "type": "surface",
+      "id": "surface-1784641331529",
+      "parent": "assembly-2",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Fibula.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Fibula.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#cccccc",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "srf_GCK4_Metatarsals": {
+      "type": "surface",
+      "id": "surface-1784641334608",
+      "parent": "assembly-2",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Metatarsals.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Metatarsals.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#cccccc",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "srf_GCK4_Midfoot": {
+      "type": "surface",
+      "id": "surface-1784641336147",
+      "parent": "assembly-2",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Midfoot.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Midfoot.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#cccccc",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "srf_GCK4_Phalanges": {
+      "type": "surface",
+      "id": "surface-1784641337657",
+      "parent": "assembly-2",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Phalanges.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Phalanges.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#cccccc",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "srf_GCK4_Talus": {
+      "type": "surface",
+      "id": "surface-1784641340253",
+      "parent": "assembly-2",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Talus.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Talus.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#cccccc",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "srf_GCK4_Tibia": {
+      "type": "surface",
+      "id": "surface-1784641342325",
+      "parent": "assembly-2",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Tibia.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Tibia.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#cccccc",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "tf_GCK4_MORPHING_Tibia_GCK4_MORPHING_Femur_1": {
+      "type": "transform",
+      "id": "transform-gck4-morphing-tibia-to-gck4-morphing-femur-1",
+      "parent": "assembly-2",
+      "method": "manual-adjust",
+      "targetAssembly": "assembly-1",
+      "sourceRef": {
+        "kind": "assembly",
+        "id": "assembly-2"
+      },
+      "targetRef": {
+        "kind": "assembly",
+        "id": "assembly-1"
+      },
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -43,
+        0,
+        1
+      ],
+      "inverse": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        43,
+        0,
+        1
+      ],
+      "apply": false,
+      "createdAt": "2026-07-21T13:44:58.566Z"
+    }
+  },
+  "GCK4_MORPHING_Patella": {
+    "type": "assembly",
+    "id": "assembly-3",
+    "visible": false,
+    "locked": false,
+    "srf_GCK4_merged patella": {
+      "type": "surface",
+      "id": "surface-1784641404821",
+      "parent": "assembly-3",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_merged patella.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_merged patella.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#59d4f3",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "srf_GCK4_merged patella_remeshed": {
+      "type": "surface",
+      "id": "surface-1784641406501",
+      "parent": "assembly-3",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_merged patella_remeshed.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_merged patella_remeshed.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#3bf73e",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "srf_GCK4_Patella": {
+      "type": "surface",
+      "id": "surface-1784641408311",
+      "parent": "assembly-3",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Patella.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_Patella.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#f2ed69",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "tf_GCK4_MORPHING_Patella_GCK4_MORPHING_Femur_1": {
+      "type": "transform",
+      "id": "transform-gck4-morphing-patella-to-gck4-morphing-femur-2",
+      "parent": "assembly-3",
+      "method": "manual-adjust",
+      "targetAssembly": "assembly-1",
+      "sourceRef": {
+        "kind": "assembly",
+        "id": "assembly-3"
+      },
+      "targetRef": {
+        "kind": "assembly",
+        "id": "assembly-1"
+      },
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -43,
+        -5,
+        -6,
+        1
+      ],
+      "inverse": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        43,
+        5,
+        6,
+        1
+      ],
+      "apply": false,
+      "createdAt": "2026-07-21T13:46:12.984Z"
+    }
+  },
+  "GCK4_MORPHING_merged femur": {
+    "type": "assembly",
+    "id": "assembly-4",
+    "visible": true,
+    "locked": false,
+    "srf_GCK4_merged femur": {
+      "type": "surface",
+      "id": "surface-1784642560482",
+      "parent": "assembly-4",
+      "file": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_merged femur.stl",
+      "kind": "shell",
+      "sourcePath": "C:\\DEV\\knee-grand-challenge-4th\\Studies\\GCK\\Subjects\\GCK4\\Morphing\\Target\\GCK4_merged femur.stl",
+      "sourceUnits": "m",
+      "subsurfacesById": {},
+      "format": "stl",
+      "units": "mm",
+      "color": "#84f5ee",
+      "opacity": 1,
+      "visible": true,
+      "locked": false
+    },
+    "landmarks": {
+      "type": "landmarks",
+      "id": "set-1",
+      "parent": "assembly-4",
+      "purpose": "registration-pairs",
+      "color": "#5b8def",
+      "visible": true,
+      "locked": false,
+      "active": true,
+      "owner": {
+        "kind": "assembly",
+        "id": "assembly-4"
+      },
+      "P1": {
+        "type": "landmark",
+        "id": "landmark-1",
+        "position": [
+          34.278856051426644,
+          391.03388151721043,
+          -62.039535149449456
+        ]
+      },
+      "P2": {
+        "type": "landmark",
+        "id": "landmark-2",
+        "position": [
+          33.9263086126512,
+          371.2820635029965,
+          -54.13830163200461
+        ]
+      },
+      "P3": {
+        "type": "landmark",
+        "id": "landmark-3",
+        "position": [
+          -4.982666469397586,
+          373.11377465763974,
+          -24.01822037618672
+        ]
+      },
+      "P4": {
+        "type": "landmark",
+        "id": "landmark-4",
+        "position": [
+          2.558210924080905,
+          -10.663418349500304,
+          43.3301290523186
+        ]
+      },
+      "P5": {
+        "type": "landmark",
+        "id": "landmark-5",
+        "position": [
+          10.915579117303487,
+          7.872744545749013,
+          -37.79928569848494
+        ]
+      }
+    },
+    "tf_GCK4_MORPHING_merged_femur_GCK4_MORPHING_Femur_1": {
+      "type": "transform",
+      "id": "transform-gck4-morphing-merged-femur-to-gck4-morphing-femur-3",
+      "parent": "assembly-4",
+      "method": "least-squares",
+      "targetAssembly": "assembly-1",
+      "sourceSet": "set-1",
+      "targetSet": "set-2",
+      "sourceRef": {
+        "kind": "assembly",
+        "id": "assembly-4"
+      },
+      "targetRef": {
+        "kind": "assembly",
+        "id": "assembly-1"
+      },
+      "correspondences": [
+        [
+          "P1",
+          "P1"
+        ],
+        [
+          "P2",
+          "P2"
+        ],
+        [
+          "P3",
+          "P3"
+        ],
+        [
+          "P4",
+          "P4"
+        ],
+        [
+          "P5",
+          "P5"
+        ],
+        [
+          "P6",
+          "P6"
+        ]
+      ],
+      "pairSourcePoints": [
+        {
+          "name": "P1",
+          "position": [
+            34.278856051426644,
+            391.03388151721043,
+            -62.039535149449456
+          ]
+        },
+        {
+          "name": "P2",
+          "position": [
+            33.9263086126512,
+            371.2820635029965,
+            -54.13830163200461
+          ]
+        },
+        {
+          "name": "P3",
+          "position": [
+            -4.982666469397586,
+            373.11377465763974,
+            -24.01822037618672
+          ]
+        },
+        {
+          "name": "P4",
+          "position": [
+            5.7110164754263515,
+            -9.377325929123685,
+            42.35137693297929
+          ]
+        },
+        {
+          "name": "P5",
+          "position": [
+            10.915579117303487,
+            7.872744545749013,
+            -37.79928569848494
+          ]
+        },
+        {
+          "name": "P6",
+          "position": [
+            33.39512723247225,
+            406.05212392563936,
+            -56.33879143165095
+          ]
+        }
+      ],
+      "pairTargetPoints": [
+        {
+          "name": "P1",
+          "position": [
+            34.249308403367365,
+            390.96920208761367,
+            -61.86446989025342
+          ]
+        },
+        {
+          "name": "P2",
+          "position": [
+            33.82571601389009,
+            369.0252931146843,
+            -53.334913217870024
+          ]
+        },
+        {
+          "name": "P3",
+          "position": [
+            -5.542408138186076,
+            372.2513783347563,
+            -24.90040687863916
+          ]
+        },
+        {
+          "name": "P4",
+          "position": [
+            1.2876813449155584,
+            -8.52023941500163,
+            42.99021795089709
+          ]
+        },
+        {
+          "name": "P5",
+          "position": [
+            10.774264116046144,
+            4.882965468902789,
+            -39.583807359511866
+          ]
+        },
+        {
+          "name": "P6",
+          "position": [
+            32.44709059857081,
+            402.8196215921426,
+            -54.787615005348655
+          ]
+        }
+      ],
+      "matrix": [
+        0.9990825882965182,
+        0.0006554061430727076,
+        0.04281999772907502,
+        0,
+        -0.0006390209368954611,
+        0.9999997172834919,
+        -0.0003963397260565724,
+        0,
+        -0.042820245386645694,
+        0.0003686132442867953,
+        0.9990827246576252,
+        0,
+        -2.222558029099801,
+        -1.4253432051845607,
+        -0.6521835360119894,
+        1
+      ],
+      "inverse": [
+        0.9990825882965182,
+        -0.0006390209368954611,
+        -0.042820245386645694,
+        0,
+        0.0006554061430727076,
+        0.9999997172834919,
+        0.0003686132442867953,
+        0,
+        0.04281999772907502,
+        -0.0003963397260565724,
+        0.9990827246576252,
+        0,
+        2.249379704575876,
+        1.4236640548584454,
+        0.5569402243266749,
+        1
+      ],
+      "rms": 1.8489569888879587,
+      "apply": false,
+      "createdAt": "2026-07-21T14:11:50.601Z"
+    },
+    "tf_GCK4_MORPHING_merged_femur_GCK4_MORPHING_Femur_2": {
+      "type": "transform",
+      "id": "transform-gck4-morphing-merged-femur-to-gck4-morphing-femur-4",
+      "parent": "assembly-4",
+      "method": "manual-adjust",
+      "targetAssembly": "assembly-1",
+      "sourceRef": {
+        "kind": "assembly",
+        "id": "assembly-4"
+      },
+      "targetRef": {
+        "kind": "assembly",
+        "id": "assembly-1"
+      },
+      "matrix": [
+        0.9990825882965182,
+        0.0006554061430727076,
+        0.04281999772907502,
+        0,
+        -0.0006390209368954611,
+        0.9999997172834919,
+        -0.0003963397260565724,
+        0,
+        -0.042820245386645694,
+        0.0003686132442867953,
+        0.9990827246576252,
+        0,
+        -2.022558029099801,
+        -1.4253432051845607,
+        -0.021835360119894,
+        1
+      ],
+      "inverse": [
+        0.9990825882965182,
+        -0.0006390209368954611,
+        -0.042820245386645694,
+        0,
+        0.0006554061430727076,
+        0.9999997172834919,
+        0.0003686132442867953,
+        0,
+        0.04281999772907502,
+        -0.0003963397260565724,
+        0.9990827246576252,
+        0,
+        2.0225716794563464,
+        1.4240416910691778,
+        -0.06426569964923459,
+        1
+      ],
+      "apply": true,
+      "createdAt": "2026-07-21T14:13:01.910Z"
+    }
+  },
+  "uiState": {
+    "panel": "registration",
+    "selection": null,
+    "activeSetId": "set-1",
+    "activeLandmarkId": "landmark-1",
+    "activeSubsurfaceId": null,
+    "subselectTool": "rect",
+    "subselectDepth": "visible",
+    "subselectErase": false,
+    "interactionMode": {
+      "kind": "idle"
+    },
+    "display": {
+      "surfaces": true,
+      "landmarks": true,
+      "sets": true,
+      "appliedAlignment": true
+    },
+    "coordEditing": null,
+    "systemUnits": "mm",
+    "layout": "single",
+    "splitRefAssemblyId": "assembly-1",
+    "splitRefSetId": null,
+    "manualAlign": {
+      "matrix": [
+        0.9990825882965182,
+        0.0006554061430727076,
+        0.04281999772907502,
+        0,
+        -0.0006390209368954611,
+        0.9999997172834919,
+        -0.0003963397260565724,
+        0,
+        -0.042820245386645694,
+        0.0003686132442867953,
+        0.9990827246576252,
+        0,
+        -2.022558029099801,
+        -1.4253432051845607,
+        -0.021835360119894,
+        1
+      ],
+      "alignCentroid": false
+    },
+    "regEditingId": "transform-gck4-morphing-merged-femur-to-gck4-morphing-femur-4",
+    "regSourceSetId": null,
+    "regTargetSetId": null,
+    "regSourceAssemblyId": "assembly-4",
+    "regTargetAssemblyId": "assembly-1",
+    "regSourceColor": "#5b8def",
+    "regTargetColor": "#f08a5d",
+    "regMethodId": "manual",
+    "regPairSourcePoints": [],
+    "regPairTargetPoints": [],
+    "regPairRepick": null,
+    "landmarkNameVisibility": {},
+    "regPreviewMatrix": null,
+    "regPreviewSourceAssemblyId": null,
+    "regPreviewTargetAssemblyId": null,
+    "landmarkPanelSetChoice": "__new__",
+    "landmarkPanelOwnerChoice": "__auto__",
+    "landmarkPanelNewSetColor": "#f43f5e"
+  }
+}

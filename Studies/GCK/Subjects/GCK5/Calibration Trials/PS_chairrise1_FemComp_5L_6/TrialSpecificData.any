@@ -1,0 +1,28 @@
+#define UseCustomFemCompSTL
+#define FEM_COMP_FLEXION 6
+#define FEM_COMP_SIZE "5L"
+
+#include "../PS_chairrise1/TrialSpecificData.any"
+
+TrialSpecificData={
+  #include "../../FemComp5LSpecificData.any"
+  
+  AnyVec3 FemCompPos = {0.661330,-0.332528,0}/1000;
+  AnyMat33 FemCompRot = RotMat(-6*pi/180,z)';
+};
+
+#ifdef LABEL
+#undef LABEL
+#endif
+
+#ifdef INV_DYN_DRIVER_STRATEGY
+#undef INV_DYN_DRIVER_STRATEGY
+#endif
+
+#ifdef USE_2DOF_SUBTALAR_JOINT
+#undef USE_2DOF_SUBTALAR_JOINT
+#endif
+
+#define USE_2DOF_SUBTALAR_JOINT
+#define INV_DYN_DRIVER_STRATEGY 4
+#define LABEL "_InvDyn4"

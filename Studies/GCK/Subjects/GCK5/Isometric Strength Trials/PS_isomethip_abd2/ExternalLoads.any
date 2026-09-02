@@ -1,0 +1,8 @@
+Main.Studies.InverseDynamicStudy.EnvironmentModel = {
+  AnyForce HipAbductionTorque = {
+    Calibration_Loadcell(F_loadcell,Main.ModelSetup.C3DFileData.Analog.DataFiltered.load_cell[10*Main.TrialSpecificData.FirstFrameOffset])
+    F = {F_loadcell,0,0}; // Abduction, Internal rotation, flexion
+    AnyKinMeasure &Hip= Main.Studies.HumanModel.BodyModel.Left.Leg.Jnt.Hip;
+  };
+};
+

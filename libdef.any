@@ -1,4 +1,4 @@
-#include "..\AMMR.gc\libdef.any"
+#include "ammrlibdef.any"
 
 #path USER_PATH_COMMONS   "Commons"
 #path TESTING   "Testing"

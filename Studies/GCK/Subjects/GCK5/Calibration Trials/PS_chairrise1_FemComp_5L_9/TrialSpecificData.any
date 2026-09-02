@@ -1,0 +1,41 @@
+#define UseCustomFemCompSTL
+#define FEM_COMP_FLEXION 9
+#define FEM_COMP_SIZE "5L"
+
+TrialSpecificData={
+  #include "../../FemComp5LSpecificData.any"
+  
+  AnyVec3 FemCompPos = {0.993444,-0.332114,0}/1000;
+  AnyMat33 FemCompRot = RotMat(-9*pi/180,z)';
+  
+  #define TRIAL_SPECIFIC_FDK_INITIAL_CONDITIONS
+  
+  AnyVector TibiaFemoralFDKInitPos = {-3.7126948922252726E-4, -0.0018106821660788745, -0.0014679593864697707};//{0.006, -0.004, 0.0};
+  AnyVector TibiaFemoralFDKInitRot = {0.08051490000315237, 0.04977584487912277};//{0.0, 0.0};
+  AnyVector TibiaFemoralFDKInitRotX = {0.0};
+  AnyVector PatellaFemurFDKInitPos = {5.164415584260631E-4, -0.002080716333813712, -0.003134385851455669, 0.08268513572889295, -0.06906257402922131};//{0.002347014, 0.002322174, -0.002494888, 0.01204218, -0.0136504};
+ #if !PATIENT_SPECIFIC_PATELLATENDON
+   AnyVector PatellaTendonFDKInitPos = {0.080};
+ #else
+   AnyVector PatellaTendonFDKInitPos = {0.06517456614017283};//{0.06552461};
+ #endif
+  
+};
+
+#include "../PS_chairrise1/TrialSpecificData.any"
+
+#ifdef LABEL
+#undef LABEL
+#endif
+
+#ifdef INV_DYN_DRIVER_STRATEGY
+#undef INV_DYN_DRIVER_STRATEGY
+#endif
+
+#ifdef USE_2DOF_SUBTALAR_JOINT
+#undef USE_2DOF_SUBTALAR_JOINT
+#endif
+
+#define USE_2DOF_SUBTALAR_JOINT
+#define INV_DYN_DRIVER_STRATEGY 4
+#define LABEL "_InvDyn4"

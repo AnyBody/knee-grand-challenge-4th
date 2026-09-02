@@ -1,0 +1,50 @@
+AnyFolder &RefShank =Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank;
+RefShank={
+  AnyRefNode AnteriorLoadNode = {
+    AnyVec3  sRel_pippo = {22.8233, -86.8062, -9.30231}*0.001;
+    ARel = .AnatomicalFrameBL.ARel;
+    AnyDrawRefFrame dDraw ={};
+    // ARel = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}} 
+    DEF_REFNODE_CUSTOM_SCALING_1arg(sRel_pippo)
+  };
+};
+  
+AnyFolder LaxityLoads = {
+//AnyMoment3D Mglob = {
+//AnyRefFrame 
+//M = {0.0, 0.0, 0.0};    // Applied in global coordinates
+//    };
+
+  #ifdef APPLY_COMPRESSIVE_LOAD
+  AnyForce3D CompressiveLoad = {
+    AnyRefFrame &CompPoint =..RefShank.AnatomicalFrameBL;
+    //  AnyRefFrame &AnteriorPoint =Main.Studies.InverseDinamicStudy.ModelEnvironmentConnection.InternalLoadNode;
+    Flocal={0,APPLY_COMPRESSIVE_LOAD,0}; //N
+    AnyDrawForce draw={AppliedForceColor  = {1,0,0};};
+  };
+  #endif
+
+AnyForce3D AnteriorLoad = {
+  AnyRefFrame &AnteriorPoint =..RefShank.AnteriorLoadNode;
+//  AnyRefFrame &AnteriorPoint =Main.Studies.InverseDinamicStudy.ModelEnvironmentConnection.AnteriorLoadNode;
+       //AnyForce3D &Floc = Main.Loads.Floc;
+Flocal={35/Main.Studies.InverseDynamicStudy.tEnd*t,0,0}; // Newton
+
+    //AnyRefFrame &AnteriorLoadNode =./BonyLanmarksPnts./Tibia_Anterior_laxity_test_points.any
+//    AnyDrawVector drwForce = {
+//      Vec = .Fout/200;   // Scale the length down
+//      Line = {
+//        Style = Line3DStyleFull;
+//        Thickness = 0.01;
+//        RGB = {1, 0, 0};
+//        End = {
+//          Style = Line3DCapStyleArrow;  // This specifies the end to be an arrowhead
+//          RGB = {1, 0, 0};
+//          Thickness = 0.02;  // The head begins with twice the thickness of the shaft
+//          Length = 0.05;
+//        };
+//      };
+//    };
+  };
+};
+ 

@@ -1,0 +1,101 @@
+#path SUBJECT_PATH "."
+AnyFolder SubjectSpecificData = {
+  
+  #define GrandChallageDataSet 2013
+  
+  AnyString CalibrationTrialName = "..\..\..\..\Application\MyModels\MoCapModel GC5\Input\Subjects\PS\Static Trials\PS_staticfor2\PS_staticfor2";
+  
+  //These antrhopometric data will be used as initial guess for the optimization alogorithm the optimization algoritm will allow changes to the 
+  //segment lengths
+  AnyFolder Anthropometrics={
+    AnyVar BodyMass=75;  //the mass is automatically distributed to the segments
+    AnyVar BodyHeight=1.80;  //height
+    
+    AnyVar PelvisWidth =0.16; //distance between hip joints
+    
+    AnyVar HeadHeight = 0.14;//height in neutral position from  C1HatNode to top of head
+    AnyVar TrunkHeight = 0.620233;//height in neautral position from  C1HatNode to L5SacrumJnt
+    AnyVar UpperArmLength = 0.250079;
+    AnyVar LowerArmLength =0.2690167;
+    AnyVar HandLength = 0.182;
+    AnyVar HandBreadth = 0.085;
+    
+    AnyFolder Right = {
+      AnyVar ThighLength = 0.4234534;  //rigth and left side is mirrored 
+      AnyVar ShankLength = 0.4120814;
+      AnyVar FootLength =0.21;
+    };
+    
+  };
+  
+   //parameters for patella flexion equation
+  AnyFolder PatellaFlexionEquationData = {
+    AnyFloatVar dX = -0.02927; //offset between fluoro and interface knee flexion
+    AnyFloatVar dY = -0.091881; //offset between fluoro and interface patella flexion
+    AnyFloatVar bf = -0.045979; //intercept from fluoroscopy measure
+    AnyFloatVar mf = 0.77667; //slope from fluoroscopy measure
+    AnyFloatVar b = dY + bf - mf*dX; //intercept (rad) for the interface measure
+    AnyFloatVar m = mf; //slope for the interface measure (same as fluoroscopy)
+  };
+
+  
+};
+
+Main.TrialSpecificData= {
+  AnyFolder &Anthropometrics = Main.SubjectSpecificData.Anthropometrics;
+  
+ #ifdef KNEE_FLEXION_ANGLE
+  
+  // initial position of knee joint measures
+  #if KNEE_FLEXION_ANGLE == 0
+  AnyVector TibiaFemoralFDKInitPos = {0.0, 0.0, 0.0}; //x,y,z translations
+  AnyVector TibiaFemoralFDKInitRot = {0.0, 0.0}; //y,x rotations
+    
+  #endif
+  
+//  #if KNEE_FLEXION_ANGLE == 30
+//  AnyVector TibiaFemoralFDKInitPos = {-0.007, -0.001, -0.0015}; //x,y,z translations
+//  AnyVector TibiaFemoralFDKInitRot = {0.018, 0.02}; //y,x rotations
+  
+  #if KNEE_FLEXION_ANGLE == 30
+  AnyVector TibiaFemoralFDKInitPos = {0.0, 0.0, 0.0}; //x,y,z translations
+  AnyVector TibiaFemoralFDKInitRot = {0.0, 0.0}; //y,x rotations
+  
+//  #if KNEE_FLEXION_ANGLE == 30
+//  AnyVector TibiaFemoralFDKInitPos = {-0.007, 0.0, -0.0015}; //x,y,z translations
+//  AnyVector TibiaFemoralFDKInitRot = {0.0, -0.01}; //y,x rotations
+  
+  #endif
+  
+//  #if KNEE_FLEXION_ANGLE == 60
+//  AnyVector TibiaFemoralFDKInitPos = {-0.011, -0.0025, -0.0017}; //x,y,z translations
+//  AnyVector TibiaFemoralFDKInitRot = {0.015, 0.00}; //y,x rotations
+  
+  #if KNEE_FLEXION_ANGLE == 60
+  AnyVector TibiaFemoralFDKInitPos = {0.0, 0.0, 0.0}; //x,y,z translations
+  AnyVector TibiaFemoralFDKInitRot = {0.0, 0.0}; //y,x rotations
+  
+//  #if KNEE_FLEXION_ANGLE == 60
+//  AnyVector TibiaFemoralFDKInitPos = {-0.011, -0.003, -0.0017}; //x,y,z translations
+//  AnyVector TibiaFemoralFDKInitRot = {0.01, -0.01}; //y,x rotations
+  
+  #endif
+  
+//  #if KNEE_FLEXION_ANGLE == 90
+//  AnyVector TibiaFemoralFDKInitPos = {-0.015, -0.006, -0.003}; //x,y,z translations
+//  AnyVector TibiaFemoralFDKInitRot = {0.00, -0.02}; //y,x rotations
+//  
+  #if KNEE_FLEXION_ANGLE == 90
+  AnyVector TibiaFemoralFDKInitPos = {0.0, 0.0, 0.0}; //x,y,z translations
+  AnyVector TibiaFemoralFDKInitRot = {0.0, 0.0}; //y,x rotations
+  
+//   #if KNEE_FLEXION_ANGLE == 90
+//  AnyVector TibiaFemoralFDKInitPos = {-0.017, -0.004, -0.002}; //x,y,z translations
+//  AnyVector TibiaFemoralFDKInitRot = {0.00, -0.03}; //y,x rotations
+ 
+
+  #endif
+  
+ #endif
+
+};  

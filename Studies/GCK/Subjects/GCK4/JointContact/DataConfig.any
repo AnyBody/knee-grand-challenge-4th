@@ -1,0 +1,7 @@
+#define CONTACT_UNIT_CONVERSION_TO_M 1.0
+#path PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT "./ProcessedSurfaces/Femoral Component_Cut_Ver2_Meshmixer.stl" 
+#path PATH_IMPLANT_TIBIA_INSERT_LATERAL_STL_CONTACT "./ProcessedSurfaces/Tibial Insert_Lateral_Cut_Ver2_Meshmixer.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_STL_CONTACT "./ProcessedSurfaces/Tibial Insert_Medial_Cut_Ver2_Meshmixer.stl" 
+#path PATH_IMPLANT_PATELLA_DOME_STL_CONTACT "./ProcessedSurfaces/Patellar Button_Cut_Ver2_Meshmixer.stl" 
+// JointFit configuration file
+#include "<LAB_CONFIG_PATH>/JointContact/DataConfig.any"

@@ -1,0 +1,212 @@
+Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Thigh = {
+  AnyRefNode FluoroFrame = {
+    AnyVar FemCompEdgeAngle = -40;
+    AnyVec3 sRel_us = {0.029,0.022,0};
+    //    AnyVec3 sRel_us = {0.012,-0.02,0}; //for ARel alignment
+    AnyMat33 ARel_us = RotMat(FemCompEdgeAngle*pi/180,z);
+    DEF_REFNODE_CUSTOM_SCALING_2arg(sRel_us,ARel_us)
+    AnyRefNode FluoroFrame2 = {
+      ARel= RotMat((-.FemCompEdgeAngle + 4)*pi/180, z);
+      AnyDrawRefFrame drw={ScaleXYZ=0.025*{1,1,1}; RGB={51,102,153}/255;};
+    };
+  };
+};
+
+Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank = {
+  AnyRefNode FluoroFrame = {
+    AnyVec3 sRel_us = {0.019,0.0035,0};
+    AnyMat33 ARel_us= {{1,0,0},{0,1,0},{0,0,1}};
+    DEF_REFNODE_CUSTOM_SCALING_2arg(sRel_us,ARel_us)
+    AnyDrawRefFrame drw={ScaleXYZ=0.025*{1,1,1}; RGB={255,51,51}/255;};
+  };
+};
+
+Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Patella = {
+  AnyRefNode FluoroFrame = {
+    sRel = .AnatomicalFrameBL.sRel + {-0.002,0,0};
+    ARel = .AnatomicalFrameBL.ARel;
+    AnyDrawRefFrame drw={ScaleXYZ=0.025*{1,1,1}; RGB={102,204,51}/255;};
+  };
+};
+
+AnyFolder JointsAndDrivers = {
+ #if FLUOROSCOPY_DRIVERS_TYPE == 2
+  AnyKinEqPolynomialDriver FemCompAngle = {
+    PolyCoef = {Main.ModelSetup.TrackFilePolyFitFemComp.Data[0]};
+    
+    AnyKinMeasureOrg meas = {
+      AnyKinRotational Orientation = {
+        Type = PlanarAngles;
+        Axis1 = z;
+        AnyRefFrame &Global = .....BodyModel.Trunk.SegmentsLumbar.PelvisSeg.GroundPelvisJntNode;
+        AnyRefFrame &FemComp = .....BodyModel.Left.Leg.Seg.Thigh.FluoroFrame;
+      };
+      MeasureOrganizer = {0};
+    };
+    Reaction.Type = {Off};
+  };
+ #endif
+  
+ #if FLUOROSCOPY_DRIVERS_TYPE == 1
+  AnyKinEqInterPolDriver FemCompAngle = {
+    Type = Bezier;
+    //Type = Bspline;
+    //BsplineOrder = 4;
+    T = Main.ModelSetup.TrackFile.T;
+    //Data = {filter(Main.ModelSetup.TrackFile.Data[0])};
+    Data = {Main.ModelSetup.TrackFile.Data[0]};
+    
+    AnyFunButterworthFilter filter = {
+      FilterForwardBackwardOnOff = On;
+      AutomaticInitialConditionOnOff = On;
+      N = 2;
+      Fc = {6.0};
+      Fs = Main.TrialSpecificData.FluoroFrameRate;
+      Type = LowPass;
+    };
+    
+    AnyKinMeasureOrg meas = {
+      AnyKinRotational Orientation = {
+        Type = PlanarAngles;
+        Axis1 = z;
+        AnyRefFrame &Global = .....BodyModel.Trunk.SegmentsLumbar.PelvisSeg.GroundPelvisJntNode;
+        AnyRefFrame &FemComp = .....BodyModel.Left.Leg.Seg.Thigh.FluoroFrame;
+      };
+      MeasureOrganizer = {0};
+    };
+    Reaction.Type = {Off};
+  };
+ #endif
+  
+ #if FLUOROSCOPY_DRIVERS_TYPE == 2
+  AnyKinEqPolynomialDriver TibialTrayAngle = {
+    PolyCoef = {Main.ModelSetup.TrackFilePolyFitTibialTray.Data[0]};
+    
+    AnyKinMeasureOrg meas = {
+      AnyKinRotational Orientation = {
+        Type = PlanarAngles;
+        Axis1 = z;
+        AnyRefFrame &TibialTray = .....BodyModel.Left.Leg.Seg.Shank.FluoroFrame;
+        AnyRefFrame &Pelvis = .....BodyModel.Trunk.SegmentsLumbar.PelvisSeg.GroundPelvisJntNode;
+      };
+      MeasureOrganizer = {0};
+    };
+    Reaction.Type = {Off};
+  };
+ #endif
+ 
+ #if FLUOROSCOPY_DRIVERS_TYPE == 1
+  AnyKinEqInterPolDriver TibialTrayAngle = {
+    Type = Bezier;
+    //Type = Bspline;
+    //BsplineOrder = 4;
+    T = Main.ModelSetup.TrackFile.T;
+    //Data = {filter(Main.ModelSetup.TrackFile.Data[1])};
+    Data = {Main.ModelSetup.TrackFile.Data[1]};
+    
+    AnyFunButterworthFilter filter = {
+      FilterForwardBackwardOnOff = On;
+      AutomaticInitialConditionOnOff = On;
+      N = 2;
+      Fc = {2.0};
+      Fs = Main.TrialSpecificData.FluoroFrameRate;
+      Type = LowPass;
+    };
+    
+    AnyKinMeasureOrg meas = {
+      AnyKinRotational Orientation = {
+        Type = PlanarAngles;
+        Axis1 = z;
+        AnyRefFrame &TibialTray = .....BodyModel.Left.Leg.Seg.Shank.FluoroFrame;
+        AnyRefFrame &Pelvis = .....BodyModel.Trunk.SegmentsLumbar.PelvisSeg.GroundPelvisJntNode;
+      };
+      MeasureOrganizer = {0};
+    };
+    Reaction.Type = {Off};
+  };
+ #endif
+  
+  AnyFolder LeftKneeDrv = {
+  #if FLUOROSCOPY_DRIVERS_TYPE == 0
+    AnyKinEqSimpleDriver KneeFlexionDrv = {
+      DriverVel = {Main.TrialSpecificData.DrvInitVel.KneeFlexion}*pi/180;
+      DriverPos = {Main.TrialSpecificData.DrvInitPos.KneeFlexion}*pi/180;
+      AnyKinMeasureOrg &meas = ....BodyModel.Interface.Left.KneeFlexion;
+      Reaction.Type = {Off};
+    };
+  #endif
+  };
+  
+  
+  
+  AnyFolder LeftHipDrv = {
+  #if FLUOROSCOPY_DRIVERS_TYPE == 0
+    AnyKinEqSimpleDriver HipFlexionDrv = {
+      DriverVel = {0};
+      DriverPos = {Main.TrialSpecificData.DrvInitPos.HipFlexion}*pi/180;
+      
+      AnyKinMeasureOrg &meas = ....BodyModel.Interface.Left.HipFlexion;
+      Reaction.Type = {On}; // <<< WAS OFF!!!
+    };
+  #endif
+    
+    AnyKinEqSimpleDriver HipAbduction = {
+      DriverVel = {0};
+      DriverPos = {Main.TrialSpecificData.DrvInitPos.HipAbduction}*pi/180;
+      
+      AnyKinMeasureOrg &meas = ....BodyModel.Interface.Left.HipAbduction;
+      Reaction.Type = {On}; // <<< WAS OFF!!!
+    };
+    
+    AnyKinEqSimpleDriver HipExternalRotation = {
+      DriverVel = {0};
+      DriverPos = {Main.TrialSpecificData.DrvInitPos.HipExternalRotation}*pi/180;
+      
+      AnyKinMeasureOrg &meas = ....BodyModel.Interface.Left.HipExternalRotation;
+      Reaction.Type = {On}; // <<< WAS OFF!!!
+    };
+    
+  };
+  
+  
+  AnyFolder LeftAnkleDrv = {
+    
+    AnyKinEqSimpleDriver AnklePlantarFlexion = {
+      DriverVel = {0};
+      DriverPos = {0}*pi/180;
+      
+      AnyKinMeasureOrg &AnklePlantarFlexion = ....BodyModel.Interface.Left.AnklePlantarFlexion;
+      Reaction.Type = {Off}; // <<< WAS OFF!!!
+    };
+    
+    AnyKinEqSimpleDriver SubTalarEversion = {
+      DriverVel = {0};
+      DriverPos = {0}*pi/180;
+      
+      AnyKinMeasureOrg &SubTalarEversion = ....BodyModel.Interface.Left.SubTalarEversion;
+      
+      Reaction.Type = {On}; // <<< WAS ON!!!
+    };
+    
+  };
+  
+  
+  AnyKinEqSimpleDriver TrunkDrv = {
+    DriverPos = {0,0,0,pi/2,0,0,0,0,0,0};
+    DriverVel = {0,0,0,0,0,0,0,0,0,0};
+    
+    AnyKinMeasureOrg &PelvisPosX = ...BodyModel.Interface.Trunk.PelvisPosX;
+    AnyKinMeasureOrg &PelvisPosY = ...BodyModel.Interface.Trunk.PelvisPosY;
+    AnyKinMeasureOrg &PelvisPosZ = ...BodyModel.Interface.Trunk.PelvisPosZ;
+    AnyKinMeasureOrg &PelvisRotX = ...BodyModel.Interface.Trunk.PelvisRotX;
+    AnyKinMeasureOrg &PelvisRotY = ...BodyModel.Interface.Trunk.PelvisRotY;
+    AnyKinMeasureOrg &PelvisRotZ = ...BodyModel.Interface.Trunk.PelvisRotZ;
+    AnyKinMeasureOrg &PelvisThoraxExtension = ...BodyModel.Interface.Trunk.PelvisThoraxExtension;
+    AnyKinMeasureOrg &PelvisThoraxLateralBending = ...BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
+    AnyKinMeasureOrg &PelvisThoraxRotation = ...BodyModel.Interface.Trunk.PelvisThoraxRotation;
+    AnyKinMeasureOrg &NeckExtension = ...BodyModel.Interface.Trunk.NeckJoint;
+    
+    Reaction.Type = {On,On,On,On,On,On,Off,Off,Off,Off};
+  };
+  
+};

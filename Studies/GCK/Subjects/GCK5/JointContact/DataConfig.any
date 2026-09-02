@@ -1,0 +1,8 @@
+// JointFit configuration file
+#include "<LAB_CONFIG_PATH>/JointContact/DataConfig.any"
+
+#define CONTACT_UNIT_CONVERSION_TO_M 0.001
+#path PATH_IMPLANT_FEMUR_LEFT_STL_CONTACT "./ProcessedSurfaces/Femoral Component GM.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_LATERAL_LEFT_STL_CONTACT "./ProcessedSurfaces/Tibial Insert lateral GM contact.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_LEFT_STL_CONTACT "./ProcessedSurfaces/Tibial Insert medial GM.stl"
+#path PATH_IMPLANT_PATELLA_BUTTON_LEFT_STL_CONTACT "./ProcessedSurfaces/Patellar Button_simpl05_contact.stl"

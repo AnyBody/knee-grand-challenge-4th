@@ -1,0 +1,11 @@
+// processed surfaces are in meters
+#define CONTACT_UNIT_CONVERSION_TO_M 1.0
+
+#path PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT "./ProcessedSurfaces/femoral_component.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_LATERAL_RIGHT_STL_CONTACT "./ProcessedSurfaces/tibial_insert_lateral.stl"
+#path PATH_IMPLANT_TIBIA_INSERT_MEDIAL_RIGHT_STL_CONTACT "./ProcessedSurfaces/tibial_insert_medial.stl"
+#path PATH_IMPLANT_TIBIA_TRAY_RIGHT_STL_CONTACT "./ProcessedSurfaces/tibial_tray.stl"
+#path PATH_IMPLANT_PATELLA_BUTTON_RIGHT_STL_CONTACT "./ProcessedSurfaces/patellar_button.stl"
+
+// updates and configures remaining flags
+#include "<LAB_CONFIG_PATH>/JointContact/DataConfig.any"

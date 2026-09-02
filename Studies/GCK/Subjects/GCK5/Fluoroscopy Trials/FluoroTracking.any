@@ -1,0 +1,174 @@
+AnyVar FemCompEdgeAngle = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Thigh.FluoroFrame.FemCompEdgeAngle;
+AnyFloat FluoroKneeFlexion = FluoroTFFlexionMeas.Pos[0]*180/pi - FemCompEdgeAngle; // deg, flexion positive
+AnyFloat FluoroPatellaFlexion = FluoroPFFlexionMeas.Pos[0]*180/pi - FemCompEdgeAngle; // deg, flexion positive
+AnyFloat FluoroPTRotation = FluoroPTRotationMeas.Pos[0]*180/pi; // deg, flexion positive
+
+// mm, x direction positive pointing anteriorly, y direction positive pointing proximally
+AnyFloat FluoroTFTipShift = FluoroTFTipShiftMeas.Pos*1e3;
+
+// mm, x direction positive pointing anteriorly, y direction positive pointing proximally
+AnyFloat FluoroPTShift = FluoroPTShiftMeas.Pos*1e3;
+
+// mm, x direction positive pointing anteriorly, y direction positive pointing proximally
+AnyFloat FluoroTFKneeJointShift = (
+Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Thigh.KneeJoint.r -
+Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.FluoroFrame.r
+)*Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.FluoroFrame.Axes*1e3;
+
+// mm, x direction positive pointing anteriorly, y direction positive pointing proximally
+AnyFloat FluoroPFTipShift = FluoroPFTipShiftMeas.Pos*1e3;
+
+#if FDK_KNEE_MODEL == 1
+#ifndef USE_SURROGATE_FORCES_TF
+//gives the medial COP shift in global coordinates
+AnyVec3 COPsMedial = .ModelEnvironmentConnection.TibiaFemurMedialContactForce.COP - Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.TibialInsertMostPosteriorMedial.r;
+//converts to local (medial tibia) coordinates
+AnyVec3 ShiftMedial = COPsMedial*Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.TibialInsertMostPosteriorMedial.Axes;
+//gives the lateral COP shift in global coordinates
+AnyVec3 COPsLateral = .ModelEnvironmentConnection.TibiaFemurLateralContactForce.COP - Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.TibialInsertMostPosteriorLateral.r;
+//converts to local (lateral tibia) coordinates
+AnyVec3 ShiftLateral = COPsLateral*Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.TibialInsertMostPosteriorLateral.Axes;
+//extract the x components, average, and converts in millimeter
+AnyFloatVar APShift = 0.5*(ShiftMedial[0] + ShiftLateral[0])*1e3;
+#endif
+#endif
+
+
+
+/************* OUT-OF-PLANE MOTION CORRECTIONS ***************/
+
+// following measures correct for the rotational effect on the anterior aspect of the tibial tray
+// distance of the most anterior visible edge, in mm
+AnyFloatVar FluoroTibCompXCorrection = iffun(
+  ltfun(TFIntExtRotImplantFrame.Pos[0]*180/pi, -5.78),
+  -0.3068*TFIntExtRotImplantFrame.Pos[0]*180/pi + 16.465,
+  0.2511*TFIntExtRotImplantFrame.Pos[0]*180/pi + 19.67
+);
+AnyFolder &refNode = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.PostOpSTLNode.TibCompNode;
+refNode = {
+  AnyDrawPointCloud TibialTrayPoint = {
+    RGB = {1,0,0};
+    Points = {{..FluoroTibCompXCorrection, 3.5, 0}*1e-3};
+    PointStyle.Style = PointStyleCross;
+    Points3D = On;
+    PointStyle.Size = 0.01;
+  };
+};
+// measure the internal/external rotation of the implants
+AnyKinMeasureOrg TFIntExtRotImplantFrame = {
+  AnyKinRotational meas = {
+    Type = RotAxesAngles;
+    Axis1 = z; Axis2 = x; Axis3 = y;
+    AnyRefFrame &refFemComp = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PostOpSTLNode.FemCompNode;
+    AnyRefFrame &refTibComp = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.PostOpSTLNode.TibCompNode;
+  };
+  MeasureOrganizer = {2};
+};
+// mm, x direction positive pointing anteriorly, y direction positive pointing proximally
+AnyFloat FluoroPTShiftCorrected = {
+  FluoroPTShiftMeasTibCompFrame.Pos[0]*1e3 - FluoroTibCompXCorrection,
+  FluoroPTShift[1]
+};
+// mm, x direction positive pointing anteriorly, y direction positive pointing proximally
+AnyFloat FluoroTFTipShiftCorrected = {
+  FluoroTFTipShiftMeasTibCompFrame.Pos[0]*1e3 - FluoroTibCompXCorrection,
+  FluoroTFTipShift[1]
+};
+
+/************* OUT-OF-PLANE MOTION CORRECTIONS ***************/
+
+
+
+/* FLUOROSCOPY MEASURES ONLY */
+AnyKinMeasureOrg FluoroTFFlexionMeas = {
+  AnyKinMeasure &meas = .FluoroTFRotations;
+  MeasureOrganizer = {0};
+};
+
+AnyKinMeasureOrg FluoroTFTipShiftMeas = {
+  AnyKinMeasure &meas = .FluoroTFTranslations;
+  MeasureOrganizer = {0,1};
+};
+
+AnyKinMeasureOrg FluoroTFTipShiftMeasTibCompFrame = {
+  AnyKinMeasure &meas = .FluoroTFTranslationsTibCompFrame;
+  MeasureOrganizer = {0,1};
+};
+
+AnyKinMeasureOrg FluoroPTRotationMeas = {
+  AnyKinMeasure &meas = .FluoroPTRotations;
+  MeasureOrganizer = {0};
+};
+
+AnyKinMeasureOrg FluoroPTShiftMeas = {
+  AnyKinMeasure &meas = .FluoroPTTranslations;
+  MeasureOrganizer = {0,1};
+};
+
+AnyKinMeasureOrg FluoroPTShiftMeasTibCompFrame = {
+  AnyKinMeasure &meas = .FluoroPTTranslationsTibCompFrame;
+  MeasureOrganizer = {0,1};
+};
+
+AnyKinMeasureOrg FluoroPFFlexionMeas = {
+  AnyKinMeasure &meas = .FluoroPFRotations;
+  MeasureOrganizer = {0};
+};
+
+AnyKinMeasureOrg FluoroPFTipShiftMeas = {
+  AnyKinMeasure &meas = .FluoroPFTranslations;
+  MeasureOrganizer = {0, 1};
+};
+
+
+AnyKinRotational FluoroTFRotations = {
+  Type = RotAxesAngles;
+  Axis1 = z; Axis2 = x; Axis3 = y;
+  AnyRefFrame &Shank = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.FluoroFrame;
+  AnyRefFrame &Thigh = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Thigh.FluoroFrame;
+};
+
+AnyKinLinear FluoroTFTranslations = {
+  Ref = 0;
+  AnyRefFrame &Shank = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.FluoroFrame;
+  AnyRefFrame &Thigh = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Thigh.FluoroFrame;
+};
+
+AnyKinLinear FluoroTFTranslationsTibCompFrame = {
+  Ref = 0;
+  AnyRefFrame &Shank = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.PostOpSTLNode.TibCompNode;
+  AnyRefFrame &Thigh = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Thigh.FluoroFrame;
+};
+
+AnyKinRotational FluoroPTRotations = {
+  Type = RotAxesAngles;
+  Axis1 = z; Axis2 = x; Axis3 = y;
+  AnyRefFrame &Shank = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.FluoroFrame;
+  AnyRefFrame &Patella = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Patella.FluoroFrame;
+};
+
+AnyKinLinear FluoroPTTranslations = {
+  Ref = 0;
+  AnyRefFrame &Shank = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.FluoroFrame;
+  AnyRefFrame &Patella = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Patella.FluoroFrame;
+};
+
+AnyKinLinear FluoroPTTranslationsTibCompFrame = {
+  Ref = 0;
+  AnyRefFrame &Shank = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Shank.PostOpSTLNode.TibCompNode;
+  AnyRefFrame &Patella = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Patella.FluoroFrame;
+};
+
+AnyKinRotational FluoroPFRotations = {
+  Type = RotAxesAngles;
+  Axis1 = z; Axis2 = x; Axis3 = y;
+  AnyRefFrame &Patella = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Patella.FluoroFrame;
+  AnyRefFrame &Thigh = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Thigh.FluoroFrame;
+};
+
+AnyKinLinear FluoroPFTranslations = {
+  Ref = 0;
+  AnyRefFrame &Patella = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Patella.FluoroFrame;
+  AnyRefFrame &Thigh = Main.Studies.HumanModel.BodyModel.Left.Leg.Seg.Thigh.FluoroFrame;
+};
+/* END OF FLUOROSCOPY MEASURES*/

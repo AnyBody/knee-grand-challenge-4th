@@ -1,0 +1,13 @@
+#include "DataConfig.Landmarks.any"
+
+AnyFile SurfPelvisRFileName  = TARGET_DATA + "GCK4_Pelvis.stl";
+AnyFile SurfFemurRFileName   = TARGET_DATA + "GCK4_Femur.stl";
+AnyFile SurfTibiaRFileName   = TARGET_DATA + "GCK4_Tibia.stl";
+AnyFile SurfPatellaRFileName = TARGET_DATA + "GCK4_Patella.stl";
+
+AnyFile TargetLandmarkPelvisRFileName = TARGET_DATA + "GCK4_Pelvis_picked_points.pp";
+AnyFile TargetLandmarkFemurRFileName = TARGET_DATA + "GCK4_merged femur_picked_points.pp";
+AnyFile TargetLandmarkTibiaRFileName = TARGET_DATA + "GCK4_merged tibia_picked_points.pp";
+AnyFile TargetLandmarkPatellaRFileName = TARGET_DATA + "GCK4_merged patella_remeshed_picked_points.pp";
+
+

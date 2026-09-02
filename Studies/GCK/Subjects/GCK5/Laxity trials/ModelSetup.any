@@ -1,0 +1,139 @@
+AnyFolder ModelSetup = {
+  
+  AnyIntVar FirstFrame = 0 + Main.TrialSpecificData.FirstFrameOffset;
+  AnyIntVar LastFrame = Main.TrialSpecificData.nFrames - Main.TrialSpecificData.LastFrameOffset - 1;
+  AnyIntVar nStep = LastFrame - FirstFrame + 1;
+  
+  AnyFolder Macros={};
+  
+  // Define what anthropometrics will be optimised, but be aware that inconsiderate changes
+  // might lead to model failure! Pelvis and Trunk can only be "On" if there are markers available.
+  // Upper and Lower arms can only be "On" if Upper Body is used and sufficient markers are available.
+    // For FullBody model    
+    #if UseUpperExtremities == 1
+    OptimizeAnthropometricsOnOff OptimizeOnOff (
+    PelvisWidthOnOff ="On", 
+    ThighLengthOnOff="Off", 
+    ShankLengthOnOff="Off", 
+    FootLengthOnOff="On", 
+    HeadHeightOnOff="Off", 
+    TrunkHeightOnOff="On", 
+    UpperArmLengthOnOff="On",
+    LowerArmLengthOnOff="On",
+    Model1=MotionAndParameterOptimizationModel, Model2= InverseDynamicModel
+    ) ={};
+    #endif
+     //For LowerBody model
+    #if UseUpperExtremities == 0
+    OptimizeAnthropometricsOnOff OptimizeOnOff (
+    PelvisWidthOnOff ="On", 
+    ThighLengthOnOff="Off", 
+    ShankLengthOnOff="Off", 
+    FootLengthOnOff="On", 
+    HeadHeightOnOff="Off", 
+    TrunkHeightOnOff="On", 
+    UpperArmLengthOnOff="On",
+    LowerArmLengthOnOff="On",
+    Model1=MotionAndParameterOptimizationModel, Model2= InverseDynamicModel
+    ) ={};
+    #endif    
+    
+
+  AnyFolder FileNames={
+    #if LEFT_LEG_TD_MUSCLES == 0
+      AnyString MuscleSettingString = "NoMuscles";
+    #endif
+    #if LEFT_LEG_TD_MUSCLES == 1
+      AnyString MuscleSettingString = "SimpleMuscles";
+    #endif
+    
+    #if LEFT_LEG_TD_MUSCLES == 2
+      AnyString MuscleSettingString = "3E_Muscles";
+    #endif
+    
+    #if MUSCLE_WEIGHT_FACTOR_TYPE == 0
+      AnyString MuscleWeightString = "nElem";
+    #endif
+    
+    #if MUSCLE_WEIGHT_FACTOR_TYPE == 1
+      AnyString MuscleWeightString = "PCSA";
+    #endif
+    
+    #if MUSCLE_WEIGHT_FACTOR_TYPE == 2
+      AnyString MuscleWeightString = "Volume";
+    #endif    
+    
+    #ifndef REFERENCE_CONFIGURATION
+    #ifdef APPLY_COMPRESSIVE_LOAD
+    AnyString LaxityString = "_Flex" + strval(KNEE_FLEXION_ANGLE) + "_Load" + strval(Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.LaxityLoads.LaxityLoad, "%.1f") + "_Comp" + strval(APPLY_COMPRESSIVE_LOAD);
+    #else
+    AnyString LaxityString = "_Flex" + strval(KNEE_FLEXION_ANGLE) + "_Load" + strval(Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.LaxityLoads.LaxityLoad, "%.1f");
+    #endif
+    #else
+    AnyString LaxityString = "";
+    #endif
+    
+#if InverseDynamicModel == 1  & LEFT_LEG_TD_MUSCLES != 0
+#ifndef LABEL
+#define LABEL ""
+#endif
+    #if INCLUDE_MUSCLE_WEIGHT_FACTOR == 0
+    AnyString AuxSettingsPostFix = "_" + strval(round(Main.Studies.InverseDynamicStudy.InverseDynamics.Criterion.Power)) + "_"+ strval(Main.Studies.HumanModel.BodyModel.Left.Leg.MusPar.StrengthScaleKneeFlexionFactor)+ "_" + strval(Main.Studies.HumanModel.BodyModel.Left.Leg.MusPar.StrengthScaleKneeExtensionFactor)+"_" + MuscleSettingString + LaxityString + LABEL;
+    #else
+    AnyString AuxSettingsPostFix = "_" + strval(round(Main.Studies.InverseDynamicStudy.InverseDynamics.Criterion.Power)) + "_"+ strval(Main.Studies.HumanModel.BodyModel.Left.Leg.MusPar.StrengthScaleKneeFlexionFactor)+ "_" + strval(Main.Studies.HumanModel.BodyModel.Left.Leg.MusPar.StrengthScaleKneeExtensionFactor)+"_" + MuscleSettingString +"_"+MuscleWeightString + LaxityString + LABEL;    
+    #endif
+    #else
+    AnyString AuxSettingsPostFix = "" + LaxityString + LABEL;
+
+#endif
+
+
+
+    #if FDK_KNEE_MODEL == 1
+      #if EXCLUDE_PATELLA_FDK_MODEL == 0
+        AnyString TrialNamePostFix = "FullFDKKnee" +AuxSettingsPostFix;
+      #else
+        AnyString TrialNamePostFix = "FDKTibFem"+AuxSettingsPostFix;     
+      #endif
+    #else
+        AnyString TrialNamePostFix = "SimpKnee"+AuxSettingsPostFix;    
+    #endif
+    
+    //Definition of file names
+    AnyFileVar KinResults = TRIAL_PATH + "/" + Main.TrialSpecificData.TrialName +"-" + TrialNamePostFix +"-Kinematics.anydata.h5";
+    AnyFileVar Results = TRIAL_PATH + "/" + Main.TrialSpecificData.TrialName +"-" + TrialNamePostFix + ".anydata.h5";
+    AnyFileVar ResultsPGRF = TRIAL_PATH + "/" + Main.TrialSpecificData.TrialName +"-" + TrialNamePostFix + "PGPR.anydata.h5";
+
+#if STATIC_DRIVERSET == 0     
+    AnyFileVar OptimizedParameters = "..\..\..\" + Main.SubjectSpecificData.CalibrationTrialName + "-OptimizedParameters.txt";
+#else    
+    AnyFileVar OptimizedParameters = TRIAL_PATH + Main.TrialSpecificData.TrialName + "-OptimizedParameters.txt";
+#endif    
+    AnyFileVar OptimizedMotionTrunk = TRIAL_PATH + Main.TrialSpecificData.TrialName+ "-output-euler-trunk.txt";
+    AnyFileVar OptimizedMotionLeftLegTD = TRIAL_PATH + Main.TrialSpecificData.TrialName+ "-output-euler-leftlegtd.txt";
+    AnyFileVar OptimizedMotionLeftLegFootPosTD = TRIAL_PATH + Main.TrialSpecificData.TrialName+ "-output-euler-leftlegfootpostd.txt";
+    AnyFileVar OptimizedMotionLeftAnklePosTD = TRIAL_PATH + Main.TrialSpecificData.TrialName+ "-output-euler-leftleganklepostd.txt";
+    AnyFileVar OptimizedMotionLeftLateralEpicondylePosTD = TRIAL_PATH + Main.TrialSpecificData.TrialName+ "-output-euler-leftlateralepicondylepostd.txt";
+    AnyFileVar OptimizedMotionRightLegTD = TRIAL_PATH + Main.TrialSpecificData.TrialName+ "-output-euler-rightlegtd.txt";
+    AnyFileVar OptimizedMotionLeftLeg = TRIAL_PATH + Main.TrialSpecificData.TrialName+ "-output-euler-leftleg.txt";
+    AnyFileVar OptimizedMotionRightLeg =TRIAL_PATH + Main.TrialSpecificData.TrialName+ "-output-euler-rightleg.txt";
+    AnyFileVar OptimizedMotionLeftArm = TRIAL_PATH + Main.TrialSpecificData.TrialName+ "-output-euler-leftarm.txt";
+    AnyFileVar OptimizedMotionRightArm =TRIAL_PATH + Main.TrialSpecificData.TrialName+ "-output-euler-rightarm.txt";
+        
+    #ifdef MARKER_FILE_PATH_EX
+    AnyString MarkerPositions = MARKER_FILE_PATH_EX+"-MarkerPositions";    
+    #else
+    AnyString MarkerPositions = Main.SubjectSpecificData.CalibrationTrialName+ "-MarkerPositions";
+    #endif
+    
+};
+  
+    
+  
+  
+};
+
+// Change the Draw Settings for Muscles, Bones and standard objects
+Main = {
+  #include "..\..\..\..\Model\DrawSettings.any"
+};
