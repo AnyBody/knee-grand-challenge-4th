@@ -49,15 +49,15 @@ jobs:
       #- name: Checkout AMMR
       #  run: |
       #    pixi run checkout-ammr
-      - name: Run parameter identification (testing and preparation)
+      - name: Run static cases prior to inverse dynamics (testing and preparation)
         run: |
-          pixi run test-paramid
+          pixi run test_static
         env:
           RLM_LICENSE: ${{ secrets.LICENSE_SERVER }}
           RLM_LICENSE_PASSWORD: ${{ secrets.LICENSE_PASSWORD }}
       - name: Run tests
         run: |
-          pixi run test-motion
+          pixi run test_dynamic
         env:
           RLM_LICENSE: ${{ secrets.LICENSE_SERVER }}
           RLM_LICENSE_PASSWORD: ${{ secrets.LICENSE_PASSWORD }}        
