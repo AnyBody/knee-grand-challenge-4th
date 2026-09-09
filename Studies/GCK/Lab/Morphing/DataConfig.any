@@ -92,7 +92,7 @@ Main.Morphing = {
          //pfjoint_ptcl.PointNames = Obj2Str(&femoral_pf_vertices);
          AnyInt ap_pf_vertices = {13728,13797};
          AnyFloat ap_pf_points = STL_Vertices(Main.Morphing.SourceData.SurfFemurFileName, ap_pf_vertices, 1);  // two points around saddle peak of AP cartilage
-         AnyFloat ScaleFactor = (Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode.PatellaFemoralJointFit.Radius+0.005) / // fitted radius and cartilage assumption
+         AnyFloat ScaleFactor = (Main.HumanModel.BodyModel.Right.Leg.Segments.Thigh.PatientNode.PatellaFemoralJointFit.Radius+0.005) / // fitted radius and cartilage assumption
            abs(vnorm(Main.HumanModel.BodyModel.Right.Leg.ModelParameters.Thigh.PatellaFemurJoint - 0.001*mean(ap_pf_points')));
            
          
@@ -146,7 +146,7 @@ Main.Morphing = {
          //pfjoint_ptcl.PointNames = Obj2Str(&femoral_pf_vertices);
          AnyInt ap_pf_vertices = {13728,13797};
          AnyFloat ap_pf_points = STL_Vertices(Main.Morphing.SourceData.SurfFemurFileName, ap_pf_vertices, 1)*{{1,0,0}, {0,1,0},{0,0,-1}} ;  // two points around saddle peak of AP cartilage
-         AnyFloat ScaleFactor = (Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode.PatellaFemoralJointFit.Radius+0.005) / // fitted radius and cartilage assumption
+         AnyFloat ScaleFactor = (Main.HumanModel.BodyModel.Left.Leg.Segments.Thigh.PatientNode.PatellaFemoralJointFit.Radius+0.005) / // fitted radius and cartilage assumption
            abs(vnorm(Main.HumanModel.BodyModel.Left.Leg.ModelParameters.Thigh.PatellaFemurJoint - 0.001*mean(ap_pf_points')));
            
          
@@ -170,7 +170,7 @@ Main.Morphing = {
       #endif
 };
 
-AnyFolder &Pelvis = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.PatientNode;
+AnyFolder &Pelvis = Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg.PatientNode;
 
 //Pelvis = {
 //  AnyDrawSurf SurfR = {
@@ -185,10 +185,10 @@ AnyFolder &Pelvis = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.Pat
 
 #if BM_LEG_LEFT != OFF
 
-AnyFolder &LeftThigh = Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode;
-AnyFolder &LeftShank = Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.PatientNode;
+AnyFolder &LeftThigh = Main.HumanModel.BodyModel.Left.Leg.Segments.Thigh.PatientNode;
+AnyFolder &LeftShank = Main.HumanModel.BodyModel.Left.Leg.Segments.Shank.PatientNode;
 #ifdef _override_scaling_for_Left_Patella
-AnyFolder &LeftPatella = Main.HumanModel.BodyModel.Left.Leg.Seg.Patella.PatientNode;
+AnyFolder &LeftPatella = Main.HumanModel.BodyModel.Left.Leg.Segments.Patella.PatientNode;
 LeftPatella = {
   AnyDrawSurf Surf = {
     FileName = ..SurfPatellaLFileName;
@@ -213,10 +213,10 @@ LeftThigh = {
   
 #if BM_LEG_RIGHT != OFF
 
-AnyFolder &RightThigh = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode;
-AnyFolder &RightShank = Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode;
+AnyFolder &RightThigh = Main.HumanModel.BodyModel.Right.Leg.Segments.Thigh.PatientNode;
+AnyFolder &RightShank = Main.HumanModel.BodyModel.Right.Leg.Segments.Shank.PatientNode;
 #ifdef _override_scaling_for_Right_Patella
-AnyFolder &RightPatella = Main.HumanModel.BodyModel.Right.Leg.Seg.Patella.PatientNode;
+AnyFolder &RightPatella = Main.HumanModel.BodyModel.Right.Leg.Segments.Patella.PatientNode;
 RightPatella = {
   AnyDrawSurf Surf= {
     FileName = ..SurfPatellaRFileName;

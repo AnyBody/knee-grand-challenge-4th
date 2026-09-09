@@ -4,7 +4,7 @@
 // Marker on the Left Posterior Superior Iliac
 // CreateMarkerDriver LPSI (                         // A marker on the skeleton is created!
 // MarkerName= LPSI,                                 // Change the name here to the name of your Marker Protocol!:
-// MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,   // Marker is assigned to Pelvis Segment
+// MarkerPlacement=Trunk.Segments.PelvisSeg,   // Marker is assigned to Pelvis Segment
 // OptX=OFF, OptY=OFF, OptZ=ON,                // Is the position of the Marker good, or does it need to be optimised?
 //                                                   // Please be aware that having to many Markers optimised can lead to model failure
 // WeightX=1.0,WeightY=1.0,WeightZ=1.0,              // If you are convinced of the position of this Marker, you an increase the importance of it (weight)
@@ -40,7 +40,7 @@ AnyFloatVar pr = 0*pl; //amount of perturbation on selected markers on right sid
 // Marker on the Left Posterior Superior Iliac
 CreateMarkerDriver LPsis ( 
 MarkerName= LPsis,
-MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+MarkerPlacement=Trunk.Segments.PelvisSeg,
 OptX=OFF, OptY=OFF, OptZ=ON,
 WeightX=10.0,WeightY=10.0,WeightZ=10.0,
 PlaceMarkerAt=Left.PSIS,
@@ -52,7 +52,7 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Right Posterior Superior Iliac
 CreateMarkerDriver RPsis (
 MarkerName= RPsis, 
-MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+MarkerPlacement=Trunk.Segments.PelvisSeg,
 OptX=OFF, OptY=OFF, OptZ=ON,
 WeightX=10.0,WeightY=10.0,WeightZ=10.0,
 PlaceMarkerAt=Right.PSIS,
@@ -64,7 +64,7 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Right Anterior Superior Iliac
 CreateMarkerDriver RAsis(
 MarkerName= RAsis, 
-MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+MarkerPlacement=Trunk.Segments.PelvisSeg,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0,
 PlaceMarkerAt=Right.ASIS,
@@ -76,7 +76,7 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Left Anterior Superior Iliac
 CreateMarkerDriver LAsis (
 MarkerName= LAsis ,
-MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+MarkerPlacement=Trunk.Segments.PelvisSeg,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0,
 PlaceMarkerAt=Left.ASIS,
@@ -90,7 +90,7 @@ ScaleMarkerPosOnOff = 1
 //// Marker on the Right Front Head
 //CreateMarkerDriver RFHD (
 //MarkerName= RFHD, 
-//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+//MarkerPlacement=Trunk.Segments.SkullSeg, 
 //OptX=OFF,OptY=OFF,OptZ=OFF,  
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0
 //) = {
@@ -101,7 +101,7 @@ ScaleMarkerPosOnOff = 1
 //// Marker on the Left Front Head
 //CreateMarkerDriver LFHD (
 //MarkerName= LFHD,  
-//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+//MarkerPlacement=Trunk.Segments.SkullSeg, 
 //OptX=OFF,OptY=OFF,OptZ=OFF,  
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0
 //) = {
@@ -112,7 +112,7 @@ ScaleMarkerPosOnOff = 1
 //// Marker on the Right Back Head
 //CreateMarkerDriver RBHD (
 //MarkerName= RBHD,  
-//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+//MarkerPlacement=Trunk.Segments.SkullSeg, 
 //OptX=OFF,OptY=OFF,OptZ=OFF,  
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0
 //) = {
@@ -122,7 +122,7 @@ ScaleMarkerPosOnOff = 1
 //// Marker on the Left Back Head
 //CreateMarkerDriver LBHD (
 //MarkerName= LBHD,  
-//MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,   
+//MarkerPlacement=Trunk.Segments.SkullSeg,   
 //OptX=OFF,OptY=OFF,OptZ=OFF,
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0
 //) = {
@@ -134,17 +134,18 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Sternum
 CreateMarkerDriver Sternum (
 MarkerName= Sternum,  
-MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+MarkerPlacement=Trunk.Segments.SternumSeg, 
 OptX=OFF, OptY=OFF, OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
-ScaleMarkerPosOnOff = 1
+ScaleMarkerPosOnOff = 0,
+PlaceMarkerAt=ij
 ) = {
-  sRelOpt = {0.095,0.41,0.0};
+  sRelOpt = 0*{0.095,0.41,0.0};
 };
 //
 //CreateMarkerDriver Xiphoid (
 //MarkerName= Xiphoid,  
-//MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+//MarkerPlacement=Trunk.Segments.ThoraxSeg, 
 //OptX=OFF, OptY=OFF, OptZ=OFF,  
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 //ScaleMarkerPosOnOff = 1
@@ -155,11 +156,11 @@ ScaleMarkerPosOnOff = 1
 // Marker on the Thoracic Vertebra 10
 CreateMarkerDriver Thoracic (
 MarkerName= Thoracic,  
-MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+MarkerPlacement=Trunk.Segments.T10Seg, 
 OptX=ON, OptY=ON, OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
-PlaceMarkerAt=SPL2T1Via4Node,
-ScaleMarkerPosOnOff = 1
+PlaceMarkerAt=SpinalisL2T1Via4Node,
+ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt = {0.0,0.0,0}; // Ignored
 };
@@ -168,7 +169,7 @@ ScaleMarkerPosOnOff = 1
 #ifndef EXCLUDE_MARKER_LUMBAR
 CreateMarkerDriver Lumbar (
 MarkerName= Lumbar,  
-MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+MarkerPlacement=Trunk.Segments.ThoraxSeg, 
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 Model1=MotionAndParameterOptimizationModel,Model2= InverseDynamicModel,
@@ -185,7 +186,7 @@ Model1=MotionAndParameterOptimizationModel,Model2= InverseDynamicModel,
 #ifndef EXCLUDE_MARKER_NECK
 CreateMarkerDriver Neck (
 MarkerName= Neck,  
-MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+MarkerPlacement=Trunk.Segments.ThoraxSeg, 
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0,
 Model1=MotionAndParameterOptimizationModel,Model2= InverseDynamicModel,
@@ -201,7 +202,7 @@ Model1=MotionAndParameterOptimizationModel,Model2= InverseDynamicModel,
 #if BM_LEG_RIGHT != OFF
 CreateMarkerDriver RThighLateral ( 
 MarkerName=  RThighLateral,
-MarkerPlacement =Right.Leg.Seg.Thigh, 
+MarkerPlacement =Right.Leg.Segments.Thigh, 
 OptX=ON,OptY=ON,OptZ=ON,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
@@ -211,7 +212,7 @@ ScaleMarkerPosOnOff = 0
 
 CreateMarkerDriver RThighSuperior ( 
 MarkerName=  RThighSuperior,
-MarkerPlacement =Right.Leg.Seg.Thigh, 
+MarkerPlacement =Right.Leg.Segments.Thigh, 
 OptX=ON,OptY=ON,OptZ=ON,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
@@ -221,7 +222,7 @@ ScaleMarkerPosOnOff = 0
 
 CreateMarkerDriver RThighInferior ( 
 MarkerName=  RThighInferior,
-MarkerPlacement =Right.Leg.Seg.Thigh, 
+MarkerPlacement =Right.Leg.Segments.Thigh, 
 OptX=OFF,OptY=ON,OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
@@ -232,7 +233,7 @@ ScaleMarkerPosOnOff = 0
 //// Marker on the Right Medial Knee
 //CreateMarkerDriver RKneeMedial (
 //MarkerName= RKneeMedial,
-//MarkerPlacement= Right.Leg.Seg.Thigh,
+//MarkerPlacement= Right.Leg.Segments.Thigh,
 //OptX=OFF,OptY=OFF,OptZ=OFF,  
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 //PlaceMarkerAt=EpicondylusFemorisLateralis,
@@ -246,7 +247,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Right Lateral Knee
 CreateMarkerDriver RKneeLateral (
 MarkerName= RKneeLateral,
-MarkerPlacement= Right.Leg.Seg.Thigh,
+MarkerPlacement= Right.Leg.Segments.Thigh,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 PlaceMarkerAt=EpicondylusFemorisLateralis,
@@ -260,7 +261,7 @@ ScaleMarkerPosOnOff = 0
 //// Marker on the Right Patella
 CreateMarkerDriver RPatella (
 MarkerName= RPatella, 
-MarkerPlacement=Right.Leg.Seg.Patella,
+MarkerPlacement=Right.Leg.Segments.Patella,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 0
@@ -273,7 +274,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Right Tibia
 CreateMarkerDriver RShankLateral (
 MarkerName= RShankLateral, 
-MarkerPlacement=Right.Leg.Seg.Shank,
+MarkerPlacement=Right.Leg.Segments.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
@@ -283,7 +284,7 @@ ScaleMarkerPosOnOff = 0
 
 CreateMarkerDriver RShankSuperior (
 MarkerName= RShankSuperior, 
-MarkerPlacement=Right.Leg.Seg.Shank,
+MarkerPlacement=Right.Leg.Segments.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
@@ -293,7 +294,7 @@ ScaleMarkerPosOnOff = 0
 
 CreateMarkerDriver RShankInferior (
 MarkerName= RShankInferior, 
-MarkerPlacement=Right.Leg.Seg.Shank,
+MarkerPlacement=Right.Leg.Segments.Shank,
 OptX=ON,OptY=ON,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
@@ -305,7 +306,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Right Lateral Ankle
 CreateMarkerDriver RHindfoot ( 
 MarkerName= RHindfoot ,
-MarkerPlacement=Right.Leg.Seg.Foot,
+MarkerPlacement=Right.Leg.Segments.Foot.Calcaneus,
 OptX=ON,OptY=ON,OptZ=ON,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
 ScaleMarkerPosOnOff = 0
@@ -315,26 +316,26 @@ ScaleMarkerPosOnOff = 0
   //sRelOptDelta = {0,0.0,6.0}/1000;
 };
 
-#ifdef STATIC_DRIVERSET
-
-// Marker on the Right Medial Ankle
-CreateMarkerDriver RankleMedial ( 
-MarkerName= RankleMedial ,
-MarkerPlacement=Right.Leg.Seg.Shank,
-OptX=OFF,OptY=OFF,OptZ=OFF,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0,
-PlaceMarkerAt=MedialMalleolus,
-ScaleMarkerPosOnOff = 0
-) = {
-  sRelOpt = {0,0,0}; //{3.86233,-388.474,-30.0403}/1000.0 + .pr*{0, 0, -1};
-};
-#endif
+//#ifdef STATIC_DRIVERSET
+//
+//// Marker on the Right Medial Ankle
+//CreateMarkerDriver RankleMedial ( 
+//MarkerName= RankleMedial ,
+//MarkerPlacement=Right.Leg.Segments.Shank,
+//OptX=OFF,OptY=OFF,OptZ=OFF,  
+//WeightX=1.0,WeightY=1.0,WeightZ=1.0,
+//PlaceMarkerAt=MedialMalleolus,
+//ScaleMarkerPosOnOff = 0
+//) = {
+//  sRelOpt = {0,0,0}; //{3.86233,-388.474,-30.0403}/1000.0 + .pr*{0, 0, -1};
+//};
+//#endif
 
 
 // Marker on the Right Toe
 CreateMarkerDriver RToe (
 MarkerName= RToe,  
-MarkerPlacement=Right.Leg.Seg.Foot,
+MarkerPlacement=Right.Leg.Segments.Foot.Metatarsal2,
 OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 PlaceMarkerAt=Metatarsal2Contact,
@@ -348,7 +349,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Right Toe medial
 CreateMarkerDriver RToeMedial (
 MarkerName= RToeMedial,  
-MarkerPlacement=Right.Leg.Seg.Foot,
+MarkerPlacement=Right.Leg.Segments.Foot.Metatarsal1,
 OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 PlaceMarkerAt=ToeMedialContactNode,
@@ -362,7 +363,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Right Toe lateral
 CreateMarkerDriver RToeLateral (
 MarkerName= RToeLateral,  
-MarkerPlacement=Right.Leg.Seg.Foot,
+MarkerPlacement=Right.Leg.Segments.Foot.Metatarsal5,
 OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 PlaceMarkerAt=ToeLateralContactNode,
@@ -375,10 +376,10 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Right Heel
 CreateMarkerDriver RHeel (
 MarkerName= RHeel ,
-MarkerPlacement=Right.Leg.Seg.Foot,
+MarkerPlacement=Right.Leg.Segments.Foot.Calcaneus,
 OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
-PlaceMarkerAt=TendonCalcaneousNode,
+PlaceMarkerAt=TendonCalcaneusNode,
 ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt =  {-0.0, 0.0, 0.0};
@@ -390,7 +391,7 @@ ScaleMarkerPosOnOff = 0
 //#ifndef EXCLUDE_MARKER_RMIDFOOTLATERAL
 //CreateMarkerDriver RMidfootLateral (
 //MarkerName= RMidfootLateral,  
-//MarkerPlacement=Right.Leg.Seg.Foot,
+//MarkerPlacement=Right.Leg.Segments.Foot,
 //OptX=OFF, OptY=OFF, OptZ=OFF,
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 //
@@ -406,7 +407,7 @@ ScaleMarkerPosOnOff = 0
 //#ifndef EXCLUDE_MARKER_RMIDFOOTMEDIAL
 //CreateMarkerDriver RMidfootMedial  (
 //MarkerName= RMidfootMedial  ,  
-//MarkerPlacement=Right.Leg.Seg.Foot,
+//MarkerPlacement=Right.Leg.Segments.Foot,
 //OptX=OFF, OptY=OFF, OptZ=OFF,
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 //
@@ -422,7 +423,7 @@ ScaleMarkerPosOnOff = 0
 //// Marker on the Right midfoot superior
 //CreateMarkerDriver RMidfootSuperior  (
 //MarkerName= RMidfootSuperior  ,  
-//MarkerPlacement=Right.Leg.Seg.Foot,
+//MarkerPlacement=Right.Leg.Segments.Foot,
 //OptX=OFF, OptY=OFF, OptZ=OFF,
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 //
@@ -441,7 +442,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Lateral Thigh
 CreateMarkerDriver LThighLateral ( 
 MarkerName=  LThighLateral,
-MarkerPlacement =Left.Leg.Seg.Thigh, 
+MarkerPlacement =Left.Leg.Segments.Thigh, 
 OptX=ON,OptY=ON,OptZ=ON,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 0
@@ -452,7 +453,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Superior Thigh
 CreateMarkerDriver LThighSuperior ( 
 MarkerName=  LThighSuperior,
-MarkerPlacement =Left.Leg.Seg.Thigh, 
+MarkerPlacement =Left.Leg.Segments.Thigh, 
 OptX=ON,OptY=ON,OptZ=ON,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 0
@@ -463,7 +464,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Inferior Thigh
 CreateMarkerDriver LThighInferior ( 
 MarkerName=  LThighInferior,
-MarkerPlacement =Left.Leg.Seg.Thigh, 
+MarkerPlacement =Left.Leg.Segments.Thigh, 
 OptX=OFF,OptY=ON,OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 0
@@ -475,7 +476,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Right Medial Knee
 CreateMarkerDriver LKneeMedial (
 MarkerName= LKneeMedial,
-MarkerPlacement= Left.Leg.Seg.Thigh,
+MarkerPlacement= Left.Leg.Segments.Thigh,
 OptX=OFF,OptY=OFF,OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 PlaceMarkerAt=EpicondylusFemorisMedialis,
@@ -487,7 +488,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Lateral Knee
 CreateMarkerDriver LKneeLateral (
 MarkerName= LKneeLateral,
-MarkerPlacement= Left.Leg.Seg.Thigh,
+MarkerPlacement= Left.Leg.Segments.Thigh,
 OptX=OFF,OptY=OFF,OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 PlaceMarkerAt=EpicondylusFemorisLateralis,
@@ -500,7 +501,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Patella
 CreateMarkerDriver LPatella (
 MarkerName= LPatella, 
-MarkerPlacement=Left.Leg.Seg.Patella,
+MarkerPlacement=Left.Leg.Segments.Patella,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 0
@@ -512,7 +513,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Lateral Shank
 CreateMarkerDriver LShankLateral (
 MarkerName= LShankLateral, 
-MarkerPlacement=Left.Leg.Seg.Shank,
+MarkerPlacement=Left.Leg.Segments.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 0
@@ -523,7 +524,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Right Superior Shank
 CreateMarkerDriver LShankSuperior (
 MarkerName= LShankSuperior, 
-MarkerPlacement=Left.Leg.Seg.Shank,
+MarkerPlacement=Left.Leg.Segments.Shank,
 OptX=ON,OptY=ON,OptZ=ON,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 0
@@ -534,7 +535,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Inferior Shank
 CreateMarkerDriver LShankInferior (
 MarkerName= LShankInferior, 
-MarkerPlacement=Left.Leg.Seg.Shank,
+MarkerPlacement=Left.Leg.Segments.Shank,
 OptX=ON,OptY=ON,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 ScaleMarkerPosOnOff = 0
@@ -546,7 +547,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Lateral Ankle
 CreateMarkerDriver LAnkleLateral ( 
 MarkerName= LAnkleLateral ,
-MarkerPlacement=Left.Leg.Seg.Shank,
+MarkerPlacement=Left.Leg.Segments.Shank,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 PlaceMarkerAt=LateralMalleolus,
@@ -558,7 +559,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Medial Ankle
 CreateMarkerDriver LAnkleMedial ( 
 MarkerName= LAnkleMedial ,
-MarkerPlacement=Left.Leg.Seg.Shank,
+MarkerPlacement=Left.Leg.Segments.Shank,
 OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 PlaceMarkerAt=MedialMalleolus,
@@ -573,7 +574,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Toe
 CreateMarkerDriver LToe (
 MarkerName= LToe,  
-MarkerPlacement=Left.Leg.Seg.Foot ,
+MarkerPlacement=Left.Leg.Segments.Foot.Metatarsal2,
 OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 PlaceMarkerAt=Metatarsal2Contact,
@@ -585,7 +586,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Toe medial
 CreateMarkerDriver LToeMedial (
 MarkerName= LToeMedial,  
-MarkerPlacement=Left.Leg.Seg.Foot ,
+MarkerPlacement=Left.Leg.Segments.Foot.Metatarsal1,
 OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 PlaceMarkerAt=ToeMedialContactNode,
@@ -597,7 +598,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Toe lateral
 CreateMarkerDriver LToeLateral (
 MarkerName= LToeLateral,  
-MarkerPlacement=Left.Leg.Seg.Foot ,
+MarkerPlacement=Left.Leg.Segments.Foot.Metatarsal5,
 OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 PlaceMarkerAt=ToeLateralContactNode,
@@ -609,10 +610,10 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Left Heel
 CreateMarkerDriver LHeel (
 MarkerName= LHeel ,
-MarkerPlacement=Left.Leg.Seg.Foot,
+MarkerPlacement=Left.Leg.Segments.Foot.Calcaneus,
 OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
-PlaceMarkerAt=TendonCalcaneousNode,
+PlaceMarkerAt=TendonCalcaneusNode,
 ScaleMarkerPosOnOff = 0
 ) = {
   sRelOpt =  {-0.0, 0.0, 0.0};
@@ -621,7 +622,7 @@ ScaleMarkerPosOnOff = 0
 //// Marker on the Left midfoot lateral
 //CreateMarkerDriver LMidfootLateral (
 //MarkerName= LMidfootLateral,  
-//MarkerPlacement=Left.Leg.Seg.Foot,
+//MarkerPlacement=Left.Leg.Segments.Foot,
 //OptX=OFF, OptY=OFF, OptZ=OFF,
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 //
@@ -635,7 +636,7 @@ ScaleMarkerPosOnOff = 0
 //// Marker on the Left midfoot medial
 //CreateMarkerDriver LMidfootMedial  (
 //MarkerName= LMidfootMedial  ,  
-//MarkerPlacement=Left.Leg.Seg.Foot,
+//MarkerPlacement=Left.Leg.Segments.Foot,
 //OptX=OFF, OptY=OFF, OptZ=OFF,
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 //
@@ -650,7 +651,7 @@ ScaleMarkerPosOnOff = 0
 //// Marker on the Left midfoot superior
 //CreateMarkerDriver LMidfootSuperior  (
 //MarkerName= LMidfootSuperior  ,  
-//MarkerPlacement=Left.Leg.Seg.Foot,
+//MarkerPlacement=Left.Leg.Segments.Foot,
 //OptX=OFF, OptY=OFF, OptZ=OFF,
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 //
@@ -665,7 +666,7 @@ ScaleMarkerPosOnOff = 0
 // Marker on the Right hind foot
 //CreateMarkerDriver LHindfoot (
 //MarkerName= LHindfoot,  
-//MarkerPlacement=Left.Leg.Seg.Foot,
+//MarkerPlacement=Left.Leg.Segments.Foot,
 //OptX=OFF, OptY=OFF, OptZ=OFF,
 //WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 //
