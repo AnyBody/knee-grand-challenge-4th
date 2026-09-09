@@ -13,7 +13,7 @@ AnyFolder Morphing = {
 
    #ifdef _override_scaling_for_Pelvis
    MORPHING_FUNC Pelvis(
-     REF_BODY_PART= Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg,
+     REF_BODY_PART= Main.HumanModel.BodyModel.Trunk.Segments.PelvisSeg,
      REF_BODY_PART_SCALING = Main.HumanModel.Scaling.GeometricalScaling.PelvisSeg,
      CUSTOM_NODE = PatientNode,
      PELVIS=1
@@ -26,7 +26,7 @@ AnyFolder Morphing = {
 
    #ifdef _override_scaling_for_Right_Thigh
    MORPHING_FUNC RightThigh(
-     REF_BODY_PART= Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh,
+     REF_BODY_PART= Main.HumanModel.BodyModel.Right.Leg.Segments.Thigh,
      REF_BODY_PART_SCALING = Main.HumanModel.Scaling.GeometricalScaling.Right.Thigh,
      CUSTOM_NODE = PatientNode
    ) = {};
@@ -35,7 +35,7 @@ AnyFolder Morphing = {
      
    #ifdef _override_scaling_for_Right_Shank
    MORPHING_FUNC RightShank(
-     REF_BODY_PART= Main.HumanModel.BodyModel.Right.Leg.Seg.Shank,
+     REF_BODY_PART= Main.HumanModel.BodyModel.Right.Leg.Segments.Shank,
      REF_BODY_PART_SCALING = Main.HumanModel.Scaling.GeometricalScaling.Right.Shank,
      CUSTOM_NODE = PatientNode
    ) = {};
@@ -43,7 +43,7 @@ AnyFolder Morphing = {
    
    #ifdef _override_scaling_for_Right_Patella
    MORPHING_FUNC RightPatella(
-     REF_BODY_PART= Main.HumanModel.BodyModel.Right.Leg.Seg.Patella,
+     REF_BODY_PART= Main.HumanModel.BodyModel.Right.Leg.Segments.Patella,
      REF_BODY_PART_SCALING = Main.HumanModel.Scaling.GeometricalScaling.Right.Patella,
      CUSTOM_NODE = PatientNode
    ) = {};
@@ -57,7 +57,7 @@ AnyFolder Morphing = {
 
    #ifdef _override_scaling_for_Left_Thigh
    MORPHING_FUNC LeftThigh(
-     REF_BODY_PART= Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh,
+     REF_BODY_PART= Main.HumanModel.BodyModel.Left.Leg.Segments.Thigh,
      REF_BODY_PART_SCALING = Main.HumanModel.Scaling.GeometricalScaling.Left.Thigh,
      CUSTOM_NODE = PatientNode
    ) = {};
@@ -66,7 +66,7 @@ AnyFolder Morphing = {
      
    #ifdef _override_scaling_for_Left_Shank
    MORPHING_FUNC LeftShank(
-     REF_BODY_PART= Main.HumanModel.BodyModel.Left.Leg.Seg.Shank,
+     REF_BODY_PART= Main.HumanModel.BodyModel.Left.Leg.Segments.Shank,
      REF_BODY_PART_SCALING = Main.HumanModel.Scaling.GeometricalScaling.Left.Shank,
      CUSTOM_NODE = PatientNode
    ) = {};
@@ -74,7 +74,7 @@ AnyFolder Morphing = {
   
    #ifdef _override_scaling_for_Left_Patella
    MORPHING_FUNC LeftPatella(
-     REF_BODY_PART= Main.HumanModel.BodyModel.Left.Leg.Seg.Patella,
+     REF_BODY_PART= Main.HumanModel.BodyModel.Left.Leg.Segments.Patella,
      REF_BODY_PART_SCALING = Main.HumanModel.Scaling.GeometricalScaling.Left.Patella,
      CUSTOM_NODE = PatientNode
    ) = {};

@@ -50,14 +50,14 @@ Main = {
     #if BM_LEG_LEFT & BM_LEG_MODEL_IS_TLEM
         &Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.JointsAndDrivers.JntDriverLeftLegTD,
         &Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.JointsAndDrivers.JntDriverLeftLegTD.Reaction,
-        &Main.HumanModel.BodyModel.Left.Leg.Jnt.KneeRotations,
-        &Main.HumanModel.BodyModel.Left.Leg.Jnt.KneeRotations.Reaction,
+        &Main.HumanModel.BodyModel.Left.Leg.Joints.KneeRotations,
+        &Main.HumanModel.BodyModel.Left.Leg.Joints.KneeRotations.Reaction,
     #endif        
     #if BM_LEG_RIGHT & BM_LEG_MODEL_IS_TLEM
         &Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.JointsAndDrivers.JntDriverRightLegTD,
         &Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection.JointsAndDrivers.JntDriverRightLegTD.Reaction,
-        &Main.HumanModel.BodyModel.Right.Leg.Jnt.KneeRotations,
-        &Main.HumanModel.BodyModel.Right.Leg.Jnt.KneeRotations.Reaction,        
+        &Main.HumanModel.BodyModel.Right.Leg.Joints.KneeRotations,
+        &Main.HumanModel.BodyModel.Right.Leg.Joints.KneeRotations.Reaction,        
     #endif        
       };
     };

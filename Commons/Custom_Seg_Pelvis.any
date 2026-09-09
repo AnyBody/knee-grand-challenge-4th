@@ -9,12 +9,12 @@ PatientNode = {
     Offset ??= {0,0,0};
   };
   AnyRefNode HipJointR = {
-    sRel = .ThighRToPelvisReg(.....Right.Leg.Seg.Thigh.PatientNode.HipJointFit.sRel);
+    sRel = .ThighRToPelvisReg(.....Right.Leg.Segments.Thigh.PatientNode.HipJointFit.sRel);
     ARel = RotMat(
       .ThighRToPelvisReg({0.0,0.0,0.0}),
       .ThighRToPelvisReg({1.0,0.0,0.0}),
       .ThighRToPelvisReg({0.0,1.0,0.0})
-      )*.....Right.Leg.Seg.Thigh.PatientNode.ARel'*.....Right.Leg.Seg.Thigh.HipJointNew.ARel; // fitted and aligned axes
+      )*.....Right.Leg.Segments.Thigh.PatientNode.ARel'*.....Right.Leg.Segments.Thigh.HipJointNew.ARel; // fitted and aligned axes
   };
   #endif
   #if BM_LEG_LEFT != OFF
@@ -24,12 +24,12 @@ PatientNode = {
     Offset ??= {0,0,0};
   };
   AnyRefNode HipJointL = {
-    sRel = .ThighLToPelvisReg(.....Left.Leg.Seg.Thigh.PatientNode.HipJointFit.sRel);
+    sRel = .ThighLToPelvisReg(.....Left.Leg.Segments.Thigh.PatientNode.HipJointFit.sRel);
     ARel = RotMat(
       .ThighLToPelvisReg({0.0,0.0,0.0}),
       .ThighLToPelvisReg({1.0,0.0,0.0}),
       .ThighLToPelvisReg({0.0,1.0,0.0})
-      )*.....Left.Leg.Seg.Thigh.PatientNode.ARel'*.....Left.Leg.Seg.Thigh.HipJointNew.ARel; // fitted and aligned axes
+      )*.....Left.Leg.Segments.Thigh.PatientNode.ARel'*.....Left.Leg.Segments.Thigh.HipJointNew.ARel; // fitted and aligned axes
   };
   #endif
 };// automatically created
@@ -64,11 +64,11 @@ Left = {
 #if BM_LEG_RIGHT != OFF 
 
 Right.HipJoint = {
-  AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
+  AnyVec3 sRelUnscaled = .Muscles.Data.HipJoint;
   
   // will use default scaling if either femur or pelvis are not subject-specific
   #if RightHipJointInterface != __SCALING_INTERFACE_TYPE_CONSISTENT__
-    sRel ??= ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
+    sRel ??= ..AnatomicalFrameTrunk.Scale_Leg_Pelvis(sRelUnscaled );
   #else
     sRel ??= ..HipJointRNew.sRel;
   #endif
@@ -86,11 +86,11 @@ Right.HipJoint = {
 #if BM_LEG_LEFT != OFF
 
 Left.HipJoint = {
-  AnyVec3 sRelUnscaled = .Muscles.StdPar.HipJoint;
+  AnyVec3 sRelUnscaled = .Muscles.Data.HipJoint;
   
   // will use default scaling if either femur or pelvis are not subject-specific
   #if LeftHipJointInterface != __SCALING_INTERFACE_TYPE_CONSISTENT__
-    sRel ??= ..AnatomicalFrame.Scale_Leg_Pelvis(sRelUnscaled );
+    sRel ??= ..AnatomicalFrameTrunk.Scale_Leg_Pelvis(sRelUnscaled );
   #else
     sRel ??= ..HipJointLNew.sRel;
   #endif

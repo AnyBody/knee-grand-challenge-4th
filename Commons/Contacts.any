@@ -2,7 +2,7 @@
 
 #if BM_LEG_RIGHT == ON
 
-REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode =
+REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode =
 {
   #ifdef PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT
   AnySurfSTL ContactSurf = 
@@ -14,7 +14,7 @@ REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode =
   #endif
 };
 
-REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode =
+REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode =
 {
   #ifdef PATH_IMPLANT_TIBIA_INSERT_LATERAL_RIGHT_STL_CONTACT
   AnySurfSTL ContactSurf_Lateral = 
@@ -37,7 +37,7 @@ REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode =
   #endif
 };
 
-REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientNode =
+REF_HUMAN_BODYMODEL.Right.Leg.Segments.Patella.PatientNode =
 {
   #ifdef PATH_IMPLANT_PATELLA_BUTTON_RIGHT_STL_CONTACT
   AnySurfSTL ContactSurf = 
@@ -59,8 +59,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
     #ifdef PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT
     AnyForceSurfaceContact Femur_Tibia_Lateral = 
     {
-      AnySurface &sMaster = ..Seg.Thigh.PatientNode .ContactSurf ;
-      AnySurface &sSlave  = ..Seg.Shank.PatientNode .ContactSurf_Lateral;
+      AnySurface &sMaster = ..Segments.Thigh.PatientNode .ContactSurf ;
+      AnySurface &sSlave  = ..Segments.Shank.PatientNode .ContactSurf_Lateral;
       
       PressureModule = DEF_CONTACT_PRESSURE_TIBIOFEMORAL ;
       
@@ -87,8 +87,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
     #ifdef PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT
     AnyForceSurfaceContact Femur_Tibia_Medial = 
     {
-      AnySurface &sMaster = ..Seg.Thigh.PatientNode.ContactSurf ;
-      AnySurface &sSlave  = ..Seg.Shank.PatientNode.ContactSurf_Medial;
+      AnySurface &sMaster = ..Segments.Thigh.PatientNode.ContactSurf ;
+      AnySurface &sSlave  = ..Segments.Shank.PatientNode.ContactSurf_Medial;
       
       PressureModule = DEF_CONTACT_PRESSURE_TIBIOFEMORAL ;
       
@@ -117,8 +117,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
     #ifdef PATH_IMPLANT_FEMUR_RIGHT_STL_CONTACT
     AnyForceSurfaceContact Femur_Patella = 
     {
-      AnySurface &sMaster = ..Seg.Thigh.PatientNode.ContactSurf ;
-      AnySurface &sSlave  = ..Seg.Patella.PatientNode.ContactSurf;
+      AnySurface &sMaster = ..Segments.Thigh.PatientNode.ContactSurf ;
+      AnySurface &sSlave  = ..Segments.Patella.PatientNode.ContactSurf;
       
       PressureModule = DEF_CONTACT_PRESSURE_PATELLOFEMORAL ;
       
@@ -148,7 +148,7 @@ REF_HUMAN_BODYMODEL.Right.Leg =
 
 #if BM_LEG_LEFT == ON
 
-REF_HUMAN_BODYMODEL.Left.Leg.Seg.Thigh.PatientNode =
+REF_HUMAN_BODYMODEL.Left.Leg.Segments.Thigh.PatientNode =
 {
   #ifdef PATH_IMPLANT_FEMUR_LEFT_STL_CONTACT
   AnySurfSTL ContactSurf = 
@@ -160,7 +160,7 @@ REF_HUMAN_BODYMODEL.Left.Leg.Seg.Thigh.PatientNode =
   #endif
 };
 
-REF_HUMAN_BODYMODEL.Left.Leg.Seg.Shank.PatientNode =
+REF_HUMAN_BODYMODEL.Left.Leg.Segments.Shank.PatientNode =
 {
   #ifdef PATH_IMPLANT_TIBIA_INSERT_LATERAL_LEFT_STL_CONTACT
   AnySurfSTL ContactSurf_Lateral = 
@@ -183,7 +183,7 @@ REF_HUMAN_BODYMODEL.Left.Leg.Seg.Shank.PatientNode =
   #endif
 };
 
-REF_HUMAN_BODYMODEL.Left.Leg.Seg.Patella.PatientNode =
+REF_HUMAN_BODYMODEL.Left.Leg.Segments.Patella.PatientNode =
 {
   #ifdef PATH_IMPLANT_PATELLA_BUTTON_LEFT_STL_CONTACT
   AnySurfSTL ContactSurf = 
@@ -205,8 +205,8 @@ REF_HUMAN_BODYMODEL.Left.Leg =
     #ifdef PATH_IMPLANT_FEMUR_LEFT_STL_CONTACT
     AnyForceSurfaceContact Femur_Tibia_Lateral = 
     {
-      AnySurface &sMaster = ..Seg.Thigh.PatientNode .ContactSurf ;
-      AnySurface &sSlave  = ..Seg.Shank.PatientNode .ContactSurf_Lateral;
+      AnySurface &sMaster = ..Segments.Thigh.PatientNode .ContactSurf ;
+      AnySurface &sSlave  = ..Segments.Shank.PatientNode .ContactSurf_Lateral;
       
       PressureModule = DEF_CONTACT_PRESSURE_TIBIOFEMORAL ;
       
@@ -233,8 +233,8 @@ REF_HUMAN_BODYMODEL.Left.Leg =
     #ifdef PATH_IMPLANT_FEMUR_LEFT_STL_CONTACT
     AnyForceSurfaceContact Femur_Tibia_Medial = 
     {
-      AnySurface &sMaster = ..Seg.Thigh.PatientNode.ContactSurf ;
-      AnySurface &sSlave  = ..Seg.Shank.PatientNode.ContactSurf_Medial;
+      AnySurface &sMaster = ..Segments.Thigh.PatientNode.ContactSurf ;
+      AnySurface &sSlave  = ..Segments.Shank.PatientNode.ContactSurf_Medial;
       
       PressureModule = DEF_CONTACT_PRESSURE_TIBIOFEMORAL ;
       
@@ -263,8 +263,8 @@ REF_HUMAN_BODYMODEL.Left.Leg =
     #ifdef PATH_IMPLANT_FEMUR_LEFT_STL_CONTACT
     AnyForceSurfaceContact Femur_Patella = 
     {
-      AnySurface &sMaster = ..Seg.Thigh.PatientNode.ContactSurf ;
-      AnySurface &sSlave  = ..Seg.Patella.PatientNode.ContactSurf;
+      AnySurface &sMaster = ..Segments.Thigh.PatientNode.ContactSurf ;
+      AnySurface &sSlave  = ..Segments.Patella.PatientNode.ContactSurf;
       
       PressureModule = DEF_CONTACT_PRESSURE_PATELLOFEMORAL ;
       
@@ -307,17 +307,17 @@ REF_HUMAN_BODYMODEL.Right.Leg =
 //          {
 //            AnySeg Femur_Dummy = 
 //            {
-//              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.r0 
+//              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.r0 
 //              +
 //              ( 
-//              REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.sRel 
-//              + REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.AnatomicalFrame.sRel
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.ARel'
+//              REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.sRel 
+//              + REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.AnatomicalFrame.sRel
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.ARel'
 //              )
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.Axes0';
-//              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.Axes0 
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.ARel 
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.AnatomicalFrame.ARel ;
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.Axes0';
+//              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.Axes0 
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.ARel 
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.AnatomicalFrame.ARel ;
 //              Mass = 0;
 //              Jii = {0, 0, 0};
 ////              AnyDrawRefFrame Drw = 
@@ -329,17 +329,17 @@ REF_HUMAN_BODYMODEL.Right.Leg =
 //            
 //            AnySeg Tibia_Dummy = 
 //            {
-//              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.r0 
+//              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.r0 
 //              +
 //              ( 
-//              REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.sRel 
-//              + REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.AnatomicalFrame.sRel
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.ARel'
+//              REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.sRel 
+//              + REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.AnatomicalFrame.sRel
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.ARel'
 //              )
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.Axes0';
-//              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.Axes0 
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.ARel 
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.AnatomicalFrame.ARel ;
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.Axes0';
+//              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.Axes0 
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.ARel 
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.AnatomicalFrame.ARel ;
 //              Mass = 0;
 //              Jii = {0, 0, 0};
 ////              AnyDrawRefFrame Drw = 
@@ -354,7 +354,7 @@ REF_HUMAN_BODYMODEL.Right.Leg =
 //            AnyCylindricalJoint Femmur_Connect =
 //            {
 //              Axis = x;
-//              AnyRefFrame& ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.AnatomicalFrame;
+//              AnyRefFrame& ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.AnatomicalFrame;
 //              AnyRefFrame& ref1 = ..Segs.Femur_Dummy;
 //            };
 //            AnyCylindricalJoint Inter_Connect = 
@@ -367,7 +367,7 @@ REF_HUMAN_BODYMODEL.Right.Leg =
 //            {
 //              Axis = z;
 //              AnyRefFrame& ref0 = ..Segs.Tibia_Dummy;
-//              AnyRefFrame& ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.AnatomicalFrame;
+//              AnyRefFrame& ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.AnatomicalFrame;
 //            };  
 //          };
 //          AnyFolder Measures = 
@@ -399,17 +399,17 @@ REF_HUMAN_BODYMODEL.Right.Leg =
 //          {
 //            AnySeg Femur_Dummy = 
 //            {
-//              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.r0 
+//              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.r0 
 //              +
 //              ( 
-//              REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.sRel 
-//              + REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.AnatomicalFrame.sRel
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.ARel'
+//              REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.sRel 
+//              + REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.AnatomicalFrame.sRel
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.ARel'
 //              )
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.Axes0';
-//              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.Axes0 
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.ARel 
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.AnatomicalFrame.ARel ;
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.Axes0';
+//              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.Axes0 
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.ARel 
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.AnatomicalFrame.ARel ;
 //              Mass = 0;
 //              Jii = {0, 0, 0};
 ////              AnyDrawRefFrame Drw = 
@@ -421,17 +421,17 @@ REF_HUMAN_BODYMODEL.Right.Leg =
 //            
 //            AnySeg Patella_Dummy = 
 //            {
-//              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.r0 
+//              r0 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Patella.r0 
 //              +
 //              ( 
-//              REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientNode.sRel 
-//              + REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientNode.AnatomicalFrame.sRel
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientNode.ARel'
+//              REF_HUMAN_BODYMODEL.Right.Leg.Segments.Patella.PatientNode.sRel 
+//              + REF_HUMAN_BODYMODEL.Right.Leg.Segments.Patella.PatientNode.AnatomicalFrame.sRel
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Patella.PatientNode.ARel'
 //              )
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.Axes0';
-//              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.Axes0 
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientNode.ARel 
-//              * REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientNode.AnatomicalFrame.ARel ;
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Patella.Axes0';
+//              Axes0 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Patella.Axes0 
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Patella.PatientNode.ARel 
+//              * REF_HUMAN_BODYMODEL.Right.Leg.Segments.Patella.PatientNode.AnatomicalFrame.ARel ;
 //              Mass = 0;
 //              Jii = {0, 0, 0};
 ////              AnyDrawRefFrame Drw = 
@@ -446,7 +446,7 @@ REF_HUMAN_BODYMODEL.Right.Leg =
 //            AnyCylindricalJoint Femmur_Connect =
 //            {
 //              Axis = x;
-//              AnyRefFrame& ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Thigh.PatientNode.AnatomicalFrame;
+//              AnyRefFrame& ref0 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Thigh.PatientNode.AnatomicalFrame;
 //              AnyRefFrame& ref1 = ..Segs.Femur_Dummy;
 //            };
 //            AnyCylindricalJoint Inter_Connect = 
@@ -459,7 +459,7 @@ REF_HUMAN_BODYMODEL.Right.Leg =
 //            {
 //              Axis = z;
 //              AnyRefFrame& ref0 = ..Segs.Patella_Dummy;
-//              AnyRefFrame& ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Patella.PatientNode.AnatomicalFrame;
+//              AnyRefFrame& ref1 = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Patella.PatientNode.AnatomicalFrame;
 //            };  
 //          };
 //          AnyFolder Measures = 
@@ -489,7 +489,7 @@ REF_HUMAN_BODYMODEL.Right.Leg =
     {
       AnyVar BodyWeight = REF_HUMAN_BODYMODEL.TotalBodyMass * 9.81 ;
       
-      REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode = 
+      REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode = 
       {
         AnyRefNode OutputNode = 
         {
@@ -511,8 +511,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Contact_Lateral = 
             {
               AnyForceBase& Force = ....Contacts.Femur_Tibia_Lateral;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -536,8 +536,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Contact_Medial = 
             {
               AnyForceBase& Force = ....Contacts.Femur_Tibia_Medial;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };        
@@ -561,8 +561,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_aALS =
             {
               AnyForceBase& Force = ....Ligaments.aALS.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -570,8 +570,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_pALS =
             {
               AnyForceBase& Force = ....Ligaments.pALS.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -579,8 +579,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_aLCL =
             {
               AnyForceBase& Force = ....Ligaments.aLCL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -588,8 +588,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_pLCL =
             {
               AnyForceBase& Force = ....Ligaments.pLCL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -597,8 +597,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_aMCL =
             {
               AnyForceBase& Force = ....Ligaments.aMCL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             }; 
@@ -606,8 +606,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_cMCL =
             {
               AnyForceBase& Force = ....Ligaments.cMCL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             }; 
@@ -615,8 +615,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_pMCL =
             {
               AnyForceBase& Force = ....Ligaments.pMCL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -624,8 +624,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_aCM =
             {
               AnyForceBase& Force = ....Ligaments.aCM.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -633,8 +633,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_pCM =
             {
               AnyForceBase& Force = ....Ligaments.pCM.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             }; 
@@ -642,8 +642,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_aPCL =
             {
               AnyForceBase& Force = ....Ligaments.aPCL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             }; 
@@ -651,8 +651,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_pPCL =
             {
               AnyForceBase& Force = ....Ligaments.pPCL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -660,8 +660,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_lLcap =
             {
               AnyForceBase& Force = ....Ligaments.lLcap.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -669,8 +669,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_mLcap =
             {
               AnyForceBase& Force = ....Ligaments.mLcap.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -678,8 +678,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_lMcap =
             {
               AnyForceBase& Force = ....Ligaments.lMcap.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -687,8 +687,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_mMcap =
             {
               AnyForceBase& Force = ....Ligaments.mMcap.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };             
@@ -696,8 +696,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_sMPFL =
             {
               AnyForceBase& Force = ....Ligaments.sMPFL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -705,8 +705,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_mMPFL =
             {
               AnyForceBase& Force = ....Ligaments.mMPFL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -714,8 +714,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_iMPFL =
             {
               AnyForceBase& Force = ....Ligaments.iMPFL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             }; 
@@ -723,8 +723,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_sLPFL =
             {
               AnyForceBase& Force = ....Ligaments.sLPFL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };
@@ -732,8 +732,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_mLPFL =
             {
               AnyForceBase& Force = ....Ligaments.mLPFL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             }; 
@@ -741,8 +741,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_iLPFL =
             {
               AnyForceBase& Force = ....Ligaments.iLPFL.Force;
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;
             };            
@@ -750,8 +750,8 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             AnyForceMomentMeasure2 Measure_Effect_Ligament_All = 
             {
               IncludeForces = ObjSearch("....Ligaments.*.Force");
-              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode;
-              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank;
+              AnyRefFrame& RefNode = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode;
+              AnySeg& Seg = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;              
             };
@@ -760,7 +760,7 @@ REF_HUMAN_BODYMODEL.Right.Leg =
             {
               IncludeForces = ....MomentMeasure.KneeNetMomentMuscle.IncludeForces;
               IncludeSegments = ....MomentMeasure.KneeNetMomentMuscle.IncludeSegments;
-              AnyRefFrame& RefNode  = REF_HUMAN_BODYMODEL.Right.Leg.Seg.Shank.PatientNode.OutputNode ;
+              AnyRefFrame& RefNode  = REF_HUMAN_BODYMODEL.Right.Leg.Segments.Shank.PatientNode.OutputNode ;
               AnyVec3 Flocal = F*RefNode.Axes;
               AnyVec3 Mlocal = M*RefNode.Axes;               
             };

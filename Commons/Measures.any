@@ -6,48 +6,48 @@ REF_HUMAN_BODYMODEL =
     #if BM_LEG_LEFT != OFF
     Left = 
     {
-      AnyKinLinear GlobalFootPos = 
-      {
-        AnyRefFrame& ref = ...Left.Leg.Seg.Foot;
-      };
-      AnyKinRotational GlobalFootRot = 
-      {
-        AnyRefFrame& ref = ...Left.Leg.Seg.Foot;
-        Type = RotAxesAngles;
-      };      
-      AnyKinMeasureOrg GlobalFootPosX = 
-      {
-        AnyKinMeasure& ref = .GlobalFootPos ;
-        MeasureOrganizer = {0};
-      };
-      AnyKinMeasureOrg GlobalFootPosY = 
-      {
-        AnyKinMeasure& ref = .GlobalFootPos ;
-        MeasureOrganizer = {1};
-      };
-      AnyKinMeasureOrg GlobalFootPosZ = 
-      {
-        AnyKinMeasure& ref = .GlobalFootPos ;
-        MeasureOrganizer = {2};
-      };
-      AnyKinMeasureOrg GlobalFootRotX = 
-      {
-        AnyKinMeasure& ref = .GlobalFootRot ;
-        MeasureOrganizer = {2};
-      };      
-      AnyKinMeasureOrg GlobalFootRotY = 
-      {
-        AnyKinMeasure& ref = .GlobalFootRot ;
-        MeasureOrganizer = {1};
-      };
-      AnyKinMeasureOrg GlobalFootRotZ = 
-      {
-        AnyKinMeasure& ref = .GlobalFootRot ;
-        MeasureOrganizer = {0};
-      }; 
+//      AnyKinLinear GlobalFootPos = 
+//      {
+//        AnyRefFrame& ref = ...Left.Leg.Segments.Foot;
+//      };
+//      AnyKinRotational GlobalFootRot = 
+//      {
+//        AnyRefFrame& ref = ...Left.Leg.Segments.Foot;
+//        Type = RotAxesAngles;
+//      };      
+//      AnyKinMeasureOrg GlobalFootPosX = 
+//      {
+//        AnyKinMeasure& ref = .GlobalFootPos ;
+//        MeasureOrganizer = {0};
+//      };
+//      AnyKinMeasureOrg GlobalFootPosY = 
+//      {
+//        AnyKinMeasure& ref = .GlobalFootPos ;
+//        MeasureOrganizer = {1};
+//      };
+//      AnyKinMeasureOrg GlobalFootPosZ = 
+//      {
+//        AnyKinMeasure& ref = .GlobalFootPos ;
+//        MeasureOrganizer = {2};
+//      };
+//      AnyKinMeasureOrg GlobalFootRotX = 
+//      {
+//        AnyKinMeasure& ref = .GlobalFootRot ;
+//        MeasureOrganizer = {2};
+//      };      
+//      AnyKinMeasureOrg GlobalFootRotY = 
+//      {
+//        AnyKinMeasure& ref = .GlobalFootRot ;
+//        MeasureOrganizer = {1};
+//      };
+//      AnyKinMeasureOrg GlobalFootRotZ = 
+//      {
+//        AnyKinMeasure& ref = .GlobalFootRot ;
+//        MeasureOrganizer = {0};
+//      }; 
       AnyKinLinear GlobalToeLateralContactNodePos = 
       {
-        AnyRefFrame& ref = ...Left.Leg.Seg.Foot.ToeLateralContactNode;
+        AnyRefFrame& ref = ...Left.Leg.Segments.Foot.Metatarsal5.ToeLateralContactNode;
       };
       AnyKinMeasureOrg GlobalToeLateralContactNodePosX = 
       {
@@ -66,7 +66,7 @@ REF_HUMAN_BODYMODEL =
       };
       AnyKinLinear GlobalToeMedialContactNodePos = 
       {
-        AnyRefFrame& ref = ...Left.Leg.Seg.Foot.ToeMedialContactNode;
+        AnyRefFrame& ref = ...Left.Leg.Segments.Foot.Metatarsal1.ToeMedialContactNode;
       };
       AnyKinMeasureOrg GlobalToeMedialContactNodePosX = 
       {
@@ -86,8 +86,8 @@ REF_HUMAN_BODYMODEL =
       
       AnyKinLinear AnkleJointPos = 
       {
-        AnyRefFrame& ref0 = ...Left.Leg.Seg.Thigh.KneeJoint;
-        AnyRefFrame& ref1 = ...Left.Leg.Seg.Shank.AnkleJoint;
+        AnyRefFrame& ref0 = ...Left.Leg.Segments.Thigh.KneeJoint;
+        AnyRefFrame& ref1 = ...Left.Leg.Segments.Shank.AnkleJoint;
         Ref = 0;
       };
       AnyKinMeasureOrg AnkleJointPosX = 

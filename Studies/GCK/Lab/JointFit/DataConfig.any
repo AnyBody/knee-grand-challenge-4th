@@ -23,14 +23,14 @@
   }   
   
 #if BM_LEG_LEFT != OFF
-Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.PatientNode = {
+Main.HumanModel.BodyModel.Left.Leg.Segments.Shank.PatientNode = {
     
   AnyFolder TFReg = {#include "<USER_PATH_INPUTDATA>/Morphing/Target/tf_reg.any"};
   
   ThighToShankReg.ScaleMat = TFReg.rotation;
   ThighToShankReg.Offset = TFReg.displacement * {{1,0,0},{0,1,0},{0,0,-1}};
 }; 
-Main.HumanModel.BodyModel.Left.Leg.Seg.Patella.PatientNode = {
+Main.HumanModel.BodyModel.Left.Leg.Segments.Patella.PatientNode = {
     
   AnyFolder PFReg = {#include "<USER_PATH_INPUTDATA>/Morphing/Target/pf_reg.any"};
   
@@ -38,7 +38,7 @@ Main.HumanModel.BodyModel.Left.Leg.Seg.Patella.PatientNode = {
   ThighToPatellaReg.Offset = PFReg.displacement * {{1,0,0},{0,1,0},{0,0,-1}};
 }; 
 
-Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode.FittingData = {
+Main.HumanModel.BodyModel.Left.Leg.Segments.Thigh.PatientNode.FittingData = {
 
   #include "FemoralHead.any"
   #include "FemoralComponentCylFitPoints.any"
@@ -47,9 +47,9 @@ Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode.FittingData = {
   AnyInt femheadsize = SizesOf(femoral_head_vertices)[0];
   AnyInt kneesurfsize = SizesOf(femoral_comp_vertices)[0];
   AnyInt pfsurfsize = SizesOf(femoral_pf_vertices)[0];
-  HipJointPoints  = (Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.Drw3.GetVertices(femoral_head_vertices)-repmat(1, femheadsize, .sRel')')*.ARel;
-  KneeJointPoints = (Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.Drw3.GetVertices(femoral_comp_vertices)-repmat(1, kneesurfsize, .sRel')')*.ARel;
-  PFJointPoints   = (Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.Drw3.GetVertices(femoral_pf_vertices)-repmat(1, pfsurfsize, .sRel')')*.ARel;
+  HipJointPoints  = (Main.HumanModel.BodyModel.Left.Leg.Segments.Thigh.Drw3.GetVertices(femoral_head_vertices)-repmat(1, femheadsize, .sRel')')*.ARel;
+  KneeJointPoints = (Main.HumanModel.BodyModel.Left.Leg.Segments.Thigh.Drw3.GetVertices(femoral_comp_vertices)-repmat(1, kneesurfsize, .sRel')')*.ARel;
+  PFJointPoints   = (Main.HumanModel.BodyModel.Left.Leg.Segments.Thigh.Drw3.GetVertices(femoral_pf_vertices)-repmat(1, pfsurfsize, .sRel')')*.ARel;
 
   SHOW_POINTCLOUD(hipjoint_ptcl, HipJointPoints, 1, 0, 0);
   SHOW_POINTCLOUD(kneejoint_ptcl, KneeJointPoints, 1, 0, 0);
@@ -59,14 +59,14 @@ Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.PatientNode.FittingData = {
 #endif
 
 #if BM_LEG_RIGHT != OFF
-Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode = {
+Main.HumanModel.BodyModel.Right.Leg.Segments.Shank.PatientNode = {
     
   AnyFolder TFReg = {#include "<USER_PATH_INPUTDATA>/Morphing/Target/tf_reg.any"};
   
   ThighToShankReg.ScaleMat = TFReg.rotation;
   ThighToShankReg.Offset = TFReg.displacement;
 }; 
-Main.HumanModel.BodyModel.Right.Leg.Seg.Patella.PatientNode = {
+Main.HumanModel.BodyModel.Right.Leg.Segments.Patella.PatientNode = {
     
   AnyFolder PFReg = {#include "<USER_PATH_INPUTDATA>/Morphing/Target/pf_reg.any"};
   
@@ -74,7 +74,7 @@ Main.HumanModel.BodyModel.Right.Leg.Seg.Patella.PatientNode = {
   ThighToPatellaReg.Offset = PFReg.displacement;
 }; 
 
-Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode.FittingData = {
+Main.HumanModel.BodyModel.Right.Leg.Segments.Thigh.PatientNode.FittingData = {
 
   #include "FemoralHead.any"
   #include "FemoralComponentCylFitPoints.any"
@@ -83,9 +83,9 @@ Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode.FittingData = {
   AnyInt femheadsize = SizesOf(femoral_head_vertices)[0];
   AnyInt kneesurfsize = SizesOf(femoral_comp_vertices)[0];
   AnyInt pfsurfsize = SizesOf(femoral_pf_vertices)[0];
-  HipJointPoints  = (Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.Drw3.GetVertices(femoral_head_vertices)-repmat(1, femheadsize, .sRel')')*.ARel;
-  KneeJointPoints = (Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.Drw3.GetVertices(femoral_comp_vertices)-repmat(1, kneesurfsize, .sRel')')*.ARel;
-  PFJointPoints   = (Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.Drw3.GetVertices(femoral_pf_vertices)-repmat(1, pfsurfsize, .sRel')')*.ARel;
+  HipJointPoints  = (Main.HumanModel.BodyModel.Right.Leg.Segments.Thigh.Drw3.GetVertices(femoral_head_vertices)-repmat(1, femheadsize, .sRel')')*.ARel;
+  KneeJointPoints = (Main.HumanModel.BodyModel.Right.Leg.Segments.Thigh.Drw3.GetVertices(femoral_comp_vertices)-repmat(1, kneesurfsize, .sRel')')*.ARel;
+  PFJointPoints   = (Main.HumanModel.BodyModel.Right.Leg.Segments.Thigh.Drw3.GetVertices(femoral_pf_vertices)-repmat(1, pfsurfsize, .sRel')')*.ARel;
 
   SHOW_POINTCLOUD(hipjoint_ptcl, HipJointPoints, 1, 0, 0);
   SHOW_POINTCLOUD(kneejoint_ptcl, KneeJointPoints, 1, 0, 0);
@@ -95,7 +95,7 @@ Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.PatientNode.FittingData = {
 #endif
 
 
-//Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.PatientNode.FittingData = {
+//Main.HumanModel.BodyModel.Right.Leg.Segments.Shank.PatientNode.FittingData = {
 //  READ_AND_SHOW_XYZ(HJPoints, "FemoralHead.xyz", 0.001);
 //  HipJointPoints = HJPoints_Reader.Data'*0.001;
 //  

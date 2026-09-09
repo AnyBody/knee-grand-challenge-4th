@@ -1,5 +1,5 @@
 //#ifdef _override_scaling_for_Pelvis
-HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg = 
+HumanModel.BodyModel.Trunk.Segments.PelvisSeg = 
 {
   #include "Custom_Seg_Pelvis.any"
 };
@@ -8,7 +8,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
 
 #if BM_LEG_RIGHT == ON
   #define SEG_SIGN 1
-  HumanModel.BodyModel.Right.Leg.Seg = 
+  HumanModel.BodyModel.Right.Leg.Segments = 
   {
     Thigh = 
     {
@@ -37,7 +37,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
 // #ifdef _override_scaling_for_Right_Talus
 // HumanModel.BodyModel.Right.Leg =
 // {  
-//   Seg.Talus = 
+//   Segments.Talus = 
 //   {
 //     #define SEG_SIGN 1
 //     #include "Custom_Seg_Talus.any"
@@ -51,7 +51,7 @@ HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg =
 
 #if BM_LEG_LEFT == ON
  #define SEG_SIGN -1
-  HumanModel.BodyModel.Left.Leg.Seg = 
+  HumanModel.BodyModel.Left.Leg.Segments = 
   {
     Thigh = 
     {
@@ -95,13 +95,13 @@ HumanModel.BodyModel =
   #if BM_LEG_RIGHT == ON
   Right.Leg =
   {
-    Jnt = 
+    Joints = 
     {
       #if (BM_JOINT_TYPE_HIP_RIGHT == _JOINT_TYPE_USERDEFINED_)
       AnySphericalJoint Hip = 
       {
-        AnyRefNode &ThighNode = ..Seg.Thigh.HipJoint;
-        AnyRefNode &PelvisNode = ..Seg.Pelvis.HipJoint;
+        AnyRefNode &ThighNode = ..Segments.Thigh.HipJoint;
+        AnyRefNode &PelvisNode = ..Segments.Pelvis.HipJoint;
       };//Hip
       #endif
       
@@ -110,12 +110,12 @@ HumanModel.BodyModel =
 //       #if KNEE_JOINT_TYPE == __SPHERICAL__
        
         AnySphericalJoint Knee = {
-          AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
-          AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+          AnyRefNode &ThighNode = ..Segments.Thigh.KneeJoint;
+          AnyRefNode &ShankNode = ..Segments.Shank.KneeJoint;
         };
         AnyKinRotational KneeRot = {
-          AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
-          AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+          AnyRefNode &ThighNode = ..Segments.Thigh.KneeJoint;
+          AnyRefNode &ShankNode = ..Segments.Shank.KneeJoint;
           Type = PlanarAngles;
         };
         AnyKinEqSimpleDriver KneeRotations = {
@@ -138,8 +138,8 @@ HumanModel.BodyModel =
 //       AnyRevoluteJoint Knee = 
 //       {
 //         Axis = z;
-//         AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
-//         AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+//         AnyRefNode &ThighNode = ..Segments.Thigh.KneeJoint;
+//         AnyRefNode &ShankNode = ..Segments.Shank.KneeJoint;
 //         AnyDrawStdJoint Knee = {  };
 //       };//Knee
 //       #endif
@@ -149,8 +149,8 @@ HumanModel.BodyModel =
       AnyRevoluteJoint PatellaFemur = 
       {
         Axis = z;
-        AnyRefNode &ThighNode = ..Seg.Thigh.PatellaFemurJoint;
-        AnyRefNode &PatellaNode = ..Seg.Patella.PatellaFemurJoint;
+        AnyRefNode &ThighNode = ..Segments.Thigh.PatellaFemurJoint;
+        AnyRefNode &PatellaNode = ..Segments.Patella.PatellaFemurJoint;
       };//Patellafemur
       #endif
       
@@ -158,8 +158,8 @@ HumanModel.BodyModel =
       AnyRevoluteJoint Ankle = 
       {
         Axis = z; //flexion extension
-        AnyRefNode &ShankNode = ..Seg.Shank.AnkleJoint;
-        AnyRefNode &FootNode  = ..Seg.Talus.AnkleJoint;
+        AnyRefNode &ShankNode = ..Segments.Shank.AnkleJoint;
+        AnyRefNode &FootNode  = ..Segments.Talus.AnkleJoint;
       };//Ankle
       #endif
       
@@ -168,8 +168,8 @@ HumanModel.BodyModel =
 //      {
 //        AnyKinPLine Patella = 
 //        {
-//          AnyRefNode &Origin_patella_tendon = ...Seg.Patella.Origin_patella_tendon;
-//          AnyRefNode &Insertion_patella_tendon = ...Seg.Shank.Insertion_patella_tendon;
+//          AnyRefNode &Origin_patella_tendon = ...Segments.Patella.Origin_patella_tendon;
+//          AnyRefNode &Insertion_patella_tendon = ...Segments.Shank.Insertion_patella_tendon;
 //          
 //          AnyDrawPLine Patella_tendon = 
 //          {
@@ -182,8 +182,8 @@ HumanModel.BodyModel =
 //      AnyKinEqSimpleDriver PatellaMovement = 
 //      {
 //        AnyKinPLine &Jnt = .KinematicMeasures.Patella;
-//        AnyVar lengthScale = vnorm(..Seg.Shank.KneeJoint.sRel - ..Seg.Shank.Insertion_patella_tendon.sRel)
-//        / vnorm(..Seg.Shank.StdPar.Insertion_patella_tendon-..Seg.Shank.StdPar.KneeJoint);
+//        AnyVar lengthScale = vnorm(..Segments.Shank.KneeJoint.sRel - ..Segments.Shank.Insertion_patella_tendon.sRel)
+//        / vnorm(..Segments.Shank.StdPar.Insertion_patella_tendon-..Segments.Shank.StdPar.KneeJoint);
 //        AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.PatellarLigamentLength; 
 //        AnyVar TendonLength_Custom = DEF_CUSTOM_SCALING_PATELLA_TENDON_LENGTH;
 //        
@@ -199,13 +199,13 @@ HumanModel.BodyModel =
   #if BM_LEG_LEFT == ON
   Left.Leg = 
   {
-    Jnt = 
+    Joints = 
     {
       #if (BM_JOINT_TYPE_HIP_LEFT == _JOINT_TYPE_USERDEFINED_)
       AnySphericalJoint Hip = 
       {
-        AnyRefNode &ThighNode = ..Seg.Thigh.HipJoint;
-        AnyRefNode &PelvisNode = ..Seg.Pelvis.HipJoint;
+        AnyRefNode &ThighNode = ..Segments.Thigh.HipJoint;
+        AnyRefNode &PelvisNode = ..Segments.Pelvis.HipJoint;
       };//Hip
       #endif
       
@@ -214,12 +214,12 @@ HumanModel.BodyModel =
        //#if KNEE_JOINT_TYPE == __SPHERICAL__
        
         AnySphericalJoint Knee = {
-          AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
-          AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+          AnyRefNode &ThighNode = ..Segments.Thigh.KneeJoint;
+          AnyRefNode &ShankNode = ..Segments.Shank.KneeJoint;
         };
         AnyKinRotational KneeRot = {
-          AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
-          AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+          AnyRefNode &ThighNode = ..Segments.Thigh.KneeJoint;
+          AnyRefNode &ShankNode = ..Segments.Shank.KneeJoint;
           Type = PlanarAngles;
         };
         AnyKinEqSimpleDriver KneeRotations = {
@@ -242,8 +242,8 @@ HumanModel.BodyModel =
 //       AnyRevoluteJoint Knee = 
 //       {
 //         Axis = z;
-//         AnyRefNode &ThighNode = ..Seg.Thigh.KneeJoint;
-//         AnyRefNode &ShankNode = ..Seg.Shank.KneeJoint;
+//         AnyRefNode &ThighNode = ..Segments.Thigh.KneeJoint;
+//         AnyRefNode &ShankNode = ..Segments.Shank.KneeJoint;
 //         AnyDrawStdJoint Knee = {  };
 //       };//Knee
 //       #endif
@@ -253,8 +253,8 @@ HumanModel.BodyModel =
       AnyRevoluteJoint PatellaFemur = 
       {
         Axis = z;
-        AnyRefNode &ThighNode = ..Seg.Thigh.PatellaFemurJoint;
-        AnyRefNode &PatellaNode = ..Seg.Patella.PatellaFemurJoint;
+        AnyRefNode &ThighNode = ..Segments.Thigh.PatellaFemurJoint;
+        AnyRefNode &PatellaNode = ..Segments.Patella.PatellaFemurJoint;
       };//Patellafemur 
       #endif
       
@@ -262,8 +262,8 @@ HumanModel.BodyModel =
       AnyRevoluteJoint Ankle = 
       {
         Axis = z; //flexion extension
-        AnyRefNode &ShankNode = ..Seg.Shank.AnkleJoint;
-        AnyRefNode &FootNode  = ..Seg.Talus.AnkleJoint;
+        AnyRefNode &ShankNode = ..Segments.Shank.AnkleJoint;
+        AnyRefNode &FootNode  = ..Segments.Talus.AnkleJoint;
       };//Ankle
       #endif
       
@@ -272,8 +272,8 @@ HumanModel.BodyModel =
 //      {
 //        AnyKinPLine Patella = 
 //        {
-//          AnyRefNode &Origin_patella_tendon = ...Seg.Patella.Origin_patella_tendon;
-//          AnyRefNode &Insertion_patella_tendon = ...Seg.Shank.Insertion_patella_tendon;
+//          AnyRefNode &Origin_patella_tendon = ...Segments.Patella.Origin_patella_tendon;
+//          AnyRefNode &Insertion_patella_tendon = ...Segments.Shank.Insertion_patella_tendon;
 //          
 //          AnyDrawPLine Patella_tendon = 
 //          {
@@ -286,8 +286,8 @@ HumanModel.BodyModel =
 //      AnyKinEqSimpleDriver PatellaMovement = 
 //      {
 //        AnyKinPLine &Jnt = .KinematicMeasures.Patella;
-//        AnyVar lengthScale = vnorm(..Seg.Shank.KneeJoint.sRel - ..Seg.Shank.Insertion_patella_tendon.sRel)
-//        / vnorm(..Seg.Shank.StdPar.Insertion_patella_tendon-..Seg.Shank.StdPar.KneeJoint);
+//        AnyVar lengthScale = vnorm(..Segments.Shank.KneeJoint.sRel - ..Segments.Shank.Insertion_patella_tendon.sRel)
+//        / vnorm(..Segments.Shank.StdPar.Insertion_patella_tendon-..Segments.Shank.StdPar.KneeJoint);
 //        AnyVar TendonLength_Scaled =  lengthScale *..ModelParameters.PatellarLigamentLength; 
 //        AnyVar TendonLength_Custom = DEF_CUSTOM_SCALING_PATELLA_TENDON_LENGTH;
 //        
