@@ -44,9 +44,9 @@ Main.ModelSetup.TrialSpecificData =
   // to differentiate trials. Defautls to nothing ""
   //#define MOCAP_OUTPUT_FILENAME_PREFIX ""
   
-//  Main.ModelSetup.C3DFileData ={
-//    SearchAndReplace = {{"JW_58_:", ""}};
-//  };
+  Main.ModelSetup.C3DFileData ={
+    SearchAndReplace = {{"JW:", ""}};
+  };
 //  
   Main.ModelSetup.LabSpecificData.LowPassFilterSettings = 
   {

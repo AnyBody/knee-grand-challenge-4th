@@ -129,4 +129,4 @@ Main.ModelSetup.TrialSpecificData =
   
 };
 
-#path PATH_eKneeData "jw_ngait_og3_knee_forces.csv"
+#path PATH_eKneeData "PS_ngait_og_ss1_eTibia.txt"

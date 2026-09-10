@@ -1,7 +1,0 @@
-load "Kinematics.main.any"
-operation Main.RunMotionAndParameterOptimizationSequence  
-run
-load "InverseDynamics.main.any"
-operation Main.InverseDynamicAnalysisSequence 
-run
-exit  
