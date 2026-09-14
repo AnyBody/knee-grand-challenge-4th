@@ -55,7 +55,7 @@ jobs:
         env:
           RLM_LICENSE: ${{ secrets.LICENSE_SERVER }}
           RLM_LICENSE_PASSWORD: ${{ secrets.LICENSE_PASSWORD }}
-      - name: Run tests
+      - name: Run inverse dynamics analyses
         run: |
           pixi run test_dynamic
         env:
