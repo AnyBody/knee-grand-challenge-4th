@@ -2,6 +2,7 @@ from pathlib import Path
 import glob
 import shutil
 import argparse
+import re
 
 from anypytools import AnyPyProcess
 from anypytools.macro_commands import Load, OperationRun
@@ -65,6 +66,75 @@ def run_anybody_code(mainfiles: list[Path], operation: str, logfile: str, **kwar
     return completed_trials
 
 
+def _parse_load_parameters_from(trial_specific_file: Path) -> str | None:
+    """Extract the LoadParametersFrom string from a TrialSpecificData.any file."""
+    text = trial_specific_file.read_text(encoding="utf-8", errors="ignore")
+    match = re.search(r'LoadParametersFrom\s*=\s*\{\s*"([^"]+)"\s*\}\s*;', text)
+    return match.group(1) if match else None
+
+
+def _normalize_mainfile(path: Path) -> Path:
+    """Return a canonical path, preferring relative-to-cwd when possible."""
+    absolute = path.resolve()
+    try:
+        return absolute.relative_to(Path.cwd())
+    except ValueError:
+        return absolute
+
+
+def _resolve_parameter_id_mainfiles(dynamic_mainfiles: list[Path]) -> list[Path]:
+    """
+    Decide which mainfiles to run for parameter identification.
+
+    For each dynamic trial, inspect TrialSpecificData.any:
+    - If LoadParametersFrom points to a Trials Static file, run that static trial's Main.any.
+    - Otherwise, run the dynamic trial itself.
+
+    Returns a deduplicated list of mainfiles.
+    """
+    seen: set[Path] = set()
+    mainfiles: list[Path] = []
+
+    for dyn_main in sorted(dynamic_mainfiles):
+        dyn_dir = dyn_main.parent
+        trial_specific = dyn_dir / "TrialSpecificData.any"
+
+        if not trial_specific.exists():
+            normalized = _normalize_mainfile(dyn_main)
+            if normalized not in seen:
+                seen.add(normalized)
+                mainfiles.append(normalized)
+            continue
+
+        load_from = _parse_load_parameters_from(trial_specific)
+
+        if load_from is None:
+            normalized = _normalize_mainfile(dyn_main)
+            if normalized not in seen:
+                seen.add(normalized)
+                mainfiles.append(normalized)
+            continue
+
+        # A path-like reference (e.g. "../../Trials Static/PS_staticfor1/PS_staticfor1")
+        # indicates parameters are loaded from a static reference trial.
+        if "Trials Static" in load_from or "/" in load_from or "\\" in load_from:
+            ref_path = (dyn_dir / load_from).resolve()
+            static_main = ref_path.parent / "Main.any"
+            if not static_main.exists():
+                # Fallback: try the dynamic trial itself if the static main is missing
+                static_main = dyn_main
+        else:
+            # Local reference: use the dynamic trial's own main file
+            static_main = dyn_main
+
+        normalized = _normalize_mainfile(static_main)
+        if normalized not in seen:
+            seen.add(normalized)
+            mainfiles.append(normalized)
+
+    return mainfiles
+
+
 def find_files(pattern: str, root='.') -> list[Path]:
     """
     Find files matching a shell-style wildcard pattern relative to `root`.
@@ -96,19 +166,22 @@ if __name__ == "__main__":
     run_dynamic = args.dynamic or not requested
     run_post = args.postprocess or not requested
 
-    # Static phase
+    # Static phase: parameter identification
+    # For each dynamic trial, check TrialSpecificData.any. If LoadParametersFrom
+    # points to a static reference trial, run that static trial's Main.any;
+    # otherwise run the dynamic trial itself.
     if run_static:
-        pattern: str = "Studies/GCK/Subjects/*/Trials Static/*/main.any"
-        mainfiles = find_files(pattern)
-        if mainfiles:
-            print("Found the following main.any files for static reference trials:")
+        dynamic_pattern: str = "Studies/GCK/Subjects/*/Trials Dynamic/*/main.any"
+        dynamic_mainfiles = find_files(dynamic_pattern)
+
+        if dynamic_mainfiles:
+            mainfiles = _resolve_parameter_id_mainfiles(dynamic_mainfiles)
+            print("Running parameter identification for the following trials:")
             for p in mainfiles:
                 print(f" - {p}")
-        else:
-            print("No static trials found.")
-
-        if mainfiles:
             run_anybody_code(mainfiles, operation="Main.RunParameterIdentification", logfile="logs/staticref.txt")
+        else:
+            print("No dynamic trials found for parameter identification.")
 
     # Dynamic phase
     if run_dynamic:
