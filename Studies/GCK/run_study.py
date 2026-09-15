@@ -31,21 +31,36 @@ def run_anybody_code(mainfiles: list[Path], operation: str, logfile: str, **kwar
     print(f"Running {len(mainfiles)} trial(s) with: '{operation}'...")
     results = app.start_macro(macros, logfile=logfile)
 
+    failed_trials = []
     completed_trials = []
     for i, result in enumerate(results):
         if result['task_processtime'] == 0: 
             continue
         if 'ERROR' in result:
-            if log:=result.get("task_logfile"):
-                mf = mainfiles[i]
-                try:
-                    display = mf.relative_to(Path.cwd()) if mf.is_absolute() else mf
-                except Exception:
-                    display = mf
-                print(f"Failed: {display} ( [blue]{log}[/blue] )")
+            mf = mainfiles[i]
+            try:
+                display = mf.relative_to(Path.cwd()) if mf.is_absolute() else mf
+            except Exception:
+                display = mf
+
+            error_msg = result['ERROR']
+            log = result.get("task_logfile")
+            if log:
+                print(f"Failed: {display} ( [blue]{log}[/blue] )\n  ERROR: {error_msg}")
+            else:
+                print(f"Failed: {display}\n  ERROR: {error_msg}")
+            failed_trials.append((display, error_msg))
             continue
         
         completed_trials.append(mainfiles[i])
+
+    if failed_trials:
+        summary = "\n".join(
+            f"  - {mf}: {err}" for mf, err in failed_trials
+        )
+        raise RuntimeError(
+            f"{len(failed_trials)} trial(s) failed during '{operation}':\n{summary}"
+        )
 
     return completed_trials
 
