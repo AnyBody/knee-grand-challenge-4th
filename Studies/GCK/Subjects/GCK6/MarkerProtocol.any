@@ -240,17 +240,17 @@ ScaleMarkerPosOnOff = 0
 //  sRelOpt = {0.0, -0.22, -0.08};
 //};
 
-#ifdef STATIC_TRIAL
-CreateMarkerDriver RShankSuperior (
-MarkerName= RShankSuperior, 
-MarkerPlacement=Right.Leg.Segments.Shank,
-OptX=ON,OptY=ON,OptZ=ON,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
-ScaleMarkerPosOnOff = 0
-) = {
-   sRelOpt = {0.0, -0.05, 0.05};
-};
-#endif
+//#ifdef STATIC_TRIAL
+//CreateMarkerDriver RShankSuperior (
+//MarkerName= RShankSuperior, 
+//MarkerPlacement=Right.Leg.Segments.Shank,
+//OptX=ON,OptY=ON,OptZ=ON,  
+//WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+//ScaleMarkerPosOnOff = 0
+//) = {
+//   sRelOpt = {0.0, -0.05, 0.05};
+//};
+//#endif
 
 CreateMarkerDriver RShankInferior (
 MarkerName= RShankInferior, 
@@ -262,17 +262,17 @@ ScaleMarkerPosOnOff = 0
     sRelOpt = {0.0, -0.25, 0.03};
 };
 
-#ifdef STATIC_TRIAL
-CreateMarkerDriver RAnkleLateral ( 
-MarkerName= RAnkleLateral,
-MarkerPlacement=Right.Leg.Segments.Shank,
-OptX=OFF,OptY=OFF,OptZ=OFF,  
-WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
-ScaleMarkerPosOnOff = 0
-) = {
-  sRelOpt = {-0.00, -0.35, 0.04};
-};
-#endif
+//#ifdef STATIC_TRIAL
+//CreateMarkerDriver RAnkleLateral ( 
+//MarkerName= RAnkleLateral,
+//MarkerPlacement=Right.Leg.Segments.Shank,
+//OptX=OFF,OptY=OFF,OptZ=OFF,  
+//WeightX=1.0,WeightY=1.0,WeightZ=1.0, 
+//ScaleMarkerPosOnOff = 0
+//) = {
+//  sRelOpt = {-0.00, -0.35, 0.04};
+//};
+//#endif
 
 //#ifdef STATIC_TRIAL
 //CreateMarkerDriver RAnkleMedial ( 
